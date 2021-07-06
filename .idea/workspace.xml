@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/action/product_deduction_save.php" description="{" line="39" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1d023b2a-c6f1-4511-be23-0187123b292e" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: database" type="162271b6:PgImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: schema" type="983ebcf7:PgImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="sequences" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="object types" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="d42obc7i21cfqv: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="object types" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="access_level: object type" type="6ad992a5:PgImplModel$DefType" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loans.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/menu.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reports.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/staff.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="31">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/page.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/profile.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/leads.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/loan-products.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>load_std</find>
+      <find>give</find>
+      <find>addons</find>
+      <find>give a</find>
+      <find>addo</find>
+      <find>addon</find>
+      <find>table</find>
+      <find>customer has</find>
+      <find>are you</find>
+      <find>loan_add</find>
+      <find>peter wi</find>
+      <find>loan</find>
+      <find>loan_</find>
+      <find>rapayable_amount</find>
+      <find>repays</find>
+      <find>recal</find>
+      <find>loan stages</find>
+      <find>load_st</find>
+      <find>loan_lis</find>
+      <find>repa</find>
+      <find>record p</find>
+      <find>arrow_back</find>
+      <find>paymen</find>
+      <find>Payment was done automatically on 5th May 2020</find>
+      <find>arro</find>
+      <find>count</find>
+      <find>onep</find>
+      <find>&lt;title&gt;On</find>
+      <find>one</find>
+      <find>&lt;title&gt;</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>OnePay</replace>
+      <replace>$cust</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\xampp\htdocs\OnePay\jresources</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/forms/loan_deduction_add_edit.php" />
+        <option value="$PROJECT_DIR$/forms/loan_stage_add_edit.php" />
+        <option value="$PROJECT_DIR$/forms/customer-add-edit-form.php" />
+        <option value="$PROJECT_DIR$/forms/loan-add-edit-form.php" />
+        <option value="$PROJECT_DIR$/forms/loan-product-add-edit-form.php" />
+        <option value="$PROJECT_DIR$/forms/staff-add-edit-form.php" />
+        <option value="$PROJECT_DIR$/forms/loan_addon_add_edit.php" />
+        <option value="$PROJECT_DIR$/scripts/main.js" />
+        <option value="$PROJECT_DIR$/widgets/payments/add-edit.php" />
+        <option value="$PROJECT_DIR$/action/payments/create.php" />
+        <option value="$PROJECT_DIR$/action/payments/update.php" />
+        <option value="$PROJECT_DIR$/widgets/payments-list.php" />
+        <option value="$PROJECT_DIR$/widgets/payments/payment-one.php" />
+        <option value="$PROJECT_DIR$/dist/css/skins/_all-skins.css" />
+        <option value="$PROJECT_DIR$/widgets/loan_list.php" />
+        <option value="$PROJECT_DIR$/jresources/loans/loan_list.php" />
+        <option value="$PROJECT_DIR$/php_functions/functions.php" />
+        <option value="$PROJECT_DIR$/index2.php" />
+        <option value="$PROJECT_DIR$/pages/calendar.html" />
+        <option value="$PROJECT_DIR$/pages/widgets.html" />
+        <option value="$PROJECT_DIR$/pages/UI/sliders.html" />
+        <option value="$PROJECT_DIR$/pages/UI/icons.html" />
+        <option value="$PROJECT_DIR$/pages/UI/timeline.html" />
+        <option value="$PROJECT_DIR$/pages/UI/general.html" />
+        <option value="$PROJECT_DIR$/pages/UI/modals.html" />
+        <option value="$PROJECT_DIR$/pages/UI/buttons.html" />
+        <option value="$PROJECT_DIR$/pages/forms/advanced.html" />
+        <option value="$PROJECT_DIR$/pages/forms/general.html" />
+        <option value="$PROJECT_DIR$/pages/forms/editors.html" />
+        <option value="$PROJECT_DIR$/pages/charts/inline.html" />
+        <option value="$PROJECT_DIR$/page.php" />
+        <option value="$PROJECT_DIR$/pages/layout/fixed.html" />
+        <option value="$PROJECT_DIR$/pages/charts/morris.html" />
+        <option value="$PROJECT_DIR$/documentation/index.html" />
+        <option value="$PROJECT_DIR$/documentation/build/index.html" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/header.php" />
+        <option value="$PROJECT_DIR$/broadcasts.php" />
+        <option value="$PROJECT_DIR$/customers.php" />
+        <option value="$PROJECT_DIR$/defaulters.php" />
+        <option value="$PROJECT_DIR$/details.php" />
+        <option value="$PROJECT_DIR$/falling-due.php" />
+        <option value="$PROJECT_DIR$/incoming-payments.php" />
+        <option value="$PROJECT_DIR$/interactions.php" />
+        <option value="$PROJECT_DIR$/loan-products.php" />
+        <option value="$PROJECT_DIR$/loans.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/profile.php" />
+        <option value="$PROJECT_DIR$/reports.php" />
+        <option value="$PROJECT_DIR$/settings.php" />
+        <option value="$PROJECT_DIR$/staff.php" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="OnePay" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnePay" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OnePay" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnePay" type="462c0819:PsiDirectoryNode" />
+              <item name="php_functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="OnePay" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OnePay" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vuejs" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.stylelint" value="$PROJECT_DIR$/node_modules/stylelint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\OnePay" />
+      <recent name="C:\xampp\htdocs\OnePay\action\loan" />
+      <recent name="C:\xampp\htdocs\OnePay\jresources\loans" />
+      <recent name="C:\xampp\htdocs\OnePay\action\collateral" />
+      <recent name="C:\xampp\htdocs\OnePay\action\referees" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\OnePay\action\payments" />
+      <recent name="C:\xampp\htdocs\OnePay\widgets\payments" />
+      <recent name="C:\xampp\htdocs\OnePay\jresources\repayments" />
+      <recent name="C:\xampp\htdocs\OnePay\jresources\loans" />
+      <recent name="C:\xampp\htdocs\OnePay\action\staff" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1d023b2a-c6f1-4511-be23-0187123b292e" name="Default Changelist" comment="" />
+      <created>1618310580086</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618310580086</updated>
+      <workItem from="1618310581320" duration="5025000" />
+      <workItem from="1618374580794" duration="6103000" />
+      <workItem from="1618401869227" duration="185000" />
+      <workItem from="1618840762788" duration="616000" />
+      <workItem from="1618914431293" duration="3180000" />
+      <workItem from="1618924455352" duration="1107000" />
+      <workItem from="1618925763433" duration="4010000" />
+      <workItem from="1618966357929" duration="543000" />
+      <workItem from="1618974097571" duration="4580000" />
+      <workItem from="1618991275707" duration="26000" />
+      <workItem from="1619271929105" duration="4490000" />
+      <workItem from="1619292578544" duration="14670000" />
+      <workItem from="1619511376218" duration="10224000" />
+      <workItem from="1619594762729" duration="646000" />
+      <workItem from="1619602027218" duration="7227000" />
+      <workItem from="1619660309062" duration="4849000" />
+      <workItem from="1619724104425" duration="520000" />
+      <workItem from="1619763611636" duration="9092000" />
+      <workItem from="1619836701792" duration="3566000" />
+      <workItem from="1619875122304" duration="19000" />
+      <workItem from="1620018643672" duration="10276000" />
+      <workItem from="1620258205630" duration="1499000" />
+      <workItem from="1620310553133" duration="531000" />
+      <workItem from="1620351153108" duration="868000" />
+      <workItem from="1620354499514" duration="5284000" />
+      <workItem from="1620360548563" duration="1068000" />
+      <workItem from="1620369167994" duration="1814000" />
+      <workItem from="1620452613918" duration="5709000" />
+      <workItem from="1620575499899" duration="741000" />
+      <workItem from="1620722256756" duration="6634000" />
+      <workItem from="1620794240524" duration="21860000" />
+      <workItem from="1620824143987" duration="110000" />
+      <workItem from="1620904962407" duration="5762000" />
+      <workItem from="1620914919110" duration="2734000" />
+      <workItem from="1620981151510" duration="5369000" />
+      <workItem from="1621030694312" duration="6864000" />
+      <workItem from="1621147317459" duration="621000" />
+      <workItem from="1621230864542" duration="6498000" />
+      <workItem from="1621264058837" duration="14167000" />
+      <workItem from="1621319933397" duration="261000" />
+      <workItem from="1621391007562" duration="4464000" />
+      <workItem from="1621489237787" duration="1869000" />
+      <workItem from="1621492711275" duration="5596000" />
+      <workItem from="1621500194845" duration="4866000" />
+      <workItem from="1621507234563" duration="8259000" />
+      <workItem from="1621587923995" duration="6295000" />
+      <workItem from="1621658786605" duration="3465000" />
+      <workItem from="1621783825795" duration="10440000" />
+      <workItem from="1621858520147" duration="18020000" />
+      <workItem from="1621922138448" duration="10196000" />
+      <workItem from="1621958691306" duration="8062000" />
+      <workItem from="1622025520317" duration="5925000" />
+      <workItem from="1622068543004" duration="5672000" />
+      <workItem from="1622094899526" duration="43000" />
+      <workItem from="1622180842537" duration="8910000" />
+      <workItem from="1622208024334" duration="2716000" />
+      <workItem from="1622211523514" duration="710000" />
+      <workItem from="1622296544115" duration="2811000" />
+      <workItem from="1622354802571" duration="7373000" />
+      <workItem from="1622461974075" duration="1622000" />
+      <workItem from="1622469521886" duration="4731000" />
+      <workItem from="1622491029598" duration="6871000" />
+      <workItem from="1622544329418" duration="6343000" />
+      <workItem from="1622608100654" duration="20000" />
+      <workItem from="1622636537629" duration="14755000" />
+      <workItem from="1622788557112" duration="5589000" />
+      <workItem from="1622795615566" duration="182000" />
+      <workItem from="1622806188414" duration="3692000" />
+      <workItem from="1622821389320" duration="486000" />
+      <workItem from="1622827560692" duration="5115000" />
+      <workItem from="1622876347737" duration="15961000" />
+      <workItem from="1623045846425" duration="246000" />
+      <workItem from="1623060265307" duration="3136000" />
+      <workItem from="1623063551778" duration="39000" />
+      <workItem from="1623107737926" duration="12624000" />
+      <workItem from="1623134802787" duration="150000" />
+      <workItem from="1623168211996" duration="737000" />
+      <workItem from="1623177794452" duration="8226000" />
+      <workItem from="1623215989059" duration="273000" />
+      <workItem from="1623221211255" duration="22574000" />
+      <workItem from="1623308713417" duration="4986000" />
+      <workItem from="1623320582218" duration="649000" />
+      <workItem from="1623384720229" duration="12735000" />
+      <workItem from="1623404011146" duration="3598000" />
+      <workItem from="1623421510918" duration="11933000" />
+      <workItem from="1623504733144" duration="1151000" />
+      <workItem from="1623505935373" duration="2368000" />
+      <workItem from="1623509223225" duration="21421000" />
+      <workItem from="1623710960986" duration="10945000" />
+      <workItem from="1623739952242" duration="29000" />
+      <workItem from="1623820315185" duration="13075000" />
+      <workItem from="1623838489207" duration="602000" />
+      <workItem from="1623855843504" duration="3545000" />
+      <workItem from="1623867337557" duration="10826000" />
+      <workItem from="1623945051883" duration="1195000" />
+      <workItem from="1624001547578" duration="2973000" />
+      <workItem from="1624009443965" duration="15900000" />
+      <workItem from="1624059722419" duration="43655000" />
+      <workItem from="1624256065381" duration="59000" />
+      <workItem from="1624263165924" duration="2935000" />
+      <workItem from="1624289910229" duration="22000" />
+      <workItem from="1624296505303" duration="13763000" />
+      <workItem from="1624344985173" duration="600000" />
+      <workItem from="1624354054640" duration="638000" />
+      <workItem from="1624374843924" duration="4078000" />
+      <workItem from="1624382077150" duration="18038000" />
+      <workItem from="1624427158029" duration="626000" />
+      <workItem from="1624428126487" duration="8895000" />
+      <workItem from="1624453070150" duration="18365000" />
+      <workItem from="1624537580225" duration="151000" />
+      <workItem from="1624542658474" duration="1177000" />
+      <workItem from="1624555433435" duration="605000" />
+      <workItem from="1624605240204" duration="359000" />
+      <workItem from="1624645729673" duration="1879000" />
+      <workItem from="1624772115308" duration="601000" />
+      <workItem from="1624787840686" duration="4821000" />
+      <workItem from="1624950086915" duration="791000" />
+      <workItem from="1625565326332" duration="242000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="648643000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16717096" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.05102041" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.79761904" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.6550681" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/widgets/settings/permissions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="107" column="39" selection-start-line="107" selection-start-column="39" selection-end-line="107" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/deduction_save.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/loan/loan_deduction.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/loan/loan_addon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="3" selection-start-line="39" selection-start-column="3" selection-end-line="39" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jresources/collateral/view_one.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="79" lean-forward="true" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/loan/approve_disburse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="28" column="64" lean-forward="true" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jresources/loans/loan_addons.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/loan/collateral.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="41" column="56" selection-start-line="41" selection-start-column="56" selection-end-line="41" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jresources/loans/loan_collateral.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jresources/loans/loan_stages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/loan/move_stage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="11" selection-start-line="52" selection-start-column="11" selection-end-line="52" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/widgets/loan_details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2907">
+          <caret line="171" column="9" selection-start-line="171" selection-start-column="9" selection-end-line="171" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jresources/contact_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#style#0;n#table#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/customer_save.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="91" column="1" lean-forward="true" selection-start-line="87" selection-end-line="91" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/loan/loan_create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="733" column="200" selection-start-line="733" selection-start-column="192" selection-end-line="733" selection-end-column="200" />
+          <folding>
+            <element signature="e#87#1449#0" />
+            <element signature="e#201#1443#0" />
+            <element signature="e#314#362#0" />
+            <element signature="e#395#443#0" />
+            <element signature="e#482#1353#0" />
+            <element signature="e#207#214#1" expanded="true" />
+            <element signature="e#1385#1435#0" />
+            <element signature="e#1473#1513#0" />
+            <element signature="e#1542#1590#0" />
+            <element signature="e#1663#1954#0" />
+            <element signature="e#1754#1949#0" />
+            <element signature="e#1789#1857#0" />
+            <element signature="e#1870#1943#0" />
+            <element signature="e#1992#2140#0" />
+            <element signature="e#2128#2135#0" />
+            <element signature="e#2164#7222#0" />
+            <element signature="e#7264#8079#0" />
+            <element signature="e#7319#7353#0" />
+            <element signature="e#7413#7445#0" />
+            <element signature="e#7493#7521#0" />
+            <element signature="e#7577#7605#0" />
+            <element signature="e#7814#8074#0" />
+            <element signature="e#8019#8060#0" />
+            <element signature="e#8081#8124#0" />
+            <element signature="e#8212#9037#0" />
+            <element signature="e#8623#8660#0" />
+            <element signature="e#8937#9034#0" />
+            <element signature="e#9061#9919#0" />
+            <element signature="e#9116#9150#0" />
+            <element signature="e#9207#9234#0" />
+            <element signature="e#9282#9307#0" />
+            <element signature="e#9367#9399#0" />
+            <element signature="e#9447#9475#0" />
+            <element signature="e#9531#9559#0" />
+            <element signature="e#9762#9916#0" />
+            <element signature="e#9861#9902#0" />
+            <element signature="e#9948#10297#0" />
+            <element signature="e#10180#10293#0" />
+            <element signature="e#10400#11652#0" />
+            <element signature="e#10489#10529#0" />
+            <element signature="e#10533#10571#0" />
+            <element signature="e#11535#11648#0" />
+            <element signature="e#11713#12310#0" />
+            <element signature="e#11788#11836#0" />
+            <element signature="e#11845#11891#0" />
+            <element signature="e#12194#12307#0" />
+            <element signature="e#12347#13231#0" />
+            <element signature="e#12751#12785#0" />
+            <element signature="e#13114#13227#0" />
+            <element signature="e#13271#14335#0" />
+            <element signature="e#13372#13408#0" />
+            <element signature="e#13412#13420#0" />
+            <element signature="e#14219#14332#0" />
+            <element signature="e#14362#15226#0" />
+            <element signature="e#14417#14451#0" />
+            <element signature="e#14508#14535#0" />
+            <element signature="e#14583#14608#0" />
+            <element signature="e#14668#14700#0" />
+            <element signature="e#14748#14776#0" />
+            <element signature="e#14832#14860#0" />
+            <element signature="e#15066#15223#0" />
+            <element signature="e#15168#15209#0" />
+            <element signature="e#15268#15480#0" />
+            <element signature="e#15393#15477#0" />
+            <element signature="e#15517#15813#0" />
+            <element signature="e#15610#15811#0" />
+            <element signature="e#15725#15803#0" />
+            <element signature="e#15855#16077#0" />
+            <element signature="e#15989#16074#0" />
+            <element signature="e#16121#16340#0" />
+            <element signature="e#16249#16337#0" />
+            <element signature="e#16380#16494#0" />
+            <element signature="e#16559#16788#0" />
+            <element signature="e#16713#16783#0" />
+            <element signature="e#16828#17039#0" />
+            <element signature="e#16951#17036#0" />
+            <element signature="e#17068#17352#0" />
+            <element signature="e#17158#17350#0" />
+            <element signature="e#17264#17342#0" />
+            <element signature="e#17389#17487#0" />
+            <element signature="e#17520#17613#0" />
+            <element signature="e#17644#17728#0" />
+            <element signature="e#17759#18047#0" />
+            <element signature="e#17852#18045#0" />
+            <element signature="e#17959#18037#0" />
+            <element signature="e#18081#18374#0" />
+            <element signature="e#18177#18372#0" />
+            <element signature="e#18286#18364#0" />
+            <element signature="e#18416#18640#0" />
+            <element signature="e#18554#18637#0" />
+            <element signature="e#18674#19198#0" />
+            <element signature="e#18776#18813#0" />
+            <element signature="e#18817#18825#0" />
+            <element signature="e#19082#19195#0" />
+            <element signature="e#19227#19517#0" />
+            <element signature="e#19318#19515#0" />
+            <element signature="e#19429#19507#0" />
+            <element signature="e#19590#20014#0" />
+            <element signature="e#19704#19951#0" />
+            <element signature="e#19830#19944#0" />
+            <element signature="e#19957#20012#0" />
+            <element signature="e#20050#20168#0" />
+            <element signature="e#20193#20655#0" />
+            <element signature="e#20581#20651#0" />
+            <element signature="e#20678#21540#0" />
+            <element signature="e#20733#20767#0" />
+            <element signature="e#20824#20851#0" />
+            <element signature="e#20899#20924#0" />
+            <element signature="e#20984#21016#0" />
+            <element signature="e#21064#21092#0" />
+            <element signature="e#21148#21176#0" />
+            <element signature="e#21566#22432#0" />
+            <element signature="e#21917#21972#0" />
+            <element signature="e#21995#22051#0" />
+            <element signature="e#22073#22125#0" />
+            <element signature="e#22148#22197#0" />
+            <element signature="e#22243#22337#0" />
+            <element signature="e#22346#22427#0" />
+            <element signature="e#22463#22572#0" />
+            <element signature="e#22604#22713#0" />
+            <element signature="e#22770#22997#0" />
+            <element signature="e#22923#22993#0" />
+            <element signature="e#23033#23150#0" />
+            <element signature="e#23215#23454#0" />
+            <element signature="e#23380#23450#0" />
+            <element signature="e#23498#23787#0" />
+            <element signature="e#23581#23785#0" />
+            <element signature="e#23699#23777#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/payments/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="75" column="39" selection-start-line="75" selection-start-column="4" selection-end-line="75" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/payments/update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="80" column="39" selection-start-line="80" selection-start-column="39" selection-end-line="80" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/widgets/payments-list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="56" column="29" selection-start-line="45" selection-start-column="17" selection-end-line="56" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jresources/repayments/payment_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" selection-start-line="37" selection-end-line="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/widgets/payments/payment-one.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/css/skins/_all-skins.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="32351">
+          <caret line="1903" column="11" selection-start-line="1903" selection-start-column="11" selection-end-line="1903" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/widgets/loan_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2040">
+          <caret line="120" column="28" selection-start-line="120" selection-start-column="28" selection-end-line="120" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jresources/loans/loan_list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="98" column="44" selection-start-line="98" selection-start-column="44" selection-end-line="98" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/widgets/payments/add-edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="77" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/payments/upload.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../OW-Foundation/css/responsive.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php_functions/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="44" column="12" selection-start-line="44" selection-start-column="12" selection-end-line="44" selection-end-column="12" />
+          <folding>
+            <element signature="e#62#165#0#PHP" />
+            <element signature="e#91#163#0#PHP" />
+            <element signature="e#134#163#0#PHP" />
+            <element signature="e#166#350#0#PHP" />
+            <element signature="e#196#348#0#PHP" />
+            <element signature="e#278#348#0#PHP" />
+            <element signature="e#351#874#0#PHP" />
+            <element signature="e#628#809#0#PHP" />
+            <element signature="e#1127#1405#0#PHP" />
+            <element signature="e#1408#1599#0#PHP" />
+            <element signature="e#1600#1768#0#PHP" />
+            <element signature="e#1769#2105#0#PHP" />
+            <element signature="e#1967#2077#0#PHP" />
+            <element signature="e#2106#2455#0#PHP" />
+            <element signature="e#2317#2427#0#PHP" />
+            <element signature="e#2457#2883#0#PHP" />
+            <element signature="e#2797#2881#0#PHP" />
+            <element signature="e#2847#2881#0#PHP" />
+            <element signature="e#2886#3438#0#PHP" />
+            <element signature="e#2978#3434#0#PHP" />
+            <element signature="e#3071#3162#0#PHP" />
+            <element signature="e#3167#3266#0#PHP" />
+            <element signature="e#3271#3366#0#PHP" />
+            <element signature="e#3371#3434#0#PHP" />
+            <element signature="e#3590#3902#0#PHP" />
+            <element signature="e#3616#3900#0#PHP" />
+            <element signature="e#3870#3900#0#PHP" />
+            <element signature="e#3903#4212#0#PHP" />
+            <element signature="e#3934#4210#0#PHP" />
+            <element signature="e#4180#4210#0#PHP" />
+            <element signature="e#4702#5067#0#PHP" />
+            <element signature="e#5068#5208#0#PHP" />
+            <element signature="e#5211#5556#0#PHP" />
+            <element signature="e#5557#5872#0#PHP" />
+            <element signature="e#5873#6253#0#PHP" />
+            <element signature="e#6255#6549#0#PHP" />
+            <element signature="e#6550#6824#0#PHP" />
+            <element signature="e#6825#7111#0#PHP" />
+            <element signature="e#7112#7394#0#PHP" />
+            <element signature="e#7395#7770#0#PHP" />
+            <element signature="e#7682#7767#0#PHP" />
+            <element signature="e#7733#7767#0#PHP" />
+            <element signature="e#7771#8024#0#PHP" />
+            <element signature="e#8343#8480#0#PHP" />
+            <element signature="e#8396#8478#0#PHP" />
+            <element signature="e#8444#8478#0#PHP" />
+            <element signature="e#8481#8634#0#PHP" />
+            <element signature="e#8638#8781#0#PHP" />
+            <element signature="e#8691#8779#0#PHP" />
+            <element signature="e#8745#8779#0#PHP" />
+            <element signature="e#8782#8970#0#PHP" />
+            <element signature="e#8864#8968#0#PHP" />
+            <element signature="e#8934#8968#0#PHP" />
+            <element signature="e#8971#9142#0#PHP" />
+            <element signature="e#9009#9140#0#PHP" />
+            <element signature="e#9106#9140#0#PHP" />
+            <element signature="e#9144#9528#0#PHP" />
+            <element signature="e#9184#9526#0#PHP" />
+            <element signature="e#9286#9526#0#PHP" />
+            <element signature="e#9305#9520#0#PHP" />
+            <element signature="e#9469#9520#0#PHP" />
+            <element signature="e#9529#9635#0#PHP" />
+            <element signature="e#9556#9633#0#PHP" />
+            <element signature="e#9599#9633#0#PHP" />
+            <element signature="e#9636#9779#0#PHP" />
+            <element signature="e#9673#9777#0#PHP" />
+            <element signature="e#9743#9777#0#PHP" />
+            <element signature="e#9781#10018#0#PHP" />
+            <element signature="e#9909#10016#0#PHP" />
+            <element signature="e#9982#10016#0#PHP" />
+            <element signature="e#10019#10148#0#PHP" />
+            <element signature="e#10054#10146#0#PHP" />
+            <element signature="e#10112#10146#0#PHP" />
+            <element signature="e#10149#10297#0#PHP" />
+            <element signature="e#10181#10295#0#PHP" />
+            <element signature="e#10261#10295#0#PHP" />
+            <element signature="e#10339#11560#0#PHP" />
+            <element signature="e#10514#10731#0#PHP" />
+            <element signature="e#10620#10731#0#PHP" />
+            <element signature="e#11225#11557#0#PHP" />
+            <element signature="e#11308#11386#0#PHP" />
+            <element signature="e#11391#11456#0#PHP" />
+            <element signature="e#11461#11513#0#PHP" />
+            <element signature="e#11518#11557#0#PHP" />
+            <element signature="e#11562#11940#0#PHP" />
+            <element signature="e#11699#11938#0#PHP" />
+            <element signature="e#11781#11867#0#PHP" />
+            <element signature="e#11868#11938#0#PHP" />
+            <element signature="e#11942#12098#0#PHP" />
+            <element signature="e#12100#12256#0#PHP" />
+            <element signature="e#12347#12724#0#PHP" />
+            <element signature="e#12620#12722#0#PHP" />
+            <element signature="e#12668#12722#0#PHP" />
+            <element signature="e#12725#14429#0#PHP" />
+            <element signature="e#13072#13370#0#PHP" />
+            <element signature="e#13238#13370#0#PHP" />
+            <element signature="e#13495#13609#0#PHP" />
+            <element signature="e#13614#13730#0#PHP" />
+            <element signature="e#13735#13849#0#PHP" />
+            <element signature="e#13854#14427#0#PHP" />
+            <element signature="e#14431#14535#0#PHP" />
+            <element signature="e#14571#14719#0#PHP" />
+            <element signature="e#14721#15168#0#PHP" />
+            <element signature="e#14755#15141#0#PHP" />
+            <element signature="e#15030#15141#0#PHP" />
+            <element signature="e#15169#16132#0#PHP" />
+            <element signature="e#15517#16033#0#PHP" />
+            <element signature="e#15879#15991#0#PHP" />
+            <element signature="e#15943#15991#0#PHP" />
+            <element signature="e#16002#16033#0#PHP" />
+            <element signature="e#16133#16171#0#PHP" />
+            <element signature="e#16332#16770#0#PHP" />
+            <element signature="e#16479#16768#0#PHP" />
+            <element signature="e#16585#16768#0#PHP" />
+            <element signature="e#16756#16768#0#PHP" />
+            <element signature="e#16772#17132#0#PHP" />
+            <element signature="e#16897#17130#0#PHP" />
+            <element signature="e#16991#17130#0#PHP" />
+            <element signature="e#141#147#1" expanded="true" />
+            <element signature="e#57#63#1" expanded="true" />
+            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#0#6#0" expanded="true" />
+            <element signature="e#31#37#1" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header_includes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/action/loan/action.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="3" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="99" selection-start-line="33" selection-start-column="99" selection-end-line="33" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/broadcasts.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/customers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defaulters.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/details.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/falling-due.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/incoming-payments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index2.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interactions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loans.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/menu.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reports.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leads.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/loan-products.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

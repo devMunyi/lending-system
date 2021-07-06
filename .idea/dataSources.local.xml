@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com" uuid="7033d6cc-12df-46dc-8afc-eb5e4aeef271">
+      <database-info product="PostgreSQL" version="12.7 (Ubuntu 12.7-1.pgdg16.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="12.7" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>ilesrbbvksqjht</user-name>
+    </data-source>
+    <data-source name="d42obc7i21cfqv@ec2-52-72-221-20.compute-1.amazonaws.com [2]" uuid="4f03ffac-dafe-4d12-bfe6-c910e90c1f15">
+      <database-info product="PostgreSQL" version="12.7 (Ubuntu 12.7-1.pgdg16.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.5" dbms="POSTGRES" exact-version="12.7" exact-driver-version="42.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>ilesrbbvksqjht</user-name>
+      <introspection-schemas>@:@|d42obc7i21cfqv:d42obc7i21cfqv</introspection-schemas>
+    </data-source>
+  </component>
+</project>
