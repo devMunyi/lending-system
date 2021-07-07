@@ -8,7 +8,12 @@ $password = '';
 
 
 
-// Your database password. If your database has no password, leave it empty.
+// Your databas 'r.].
+//\.
+//2.
+//4]
+//n\'
+//\'/\/e password. If your database has no password, leave it empty.
 // Let's connect to host
 $con=mysqli_connect($hostname,$username,$password,$dbname);
 if(mysqli_connect_errno())
