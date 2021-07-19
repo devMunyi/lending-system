@@ -25,6 +25,7 @@ else{
 
 ?>
 <header class="main-header" style="background-color: #333333 !important;">
+
     <div id="standardnotif" class="alert alert-dismissible"></div>
     <!-- Logo -->
     <a href="index" class="logo">

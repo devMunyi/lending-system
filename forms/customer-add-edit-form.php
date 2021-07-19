@@ -153,7 +153,8 @@
                                 <!-- /.box-footer -->
                             </form>
                             <?php
-                        } else if (isset($_GET['referees'])){
+                        }
+                        else if (isset($_GET['referees'])){
 
                             $ref_id = $_GET['referees'];
                             $l = fetchonerow("o_customer_referees","uid='".decurl($ref_id)."'","*");
@@ -369,7 +370,8 @@
                                 <!-- /.box-footer -->
                             </form>
                             <?php
-                        } else if (isset($_GET['other'])) {
+                        }
+                        else if (isset($_GET['other'])) {
                             ?>
 
                             <?php
@@ -424,7 +426,8 @@
                                 <!-- /.box-footer -->
                             </form>
                             <?php
-                        } else if (isset($_GET['uploads'])) {
+                        }
+                        else if (isset($_GET['uploads'])) {
                             ?>
                             <h3>Upload File <a class="btn-outline-black pull-right"  href="customers?customer-add-edit=<?php echo $cid; ?>&other">Skip <i class="fa fa-angle-double-right"></i></a><a href="customers?customer-add-edit=<?php echo $cid; ?>&uploads" class="btn-outline-black pull-right">New <i class="fa fa-plus"></i></a></h3>
                             <form class="form-horizontal" id="doc-upload" method="POST"
@@ -525,7 +528,8 @@
                                 <!-- /.box-footer -->
                             </form>
                             <?php
-                        } else {
+                        }
+                        else {
 
                             ?>
                             <h3><?php echo $act; ?> Bio Information</h3>

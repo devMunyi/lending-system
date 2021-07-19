@@ -1049,3 +1049,28 @@ function save_report() {
 }
 
 //////////=====================End of reports
+
+
+///////////-------------Campaign
+function save_campaign(){
+    let cid = parseInt($('#cid').val());
+    let title = $('#title').val();
+    let description = $('#description').val();
+    let date = $('#date').val();
+    let target_customers = $('#target_customers').val();
+    let status = $('#status').val();
+
+    let endpoint = "create-new";
+    if (cid > 0) {
+        endpoint = "update";
+    }
+
+    let params = "cid=" + cid + "&title=" + title + "&description=" + description + "&date=" + date + "&target_customers=" + target_customers + "&status="+status;
+
+    dbaction("/action/campaign/" + endpoint, params, function (feed) {
+        console.log(JSON.stringify(feed));
+        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+    })
+}
+
+//////////==============End of campaign

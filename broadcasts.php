@@ -154,89 +154,104 @@ $company = company_settings();
                 </ol>
             </section>
             <section class="content">
-                <div class="row">
-                    <div class="col-xs-12">
+                <?php
+                if(isset($_GET['add-edit-campaign'])){
 
-                        <!-- /.box -->
+                    include_once 'forms/campaign.php';
+                }
+                else if(isset($_GET['campaign'])){
+                    ?>
+                One Campaign
+                <?php
+                }
+                else{
+                    ?>
+                    <div class="row">
+                        <div class="col-xs-12">
 
-                        <div class="box">
-                            <div class="box-header bg-info">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <h3 class="box-title font-16">
-                                            <a class="btn font-16 btn-md bg-navy text-bold" href=""><i class="fa fa-clone"></i> All Campaigns</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-arrow-left"></i> Past</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-arrow-down"></i> Running</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-arrow-right"></i> Future</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-recycle"></i> Repetitive</a>
+                            <!-- /.box -->
 
-                                        </h3>
-                                    </div>
-                                    <div class="col-md-2">
+                            <div class="box">
+                                <div class="box-header bg-info">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <h3 class="box-title font-16">
+                                                <a class="btn font-16 btn-md bg-navy text-bold" href=""><i class="fa fa-clone"></i> All Campaigns</a>
+                                                <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-arrow-left"></i> Past</a>
+                                                <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-arrow-down"></i> Running</a>
+                                                <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-arrow-right"></i> Future</a>
+                                                <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-recycle"></i> Repetitive</a>
 
-                                        <button class="btn btn-success float-right">ADD NEW</button>
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-2">
+
+                                            <a class="btn btn-success float-right" href="broadcasts?add-edit-campaign"><i class="fa fa-plus"></i> ADD NEW</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- /.box-header -->
-                            <div class="box-body">
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Campaign Name</th>
-                                        <th>Added Date</th>
-                                        <th>Running Date</th>
-                                        <th>Frequency</th>
-                                        <th>Target Audience</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><h3>Holiday Wishes</h3> </td>
-                                        <td><span>5th May 2020</span><br/> <span class="text-muted font-13 font-bold">3 Months Ago</span></td>
-                                        <td><span>6th May 2020 5:00 AM</span><br/> <span class="text-muted font-13 font-bold">Today</span></td>
-                                        <td>Once</td>
-                                        <td>All Customers</td>
-                                        <td><span class="label label-success">Scheduled </span></td>
-                                        <td><span><a href="?campaign=123"><span class="fa fa-eye text-green"></span> View</a></span><h4><a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Stop</a></h4></td>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td><h3>Birthday Wishes</h3> </td>
-                                        <td><span>5th May 2020</span><br/> <span class="text-muted font-13 font-bold">3 Months Ago</span></td>
-                                        <td><span>6th May 2020 5:00 AM</span><br/> <span class="text-muted font-13 font-bold">Today</span></td>
-                                        <td>Once</td>
-                                        <td>All Customers</td>
-                                        <td><span class="label label-success">Scheduled </span></td>
-                                        <td><span><a href="?campaign=123"><span class="fa fa-eye text-green"></span> View</a></span><h4><a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Stop</a></h4></td>
-                                    </tr>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="example1" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Campaign Name</th>
+                                            <th>Added Date</th>
+                                            <th>Running Date</th>
+                                            <th>Frequency</th>
+                                            <th>Target Audience</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><h3>Holiday Wishes</h3> </td>
+                                            <td><span>5th May 2020</span><br/> <span class="text-muted font-13 font-bold">3 Months Ago</span></td>
+                                            <td><span>6th May 2020 5:00 AM</span><br/> <span class="text-muted font-13 font-bold">Today</span></td>
+                                            <td>Once</td>
+                                            <td>All Customers</td>
+                                            <td><span class="label label-success">Scheduled </span></td>
+                                            <td><span><a href="?campaign=123"><span class="fa fa-eye text-green"></span> View</a></span><h4><a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Stop</a></h4></td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><h3>Birthday Wishes</h3> </td>
+                                            <td><span>5th May 2020</span><br/> <span class="text-muted font-13 font-bold">3 Months Ago</span></td>
+                                            <td><span>6th May 2020 5:00 AM</span><br/> <span class="text-muted font-13 font-bold">Today</span></td>
+                                            <td>Once</td>
+                                            <td>All Customers</td>
+                                            <td><span class="label label-success">Scheduled </span></td>
+                                            <td><span><a href="?campaign=123"><span class="fa fa-eye text-green"></span> View</a></span><h4><a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Stop</a></h4></td>
+                                        </tr>
 
 
-                                    </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Campaign Name</th>
-                                        <th>Added Date</th>
-                                        <th>Running Date</th>
-                                        <th>Frequency</th>
-                                        <th>Target Audience</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Campaign Name</th>
+                                            <th>Added Date</th>
+                                            <th>Running Date</th>
+                                            <th>Frequency</th>
+                                            <th>Target Audience</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
                             </div>
-                            <!-- /.box-body -->
+                            <!-- /.box -->
                         </div>
-                        <!-- /.box -->
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                </div>
+                <?php
+                }
+                ?>
             </section>
             <?php
         }
