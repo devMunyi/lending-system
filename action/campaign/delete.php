@@ -14,10 +14,10 @@ $campaign_id = $_POST['campaign_id'];
 if($campaign_id > 0){
 
     //check if campaign is past and already run
-    $camp = checkrowexists("o_campaigns", "uid = $campaign_id AND running_date < $date AND already_run = \"yes\" AND repetitive = \"No\"");
+    $camp = checkrowexists("o_campaigns", "uid = $campaign_id AND running_date < $date AND (running_status = 2 OR running_status = 3) AND repetitive = 1");
     if($camp){
     }else{
-        die(errormes("Campaign already run cannot be deleted"));
+        die(errormes("Campaign running or already run cannot be deleted"));
         exit();
     }
 
