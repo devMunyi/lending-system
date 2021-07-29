@@ -1,6 +1,4 @@
 <?php
-
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~common
 function zerotone($val){
     if($val == 1){
@@ -170,7 +168,8 @@ function flag($flag){
 function next_step($step){
     if($step > 0) {
         $step_d = fetchonerow('o_next_steps', "uid='$step'", "name, details");
-        return "<span class='label font-13 font-bold' style='background-color: " . $step_d['details'] . ";'>" . $step_d['name'] . "</span>";
+        return "<span class='label font-13 font-bold' style='background-color: " 
+        . $step_d['details'] . ";'>" . $step_d['name'] . "</span>";
     }
     else{
         return "";
@@ -214,7 +213,7 @@ function fetchrow($table, $where, $name)            ////########################
     global $con;
     $query="SELECT $name FROM $table WHERE ($where)";
     $result=mysqli_query($con,$query);
-    $row=mysqli_fetch_array($result); //var_dump($query);
+    $row=mysqli_fetch_array($result, MYSQLI_ASSOC); //var_dump($query);
     $attrequired=$row[$name];
 
     return $attrequired;
@@ -802,20 +801,22 @@ function thumbnail($filename, $newsize)
 
 function errormes($x)
 {
-    return "<div class=\"alert alert-danger\">$x</div>";
+    return "<div class='alert alert-danger'>$x</div>";
 }
 function sucmes($x)
 {
-    return "<div class=\"alert alert-success\">$x</div>";
+    return "<div class='alert alert-success'>$x</div>";
 }
 function success($x)
 {
-    return "<div class=\"alert successbox\">$x</div>";
+    return "<div class='alert successbox'>$x</div>";
 }
 function notice($x)
 {
-    return "<div class=\"alert alert-info\">$x</div>";
+    return "<div class='alert alert-info'>$x</div>";
 }
+
+
 function isyear($x)
 {
     if((strlen($x))==4)
@@ -846,7 +847,7 @@ function addtodb($tb, $fds, $vals)
 
     /////////________Secure input
     // $vals = array_map('stripslashes', $vals);
-    $fields=implode(',',$fds);
+    $fields=implode(',',$fds); //implode () returns string from the elements of an array 
     $values=implode("','",$vals);
     $values="'$values'";
 
@@ -1105,13 +1106,6 @@ function error($x)
 }
 
 
-
-
-
-
-
-
-
 function upload_file_name($fname,$tmpName,$upload_dir)
 {
 
@@ -1349,9 +1343,6 @@ class loan_details
         $last_payment_date = $last_d['date_received'];
         return $last_payment_date;
     }
-
-
-
 }
 
 
@@ -1390,14 +1381,30 @@ function paging($url,$orderby,$dir,$offset,$rpp,$fds,$search,$box,$remaining,$wh
     }
 }
 
-function paging_values_hidden($where, $offset, $rpp, $orderby, $dir, $search, $func){
-    $vals = "<input type=\"text\" title='where' id=\"_where_\" value='$where'>";
-    $vals.= "<input type=\"text\" title='offset' id=\"_offset_\" value='$offset'>";
-    $vals.= "<input type=\"text\" title='rpp' id=\"_rpp_\" value='$rpp'>";
-    $vals.= "<input type=\"text\" title='orderby' id=\"_orderby_\" value='$orderby'>";
-    $vals.= "<input type=\"text\" title='dir' id=\"_dir_\" value='$dir'>";
-    $vals.= "<input type=\"text\" title='search' id=\"_search_\" value='$search'>";
-    $vals.= "<input type=\"text\" title='func' id=\"_func_\" value='$func()'>";
+
+function paging_values_hidden($where, $offset, $rpp, $orderby, $dir, $search, $func, $page_no = 1){
+    $vals.= "<input type='text' title='offset' id='_offset_' value='$offset'>";
+    $vals.= "<input type='text' title='rpp' id='_rpp_' value='$rpp'>";
+    $vals.= "<input type='text' title='page_no' id='_page_no_' value='$page_no'>";
+    $vals.= "<input type='text' title='orderby' id='_orderby_' value='$orderby'>";
+    $vals.= "<input type='text' title='dir' id='_dir_' value='$dir'>";
+    $vals.= "<input type='text' title='search' id='_search_' value='$search'>";
+    $vals.= "<input type='text' title='func' id='_func_' value='$func()'>";
+
+    return $vals;
+
+}
+
+function paging_values_hidden2($where, $offset, $rpp, $orderby, $dir, $search, $func, $sort, $page_no = 1){
+    $vals.= "<input type='text' title='where' id='_where_' value='$where'>";
+    $vals.= "<input type='text' title='offset' id='_offset_' value='$offset'>";
+    $vals.= "<input type='text' title='rpp' id='_rpp_' value='$rpp'>";
+    $vals.= "<input type='text' title='page_no' id='_page_no_' value='$page_no'>";
+    $vals.= "<input type='text' title='orderby' id='_orderby_' value='$orderby'>";
+    $vals.= "<input type='text' title='dir' id='_dir_' value='$dir'>";
+    $vals.= "<input type='text' title='search' id='_search_' value='$search'>";
+    $vals.= "<input type='text' title='func' id='_func_' value='$func()'>";
+    $vals.= "<input type='text' title='sort' id='_sort_' value='$sort'>";
 
     return $vals;
 
@@ -1585,21 +1592,29 @@ function datediff($startdate, $enddate) ///////////////////plain date
     $temp = $diff / 86400; // 60 sec/min*60 min/hr*24 hr/day=86400 sec/day
     // days
     $days = floor($temp);
-    $temp = 24 * ($temp - $days);
+
+    /*$temp = 24 * ($temp - $days);
+
     // hours
     $hours = floor($temp);
+
     $temp = 60 * ($temp - $hours);
+
     // minutes
     $minutes = floor($temp);
+
     $temp = 60 * ($temp - $minutes);
     // seconds
+    
     $seconds = floor($temp);
 
 
     //return "$days*$hours*$minutes";
+    */
 
     return $m.$days;
 }
+
 function date_greater($first, $last){
     $curdate=strtotime($first);
     $mydate=strtotime($last);
@@ -1612,6 +1627,8 @@ function date_greater($first, $last){
         return 0;
     }
 }
+
+
 function money($num){
     return number_format($num,2,".",",");
 }
@@ -1622,7 +1639,7 @@ function generateToken($userid, $device_id, $browser_name, $IPAddress, $OS)
     global $fulldate;
     $token_expiry = dateadd($fulldate,0,0,30); ///one month
     /////Remove other tokens for the user
-    $cleartokens = updatedb('l_tokens',"status=2, expiry_date='$fulldate'","userid='$userid' AND status=1 AND device_id='$device_id'");
+    $cleartokens = updatedb('o_tokens',"status=2, expiry_date='$fulldate'","userid='$userid' AND status=1 AND device_id='$device_id'");
     /// Create new token
     $token = generateRandomString(64);
     $fds = array("userid","token","creation_date","expiry_date","device_id","browsername","IPAddress","OS","status");
@@ -1642,7 +1659,8 @@ function generateToken($userid, $device_id, $browser_name, $IPAddress, $OS)
 }
 
 function arrow_back($backto, $title){
-    return "<a style='margin-right: 15px;' href=\"$backto\" title=\"Back to $backto\" class=\"text-blue font-16\"><i class=\"fa fa-reply\"></i> Back to $title :</a>";
+    return "<a style='margin-right: 15px;' href='$backto' title='Back to $backto' class='text-blue font-16'>
+    <i class='fa fa-reply'></i> Back to $title :</a>";
 }
 function status($state){
     if($state == 0){
@@ -1736,15 +1754,3 @@ function loan_balance($loan_id){
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -4,11 +4,10 @@ include_once ("../php_functions/functions.php");
 include_once ("../configs/conn.inc");
 
 
-
-
 $where_ =  $_POST['where_'];
 $offset_ =  $_POST['offset'];
 $rpp_ =  $_POST['rpp'];
+$page_no = $_POST['page_no'];
 $orderby =  $_POST['orderby'];
 $dir =  $_POST['dir'];
 $search_ = trim($_POST['search_']);
@@ -27,7 +26,7 @@ else{
 }
 
 //-----------------------------Reused Query
-$o_users_ = fetchtable('o_customers',"$where_ AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "uid ,full_name ,primary_mobile ,email_address ,physical_address, town ,passport_photo ,national_id ,gender ,dob ,added_by ,added_date ,branch ,primary_product ,loan_limit ,events ,status");
+$o_users_ = fetchtable('o_customers',"$where_ AND status >= 1 $andsearch", "$orderby", "$dir", "$limit", "uid ,full_name ,primary_mobile ,email_address ,physical_address, town ,passport_photo ,national_id ,gender ,dob ,added_by ,added_date ,branch ,primary_product ,loan_limit ,events ,status");
 ///----------Paging Option
 $alltotal = countotal("o_customers","$where_ AND status > 0 $andsearch");
 ///==========Paging Option
@@ -59,25 +58,25 @@ if($alltotal > 0) {
                     $profile = "";
                  }
                  else{
-                     $profile = "<img src=\"uploads_/thumb_$passport_photo\" height=\"65px\">";
+                     $profile = "<img src='uploads_/thumb_$passport_photo' height='65px'>";
                  }
 
         $row .= "<tr><td>$uid</td>
                             <td style='padding: 0;'><span>$profile</span></td>
-                            <td><span class=\"font-400\">$full_name</span><br/> <span class=\"text-muted font-13 font-bold\">$email_address</span>
+                            <td><span class='font-400'>$full_name</span><br/> <span class='text-muted font-13 font-bold'>$email_address</span>
                             </td>
                             <td><span>$primary_mobile </span></td>
-                            <td><span>$branch_name</span><br/> <span class=\"text-muted font-13 font-bold\">Prod: $primary_product_name</span></td>
-                            <td><span>".$latest_loan['amount']."</span><br/> <span class=\"text-red font-13 font-bold\">Bal: ".$latest_loan['balance']." &bull; Due: ".$latest_loan['due_date']."</span>
+                            <td><span>$branch_name</span><br/> <span class='text-muted font-13 font-bold'>Prod: $primary_product_name</span></td>
+                            <td><span>".$latest_loan['amount']."</span><br/> <span class='text-red font-13 font-bold'>Bal: ".$latest_loan['balance']." &bull; Due: ".$latest_loan['due_date']."</span>
                             </td>
-                            <td><span>$physical_address</span><br/> <span class=\"text-muted font-13 font-bold\">$town_name</span></td>
-                            <td><span class='label ".$state['color']."'>".$state['name']." </span><br/> <span class=\"text-muted font-13 font-bold\">$total_loans Loans</span></td>
-                            <td><span><a href=\"?customer=$uid_enc\"><span class=\"fa fa-eye text-green\"></span></a></span><h4><a><i class=\"fa fa-comments-o text-blue\"></i></a></h4></td>
+                            <td><span>$physical_address</span><br/> <span class='text-muted font-13 font-bold'>$town_name</span></td>
+                            <td><span class='label ".$state['color']."'>".$state['name']." </span><br/> <span class='text-muted font-13 font-bold'>$total_loans Loans</span></td>
+                            <td><span><a href='?customer=$uid_enc'><span class='fa fa-eye text-green'></span></a></span><h4><a><i class='fa fa-comments-o text-blue'></i></a></h4></td>
                         </tr>
-";
+                ";
 
         //////------Paging Variable ---
-        $page_total = $page_total + 1;
+        //$page_total = $page_total + 1;
         /////=======Paging Variable ---
 
 
@@ -87,4 +86,4 @@ else{
     $row = "<tr><td colspan='8'><i>No Records Found</i></td></tr>";
 }
 
-echo   trim($row)."<tr style='display: none;'><td><input type=\"hiddenn\" id=\"_alltotal_\" value='$alltotal'><input type=\"hiddenn\" id=\"_pagetotal_\" value='$page_total'></td></tr>";
+echo   trim($row)."<tr style='display: none;'><td><input type='text' id='_alltotal_' value='$alltotal'><input type='text' id='_pageno_' value='$page_no'></td></tr>";

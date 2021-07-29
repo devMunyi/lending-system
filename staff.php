@@ -89,7 +89,7 @@ include_once("footer_includes.php");
 ?>
 <script>
     $(function () {
-            staff_list(0, 10, 'uid', 'asc');
+            staff_list();
             pager('#example1');
     })
 </script>

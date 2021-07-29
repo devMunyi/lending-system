@@ -63,7 +63,7 @@ if($password_valid == 1){
                     $details_ = $token;
                     $_SESSION['o-token'] = $token;
                     echo  sucmes("Success! we are taking you to the dashboard...");
-                    echo "<meta http-equiv=\"refresh\" content=\"2; URL=index\" />";
+                    echo "<meta http-equiv=\"refresh\" content=\"2; URL=index.php\"/>";
                 }
                 else
                 {

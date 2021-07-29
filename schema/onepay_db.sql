@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2021 at 04:52 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.31
+-- Generation Time: Jul 27, 2021 at 02:59 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -90,6 +90,188 @@ CREATE TABLE `o_branches` (
 INSERT INTO `o_branches` (`uid`, `name`, `added_date`, `manager_id`, `assistand_manager_id`, `address`, `status`) VALUES
 (1, 'HQ', '2021-05-07 06:11:42', 0, 0, 'Main Office', 1),
 (2, 'Kiambu', '2021-06-19 23:07:50', 1, 0, 'rrt', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_campaigns`
+--
+
+CREATE TABLE `o_campaigns` (
+  `uid` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `running_date` date NOT NULL,
+  `running_status` int(5) NOT NULL DEFAULT 1,
+  `frequency` int(5) DEFAULT NULL,
+  `repetitive` int(5) DEFAULT NULL,
+  `target_customers` int(5) NOT NULL,
+  `added_date` date NOT NULL DEFAULT current_timestamp(),
+  `added_by` varchar(50) NOT NULL,
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_campaigns`
+--
+
+INSERT INTO `o_campaigns` (`uid`, `name`, `description`, `running_date`, `running_status`, `frequency`, `repetitive`, `target_customers`, `added_date`, `added_by`, `status`) VALUES
+(1, 'New Year', 'Holiday wishes to our customers', '2021-01-01', 1, 6, 1, 3, '2021-07-20', '51', 1),
+(2, 'Good Friday', 'Holiday Wishes to all our customers', '2021-04-02', 1, 6, 2, 3, '2021-07-20', '51', 1),
+(3, 'Easter Monday', 'Holiday wishes to our customers', '2021-04-05', 1, 6, 2, 3, '2021-07-20', '51', 1),
+(4, 'Labour Day', 'Holiday wishes to our esteemed customers', '2021-05-01', 1, 6, 2, 3, '2021-07-20', '51', 1),
+(5, 'Eld al_Fitr', 'Holiday wishes to our esteemed customers', '2021-05-14', 1, 6, 2, 3, '2021-07-20', '51', 1),
+(6, 'Madaraka Day', 'Holiday wishes to our esteemed customers', '2021-06-01', 1, 6, 2, 3, '2021-07-20', '51', 1),
+(7, 'Eid al-Adha', 'Holiday wishes to our customers', '2021-07-20', 1, 6, 2, 3, '2021-07-23', '51', 1),
+(8, 'Huduma Day', 'Holiday wishes to our customers', '2021-10-11', 1, 6, 2, 3, '2021-07-23', '51', 1),
+(9, 'Mashujaa Day', 'Holiday wishes to our customers', '2021-10-20', 1, 6, 2, 3, '2021-07-24', '51', 1),
+(10, 'Jamhuri Day', 'Holiday wishes to our customers', '2021-12-13', 1, 6, 2, 3, '2021-07-24', '51', 1),
+(11, 'Christmas Day', 'Holiday wishes to our customers', '2021-12-25', 1, 6, 1, 3, '2021-07-24', '51', 1),
+(12, 'Utamaduni Day', 'Holiday wishes to our customers', '2021-12-27', 1, 6, 2, 3, '2021-07-24', '51', 2),
+(13, 'Testing_1', 'Birthday wishes', '2021-07-22', 1, 6, 2, 1, '2021-07-24', '51', 1),
+(14, 'Testing_2', 'Birthday wishes', '2021-07-23', 1, 6, 2, 1, '2021-07-24', '51', 1),
+(15, 'Testing_3', 'Birthday wishes', '2021-07-24', 1, 6, 2, 1, '2021-07-24', '51', 1),
+(16, 'Testing_4', 'Birthday wishes', '2021-07-25', 1, 6, 1, 2, '2021-07-24', '51', 1),
+(17, 'Testing_5', 'Activation', '2021-07-26', 1, 1, 1, 1, '2021-07-24', '51', 1),
+(18, 'Birthdays wishes', 'Send happy birthday message to all customers who have their birthdays  ', '2021-07-26', 1, 1, 1, 2, '2021-07-26', '51', 1),
+(19, 'Testing_6', 'Send message wishing happy holiday to our customers', '2021-07-26', 1, 6, 1, 3, '2021-07-26', '51', 1),
+(20, 'Holidays Wishes2', 'A message to wish customers happy holidays', '2021-07-27', 2, 1, 1, 3, '2021-07-26', '0', 1),
+(21, 'Testing_7', 'Campaign testing', '2021-07-26', 1, 1, 1, 1, '2021-07-26', '0', 1),
+(22, 'Testing_8', 'Campaign test', '2021-07-26', 1, 1, 1, 2, '2021-07-26', '0', 1),
+(23, 'test_', 'Campaign_test', '2021-07-26', 1, 2, 1, 1, '2021-07-26', '51', 1),
+(24, 'test_2', 'Campaign_2 test', '2021-07-27', 1, 2, 2, 3, '2021-07-26', 'Samuel Munyi', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_campaigns_repetition_status`
+--
+
+CREATE TABLE `o_campaigns_repetition_status` (
+  `uid` int(5) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_campaigns_repetition_status`
+--
+
+INSERT INTO `o_campaigns_repetition_status` (`uid`, `name`, `status`) VALUES
+(1, 'Yes', 1),
+(2, 'No', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_campaign_frequencies`
+--
+
+CREATE TABLE `o_campaign_frequencies` (
+  `uid` int(5) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_campaign_frequencies`
+--
+
+INSERT INTO `o_campaign_frequencies` (`uid`, `name`, `status`) VALUES
+(1, 'Daily', 1),
+(2, 'Weekly', 1),
+(3, 'Monthly', 1),
+(4, 'Quarterly', 1),
+(5, 'Semi-yearly', 1),
+(6, 'Yearly', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_campaign_messages`
+--
+
+CREATE TABLE `o_campaign_messages` (
+  `uid` int(10) NOT NULL,
+  `message` varchar(250) NOT NULL,
+  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_by` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_campaign_messages`
+--
+
+INSERT INTO `o_campaign_messages` (`uid`, `message`, `added_date`, `added_by`) VALUES
+(3, 'Dear $fname we would like to wish you a happy holiday', '2021-07-26 19:35:42', 'Samuel Munyi'),
+(4, 'Dear $fname we would like to wish you a happy holiday2', '2021-07-26 19:47:23', 'Samuel Munyi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_campaign_running_statuses`
+--
+
+CREATE TABLE `o_campaign_running_statuses` (
+  `uid` int(5) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `color_code` varchar(50) NOT NULL,
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_campaign_running_statuses`
+--
+
+INSERT INTO `o_campaign_running_statuses` (`uid`, `name`, `color_code`, `status`) VALUES
+(1, 'Pending', '#ff8c00', 1),
+(2, 'Running', '#6cce05', 1),
+(3, 'Already Run', '#00fa9a', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_campaign_statuses`
+--
+
+CREATE TABLE `o_campaign_statuses` (
+  `uid` int(3) NOT NULL,
+  `code` int(3) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `color` varchar(10) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_campaign_statuses`
+--
+
+INSERT INTO `o_campaign_statuses` (`uid`, `code`, `name`, `color`, `status`) VALUES
+(1, 1, 'ACTIVE', 'bg-green', 1),
+(2, 2, 'BLOCKED', 'bg-red', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_campaign_target_customers`
+--
+
+CREATE TABLE `o_campaign_target_customers` (
+  `uid` int(10) NOT NULL,
+  `name` varchar(40) NOT NULL,
+  `description` varchar(250) NOT NULL,
+  `custom_query` text NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_campaign_target_customers`
+--
+
+INSERT INTO `o_campaign_target_customers` (`uid`, `name`, `description`, `custom_query`, `status`) VALUES
+(1, 'Activate  Dormant Customers', 'Send a message to all customers who have not taken a loan for 6 months', '', 1),
+(2, 'Birthdays', 'Send Birthday Wishes', '', 1),
+(3, 'Holiday Wishes', 'Send holiday wishes to all customers', '', 1);
 
 -- --------------------------------------------------------
 
@@ -242,10 +424,15 @@ INSERT INTO `o_customers` (`uid`, `full_name`, `primary_mobile`, `email_address`
 (1, 'Jonah Ngarama', '254716330450', 'ngaramajonah@gmail.com', 'Ngong\nKobo Flat', 1, '', '28153539', 'M', '1990-01-04', 0, '2021-05-17 10:09:01', 1, 1, 10000.00, 'Customer created at [2021-05-17 10:09:01] by [{}root]', 1),
 (2, 'Mercy Ezzy', '254702332796', 'mercyezzy92@gmail.com', 'Ngong\nKobo Flat', 1, '', '28153538', 'F', '2021-05-17', 0, '2021-05-17 10:24:24', 1, 1, 10.00, 'Customer created at [2021-05-17 10:24:24] by [{}root]', 2),
 (3, 'Peter Witu', '254756330450', 'peterwitu@gmail.com', 'Ngong\nKobo Flat', 1, '', '28156647', 'M', '2021-05-17', 0, '2021-05-17 19:22:01', 1, 1, 60000.00, 'Customer created at [2021-05-17 19:22:01] by [{}root]', 1),
-(4, 'Stephen Abundo', '254778999992', 'stephen@gmail.com', '                                        ', 0, '', '6789034', 'undef', '0000-00-00', 1, '2021-06-08 19:07:32', 0, 0, 0.00, 'Customer created at [2021-06-08 19:07:32] by [Jonah Ngarama{1}root]', 1),
+(4, 'Stephen Abundo', '254778999992', 'stephen@gmail.com', '217-202020                                                         ', 1, '', '6789034', 'M', '2021-07-01', 1, '2021-06-08 19:07:32', 2, 0, 10000.00, 'Customer created at [2021-06-08 19:07:32] by [Jonah Ngarama{1}root]', 1),
 (9, 'Paul Kin', '254717889887', 'ngaramajonah@gmail.com1', '123 street                                        ', 1, '', '78987689', 'M', '2021-06-08', 1, '2021-06-08 22:54:29', 1, 0, 0.00, 'Customer created at [2021-06-08 22:54:29] by [Jonah Ngarama{1}root]', 2),
-(10, 'Paul Muriithi111', '254724542111', 'ngaramampaul@gmail.com1111', 'Thome, Nyati Drive1                                                                                                               ', 1, '', '67788776', 'F', '1994-05-08', 1, '2021-06-08 23:02:25', 1, 2, 2000.00, 'Customer created at [2021-06-08 23:02:25] by [Jonah Ngarama{1}root]', 1),
-(11, 'Billy Mwalili', '254793884883', 'billymwalili@gmail.com', '233 2424 street                                                                                                                        ', 1, '', '6474343', 'M', '1990-07-09', 1, '2021-06-09 11:45:29', 1, 1, 100000.00, '', 1);
+(10, 'Paul Muriithi111', '254724542111', 'ngaramampaul@gmail.com1111', 'Thome, Nyati Drive 1                                                                                                                                                       ', 1, '', '67788776', 'F', '1994-05-08', 1, '2021-06-08 23:02:25', 1, 2, 2000.00, 'Customer created at [2021-06-08 23:02:25] by [Jonah Ngarama{1}root]', 1),
+(11, 'Billy Mwalili', '254793884883', 'billymwalili@gmail.com', '233 2424 street                                                                                                                        ', 1, '', '6474343', 'M', '1990-07-09', 1, '2021-06-09 11:45:29', 1, 1, 100000.00, '', 1),
+(12, 'Samuel Munyi', '254112553167', 'samunyi90@gmail.com', '     214-20320                                                                        ', 1, '', '32909210', 'M', '1996-08-05', 51, '2021-07-12 11:11:28', 2, 0, 100000.00, '', 1),
+(13, 'John Doe', '254112553169', 'john@gmail.com', '       14-20320                                                                                                                 ', 1, '', '32909212', 'M', '2021-07-14', 51, '2021-07-14 11:24:05', 2, 2, 2500.00, '', 2),
+(14, 'Joseph Gitonga', '254711253167', 'lee@gmail.com', '                                        Sipili-Street', 1, '', '3456789', 'M', '2000-07-19', 51, '2021-07-19 09:23:44', 2, 1, 3000.00, '', 1),
+(15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                        ', 1, '', '34251678', 'M', '1997-07-01', 51, '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
+(16, 'Martin Mwangi', '254705609184', 'martin@gmail.com', '        Kimathi Street                                ', 1, '', '2345678', 'M', '2021-07-26', 51, '2021-07-26 12:39:58', 1, 2, 2500.00, '', 1);
 
 -- --------------------------------------------------------
 
@@ -293,7 +480,12 @@ INSERT INTO `o_customer_contacts` (`uid`, `customer_id`, `contact_type`, `value`
 (25, 11, 2, 'jddjd', 0),
 (26, 11, 1, 'nnnffn', 0),
 (27, 11, 3, 'The Email', 1),
-(28, 11, 1, '536236632', 1);
+(28, 11, 1, '536236632', 1),
+(29, 10, 3, 'hgfds', 1),
+(30, 12, 3, 'example@gmail.com', 1),
+(31, 13, 3, 'example@gmail.com', 1),
+(32, 13, 2, '0705609184', 0),
+(33, 13, 2, '0705609184', 1);
 
 -- --------------------------------------------------------
 
@@ -327,7 +519,8 @@ INSERT INTO `o_customer_conversations` (`uid`, `customer_id`, `agent_id`, `loan_
 (4, 10, 1, 1, 'The Client said they are not available', 2, '2021-06-17 18:50:14', '2021-06-19 00:00:00', 2, 1, 0, 1),
 (5, 11, 1, 1, 'The client will not pay', 1, '2021-06-18 11:23:11', '2021-06-25 00:00:00', 2, 1, 0, 1),
 (6, 9, 1, 1, 'Yestes', 1, '2021-06-18 12:38:05', '2021-06-17 00:00:00', 2, 2, 0, 1),
-(7, 1, 1, 1, 'Another Interaction', 1, '2021-06-18 14:32:42', '2021-07-01 00:00:00', 1, 1, 0, 1);
+(7, 1, 1, 1, 'Another Interaction', 1, '2021-06-18 14:32:42', '2021-07-01 00:00:00', 1, 1, 0, 1),
+(8, 9, 1, 1, 'Not Available', 1, '2021-07-10 11:50:41', '2021-07-10 00:00:00', 1, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -560,7 +753,35 @@ INSERT INTO `o_events` (`uid`, `tbl`, `fld`, `event_details`, `event_date`, `eve
 (25, 'o_loans', 10, 'Loan moved to the next stage[Approval Level1] by [Jonah Ngarama(ngaramajonah@gmail.com)] on [2021-06-23 01:26:42] with comment [<i></i>]', '2021-06-23 01:26:42', 1, 1),
 (26, 'o_loans', 10, 'Loan moved to the next stage[Approval Level2] by [Jonah Ngarama(ngaramajonah@gmail.com)] on [2021-06-23 01:26:59] with comment [<i></i>]', '2021-06-23 01:26:59', 1, 1),
 (27, 'o_loans', 10, 'Loan moved to the next stage[Final Stage (Disburse)] by [Jonah Ngarama(ngaramajonah@gmail.com)] on [2021-06-23 01:27:36] with comment [<i></i>]', '2021-06-23 01:27:36', 1, 1),
-(28, 'o_loans', 10, 'Loan moved to disbursement by [Jonah Ngarama(ngaramajonah@gmail.com)] on [2021-06-23 01:27:49] with comment [<i></i>]', '2021-06-23 01:27:49', 1, 1);
+(28, 'o_loans', 10, 'Loan moved to disbursement by [Jonah Ngarama(ngaramajonah@gmail.com)] on [2021-06-23 01:27:49] with comment [<i></i>]', '2021-06-23 01:27:49', 1, 1),
+(29, 'o_customers', 10, 'Customer updated at [2021-07-11 21:06:43] by [Jonah Ngarama{1}root]', '2021-07-11 21:06:43', 1, 1),
+(30, 'o_customers', 15852, 'Customer created at [2021-07-12 11:11:28] by [Samuel Munyi{51}root]', '2021-07-12 11:11:28', 51, 1),
+(31, 'o_loans', 11, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-12 11:25:40] with comment [<i></i>]', '2021-07-12 11:25:40', 51, 1),
+(32, 'o_loans', 11, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-12 11:25:49] with comment [<i></i>]', '2021-07-12 11:25:49', 51, 1),
+(33, 'o_loans', 11, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-12 11:25:56] with comment [<i></i>]', '2021-07-12 11:25:56', 51, 1),
+(34, 'o_loans', 11, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-12 11:26:10] with comment [<i></i>]', '2021-07-12 11:26:10', 51, 1),
+(35, 'o_customers', 12, 'Customer updated at [2021-07-13 10:24:44] by [Samuel Munyi{51}root]', '2021-07-13 10:24:44', 51, 1),
+(36, 'o_customers', 4, 'Customer updated at [2021-07-13 10:26:58] by [Samuel Munyi{51}root]', '2021-07-13 10:26:58', 51, 1),
+(37, 'o_loans', 12, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-13 10:32:22] with comment [<i></i>]', '2021-07-13 10:32:22', 51, 1),
+(38, 'o_loans', 13, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-13 10:33:46] with comment [<i></i>]', '2021-07-13 10:33:46', 51, 1),
+(39, 'o_loans', 13, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-13 10:33:55] with comment [<i></i>]', '2021-07-13 10:33:55', 51, 1),
+(40, 'o_loans', 13, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-13 10:33:59] with comment [<i></i>]', '2021-07-13 10:33:59', 51, 1),
+(41, 'o_loans', 13, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-13 10:34:03] with comment [<i></i>]', '2021-07-13 10:34:03', 51, 1),
+(42, 'o_loans', 13, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-13 10:34:04] with comment [<i></i>]', '2021-07-13 10:34:04', 51, 1),
+(43, 'o_loans', 13, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-13 10:36:54] with comment [<i></i>]', '2021-07-13 10:36:54', 51, 1),
+(44, 'o_customers', 17173, 'Customer created at [2021-07-14 11:24:05] by [Samuel Munyi{51}root]', '2021-07-14 11:24:05', 51, 1),
+(45, 'o_customers', 13, 'Customer updated at [2021-07-14 11:30:24] by [Samuel Munyi{51}root]', '2021-07-14 11:30:24', 51, 1),
+(46, 'o_customers', 18494, 'Customer created at [2021-07-19 09:23:44] by [Samuel Munyi{51}root]', '2021-07-19 09:23:44', 51, 1),
+(47, 'o_customers', 19815, 'Customer created at [2021-07-19 09:26:04] by [Samuel Munyi{51}root]', '2021-07-19 09:26:04', 51, 1),
+(48, 'o_loans', 14, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-20 20:55:46] with comment [<i></i>]', '2021-07-20 20:55:46', 51, 1),
+(49, 'o_loans', 14, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-20 20:55:51] with comment [<i></i>]', '2021-07-20 20:55:51', 51, 1),
+(50, 'o_loans', 14, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-20 20:55:55] with comment [<i></i>]', '2021-07-20 20:55:55', 51, 1),
+(51, 'o_loans', 14, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-20 20:56:04] with comment [<i></i>]', '2021-07-20 20:56:04', 51, 1),
+(52, 'o_loans', 14, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-20 21:13:46] with comment [<i></i>]', '2021-07-20 21:13:46', 51, 1),
+(53, 'o_customers', 13, 'Customer updated at [2021-07-21 21:35:16] by [Samuel Munyi{51}root]', '2021-07-21 21:35:16', 51, 1),
+(54, 'o_customers', 13, 'Customer updated at [2021-07-21 21:35:16] by [Samuel Munyi{51}root]', '2021-07-21 21:35:16', 51, 1),
+(55, 'o_customers', 15, 'Customer updated at [2021-07-23 09:07:26] by [Samuel Munyi{51}root]', '2021-07-23 09:07:26', 51, 1),
+(56, 'o_customers', 21136, 'Customer created at [2021-07-26 12:39:58] by [Samuel Munyi{51}root]', '2021-07-26 12:39:58', 51, 1);
 
 -- --------------------------------------------------------
 
@@ -716,7 +937,11 @@ INSERT INTO `o_loans` (`uid`, `customer_id`, `product_id`, `loan_amount`, `disbu
 (7, 11, 1, 10000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-21', '2021-06-28', '2021-08-05', 0, 0, 0, '2021-06-21 07:08:00', 0, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (8, 1, 1, 10000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', 0, 0, 0, '2021-06-22 00:44:18', 0, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (9, 1, 1, 10000.00, 10000.00, 10000.00, 4600.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', 0, 0, 0, '2021-06-22 01:03:05', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
-(10, 3, 2, 3000.00, 2154.00, 3700.00, 1200.09, 5, '30', '15', '', 700.00, 846.00, 1, 0, 1, '2021-06-22', '2021-07-22', '2021-07-22', 0, 0, 0, '2021-06-22 12:41:51', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2);
+(10, 3, 2, 3000.00, 2154.00, 3700.00, 1200.09, 5, '30', '15', '', 700.00, 846.00, 1, 0, 1, '2021-06-22', '2021-07-22', '2021-07-22', 0, 0, 0, '2021-06-22 12:41:51', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(11, 12, 1, 40000.00, 40000.00, 40000.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-12', '2021-07-19', '2021-08-26', 0, 0, 0, '2021-07-12 11:25:13', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(12, 4, 2, 2000.00, 2000.00, 2000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', 0, 0, 0, '2021-07-13 10:29:57', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(13, 4, 1, 10000.00, 10000.00, 10000.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-13', '2021-07-20', '2021-08-27', 0, 0, 0, '2021-07-13 10:33:24', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(14, 4, 2, 1000.00, 1000.00, 1000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', 0, 0, 0, '2021-07-13 10:37:33', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0);
 
 -- --------------------------------------------------------
 
@@ -946,7 +1171,8 @@ INSERT INTO `o_notifications` (`uid`, `staff_id`, `sent_date`, `source_details`,
 (3, 1, '2021-06-05 23:10:16', 'SYSTEM', 'You have new targets', 'Target 100, new customers 489', '', 2),
 (4, 1, '2021-06-07 00:44:00', 'SYSTEM', 'Password Updated', 'Your Password was updated on 2021-06-07 00:44:00 from your profile', '#', 2),
 (5, 1, '2021-06-07 00:44:35', 'SYSTEM', 'Password Updated', 'Your Password was updated on 2021-06-07 00:44:35 from your profile', '#', 2),
-(6, 1, '2021-06-07 00:47:10', 'SYSTEM', 'Password Updated', 'Your Password was updated on 2021-06-07 00:47:10 from your profile', '#', 2);
+(6, 1, '2021-06-07 00:47:10', 'SYSTEM', 'Password Updated', 'Your Password was updated on 2021-06-07 00:47:10 from your profile', '#', 2),
+(7, 1, '2021-07-10 09:11:16', 'SYSTEM', 'Password Updated', 'Your Password was updated on 2021-07-10 09:11:16 from your profile', '#', 2);
 
 -- --------------------------------------------------------
 
@@ -967,10 +1193,11 @@ CREATE TABLE `o_passes` (
 --
 
 INSERT INTO `o_passes` (`uid`, `user`, `pass`, `pass_reset_token`, `reset_status`) VALUES
-(1, 1, '!Z6!TRH64R3~zP}nM@x()Zc5n<;1%{oe', NULL, 0),
+(1, 1, '~^)54jr{[zCzozH3:Y[3J~CZfl4^A!+}', NULL, 0),
 (2, 2, 'FsC11R{R0nzweiAv#LV2)98P@zWbM>m!', NULL, 0),
 (3, 0, 'DFU5+O1HunX~t}g_|.89BD%4u@qsLylz', NULL, 0),
-(4, 22, 'VwQ@L1uA{o{hZ.S+LxIC}O{kL1[1WxFo', NULL, 0);
+(4, 22, 'VwQ@L1uA{o{hZ.S+LxIC}O{kL1[1WxFo', NULL, 0),
+(5, 51, 'wn@ivDGX%2>0U6!tRPh0o2(u{hUujE<S', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1209,7 +1436,7 @@ CREATE TABLE `o_tokens` (
 --
 
 INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`, `device_id`, `browsername`, `IPAddress`, `OS`, `usages`, `status`) VALUES
-(1, 1, 'AkEMJAl3gnFzWy9OJ5EHClYRwr6C8OL9GABrfHpV8PrA7iEEfmisD8iK2djKLvtp', '2021-03-20 04:45:58', '2021-04-19 00:00:00', '', '', '', '', 0, 1),
+(1, 1, 'AkEMJAl3gnFzWy9OJ5EHClYRwr6C8OL9GABrfHpV8PrA7iEEfmisD8iK2djKLvtp', '2021-03-20 04:45:58', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
 (2, 2, 'ywtkcZK7NzUnbzSVqb3TzbqaaakR80WjBVIlWZcFoMEfTiDuzXOOE2u9Qbetj00n', '2021-04-06 10:55:52', '2021-05-06 00:00:00', '', '', '', '', 0, 1),
 (3, 2, 'XnezncaRJAcZvcDUibxdYhalJ68CpgfQwGxiZbXmMTesYGicTCugi3FmOWjBbkSE', '2021-04-06 11:06:18', '2021-05-06 00:00:00', '', '', '', '', 0, 1),
 (4, 2, 'YEU13nO8NM5ogFmfuBXtL3RQW0Ujt4vXOTrQ7kuNGqNkeOfcSurQQl2KPKavBX3l', '2021-04-06 11:06:26', '2021-05-06 00:00:00', '', '', '', '', 0, 1),
@@ -1219,61 +1446,116 @@ INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`
 (8, 2, 'd3N8Mi6OR2zfpt4Dfrbob5rEIcaXmkc6oOBwQafIgRM4ejXIf9eau5ra15VAagBE', '2021-04-06 11:08:55', '2021-05-06 00:00:00', '', '', '', '', 0, 1),
 (9, 2, 'E3RP40D8iwfRColtohtXccv8rYXM0lm62X9G62I9E430M07Xv3VRl1tXhnE3dbwG', '2021-04-06 11:11:48', '2021-02-06 00:00:00', '', '', '', '', 0, 1),
 (10, 2, 'X1aRvwY27nGx0UACYMXVXTPvAc2223niKMAMrkGGb4w0YG0YDzHnYaWBXwcpRr0w', '2021-04-06 11:56:35', '2021-05-06 00:00:00', '', '', '', '', 0, 1),
-(11, 1, 'H3fVwwyHoNlyHZ2bmoRFH8YNMnE8woZwVuRi7J6qqNrFMHxDG371GCoAeXRcKBXv', '2021-04-19 00:38:23', '2021-05-19 00:00:00', '', '', '', '', 0, 1),
-(12, 1, 'Cz45o1I2y6xcbHS6j02tmc5683MTzIbbOWo7XN778t004Ca2Z9yu3WeMaOTdwW49', '2021-04-19 00:46:04', '2021-05-19 00:00:00', '', '', '', '', 0, 1),
-(13, 1, 'JzVkcAg0Bvh2fWVDOrxHdjLt4bS8UQ7wwIoKzkYK0Ku7NoSHTtnXIhvpzdkhNrb7', '2021-04-19 01:13:30', '2021-05-19 00:00:00', '', '', '', '', 0, 1),
+(11, 1, 'H3fVwwyHoNlyHZ2bmoRFH8YNMnE8woZwVuRi7J6qqNrFMHxDG371GCoAeXRcKBXv', '2021-04-19 00:38:23', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(12, 1, 'Cz45o1I2y6xcbHS6j02tmc5683MTzIbbOWo7XN778t004Ca2Z9yu3WeMaOTdwW49', '2021-04-19 00:46:04', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(13, 1, 'JzVkcAg0Bvh2fWVDOrxHdjLt4bS8UQ7wwIoKzkYK0Ku7NoSHTtnXIhvpzdkhNrb7', '2021-04-19 01:13:30', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
 (14, 1, 'TUBAI31NONhmZeJINiUxl7dy06EOWwCEmaNqjB85qBBe91SVDBsWWoY7V0ZV1cCh', '2021-04-19 01:15:42', '2021-05-19 00:00:00', '', '', '', '', 0, 0),
-(15, 1, 'S902vwn0S75mL6ZhGdE5dX2g4IMcNmP8cge06Gz1E1oqvkd4qMkT1rvItUwKSLcq', '2021-04-19 01:20:34', '2021-05-19 00:00:00', '', '', '', '', 0, 1),
-(16, 1, 'ZauKIJIO9wzY43ZdKWkzXXLMSdNMbBMXtlBNNtWXB0CKPLDMqmecDZbeZL1JLtTv', '2021-04-20 16:46:06', '2021-05-20 00:00:00', '', '', '', '', 0, 1),
-(17, 1, 'cyTpzs7iiT3xZSo8Z3jQRaesn7BD03JfSHPribmzcjSU6zZEYP4vN2cegI5wQlmm', '2021-04-20 16:54:56', '2021-05-20 00:00:00', '', '', '', '', 0, 1),
-(18, 1, 'yo5euNoKjbh9XThj0UprZrlGyU6KB3hDRAl9dcq9tgRcSrB9xaXURh1beY6VeSEt', '2021-04-20 16:56:46', '2021-05-20 00:00:00', '', '', '', '', 0, 1),
-(19, 1, 'EaN0wGBHAIJAymd5te9H84qIL3riyyah6WGppXYWcJ48wnpsGMjPmZHAOdGXUu7T', '2021-04-20 19:30:57', '2021-05-20 00:00:00', '', '', '', '', 0, 1),
-(20, 1, 'sFxk8XKobbJDSYmTK9QwvSGkbou4KMHl0JbIE7stDeX2NJE4QUTJqGlCU15Hv1zU', '2021-04-20 19:36:39', '2021-05-20 00:00:00', '', '', '', '', 0, 1),
-(21, 1, 'e1cCBVJo9zATtz15isnbjegibCZ0bYfink7m4Zt686dvTJ8QM4KpwPRd6JL8gjFa', '2021-04-21 03:57:08', '2021-05-21 00:00:00', '', '', '', '', 0, 1),
-(22, 1, 'cLLJsTIwBIEWhVtXartsTcboJfgGi3QeR9hqel0Eqn4nXfjjvcBRXoRqKR6dp8EY', '2021-04-28 12:15:25', '2021-05-28 00:00:00', '', '', '', '', 0, 1),
-(23, 1, '2Yi1S2n0UCwWmT5CIXygQAKNKeizD880p7iK4RaikcGioM16fcgzxpTSPyZExMYQ', '2021-05-06 03:04:20', '2021-06-05 00:00:00', '', '', '', '', 0, 1),
-(24, 1, 'yNApiLaYfMkpmUdSk3z8XBbWPMOWqb9TfHWmWaVvz0OjVN8nqHzzj7GNtpDb3qz4', '2021-05-15 01:15:48', '2021-06-14 00:00:00', '', '', '', '', 0, 1),
-(25, 1, 'InnkGqbSCfvWzIRvyvOe1ZzTqLXBr9bXPaYBUxdWzQJy2EcZRcP9t4NJQdZMIEYB', '2021-05-20 08:38:34', '2021-06-19 00:00:00', '', '', '', '', 0, 1),
-(26, 1, 'e2MJwDJyVfnqbCXD6xf4U3OckBTTdZDG6XZ7dTkT9mwR0flusQ4KxjZnCE7eoo5P', '2021-05-29 16:53:51', '2021-06-28 00:00:00', '', '', '', '', 0, 1),
-(27, 1, 'bo3xI9hqDgzvTNZLenLK49t5HBQ16iKFWGSIk3SiS0l3PiD8uijKixOJVoGm1mnw', '2021-06-02 15:19:19', '2021-07-02 00:00:00', '', '', '', '', 0, 1),
-(28, 1, 'VSZWbTPT7GdRJkBuiFpcefhDZkZlrvKuYlJ5jpcM7nIjtUWEsQ4OVZnYx1qkMwBt', '2021-06-06 10:01:00', '2021-07-06 00:00:00', '', '', '', '', 0, 1),
-(29, 1, 'lFaLAXsXV2YlHYPDbEH3VPB1UgKVcOiY0hKQowOFM4nY5BD3zXOSxwOla2wIAnf6', '2021-06-07 00:28:06', '2021-07-07 00:00:00', '', '', '', '', 0, 1),
-(30, 1, 'C55ZIwHD3FMxX9eUb8XDdjMgi8T6NbXLZdKYJaNB4oxdLhuo3ba6nJrPXRzahk55', '2021-06-07 12:11:10', '2021-07-07 00:00:00', '', '', '', '', 0, 1),
-(31, 1, 'rzshJZnkTWD6DOAgGSzVXAsmv7PiesPyHm7ESW96naR5uHL29f1GrVqOpAvq7yTI', '2021-06-08 19:00:34', '2021-07-08 00:00:00', '', '', '', '', 0, 1),
-(32, 1, 'PE70H8loJrk9m5PU3DQv1QG3q2x0kwphe5PoPbXUNAuYSDXEhCbdgFUc6SN4U4c0', '2021-06-08 21:47:10', '2021-07-08 00:00:00', '', '', '', '', 0, 1),
-(33, 1, 'Ocdnd1iyRWrdyULhMcQwgqfsDpAmjeFdHI9ncoaiXYjZ1WVUpXtDnFJ0DkIEJEeX', '2021-06-09 09:45:25', '2021-07-09 00:00:00', '', '', '', '', 0, 1),
-(34, 1, 'roEYyw6pMIIhQe6dTBSAlIciO8I4BmeEUUjvW7gHzZSBWEjEPA9TjM89DUixHzU9', '2021-06-11 07:10:17', '2021-07-11 00:00:00', '', '', '', '', 0, 1),
-(35, 1, 'OpyWmY2LBFl8yL1OkSExlHL02NdgG4zg0xWFzF4mshxWF82bLv7MPEqxZYozdCBU', '2021-06-12 17:36:02', '2021-07-12 00:00:00', '', '', '', '', 0, 1),
-(36, 1, 'SQYVDTr4SyMHwV0maO217ApRSTbfzci43D2iZREYPkpVkOxhn3eSdTEHhArrO6jD', '2021-06-15 01:43:06', '2021-07-15 00:00:00', '', '', '', '', 0, 1),
-(37, 1, 'hgupBsVUc2qLMAEirp0EUzFcDPlLnZpqKXtxvHvUq6NcwgHFngKWLpmodY0bt1xO', '2021-06-15 09:46:21', '2021-07-15 00:00:00', '', '', '', '', 0, 1),
-(38, 1, 'jl2Eac8Nr31PljOhcNgoRPFL7Hmv3yYrTFmsaa9gQqfUq9kEUKaDgijo8CZFrtdS', '2021-06-15 11:46:15', '2021-07-15 00:00:00', '', '', '', '', 0, 1),
-(39, 1, 'gqsOsntlPx4iWcfotXAON9idZWHoTocReSq8ySwnU4OzegFno7Si1AUgeI67eNNc', '2021-06-16 18:04:52', '2021-07-16 00:00:00', '', '', '', '', 0, 1),
-(40, 1, 'OkVHMka3NZHGYANxOqCWP968GvbOIxg8YiZAgz9yk7mIJh7OAFyZNjdUk0csoW6b', '2021-06-16 21:18:01', '2021-07-16 00:00:00', '', '', '', '', 0, 1),
-(41, 1, 'N3bIGM0qkxQfhDu7XMR0LaO8gsP48FnNbZwTW3UAzGaSRc0mAzi49Raw5oc7LInO', '2021-06-17 18:48:23', '2021-07-17 00:00:00', '', '', '', '', 0, 1),
-(42, 1, 'ConWbRXooZ8YVZgWsrWvuc1MPDMaLp7tXVor5CDJEJuWc27i3JQMGA8dSotfq6Xo', '2021-06-19 02:41:18', '2021-07-19 00:00:00', '', '', '', '', 0, 1),
-(43, 1, 'C5AK3KfL0ijzPNjFD7JauYaM9cgqRmDxePBQ2DoS56BMNAPpBGv20kuKiE9oKlw1', '2021-06-20 00:10:55', '2021-07-20 00:00:00', '', '', '', '', 0, 1),
-(44, 1, 'KyeAEOTKRNJDYQHYrJmTYBXdTMdz0rTn5S4i1r4JmwYCetn6pBhHFo0GZfRbkYGh', '2021-06-20 00:14:31', '2021-07-20 00:00:00', '', '', '', '', 0, 1),
-(45, 1, 'IRkG60REmZnSVlNT0faeptCh2wTyyKHKPbQHOaIlVMCGDGRa0GyBm4qWeeAVbxwA', '2021-06-20 00:20:44', '2021-07-20 00:00:00', '', '', '', '', 0, 1),
+(15, 1, 'S902vwn0S75mL6ZhGdE5dX2g4IMcNmP8cge06Gz1E1oqvkd4qMkT1rvItUwKSLcq', '2021-04-19 01:20:34', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(16, 1, 'ZauKIJIO9wzY43ZdKWkzXXLMSdNMbBMXtlBNNtWXB0CKPLDMqmecDZbeZL1JLtTv', '2021-04-20 16:46:06', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(17, 1, 'cyTpzs7iiT3xZSo8Z3jQRaesn7BD03JfSHPribmzcjSU6zZEYP4vN2cegI5wQlmm', '2021-04-20 16:54:56', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(18, 1, 'yo5euNoKjbh9XThj0UprZrlGyU6KB3hDRAl9dcq9tgRcSrB9xaXURh1beY6VeSEt', '2021-04-20 16:56:46', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(19, 1, 'EaN0wGBHAIJAymd5te9H84qIL3riyyah6WGppXYWcJ48wnpsGMjPmZHAOdGXUu7T', '2021-04-20 19:30:57', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(20, 1, 'sFxk8XKobbJDSYmTK9QwvSGkbou4KMHl0JbIE7stDeX2NJE4QUTJqGlCU15Hv1zU', '2021-04-20 19:36:39', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(21, 1, 'e1cCBVJo9zATtz15isnbjegibCZ0bYfink7m4Zt686dvTJ8QM4KpwPRd6JL8gjFa', '2021-04-21 03:57:08', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(22, 1, 'cLLJsTIwBIEWhVtXartsTcboJfgGi3QeR9hqel0Eqn4nXfjjvcBRXoRqKR6dp8EY', '2021-04-28 12:15:25', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(23, 1, '2Yi1S2n0UCwWmT5CIXygQAKNKeizD880p7iK4RaikcGioM16fcgzxpTSPyZExMYQ', '2021-05-06 03:04:20', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(24, 1, 'yNApiLaYfMkpmUdSk3z8XBbWPMOWqb9TfHWmWaVvz0OjVN8nqHzzj7GNtpDb3qz4', '2021-05-15 01:15:48', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(25, 1, 'InnkGqbSCfvWzIRvyvOe1ZzTqLXBr9bXPaYBUxdWzQJy2EcZRcP9t4NJQdZMIEYB', '2021-05-20 08:38:34', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(26, 1, 'e2MJwDJyVfnqbCXD6xf4U3OckBTTdZDG6XZ7dTkT9mwR0flusQ4KxjZnCE7eoo5P', '2021-05-29 16:53:51', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(27, 1, 'bo3xI9hqDgzvTNZLenLK49t5HBQ16iKFWGSIk3SiS0l3PiD8uijKixOJVoGm1mnw', '2021-06-02 15:19:19', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(28, 1, 'VSZWbTPT7GdRJkBuiFpcefhDZkZlrvKuYlJ5jpcM7nIjtUWEsQ4OVZnYx1qkMwBt', '2021-06-06 10:01:00', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(29, 1, 'lFaLAXsXV2YlHYPDbEH3VPB1UgKVcOiY0hKQowOFM4nY5BD3zXOSxwOla2wIAnf6', '2021-06-07 00:28:06', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(30, 1, 'C55ZIwHD3FMxX9eUb8XDdjMgi8T6NbXLZdKYJaNB4oxdLhuo3ba6nJrPXRzahk55', '2021-06-07 12:11:10', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(31, 1, 'rzshJZnkTWD6DOAgGSzVXAsmv7PiesPyHm7ESW96naR5uHL29f1GrVqOpAvq7yTI', '2021-06-08 19:00:34', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(32, 1, 'PE70H8loJrk9m5PU3DQv1QG3q2x0kwphe5PoPbXUNAuYSDXEhCbdgFUc6SN4U4c0', '2021-06-08 21:47:10', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(33, 1, 'Ocdnd1iyRWrdyULhMcQwgqfsDpAmjeFdHI9ncoaiXYjZ1WVUpXtDnFJ0DkIEJEeX', '2021-06-09 09:45:25', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(34, 1, 'roEYyw6pMIIhQe6dTBSAlIciO8I4BmeEUUjvW7gHzZSBWEjEPA9TjM89DUixHzU9', '2021-06-11 07:10:17', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(35, 1, 'OpyWmY2LBFl8yL1OkSExlHL02NdgG4zg0xWFzF4mshxWF82bLv7MPEqxZYozdCBU', '2021-06-12 17:36:02', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(36, 1, 'SQYVDTr4SyMHwV0maO217ApRSTbfzci43D2iZREYPkpVkOxhn3eSdTEHhArrO6jD', '2021-06-15 01:43:06', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(37, 1, 'hgupBsVUc2qLMAEirp0EUzFcDPlLnZpqKXtxvHvUq6NcwgHFngKWLpmodY0bt1xO', '2021-06-15 09:46:21', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(38, 1, 'jl2Eac8Nr31PljOhcNgoRPFL7Hmv3yYrTFmsaa9gQqfUq9kEUKaDgijo8CZFrtdS', '2021-06-15 11:46:15', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(39, 1, 'gqsOsntlPx4iWcfotXAON9idZWHoTocReSq8ySwnU4OzegFno7Si1AUgeI67eNNc', '2021-06-16 18:04:52', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(40, 1, 'OkVHMka3NZHGYANxOqCWP968GvbOIxg8YiZAgz9yk7mIJh7OAFyZNjdUk0csoW6b', '2021-06-16 21:18:01', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(41, 1, 'N3bIGM0qkxQfhDu7XMR0LaO8gsP48FnNbZwTW3UAzGaSRc0mAzi49Raw5oc7LInO', '2021-06-17 18:48:23', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(42, 1, 'ConWbRXooZ8YVZgWsrWvuc1MPDMaLp7tXVor5CDJEJuWc27i3JQMGA8dSotfq6Xo', '2021-06-19 02:41:18', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(43, 1, 'C5AK3KfL0ijzPNjFD7JauYaM9cgqRmDxePBQ2DoS56BMNAPpBGv20kuKiE9oKlw1', '2021-06-20 00:10:55', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(44, 1, 'KyeAEOTKRNJDYQHYrJmTYBXdTMdz0rTn5S4i1r4JmwYCetn6pBhHFo0GZfRbkYGh', '2021-06-20 00:14:31', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(45, 1, 'IRkG60REmZnSVlNT0faeptCh2wTyyKHKPbQHOaIlVMCGDGRa0GyBm4qWeeAVbxwA', '2021-06-20 00:20:44', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
 (46, 22, 'e0Ebk7C7P3NvmyFLbKFWEl5GaYpvQbMLI1DAVFrSjF1qX4Zq6aKR8yFIa5r7BJCM', '2021-06-20 00:22:09', '2021-07-20 00:00:00', '', '', '', '', 0, 1),
 (47, 22, 'umAbi8BuMyPl7eBlF0KicesDvgCZruBH9ol488R9NZg4DyGP4mYIxFmSf0WPHjvF', '2021-06-20 00:24:20', '2021-07-20 00:00:00', '', '', '', '', 0, 1),
-(48, 1, 'RR2zB1s8LTZkd21JNnTAf9GyeRL0lZH12CPdUgLOUCFGft5ex6PwkVinzuTk4MxF', '2021-06-21 11:35:55', '2021-07-21 00:00:00', '', '', '', '', 0, 1),
-(49, 1, 'hedtc9cDNoi0xivE754kWJV78vE2QsfJHRgiCVkeZYXEdiOiYAEA3nAYNciXYrn6', '2021-06-21 14:23:33', '2021-07-21 00:00:00', '', '', '', '', 0, 1),
-(50, 1, 'I8RIu8zbthvRVU8OZ45Cz4hwW1qvptfXXNl8QQsVhb1rzhcPv5AeyehxdPNAprCO', '2021-06-21 14:35:23', '2021-07-21 00:00:00', '', '', '', '', 0, 1),
-(51, 1, 'rX2PopqqtKKTJe4bjD5TT1W5UC11k52b2dMWeEcpwDn974oAZEOeNZHP6VzFdwsH', '2021-06-21 20:26:28', '2021-07-21 00:00:00', '', '', '', '', 0, 1),
-(52, 1, 'YKFqENQemsl12upjFSBfbOgqhZNJzTi7JQtGmaz8iDzOluKqUaP1peNAo9roiRWW', '2021-06-22 18:03:41', '2021-07-22 00:00:00', '', '', '', '', 0, 1),
-(53, 1, 'ob6rRKLuAY8CeIaxKlBqGcdTr7cK6D7u1J3sj1vptlTKyqEWKjsRTXvpAYj9xFDB', '2021-06-22 20:25:56', '2021-07-22 00:00:00', '', '', '', '', 0, 1),
-(54, 1, 'jvxVRlmdQ2LZ6vyKBFX0KN06iKts4acJUzqgSWDvR9H23q7RaV9TLXnmwdRRPq9x', '2021-06-23 08:45:13', '2021-07-23 00:00:00', '', '', '', '', 0, 1),
-(55, 1, 'iWJEYczHFQr3zvEnNDGQfW2gGPNhHJ8cYqk0bKSiTKxwiUN6s7loQ6L1p1kXCEA3', '2021-06-23 16:04:49', '2021-07-23 00:00:00', '', '', '', '', 0, 1),
-(56, 1, 'C4J7654v0lE4MqFFcPEzOFfMhzlTIBRfjNc7pLIPJgC9yOfxTZmGnItvXwQZPQb9', '2021-06-23 16:38:38', '2021-07-23 00:00:00', '', '', '', '', 0, 1),
-(57, 1, 'lfE87YatglMhULuKwPXEex8lcLvJCf2Sv96se1DvDj6SIVL4MWg8sppRC2bEW94h', '2021-06-25 10:49:06', '2021-07-25 00:00:00', '', '', '', '', 0, 1),
-(58, 1, '0RkD7RdOoNv2ytcS0qKyaE6hqFNFmtHvA7aBQeZcxlAQCGmks0oQUpSdAeKx3z0i', '2021-06-25 21:22:44', '2021-07-25 00:00:00', '', '', '', '', 0, 1),
-(59, 1, 'ad04llfdnKxKevrPBv4NpusqFhptKes13XILWslzuCGd8vFVKX9udz8qYcLjNzGV', '2021-06-27 12:54:57', '2021-07-27 00:00:00', '', '', '', '', 0, 1),
-(60, 1, '5ihlNNUNASGJc8cbv4VQRSntQb5jwRPHjQOFnZUUxrY2vJ6vgn7qOrABrVka5ZVb', '2021-06-27 13:51:51', '2021-07-27 00:00:00', '', '', '', '', 0, 1),
-(61, 1, 'TycUQH8RHOwD8GRWmJPoGr7YTbh32RABwKnFLzMdEkfXackLYC5w2te3ejikKSJt', '2021-07-02 16:29:17', '2021-08-01 00:00:00', '', '', '', '', 0, 1),
-(62, 1, 'SjbZnCf26Z77nr2pVKGYhUz9OPSDcbyVWwXSkkJZ2cA8EeP7QRciqQSixnnhoC5u', '2021-07-05 12:24:31', '2021-08-04 00:00:00', '', '', '', '', 0, 1),
-(63, 1, 'CnpAhU1qZbpizyVxjC8KJN0Etpv5ROl3yhqKaBKNWzuqfvRqmXY6lK2luRgQbe6Y', '2021-07-05 12:24:31', '2021-08-04 00:00:00', '', '', '', '', 0, 1),
-(64, 1, 'NRBoKcudeT5YWe6rjJ0loETKn66xVX6uhzZv2ddLwzsL1QtcbqnT6nz0TSaVxqdn', '2021-07-05 18:46:16', '2021-08-04 00:00:00', '', '', '', '', 0, 1),
-(65, 1, 'J80STL4uuI4a4pAqoai8omFujwogcR0OvVPbtxcpKbrRJufFUEc0yLv1OKMADUUn', '2021-07-07 14:25:17', '2021-08-06 00:00:00', '', '', '', '', 0, 1);
+(48, 1, 'RR2zB1s8LTZkd21JNnTAf9GyeRL0lZH12CPdUgLOUCFGft5ex6PwkVinzuTk4MxF', '2021-06-21 11:35:55', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(49, 1, 'hedtc9cDNoi0xivE754kWJV78vE2QsfJHRgiCVkeZYXEdiOiYAEA3nAYNciXYrn6', '2021-06-21 14:23:33', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(50, 1, 'I8RIu8zbthvRVU8OZ45Cz4hwW1qvptfXXNl8QQsVhb1rzhcPv5AeyehxdPNAprCO', '2021-06-21 14:35:23', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(51, 1, 'rX2PopqqtKKTJe4bjD5TT1W5UC11k52b2dMWeEcpwDn974oAZEOeNZHP6VzFdwsH', '2021-06-21 20:26:28', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(52, 1, 'YKFqENQemsl12upjFSBfbOgqhZNJzTi7JQtGmaz8iDzOluKqUaP1peNAo9roiRWW', '2021-06-22 18:03:41', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(53, 1, 'ob6rRKLuAY8CeIaxKlBqGcdTr7cK6D7u1J3sj1vptlTKyqEWKjsRTXvpAYj9xFDB', '2021-06-22 20:25:56', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(54, 1, 'jvxVRlmdQ2LZ6vyKBFX0KN06iKts4acJUzqgSWDvR9H23q7RaV9TLXnmwdRRPq9x', '2021-06-23 08:45:13', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(55, 1, 'iWJEYczHFQr3zvEnNDGQfW2gGPNhHJ8cYqk0bKSiTKxwiUN6s7loQ6L1p1kXCEA3', '2021-06-23 16:04:49', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(56, 1, 'C4J7654v0lE4MqFFcPEzOFfMhzlTIBRfjNc7pLIPJgC9yOfxTZmGnItvXwQZPQb9', '2021-06-23 16:38:38', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(57, 1, 'lfE87YatglMhULuKwPXEex8lcLvJCf2Sv96se1DvDj6SIVL4MWg8sppRC2bEW94h', '2021-06-25 10:49:06', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(58, 1, '0RkD7RdOoNv2ytcS0qKyaE6hqFNFmtHvA7aBQeZcxlAQCGmks0oQUpSdAeKx3z0i', '2021-06-25 21:22:44', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(59, 1, 'ad04llfdnKxKevrPBv4NpusqFhptKes13XILWslzuCGd8vFVKX9udz8qYcLjNzGV', '2021-06-27 12:54:57', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(60, 1, '5ihlNNUNASGJc8cbv4VQRSntQb5jwRPHjQOFnZUUxrY2vJ6vgn7qOrABrVka5ZVb', '2021-06-27 13:51:51', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(61, 1, 'TycUQH8RHOwD8GRWmJPoGr7YTbh32RABwKnFLzMdEkfXackLYC5w2te3ejikKSJt', '2021-07-02 16:29:17', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(62, 1, 'SjbZnCf26Z77nr2pVKGYhUz9OPSDcbyVWwXSkkJZ2cA8EeP7QRciqQSixnnhoC5u', '2021-07-05 12:24:31', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(63, 1, 'CnpAhU1qZbpizyVxjC8KJN0Etpv5ROl3yhqKaBKNWzuqfvRqmXY6lK2luRgQbe6Y', '2021-07-05 12:24:31', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(64, 1, 'NRBoKcudeT5YWe6rjJ0loETKn66xVX6uhzZv2ddLwzsL1QtcbqnT6nz0TSaVxqdn', '2021-07-05 18:46:16', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(65, 1, 'J80STL4uuI4a4pAqoai8omFujwogcR0OvVPbtxcpKbrRJufFUEc0yLv1OKMADUUn', '2021-07-07 14:25:17', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(66, 1, 'Z5p4JPJu888c7rO11piXY7lmHlKdMzO8KevL1CN5YQMgqa6mgdh13CoMHAw7tyak', '2021-07-10 09:10:31', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
+(67, 1, '4tYCCpmtnXa2j5EotatTWzozqntzg5xuJBptD8Yzeq5ci4NRv3Sl8kAso9xk0tTG', '2021-07-10 17:10:39', '2021-07-10 17:12:34', '', '', '', '', 0, 2),
+(68, 1, 'KT9Nm966frGoH4pgdzzDoqwxNGvegq03QRvr7zQzS9uswPrMxE1BCEftAERceCPk', '2021-07-10 17:12:34', '2021-07-10 17:13:39', '', '', '', '', 0, 2),
+(69, 1, '02UCYEZO287pXHhOdTI8TOMq0KezFaJBN5N3DvX3IsLJ9xI5Zh69ndlSNtkeWEMS', '2021-07-10 17:13:39', '2021-07-10 17:17:21', '', '', '', '', 0, 2),
+(70, 1, 'UiqbLUb4RuPS6UoMBSF6lYg1lEoACrWJE9zcIYyYt4BaBmdCfOyUiNkDbmjQbZ0e', '2021-07-10 17:17:21', '2021-07-10 17:32:36', '', '', '', '', 0, 2),
+(71, 1, 'wm1A6wft3xJ8jCBNLXZsGnq2FpPONVjVKnOL01dyk0JOtG24yKH32amoq71lBy8v', '2021-07-10 17:32:36', '2021-07-11 15:28:31', '', '', '', '', 0, 2),
+(72, 1, 'KTVeXzaSrnE8sSlkEIZARZXVk8zBPMI1Iu2pcDa4NiZblYnjyZstu8AVzWpffLIm', '2021-07-11 15:28:31', '2021-07-11 15:29:03', '', '', '', '', 0, 2),
+(73, 1, '6Nqyyfqi1EfD4VpoH8YOhBEBHCVKbNwfxNJ0S2RVWt81h2WgAPDbfsCcQCis2E90', '2021-07-11 15:29:03', '2021-07-11 15:30:35', '', '', '', '', 0, 2),
+(74, 1, 'Vlliz2539l5VYfw2IkrCHl9DuQPRcZJfonz91YhDA5HshfuurL7rqFn7by7P3mvV', '2021-07-11 15:30:35', '2021-07-11 15:31:56', '', '', '', '', 0, 2),
+(75, 1, 'IgjkEckHyCYUdFmrUaJ2Ix4ZM12RF8f3daxE5w8xv3RZahATRBSqxYKwr2wipde1', '2021-07-11 15:31:56', '2021-07-11 15:32:42', '', '', '', '', 0, 2),
+(76, 1, 'AaV9H4PXtw9cWggxeo7OPTH9VUqqKilqwTWcbcKRtvaAOzYG6XWZZlzlNSG7jLKk', '2021-07-11 15:32:42', '2021-07-11 15:33:39', '', '', '', '', 0, 2),
+(77, 1, 'UHDWOE26Bz5sxIem6w9mxFmrVGEIEqDCZZnbviqjIYetfFBDP8zQ1x5V3gGuv1GI', '2021-07-11 15:33:39', '2021-07-11 15:35:35', '', '', '', '', 0, 2),
+(78, 1, '3zOhPJVQVkJyrO2hQSAaJ9O8GKkassFjsAWZzbQ12IJy7jZvuyNSEjKhZAfBE9QV', '2021-07-11 15:35:35', '2021-07-11 19:49:47', '', '', '', '', 0, 2),
+(79, 1, 'HkRRnYUo7owKKRJjcA4uyFaWfUHwJOxwJBtET9z5xUIuUXIzLBPAVU6tfyN6ED9F', '2021-07-11 19:49:47', '2021-07-12 10:44:02', '', '', '', '', 0, 2),
+(80, 1, 'AvMjl4ZKNpFAc20bWOhNfruShTuzXdMbDtuhijl5lZyr34HIMHkcNDoAG5qnrIEZ', '2021-07-12 10:44:02', '2021-07-12 10:47:55', '', '', '', '', 0, 2),
+(81, 1, 'ADbPTpskYt9S0PECB9sqSLhDOHC6fItht3egAjOYymojsSSoi64GMrOxda9BkFBl', '2021-07-12 10:47:55', '2021-07-13 15:12:18', '', '', '', '', 0, 2),
+(82, 51, 'vqKglY1PAIOmKHzF1XDd4fJs8K5lriQ3lIaoYMr5jANRYiPG06V95ofD7AK9CUP3', '2021-07-12 10:53:13', '2021-07-13 15:13:49', '', '', '', '', 0, 2),
+(83, 1, 'lc2GImLMHTVoaX1kpPPetjlCTQd0zBJ0XryhKvmk2VSxuuIvtNnhX6M6BC4qEOYk', '2021-07-13 15:12:18', '2021-07-16 10:14:57', '', '', '', '', 0, 2),
+(84, 51, 'Za8ecpKN8LWzS0xWKUd5Huw8bLeKygzzANNQoXLcW93z9weu6zUN7J4uhIpHD7Od', '2021-07-13 15:13:49', '2021-07-13 18:01:53', '', '', '', '', 0, 2),
+(85, 51, 'M1svjXeuuHwvCG20HTpICyXludBlXThVIIYiylqWWlkyA4I4FdYL0NVCnR1dkroa', '2021-07-13 18:01:53', '2021-07-13 18:07:06', '', '', '', '', 0, 2),
+(86, 51, 'aRHLPlpIo1TrUCmeZVDsAvzhvFgIPVFJzdFF43ZJTYwTkmf47v8IMlgN4bPH6H9Q', '2021-07-13 18:07:06', '2021-07-13 18:10:39', '', '', '', '', 0, 2),
+(87, 51, 'AeDiOE5M97hfzXS666h5LmVlFdxFiEhiGAYdP9lcEK0t7aO4BODjsmkDTxGo1DYk', '2021-07-13 18:10:39', '2021-07-13 18:19:42', '', '', '', '', 0, 2),
+(88, 51, '6PpzGhPoZOogQTZ8zu8USyXAQ9ejjhfYYdsfutcWSWsqDa7PccTiTq6a9iTcBw3G', '2021-07-13 18:19:42', '2021-07-14 16:41:29', '', '', '', '', 0, 2),
+(89, 51, 'hUSSuq6dzo12oTO1Q5fUBoriTxRF9KcRuUXAWuzroBTKVLrqoZhopW7PBWPLwxnl', '2021-07-14 16:41:29', '2021-07-14 16:50:19', '', '', '', '', 0, 2),
+(90, 51, 'UpZgpeMgVBjXNdazZYVBH14oLp8b7CaXR8la6FHtjWFpkfgyMksh0o04UebZqyO2', '2021-07-14 16:50:19', '2021-07-14 17:19:27', '', '', '', '', 0, 2),
+(91, 51, 'GL5cox2wuufkjwgzhXQvX4tOQGBroiJx371M1IY0IETINvxlSTQE6J4n6i61q44e', '2021-07-14 17:19:27', '2021-07-16 10:15:19', '', '', '', '', 0, 2),
+(92, 1, 'JX7tAsaBzcgsolYct8pdYyn4VGsODqN5NOyNqFWhJgzXBesBzka1LhIF1D33ybb9', '2021-07-16 10:14:57', '2021-08-15 00:00:00', '', '', '', '', 0, 1),
+(93, 51, 'kHCz8YJSNf0EXZsmOc2dQdcF3XHQygPvbRPhP1aV14P0EVWfyA5mj1Y0rjAFSyke', '2021-07-16 10:15:19', '2021-07-18 11:18:28', '', '', '', '', 0, 2),
+(94, 51, 'LdESGbcTwm3Hr7XLhSGFeGICxYiw9Iruic83A1YSkJtYk0SlsXJqHnBspLGzPOM7', '2021-07-18 11:18:28', '2021-07-18 15:23:28', '', '', '', '', 0, 2),
+(95, 51, 'YMvYijuuN0Q887SeqdtcQjcJKAoZC2Fe8igGmAONioLpqu5ZjjnAuOW4xHXjuGEZ', '2021-07-18 15:23:28', '2021-07-19 11:11:39', '', '', '', '', 0, 2),
+(96, 51, 'iJRJOjTduoDkiH1MCAmNueJSxftTPwUTTMDq6hDPiYxRJ5gsDx6z0hPYfQOPKvpA', '2021-07-19 11:11:39', '2021-07-19 11:18:15', '', '', '', '', 0, 2),
+(97, 51, '7MP4oTRoTUqwapbn5ipxnAgFJHB0Mwj3ATKHA0RHJEm5JfNzTRChrlLkmYiFRG5o', '2021-07-19 11:18:15', '2021-07-19 22:03:35', '', '', '', '', 0, 2),
+(98, 51, 'yZYXSMiZxmEK2EixDblpvVgnwtvYgBJnhDs1p1mojd6FgkfEPq3ws70yRcVkfdMV', '2021-07-19 22:03:35', '2021-07-20 13:05:14', '', '', '', '', 0, 2),
+(99, 51, 'mm9KakYr7GAvY5kcULVnBsPkGZWg1IwnhsVzuAnJ3lpU45PH4Qfs73l9dRqgTn8U', '2021-07-20 13:05:14', '2021-07-21 09:55:05', '', '', '', '', 0, 2),
+(100, 51, 'nZYmb3wD6deOgi5sZ66ns5agFHsPRK6n734xC0ZgMJddqDxr7MBnMiMJuVYPmeIT', '2021-07-21 09:55:05', '2021-07-21 10:01:23', '', '', '', '', 0, 2),
+(101, 51, 'hfHADKBPU3LZnFsDFEdaRc3KYuqAlCf5ufoXy1lKIcClHskmqDJFITmVvN4u1m9a', '2021-07-21 10:01:23', '2021-07-22 08:48:15', '', '', '', '', 0, 2),
+(102, 51, 'uGytEQVpjAsmMB4T2toTFj8TJCMnvV4f5SpLr8yGuSjsOnJTxOkqJ8aCY377Uhs8', '2021-07-22 08:48:15', '2021-07-22 09:26:25', '', '', '', '', 0, 2),
+(103, 51, 'Bm5Yhp8xNhWUyS0U9pcIAXpnzPFuubyfPE6HDYZmZzYPjOBEWOFAwdHsSn4IBZ0D', '2021-07-22 09:26:25', '2021-07-22 09:35:08', '', '', '', '', 0, 2),
+(104, 51, '2CLs044AUSCqMdIZsCfrllLFee03Rl3MqIg4Exrg61RbbC7T2m1KpZOF1DM57Mm2', '2021-07-22 09:35:08', '2021-07-22 09:36:16', '', '', '', '', 0, 2),
+(105, 51, 'K6vyyKbF3nsFMDe9Vl6El4oYRlANNb0XXroOpqIa7VlJ8L37U9dTrlrSha18LamW', '2021-07-22 09:36:16', '2021-07-22 09:45:41', '', '', '', '', 0, 2),
+(106, 51, 'icROw7Nfn8kTcK0YmbqGfzR6D5FuGKOHSwKDWS7uPgy0zNzKETt66AE9euweHmJ5', '2021-07-22 09:45:41', '2021-07-22 16:43:26', '', '', '', '', 0, 2),
+(107, 51, 'Q45qtb1BhBGdKUKEKlyC6bl7aL41GDkvtnZw9T2oPwGD9fcDSNbu3t75dwtWoVMO', '2021-07-22 16:43:26', '2021-07-23 10:14:59', '', '', '', '', 0, 2),
+(108, 51, 'f2Dv4hosyZpPcOF54jl5GRfrBaLqwmsd61tVHKJAujRdYXpwopNjhFUkmZumH74T', '2021-07-23 10:14:59', '2021-07-23 16:06:22', '', '', '', '', 0, 2),
+(109, 51, 'YmJPTEbVE5MzxF6N2rLW2JIrHAmLhCWKzn1G9oTlNtdxofdf76IBnuauwMA7l351', '2021-07-23 16:06:22', '2021-07-24 09:34:05', '', '', '', '', 0, 2),
+(110, 51, 'EdU5Zeezu9jXnVO0JGLpC2ruj7oGx2vdlQ5JEIzgy9NQD8GEDrELx9xOcK9nucZ1', '2021-07-24 09:34:05', '2021-07-25 07:56:32', '', '', '', '', 0, 2),
+(111, 51, 'nmtdz4CprUfXxD1CQNx3eeqIwvAx84yShpUKPnLHuXDEfGH4fSp4bJUYltAjsFJD', '2021-07-25 07:56:32', '2021-07-25 12:24:48', '', '', '', '', 0, 2),
+(112, 51, 'tpVpLqcdeY8QAQkGSdBYRlP4r67FCIuTlOpjevX1LQz35Bjgdis6oZzbOcuOv6SC', '2021-07-25 12:24:48', '2021-07-25 17:01:10', '', '', '', '', 0, 2),
+(113, 51, 'hth3HMvXowEQWLbqHJHNczMQ61WLYsRz8h9Xhiu0UpFKlua12nmhdMybD9ucjXMR', '2021-07-25 17:01:10', '2021-07-26 16:39:03', '', '', '', '', 0, 2),
+(114, 51, 'HFLdblevWVnazIpzH9aT66NMNm3NgoAZ30a4tKcg8n6qqgZEXeG5DGtaf0H8YVMT', '2021-07-26 16:39:03', '2021-07-26 16:50:33', '', '', '', '', 0, 2),
+(115, 51, 'qo68TU1C95p5dFQyD7JcykxQ9VEGUepTomdqXo9VMsPCNK7DsuSXIgPIExeoKdg8', '2021-07-26 16:50:33', '2021-07-26 16:50:36', '', '', '', '', 0, 2),
+(116, 51, 'tKJe1Ut16qOHSXijOEAFfZJ9aWWi4SCtizIUQ2pbZQXsgXQ8tsrwsTEhTWF8BPrc', '2021-07-26 16:50:36', '2021-07-26 17:41:18', '', '', '', '', 0, 2),
+(117, 51, 'o4zLU0JcIs32sOAgUquSealdY0Z44sfmkTvgRZAZIONIuERTH5KATNEsWeHtO9ig', '2021-07-26 17:41:18', '2021-07-26 19:27:50', '', '', '', '', 0, 2),
+(118, 51, 'cumwlsq02HXrol58Gx0aC8T3M7Z1V3VlcisfzVNR65miNlzufh9aTzkTQVLv2FWA', '2021-07-26 19:27:50', '2021-07-26 19:30:05', '', '', '', '', 0, 2),
+(119, 51, '4wYcWtCcO9CQlYpiWJkINT4c7VuevmDy1Sw7og16P8M40B4CRkmcrD6PpXfrldGY', '2021-07-26 19:30:05', '2021-07-26 21:13:57', '', '', '', '', 0, 2),
+(120, 51, 'zi7cjjxE3C9TgftsDw72iPN0LwPiBAcBtRHnsLaXeaGA7tcMarNeJbp1C4bRsYFb', '2021-07-26 21:13:57', '2021-08-25 00:00:00', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1319,9 +1601,8 @@ CREATE TABLE `o_users` (
 --
 
 INSERT INTO `o_users` (`uid`, `name`, `email`, `phone`, `national_id`, `join_date`, `pass1`, `user_group`, `branch`, `status`) VALUES
-(1, 'Jonah Ngarama', 'ngaramajonah@gmail.com', '254716330450', '', '2021-03-20 04:45:58', 'f1078f10b7dbf338f39d41f2dce986623ed97de9d1ec39c0e53e3de5c253a0df', 1, 0, 1),
+(1, 'Jonah Ngarama', 'ngaramajonah@gmail.com', '254716330450', '', '2021-03-20 04:45:58', '1e4b269b4bc2c44c056548bb7f7fab9e78eee0bf0ca2ee1c6e8845f96f07489a', 1, 0, 1),
 (2, 'Jonah Ngarama', 'mercynjqoki@gmail.com', '254716330550', '', '2021-04-06 10:55:52', 'a6bbe9af46a0689baedc2bf76974a4de36dfb585dc40056046bf0d080491da2e', 1, 0, 1),
-(3, 'Jonah Ngarama', 'ngaramajonah@gmail.com', ' 254716330450', '', '2021-05-07 07:03:20', 'g6UNaUzz1j', 1, 0, 1),
 (5, 'Mercysd', 'sddsdsd@jsdusudus.com', '', '', '2021-05-07 07:08:02', 'DypLGHvEXa', 2, 1, 2),
 (9, 'Test test', 'ngaramaejonah@gmail.com', ' 254716330451', '', '2021-05-08 09:31:46', 'ye4g7xtSxa', 3, 1, 2),
 (14, 'Mercy X', 'mercynjoki@gmail.com', '254716330451', '', '2021-05-08 20:22:25', '3SXpxjFmnO', 2, 1, 1),
@@ -1332,7 +1613,9 @@ INSERT INTO `o_users` (`uid`, `name`, `email`, `phone`, `national_id`, `join_dat
 (19, 'Newton Gikaru', 'newton@gmail.com', '254756663663', '', '2021-05-12 14:29:47', 'SGGvs8hRLV', 2, 1, 1),
 (20, 'Nzirani Mwende', 'nziranimwende@gmail.com', '254716330457', '6787787', '2021-05-12 14:31:02', '538606721eb54c4f8a92124994a02bb612bcb546020be380f247f07867aa7847', 3, 2, 1),
 (21, 'jonah ngarama', 'ngaramajonah@gmail.com11', '254789330450', '567654', '2021-06-20 00:18:05', 'bb0f5872ac86548d90be04688c3d99de19550e7abc98c1b7d316f2e1fd82b90e', 2, 2, 1),
-(22, 'jonah ngarama', 'ngaramajonah@gmail.com7', '254716330870', '123456737', '2021-06-20 00:21:47', '8da143a5de9523eb95bba84949c4539a17b649045d74ed2f75c1bc9807a5188d', 1, 2, 1);
+(22, 'jonah ngarama', 'ngaramajonah@gmail.com7', '254716330870', '123456737', '2021-06-20 00:21:47', '8da143a5de9523eb95bba84949c4539a17b649045d74ed2f75c1bc9807a5188d', 1, 2, 1),
+(50, 'Samuel Munyi', 'samunyi90@gmail.com', '254112553167', '3209876543', '2021-03-20 04:45:58', '190e94b55e3678bb4d643e76968000eda840142ab79e3638c41aed8a44b54795', 1, 2, 1),
+(51, 'Samuel Munyi', 'munyisamuel3@gmail.com', '254112553177', '32909210', '2021-07-12 10:51:40', 'a2bbc0d689af1e9f149912fe17cf1f2e85a8f3aa24a7e1cef398676188e909ca', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1401,6 +1684,18 @@ ALTER TABLE `o_asset_categories`
 ALTER TABLE `o_branches`
   ADD PRIMARY KEY (`uid`),
   ADD UNIQUE KEY `branch_name` (`name`);
+
+--
+-- Indexes for table `o_campaigns`
+--
+ALTER TABLE `o_campaigns`
+  ADD PRIMARY KEY (`uid`);
+
+--
+-- Indexes for table `o_campaign_messages`
+--
+ALTER TABLE `o_campaign_messages`
+  ADD PRIMARY KEY (`uid`);
 
 --
 -- Indexes for table `o_collateral`
@@ -1699,6 +1994,18 @@ ALTER TABLE `o_branches`
   MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `o_campaigns`
+--
+ALTER TABLE `o_campaigns`
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `o_campaign_messages`
+--
+ALTER TABLE `o_campaign_messages`
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `o_collateral`
 --
 ALTER TABLE `o_collateral`
@@ -1732,19 +2039,19 @@ ALTER TABLE `o_conversation_outcome`
 -- AUTO_INCREMENT for table `o_customers`
 --
 ALTER TABLE `o_customers`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `o_customer_contacts`
 --
 ALTER TABLE `o_customer_contacts`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `o_customer_conversations`
 --
 ALTER TABLE `o_customer_conversations`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `o_customer_document_categories`
@@ -1786,7 +2093,7 @@ ALTER TABLE `o_documents`
 -- AUTO_INCREMENT for table `o_events`
 --
 ALTER TABLE `o_events`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `o_flags`
@@ -1816,7 +2123,7 @@ ALTER TABLE `o_key_values`
 -- AUTO_INCREMENT for table `o_loans`
 --
 ALTER TABLE `o_loans`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `o_loan_addons`
@@ -1858,13 +2165,13 @@ ALTER TABLE `o_next_steps`
 -- AUTO_INCREMENT for table `o_notifications`
 --
 ALTER TABLE `o_notifications`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `o_passes`
 --
 ALTER TABLE `o_passes`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `o_payment_methods`
@@ -1924,7 +2231,7 @@ ALTER TABLE `o_staff_statuses`
 -- AUTO_INCREMENT for table `o_tokens`
 --
 ALTER TABLE `o_tokens`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `o_towns`
@@ -1936,7 +2243,7 @@ ALTER TABLE `o_towns`
 -- AUTO_INCREMENT for table `o_users`
 --
 ALTER TABLE `o_users`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `o_user_groups`

@@ -9,6 +9,7 @@ include_once ("../configs/conn.inc");
 $where_ =  $_POST['where_'];
 $offset_ =  $_POST['offset'];
 $rpp_ =  $_POST['rpp'];
+$page_no = $_POST['page_no'];
 $orderby =  $_POST['orderby'];
 $dir =  $_POST['dir'];
 $search_ = trim($_POST['search_']);
@@ -53,16 +54,16 @@ while($c = mysqli_fetch_array($o_users_))
     $f = fetchonerow("o_staff_statuses","uid='$status'","name");
     $status_name = $f['name'];
 
-    $row.=" <tr><td>$uid</td><td><span class=\"font-16\">$name </td><td><span>$email </span></td>
+    $row.=" <tr><td>$uid</td><td><span class='font-16'>$name </td><td><span>$email </span></td>
  <td><span>$phone</span></td><td>$user_group</td><td><span>$branch_name</span></td>
  <td><span>$join_date</span></td>
- <td><span>$status_name </span></td><td><span><a href=\"?staff=$encstaff\"><span class=\"fa fa-eye text-green\"></span></a></span></td></tr>";
+ <td><span>$status_name </span></td><td><span><a href='?staff=$encstaff'><span class='fa fa-eye text-green'></span></a></span></td></tr>";
 
     //////------Paging Variable ---
-    $page_total = $page_total + 1;
+    //$page_total = $page_total + 1;
     /////=======Paging Variable ---
 
 
 }
 
-echo   trim($row)."<tr style='display: none ;'><td colspan='8'>".paging_values_hidden($where_,$offset_,$rpp_,$orderby,$dir,$search_,'staff_list',$page_total, $alltotal)."</td></tr>";
+echo   trim($row)."<tr style='display: none;'><td><input type='text' id='_alltotal_' value='$alltotal'><input type='text' id='_pageno_' value='$page_no'></td></tr>";

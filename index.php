@@ -70,7 +70,7 @@ $company = company_settings();
         </ul>
         <!-- Tab panes -->
         <div class="tab-content">
-            <!-- Home tab content -->
+            <!-- Home tab content-->
             <div class="tab-pane" id="control-sidebar-home-tab">
                 <h3 class="control-sidebar-heading">Recent Activity</h3>
                 <ul class="control-sidebar-menu">
@@ -119,7 +119,7 @@ $company = company_settings();
                         </a>
                     </li>
                 </ul>
-                <!-- /.control-sidebar-menu -->
+                <!-- /.control-sidebar-menu --> 
 
                 <h3 class="control-sidebar-heading">Tasks Progress</h3>
                 <ul class="control-sidebar-menu">

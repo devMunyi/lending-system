@@ -3,10 +3,6 @@ session_start();
 include_once ("../php_functions/functions.php");
 include_once ("../configs/conn.inc");
 
-
-
-
-
 $where_ =  $_POST['where_'];
 $offset_ =  $_POST['offset'];
 $rpp_ =  $_POST['rpp'];
@@ -32,7 +28,7 @@ $o_notifs = fetchtable('o_notifications',"$where_ AND status > 0 AND staff_id = 
 ///----------Paging Option
 $alltotal = countotal("o_notifications","$where_ AND status > 0 AND staff_id = 1 $andsearch");
 ///==========Paging Option
-$row="<li class=\"header font-bold font-14\">You have $alltotal notification(s)</li><li><ul class=\"menu list-unstyled\">";
+$row="<li class='header font-bold font-14'>You have $alltotal notification(s)</li><li><ul class='menu list-unstyled'>";
 if($alltotal > 0) {
     while ($k = mysqli_fetch_array($o_notifs)) {
         $uid = $k['uid'];
@@ -43,7 +39,7 @@ if($alltotal > 0) {
         $link = $k['link'];
         $status = $k['status'];
 
-        $row .= "<li><a href=\"#\"> <i class='fa fa-bell-o'></i> <span class='font-14 font-bold'>$title</span> <span class='pull-right text-muted'> $sent_date</span> <br/> $details  </a></li>";
+        $row .= "<li><a href='#'> <i class='fa fa-bell-o'></i> <span class='font-14 font-bold'>$title</span> <span class='pull-right text-muted'> $sent_date</span> <br/> $details  </a></li>";
 
         //////------Paging Variable ---
         $page_total = $page_total + 1;
@@ -52,6 +48,5 @@ if($alltotal > 0) {
 
     }
 }
-
 
 echo   trim($row."</ul></li>")."<span style='display: none ;'><span>".paging_values_hidden($where_,$offset_,$rpp_,$orderby,$dir,$search_,'customer_list',$page_total, $alltotal)."</span></span>";

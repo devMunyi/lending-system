@@ -8,6 +8,8 @@ $title = $_POST['title'];
 $uid = $_POST['cid'];
 $description = $_POST['description'];
 $campaign_date = $_POST['date'];
+$frequency = $_POST['frequency'];
+$repetitive = $_POST['repetitive'];
 $target_customers = $_POST['target_customers'];
 $status = $_POST['status'];
 
@@ -28,6 +30,20 @@ if((input_length($campaign_date, 10)) == 0){
     echo errormes("Date is required");
     die();
 }
+
+if($frequency > 0){}
+else{
+    echo errormes("Please select frequency");
+    die();
+}
+
+if($repetitive > 0){}
+else{
+    echo errormes("Please select if campaign should be repetitive");
+    die();
+}
+
+
 if($target_customers > 0){}
 else{
     echo errormes("Please select target customers");
@@ -35,13 +51,17 @@ else{
 }
 
 
+
+
 ///////////------------------Save
 
-$fds  = "name='$title', description = '$description', running_date='$campaign_date'";
+$fds  = "name='$title', description = '$description', running_date='$campaign_date', frequency = $frequency, repetitive = $repetitive, target_customers =$target_customers";
 $create = updatedb('o_campaigns', "$fds", "uid='".decurl($uid)."'");
 if($create == 1){
     echo sucmes('Campaign Updated successfully');
     $proceed = 1;
+    $last_campaign = fetchmax('o_campaigns',"name='$title'","uid","uid");
+    $cid = $last_campaign['uid'];
 
 }
 else{
@@ -54,7 +74,7 @@ else{
 <script>
     if('<?php echo $proceed ?>'){
         setTimeout(function () {
-            gotourl('broadcasts?campaign=<?php echo encurl($uid); ?>');
+            gotourl('broadcasts?campaign=<?php echo encurl($cid); ?>');
         }, 1500);
 
     }

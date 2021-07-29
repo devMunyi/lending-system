@@ -1,3 +1,8 @@
 .idea
+bower_components
+build
 configs
-uploads_
+dist
+documentation
+pages
+plugins

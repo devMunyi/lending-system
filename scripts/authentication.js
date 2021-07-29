@@ -12,7 +12,6 @@ dbaction("/action/signup",params, function (feed) {
 
 }
 
-
 function login(){
     let inp_email = $('#inp_email').val();
     let inp_password = $('#inp_password').val();

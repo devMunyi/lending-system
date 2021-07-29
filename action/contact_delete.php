@@ -16,7 +16,6 @@ if($contact_id > 0){
     {
         echo success('Success deleting contact');
         $proceed = 1;
-
     }
     else
     {

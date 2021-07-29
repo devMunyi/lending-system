@@ -20,7 +20,8 @@
                         <div class="col-md-10">
                             <h3 class="box-title font-16">
                                 <a class="btn font-16 btn-md bg-navy text-bold" href=""><i class="fa fa-clone"></i> All Staff</a>
-
+                                <a class="btn font-16 btn-md btn-default text-bold" href="#"onclick="orderby('uid', 'desc')"><i class="fa fa-arrow-up"></i> Newest</a>
+                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="orderby('uid', 'asc')"><i class="fa fa-arrow-down"></i> Oldest</a>
                             </h3>
                         </div>
                         <div class="col-md-2">
@@ -76,3 +77,6 @@
     </div>
 </section>
 
+<?php
+echo "<div style='display: none;'>".paging_values_hidden('uid > -1',0,10,'uid','desc','','staff_list', 1)."</div>"
+?>

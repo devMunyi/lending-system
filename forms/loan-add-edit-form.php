@@ -1,10 +1,10 @@
 <section class="content-header">
     <h1>
-        <?php echo arrow_back('loans','Loans'); ?>
+        <?php echo arrow_back('loans', 'loans'); ?>
         <?php
         $sid = $_GET['customer-add-edit'];
         if ($sid > 0) {
-            $cust = fetchonerow('s_staff', "uid='" . decurl($sid) . "'");
+            $cust = fetchonerow('o_staff', "uid='" . decurl($sid) . "'");
             $customer_id = $_GET['customer-add-edit'];
 
             echo "Loan <small>Edit</small>";
@@ -31,7 +31,6 @@
 
                 <!-- /.box-header -->
                 <div class="row">
-
                     <div class="col-xs-1"></div>
                     <div class="col-sm-6">
                         <!-- /.box-header -->
@@ -46,9 +45,9 @@
                                         <div class="col-sm-9">
                                             <input class="form-control" type="text" autocomplete="off" onkeyup="search_cust();" id="customer_search" placeholder="Start typing customer name ...">
                                             <input type="hidden" id="customer_id_">
-                                        <div id="customer_results">
+                                            <div id="customer_results">
 
-                                        </div>
+                                            </div>
                                         </div>
 
                                     </div>
@@ -66,7 +65,7 @@
                                                     $uid = $o['uid'];
                                                     $name = $o['name'];
                                                     $description = $o['description'];
-                                                    echo "<option value=\"$uid\">$name</option>";
+                                                    echo "<option value='$uid'>$name</option>";
                                                 }
 
                                                 ?>
@@ -96,7 +95,7 @@
                                             <button type="submit" class="btn btn-lg btn-default">Cancel</button>
                                             <button type="submit"
                                                     class="btn btn-success bg-green-gradient btn-lg pull-right"
-                                                    onclick="create_loan('<?php echo $sid; ?>');">
+                                                    onclick="create_loan();">
                                                 Create
                                             </button>
                                         </div>

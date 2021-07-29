@@ -1,4 +1,3 @@
-
 <section class="content-header">
     <h1>
         Incoming Payments
@@ -85,5 +84,5 @@
     </div>
 </section>
 <?php
-echo "<div style='display: none;'>".paging_values_hidden('status > -1',0,10,'uid','desc','','payment_list')."</div>"
+echo "<div style='display: none;'>".paging_values_hidden('status > -1',0,10,'uid','desc','','payment_list')."</div>";
 ?>

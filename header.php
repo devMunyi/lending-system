@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 if(isset($_SESSION['o-token']))
 {
 
@@ -7,7 +7,7 @@ if(isset($_SESSION['o-token']))
     $valid = validatetoken($token);
     if($valid == 0){
      header("location:login");
-     die("<h3>Session Expired<a href=\"logout\">Login Again</a></h3>");
+     die("<h3>Session Expired<a href='logout'>Login Again</a></h3>");
     }
     else{
         $token_user = fetchrow('o_tokens',"token='$token'","userid");
@@ -18,15 +18,13 @@ if(isset($_SESSION['o-token']))
 }
 else{
     header("location:login");
-    die("<h3>Session Expired<a href=\"logout\">Login Again</a></h3>");
+    die("<h3>Session Expired<a href='logout'>Login Again</a></h3>");
 }
-
 
 
 ?>
 <header class="main-header" style="background-color: #333333 !important;">
-
-    <div id="standardnotif" class="alert alert-dismissible"></div>
+    <div id="standardnotif" class="alert aler-dismissible"></div>
     <!-- Logo -->
     <a href="index" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->

@@ -7,6 +7,7 @@ include_once("../../configs/conn.inc");
 $where_ = $_POST['where_'];
 $offset_ = $_POST['offset'];
 $rpp_ = $_POST['rpp'];
+$page_no = $_POST['page_no'];
 $orderby = $_POST['orderby'];
 $dir = $_POST['dir'];
 $search_ = trim($_POST['search_']);
@@ -36,7 +37,7 @@ $cust_array = array();
 ///////////////===================End of search customers with full_keyword
 
 if ((input_available($search_)) == 1) {
-    $andsearch = " AND (uid = '".decurl($search_)."' OR given_date = '%$search_%' OR next_due_date = '%$search_%' OR final_due_date = '%$search_%' OR loan_amount = '$search_' $orcustomer)";
+    $andsearch = " AND (uid = '$search_' OR given_date = '%$search_%' OR next_due_date = '%$search_%' OR final_due_date = '%$search_%' OR loan_amount = '$search_' $orcustomer)";
 } else {
     $andsearch = "";
 }
@@ -101,7 +102,7 @@ if ($alltotal > 0) {
                     </tr>";
 
         //////------Paging Variable ---
-        $page_total = $page_total + 1;
+        //$page_total = $page_total + 1;
         /////=======Paging Variable ---
 
 
@@ -111,8 +112,5 @@ if ($alltotal > 0) {
 }
 
 //echo trim($row) . "<tr style='display: none ;'><td colspan='8'>" . paging_values_hidden($where_, $offset_, $rpp_, $orderby, $dir, $search_, 'loan_list', $page_total, $alltotal) . "</td></tr>";
-echo   trim($row)."<tr style='display: none;'><td><input type=\"hiddenn\" id=\"_alltotal_\" value='$alltotal'><input type=\"hiddenn\" id=\"_pagetotal_\" value='$page_total'></td></tr>";
+echo   trim($row)."<tr style='display: none;'><td><input type='hidden' id='_alltotal_' value='$alltotal'><input type='hidden' id='_pageno_' value='$page_no'></td></tr>";
 ?>
-
-
-

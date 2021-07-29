@@ -4,15 +4,21 @@ include_once ("../../php_functions/functions.php");
 include_once ("../../configs/conn.inc");
 
 $userd = session_details();
+$added_by = $userd['name'];
 $title = $_POST['title'];
 $description = $_POST['description'];
 $campaign_date = $_POST['date'];
+$frequency = $_POST['frequency'];
+$repetitive = $_POST['repetitive'];
 $target_customers = $_POST['target_customers'];
 $status = $_POST['status'];
 
 ////////////////validation
-if((input_length($title, 3)) == 0){
-    echo errormes("Title is too short");
+if(input_available($title) == 0){
+    echo errormes(x: "Title is required");
+    die();
+}elseif((input_length($title, 3)) == 0){
+    echo errormes(x: "Title is too short");
     die();
 }
 else{
@@ -23,10 +29,26 @@ else{
     }
 }
 
-if((input_length($campaign_date, 10)) == 0){
-    echo errormes("Date is required");
+if(input_available($campaign_date) == 0){
+    echo errormes(x: "Date is required");
+    die();
+}elseif((input_length($campaign_date, 10)) == 0){
+    echo errormes("Date is Invalid");
     die();
 }
+
+if($frequency > 0){}
+else{
+    echo errormes("Please select frequency");
+    die();
+}
+
+if($repetitive > 0){}
+else{
+    echo errormes("Please select if campaign should be repetitive");
+    die();
+}
+
 if($target_customers > 0){}
 else{
     echo errormes("Please select target customers");
@@ -34,9 +56,10 @@ else{
 }
 
 
+
 ///////////------------------Save
-$fds = array('name','description','running_date','target_customers','added_date','added_by','status');
-$vals = array("$title","$description","$campaign_date","$target_customers","$fulldate",$userd['uid'], $status);
+$fds = array('name','description','running_date', 'frequency', 'repetitive','target_customers','added_date','added_by','status');
+$vals = array("$title","$description","$campaign_date", $frequency, $repetitive, $target_customers,"$fulldate","$added_by", $status);
 
 $create = addtodb('o_campaigns', $fds, $vals);
 if($create == 1){
@@ -55,7 +78,7 @@ else{
 <script>
     if('<?php echo $proceed ?>'){
         setTimeout(function () {
-            gotourl('broadcasts?campaign=<?php echo encurl($cid); ?>');
+            gotourl('broadcasts?campaign=<?php echo encurl($cid) ; ?>');
         }, 1500);
 
     }

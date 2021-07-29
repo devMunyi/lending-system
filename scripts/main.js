@@ -73,7 +73,7 @@ function notifications_count_reset() {
 
 function message_list() {
 
-    $('#message_drop').html("<li class=\"header\">You have 4 messages</li>\n" +
+    $('#message_drop').html("<li class='header'>You have 4 messages</li>\n" +
         "                        <li>\n" +
         "                            <!-- inner menu: contains the actual data -->\n" +
         "                            <ul class=\"menu\">\n" +
@@ -160,18 +160,17 @@ function notif_list(target, offset, rpp) {
     if (!search) {
         search = "";
     }
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + 
+    "&dir=" + dir + "&search_=" + search;
     dbaction("/jresources/notifications_list", params, function (feed) {
         console.log(params);
         notifications_count_reset();
 
-        $(target).html(feed + "<li class=\"footer\"><a href=\"profile?notifications\">View all</a></li>");
+        $(target).html(feed + "<li class='footer'><a href='profile?notifications'>View all</a></li>");
         setTimeout(function () {
             pager_refactor();
         }, 200);
-
     });
-
 }
 
 /////////--------------End of notifications
@@ -214,6 +213,12 @@ function staff_list() {
     if (!rpp) {
         rpp = 10;
     }
+
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 2;
+    }
+
     let orderby = $('#_orderby_').val();
     if (!orderby) {
         orderby = 'uid';
@@ -228,7 +233,8 @@ function staff_list() {
     }
 
 
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+     "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
     dbaction("/jresources/staff_list", params, function (feed) {
         console.log(params);
         $('#staff_list').html(feed);
@@ -292,10 +298,11 @@ function customer_save_additional_contact(cid, contact_id) {
     let customer_id = cid;
     let contact_type = $('#contact_type').val();
     let value = $('#contact_value').val();
-    let params = "customer_id=" + customer_id + "&contact_type=" + contact_type + "&value=" + value + "&contact_id=" + contact_id;
+    let params = "customer_id=" + customer_id + "&contact_type=" + contact_type + "&value=" + value
+     + "&contact_id=" + contact_id;
     dbaction("/action/" + url, params, function (feed) {
         console.log(JSON.stringify(feed));
-        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+        feedback("DEFAULT", "TOAST", ".eedback_", feed, "4");
     })
 }
 
@@ -347,6 +354,7 @@ function customer_add_collateral(cid) {
     })
 }
 
+
 function customer_list() {
     let where = $('#_where_').val();
     if (!where) {
@@ -359,6 +367,10 @@ function customer_list() {
     let rpp = $('#_rpp_').val();
     if (!rpp) {
         rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
     }
     let orderby = $('#_orderby_').val();
     if (!orderby) {
@@ -374,7 +386,8 @@ function customer_list() {
     }
 
 
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
     dbaction("/jresources/customer_list", params, function (feed) {
         console.log(params);
         $('#customer_list').html(feed);
@@ -384,6 +397,7 @@ function customer_list() {
 
     })
 }
+
 
 function contact_list(customer, action) {
 
@@ -554,12 +568,14 @@ function create_loan() {
     let product_id = $('#product').val();
     let loan_amount = $('#amount').val();
     let application_mode = 'MANUAL';
-    let params = "customer_id=" + customer_id + "&product_id=" + product_id + "&loan_amount=" + loan_amount + "&application_mode=" + application_mode;
+    let params = "customer_id=" + customer_id + "&product_id=" + product_id + "&loan_amount=" + loan_amount +
+     "&application_mode=" + application_mode;
     dbaction("/action/loan/loan_create", params, function (feed) {
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
     })
 
 }
+
 
 function loan_list() {
     let where = $('#_where_').val();
@@ -573,6 +589,10 @@ function loan_list() {
     let rpp = $('#_rpp_').val();
     if (!rpp) {
         rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if(!page_no){
+        page_no = 1;
     }
     let orderby = $('#_orderby_').val();
     if (!orderby) {
@@ -588,7 +608,9 @@ function loan_list() {
     }
 
 
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
     dbaction("/jresources/loans/loan_list", params, function (feed) {
         console.log(params);
         $('#loan_list').html(feed);
@@ -706,7 +728,8 @@ function payment_list() {
     }
 
 
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" 
+    + dir + "&search_=" + search;
     dbaction("/jresources/repayments/payment_list", params, function (feed) {
         console.log(params);
         $('#payment_list').html(feed);
@@ -1000,12 +1023,14 @@ function save_interaction() {
     let flag = $('input[name="flag"]:checked').val();
     let next_interaction = $('#next_int').val();
     let next_steps = $('#next_stage').val();
-    let params = "&customer_id=" + customer_id + "&transcript=" + transcript + "&conversation_method=" + conversation_method + "&next_interaction=" + next_interaction + "&next_steps=" + next_steps + "&flag=" + flag;
+    let params = "&customer_id=" + customer_id + "&transcript=" + transcript + "&conversation_method=" 
+    + conversation_method + "&next_interaction=" + next_interaction + "&next_steps=" + next_steps + "&flag=" + flag;
     dbaction("/action/interaction_save", params, function (feed) {
         console.log(JSON.stringify(feed));
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
     })
 }
+
 
 function view_interaction(iid) {
     let params = "iid=" + iid;
@@ -1016,7 +1041,8 @@ function view_interaction(iid) {
 /////////----------------Settings
 function permissions(group_id, user_id, tbl, rec, act, value) {
 
-    let params = "group_id=" + group_id + "&user_id=" + user_id + "&tbl=" + tbl + "&rec=" + rec + "&act=" + act + "&val=" + value;
+    let params = "group_id=" + group_id + "&user_id=" + user_id + "&tbl=" + tbl + "&rec=" + rec +
+     "&act=" + act + "&val=" + value;
 
     dbaction("/jresources/permissions/update", params, function (feed) {
         $('#perm').html(feed);
@@ -1051,13 +1077,16 @@ function save_report() {
 //////////=====================End of reports
 
 
-///////////-------------Campaign
+
+/////////----------------Campaigns
 function save_campaign(){
     let cid = parseInt($('#cid').val());
     let title = $('#title').val();
     let description = $('#description').val();
     let date = $('#date').val();
     let target_customers = $('#target_customers').val();
+    let frequency = $('#frequency').val();
+    let repetitive = $('#repetitive').val();
     let status = $('#status').val();
 
     let endpoint = "create-new";
@@ -1065,7 +1094,9 @@ function save_campaign(){
         endpoint = "update";
     }
 
-    let params = "cid=" + cid + "&title=" + title + "&description=" + description + "&date=" + date + "&target_customers=" + target_customers + "&status="+status;
+    let params = "cid=" + cid + "&title=" + title + "&description=" + description + "&date=" + date
+    + "&frequency=" + frequency + "&repetitive=" + repetitive + "&target_customers=" + target_customers 
+    + "&status="+status;
 
     dbaction("/action/campaign/" + endpoint, params, function (feed) {
         console.log(JSON.stringify(feed));
@@ -1073,4 +1104,186 @@ function save_campaign(){
     })
 }
 
-//////////==============End of campaign
+
+
+
+
+function campaign_list() {
+    let where = $('_where_').val();
+    if(!where){
+        where = "uid > 0";
+    }
+    let offset = $('#_offset_').val();
+    if (!offset) {
+        offset = 0;
+    }
+    let rpp = $('#_rpp_').val();
+    if (!rpp) {
+        rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+    let orderby = $('#_orderby_').val();
+    if (!orderby) {
+        orderby = 'uid';
+    }
+    let dir = $('#_dir_').val();
+    if (!dir) {
+        dir = 'desc'
+    }
+    let search = $('#search_').val();
+    if (!search) {
+        search = "";
+    }
+
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "default_sort";
+    }
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
+    dbaction("/jresources/campaign_list", params, function (feed) {
+        console.log(params);
+        $('#campaign_list').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 0);
+
+    })
+}
+
+
+
+function all_campaigns(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+
+function past_campaigns(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+function running_campaigns(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+function future_campaigns(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('asc');
+    pager_home();
+}
+
+
+
+function repetitive_campaigns(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+
+
+function delete_campaign(campaign_id, title) {
+    var result = confirm('Are you sure you want to ' + title + '?');
+    if (result) {
+        var params = "campaign_id=" + campaign_id;
+        dbaction('/action/campaign/delete', params, function (feed) {
+            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+        });
+    }
+}
+
+function disable_campaign(campaign_id, title) {
+    var result = confirm('Are you sure you want to ' + title + '?');
+    if (result) {
+        var params = "campaign_id=" + campaign_id;
+        dbaction('/action/campaign/disable', params, function (feed) {
+            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+        });
+    }
+}
+
+function enable_campaign(campaign_id, title) {
+    var result = confirm('Are you sure you want to ' + title + '?');
+    if (result) {
+        var params = "campaign_id=" + campaign_id;
+        dbaction('/action/campaign/enable', params, function (feed) {
+            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+        });
+    }
+}
+
+
+function audience_list() {
+    let where = $("#_where_").val();
+    if (!where) {
+        where = "uid > 0";
+    }
+    let offset = $('#_offset_').val();
+    if (!offset) {
+        offset = 0;
+    }
+    let rpp = $('#_rpp_').val();
+    if (!rpp) {
+        rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+    let orderby = $('#_orderby_').val();
+    if (!orderby) {
+        orderby = 'uid';
+    }
+    let dir = $('#_dir_').val();
+    if (!dir) {
+        dir = 'desc'
+    }
+    let search = $('#search_').val();
+    if (!search) {
+        search = "";
+    }
+
+    let camp_id = $('#_camp_id_').val();
+    if(!camp_id){
+        camp_id = "";
+    }
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&camp_id=" + camp_id;
+    dbaction("/jresources/campaign_sec/audience_list", params, function (feed) {
+        console.log(params);
+        $('#audience_list').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 500);
+
+    })
+}
+
+
+
+function save_message(){
+    let message = $('#message').val();
+    let campaign_id = $('#_camp_id_').val();
+
+    let endpoint = "save";
+
+    let params = "message=" + message + "&campaign_id=" + campaign_id;
+
+    dbaction("/action/campaign/message/" + endpoint, params, function (feed) {
+        console.log(JSON.stringify(feed));
+        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+    })
+}
+
+////////================End of Campaigns

@@ -94,7 +94,7 @@
                             }
                             ?>
 
-                            <a class="btn-outline-black pull-right"  href="customers?customer-add-edit=<?php echo $cid; ?>&referees">Skip <i class="fa fa-angle-double-right"></i></a><a href="customers?customer-add-edit=<?php echo $cid; ?>&contact" class="btn-outline-black pull-right">New <i class="fa fa-plus"></i></a>
+                            <a class="btn-outline-black pull-right"  href="customers?customer-add-edit=<?php echo $cid; ?>">Skip <i class="fa fa-angle-double-right"></i></a><a href="customers?customer-add-edit=<?php echo $cid; ?>&contact" class="btn-outline-black pull-right">New <i class="fa fa-plus"></i></a>
 
                             </h3>
                             <form class="form-horizontal" onsubmit="return false;" id="contact_" method="post">
@@ -116,7 +116,7 @@
                                                     else{
                                                         $selected_t = "";
                                                     }
-                                                    echo "<option $selected_t value=\"$uid\">$name</option>";
+                                                    echo "<option $selected_t value='$uid'>$name</option>";
                                                 }
 
 
@@ -138,9 +138,9 @@
                                     <div class="col-sm-9">
                                         <div class="box-footer">
                                             <br/>
-                                            <button type="submit" class="btn btn-lg btn-default">Cancel</button>
+                                            <button type="submit" class="btn btn-lg btn-flat btn-default">Cancel</button>
                                             <button type="submit"
-                                                    class="btn btn-success bg-green-gradient btn-lg pull-right"
+                                                    class="btn btn-success btn-flat bg-green-gradient btn-lg pull-right"
                                                     onclick="customer_save_additional_contact('<?php echo $cid; ?>','<?php echo $contact_id; ?>');">
                                                 Save
                                             </button>
@@ -153,11 +153,10 @@
                                 <!-- /.box-footer -->
                             </form>
                             <?php
-                        }
-                        else if (isset($_GET['referees'])){
+                        } elseif (isset($_GET['referees'])){
 
                             $ref_id = $_GET['referees'];
-                            $l = fetchonerow("o_customer_referees","uid='".decurl($ref_id)."'","*");
+                            $l = fetchonerow("o_customer_referees","uid=".decurl($ref_id),"*");
                             $relationship = $l['relationship'];
 
                             if($ref_id > 0) {
@@ -370,8 +369,7 @@
                                 <!-- /.box-footer -->
                             </form>
                             <?php
-                        }
-                        else if (isset($_GET['other'])) {
+                        } else if (isset($_GET['other'])) {
                             ?>
 
                             <?php
@@ -426,8 +424,7 @@
                                 <!-- /.box-footer -->
                             </form>
                             <?php
-                        }
-                        else if (isset($_GET['uploads'])) {
+                        } else if (isset($_GET['uploads'])) {
                             ?>
                             <h3>Upload File <a class="btn-outline-black pull-right"  href="customers?customer-add-edit=<?php echo $cid; ?>&other">Skip <i class="fa fa-angle-double-right"></i></a><a href="customers?customer-add-edit=<?php echo $cid; ?>&uploads" class="btn-outline-black pull-right">New <i class="fa fa-plus"></i></a></h3>
                             <form class="form-horizontal" id="doc-upload" method="POST"
@@ -528,8 +525,7 @@
                                 <!-- /.box-footer -->
                             </form>
                             <?php
-                        }
-                        else {
+                        } else {
 
                             ?>
                             <h3><?php echo $act; ?> Bio Information</h3>

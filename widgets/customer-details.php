@@ -1,8 +1,8 @@
 <section class="content-header">
     <?php
     $customer_ = $_GET['customer'];
-    $customer = decurl($customer_);
-    $cust = fetchonerow('o_customers',"uid='".decurl($customer_)."'");
+    $customer_id= decurl($customer_);
+    $cust = fetchonerow('o_customers',"uid='$customer_id'");
     $town  = fetchrow('o_towns',"uid='".$cust['town']."'","name");
     $added_by  = fetchrow('o_customers',"uid='". $cust['added_by']."'","full_name");
     $branch  = fetchrow('o_branches',"uid='". $cust['branch']."'","name");
@@ -15,7 +15,7 @@
         $profile = "";
     }
     else{
-        $profile = "<img src=\"uploads_/$passport_photo\" class='img-bordered' width=\"100%\">";
+        $profile = "<img src='uploads_/$passport_photo' class='img-bordered' width='100%'>";
     }
 
     if(isset($_GET['type'])) {
@@ -278,10 +278,6 @@
                                     echo " <tr><td>$event_details</td><td>$event_date</td> </tr>";
                                 }
                                 ?>
-
-
-
-
 
                                     </tbody>
 
