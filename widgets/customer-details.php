@@ -4,7 +4,7 @@
     $customer_id= decurl($customer_);
     $cust = fetchonerow('o_customers',"uid='$customer_id'");
     $town  = fetchrow('o_towns',"uid='".$cust['town']."'","name");
-    $added_by  = fetchrow('o_customers',"uid='". $cust['added_by']."'","full_name");
+    $added_by  = fetchrow('o_users',"uid='". $cust['added_by']."'","name");
     $branch  = fetchrow('o_branches',"uid='". $cust['branch']."'","name");
     $product  = fetchrow('o_loan_products',"uid='". $cust['primary_product']."'","name");
     $state  = fetchonerow('o_customer_statuses',"code='". $cust['status']."'","name, color");
