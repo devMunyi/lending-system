@@ -1,5 +1,5 @@
 <?php
-$server = "http://localhost/OnePay";
+$server = "http://localhost:8080/lender-main";
 $auth = "Basic dGVzdDp0ZXN0";
 
 ?>
