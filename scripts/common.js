@@ -176,6 +176,7 @@ function orderby(fld, dir){
 
 function pager_home() {
     $('#_offset_').val(0);
+    $('#_page_no_').val(1);
     //$('#_search_').val("");
     let func = $('#_func_').val();
     var fn = eval(func);
