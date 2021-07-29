@@ -407,7 +407,7 @@ CREATE TABLE `o_customers` (
   `national_id` varchar(10) NOT NULL,
   `gender` varchar(5) NOT NULL COMMENT 'M, F',
   `dob` date NOT NULL,
-  `added_by` int(10) NOT NULL,
+  `added_by` varchar(50) NOT NULL,
   `added_date` datetime NOT NULL DEFAULT current_timestamp(),
   `branch` int(5) NOT NULL COMMENT 'From o_branches',
   `primary_product` int(5) NOT NULL COMMENT 'From o_products',

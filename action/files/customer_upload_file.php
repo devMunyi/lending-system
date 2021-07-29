@@ -13,8 +13,6 @@ $file_size = $_FILES['file_']['size'];
 $file_tmp = $_FILES['file_']['tmp_name'];
 $make_thumbnail = $_POST['make_thumbnail'];
 
-
-
 $reference_number = $_POST['reference_number'];
 $upload_location = '../../uploads_/';
 
