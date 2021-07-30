@@ -14,12 +14,13 @@ if($contact_id > 0){
     $update = updatedb('o_customer_contacts', "status=0", "uid=".decurl($contact_id));
     if($update == 1)
     {
-        echo success('Success deleting contact');
+        echo sucmes('Success deleting contact');
         $proceed = 1;
     }
     else
     {
-        echo error('Unable to delete contact');
+        die(errormes('Unable to delete contact'));
+        exit();
     }
 }
 else{
