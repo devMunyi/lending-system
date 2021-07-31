@@ -34,9 +34,10 @@ else{
 <script>
     if('<?php echo $proceed; ?>'){
         setTimeout(function () {
-            $('#fil<?php echo $file_id; ?>').fadeOut('fast');
-            modal_hide();
+           reload();
         },400);
+         $('#fil<?php echo $file_id; ?>').fadeOut('fast');
+            modal_hide();
     }
 </script>
 

@@ -1354,7 +1354,7 @@ INSERT INTO `o_product_stages` (`uid`, `stage_id`, `stage_order`, `is_final_stag
 -- Table structure for table `o_referee_relationships`
 --
 
-CREATE TABLE `o_referee_relationships` (
+CREATE TABLE `o_customer_referee_relationships` (
   `uid` int(5) NOT NULL,
   `name` varchar(50) NOT NULL,
   `status` int(1) NOT NULL
@@ -1365,8 +1365,9 @@ CREATE TABLE `o_referee_relationships` (
 --
 
 INSERT INTO `o_referee_relationships` (`uid`, `name`, `status`) VALUES
-(1, 'Spouse (Husband, Wif', 1),
-(2, 'Sibling (Brother, Sister)', 1);
+(1, 'Spouse (Husband, Wife', 1),
+(2, 'Sibling (Brother, Sister)', 1),
+(3, 'Parent (Father, Mother)', 1);
 
 -- --------------------------------------------------------
 

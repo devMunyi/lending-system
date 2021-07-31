@@ -109,11 +109,11 @@
                                 <table class="table-bordered font-14 table table-hover">
                                     <tr><td class="text-bold">Primary Phone</td><td><?php echo $cust['primary_mobile']; ?></td></tr>
                                     <?php
-                                    $o_customer_contacts_ = fetchtable('o_customer_contacts',"customer_id='$customer' AND status = 1", "uid", "desc", "0,100", "uid ,contact_type ,value ,status ");
+                                    $o_customer_contacts_ = fetchtable('o_customer_contacts',"customer_id=$customer_id AND status = 1", "uid", "desc", "0,100", "uid ,contact_type ,value ,status ");
                                     while($y = mysqli_fetch_array($o_customer_contacts_))
                                     {
                                         $uid = $y['uid'];
-                                        $contact_type = $y['contact_type'];   $contact_type_name = fetchrow('o_contact_types',"uid='$contact_type'","name");
+                                        $contact_type = $y['contact_type'];   $contact_type_name = fetchrow('o_contact_types',"uid=$contact_type","name");
                                         $value = $y['value'];
                                         $status = $y['status'];
                                         echo "<tr><td class=\"text-bold\">$contact_type_name</td><td>$value</td></tr>";
@@ -171,7 +171,7 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $o_customer_referees_ = fetchtable('o_customer_referees',"status=1 AND customer_id='$customer'", "uid", "desc", "0,10", "uid ,referee_name ,id_no ,mobile_no ,physical_address ,email_address ,relationship ,status ");
+                                    $o_customer_referees_ = fetchtable('o_customer_referees',"status=1 AND customer_id=$customer_id", "uid", "desc", "0,10", "uid ,referee_name ,id_no ,mobile_no ,physical_address ,email_address ,relationship ,status ");
                                     while($y = mysqli_fetch_array($o_customer_referees_))
                                     {
                                         $uid = $y['uid'];
@@ -180,14 +180,11 @@
                                         $mobile_no = $y['mobile_no'];
                                         $physical_address = $y['physical_address'];
                                         $email_address = $y['email_address'];
-                                        $relationship = $y['relationship'];   $relationship_name  = fetchrow("o_referee_relationships","uid='$relationship'","name");
+                                        $relationship = $y['relationship'];   $relationship_name  = fetchrow("o_customer_referee_relationships","uid='$relationship'","name");
                                         $status = $y['status'];
                                         echo "  <tr><td>$referee_name</td><td>$id_no</td><td>$mobile_no</td><td>$email_address</td><td>$physical_address</td><td>$relationship_name</td> </tr>";
                                     }
                                     ?>
-
-
-
 
                                     </tbody>
 
@@ -214,7 +211,7 @@
                                     <thead><tr><th>Category</th><th>Title</th><th>Description</th><th>Current Worth</th><th>Ref Number</th><th>File Number</th><th>Added Date</th><th>Status</th></tr></thead>
                                     <tbody>
                                     <?php
-                                    $o_collateral_ = fetchtable('o_collateral',"status=1 AND customer_id='$customer'", "uid", "desc", "0,10", "uid ,category ,title ,description ,money_value ,document_scan_address ,doc_reference_no ,filling_reference_no ,added_date ,added_by ,status ");
+                                    $o_collateral_ = fetchtable("o_collateral","status=1 AND customer_id=$customer_id", "uid", "desc", "0,10", "uid ,category ,title ,description ,money_value ,document_scan_address ,doc_reference_no ,filling_reference_no ,added_date ,added_by ,status ");
                                     while($i = mysqli_fetch_array($o_collateral_))
                                     {
                                         $uid = $i['uid'];
@@ -237,7 +234,6 @@
 
                                         echo "<tr><td>$category_name</td><td>$title</td><td>$description</td><td>$money_value</td><td>$doc_reference_no</td><td>$filling_reference_no</td><td>$added_date</td><td>$name</td></tr>";
                                     }
-
 
                                     ?>
 
@@ -296,7 +292,7 @@
                                 <div class="row">
 
                                 <?php
-                                $o_documents_ = fetchtable('o_documents',"tbl='o_customers' AND rec='$customer' AND status=1", "uid", "desc", "0,10", "uid ,code_name ,title ,description ,category ,stored_address ");
+                                $o_documents_ = fetchtable('o_documents',"tbl='o_customers' AND rec=$customer_id AND status=1", "uid", "desc", "0,10", "uid ,code_name ,title ,description ,category ,stored_address ");
                                 while($q = mysqli_fetch_array($o_documents_))
                                 {
                                     $uid = $q['uid'];
@@ -306,13 +302,11 @@
                                     $category = $q['category'];
                                     $stored_address = $q['stored_address'];
 
-                                    echo "<a target='_blank' class='pointer' onclick=\"view_file('".encurl($uid)."','VIEW');\"><div class=\"box box-solid col-sm-5\" style=\"width: 30%; margin: 1em;\">
+                                    echo "<a title = \"click to view details\" target='_blank' class='pointer' onclick=\"view_file('".encurl($uid)."','VIEW');\"><div class=\"box box-solid col-sm-5\" style=\"width: 30%; margin: 1em;\">
                                      <img class='img-bordered' src=\"uploads_/$stored_address\" width='100%'>
                                     <div class=\"box-body\">
                                    
-                                        <h5 class=\"box-title\">$title</h5>
-                                       
-                                        
+                                        <h5 class=\"box-title\">$title</h5> 
                                     </div>
                                 </div></a>";
                                 }

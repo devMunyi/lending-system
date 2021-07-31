@@ -118,8 +118,6 @@
                                                     }
                                                     echo "<option $selected_t value='$uid'>$name</option>";
                                                 }
-
-
                                                 ?>
                                             </select>
                                         </div>
@@ -156,13 +154,11 @@
                         } elseif (isset($_GET['referees'])){
 
                             $ref_id = $_GET['referees'];
-                            $l = fetchonerow("o_customer_referees","uid=".decurl($ref_id),"*");
-                            $relationship = $l['relationship'];
-
                             if($ref_id > 0) {
-                            echo " <h3>Edit Referee";
-                        }
-                        else {
+                                $l = fetchonerow("o_customer_referees","uid=".decurl($ref_id),"*");
+                                $relationship = $l['relationship'];
+                                echo " <h3>Edit Referee";
+                            }   else {
                            echo " <h3>New Referee";
                         }
                             ?>
@@ -208,7 +204,7 @@
                                         <label for="main_address" class="col-sm-3 control-label">Physical
                                             Address</label>
                                         <div class="col-sm-9">
-                                        <textarea class="form-control" id="main_address" placeholder="123 Street"><?php echo  $l['physical_address']; ?></textarea>
+                                        <textarea class="form-control" id="main_address" placeholder=""><?php echo  $l['physical_address']; ?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -219,7 +215,7 @@
                                                 <option value="0">--Select One</option>
                                                 <?php
 
-                                                $recs = fetchtable('o_referee_relationships', "status=1", "name", "asc", "100", "uid ,name");
+                                                $recs = fetchtable('o_customer_referee_relationships', "status=1", "name", "asc", "100", "uid ,name");
                                                 while ($r = mysqli_fetch_array($recs)) {
                                                     $uid = $r['uid'];
                                                     $name = $r['name'];
@@ -258,7 +254,7 @@
                         else if (isset($_GET['collateral'])) {
                             ?>
                         <?php
-                            $collateral_id = $_GET['collateral'];
+                        $collateral_id = $_GET['collateral'];
                         if($collateral_id > 0){
                         echo "<h3>Edit Collateral";
                             $c = fetchonerow("o_collateral","uid=".decurl($collateral_id),"*");
@@ -505,7 +501,7 @@
                                             <div class="prgress">
                                                 <div class="messagedoc-upload" id="message"></div>
                                                 <div class="progressdoc-upload" id="progress">
-                                                    <div class="bardoc-upload" id="bar"></div>
+                                                    <div class="bardo-upload" id="bar"></div>
                                                     <br/>
                                                     <div class="percentdoc-upload" id="percent"></div>
                                                 </div>

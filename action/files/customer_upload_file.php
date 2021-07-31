@@ -20,7 +20,7 @@ $upload_location = '../../uploads_/';
 
 if((input_available($title)) == 0)
 {
-    die(errormes("Title is too short"));
+    die(errormes("Title is required short"));
     exit();
 }
 if($category > 0){
@@ -84,6 +84,9 @@ else
 ?>
 <script>
     if('<?php echo $proceed; ?>'){
+        setTimeout(function (){
+            reload();
+        }, 400);
         upload_list('<?php echo encurl($rec); ?>','EDIT');
     }
 </script>

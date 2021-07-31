@@ -24,7 +24,7 @@ if($ref_id > 0){
     }
 }
 else{
-    die(errormes("Referee invalid"));
+    die(errormes("Document Id invalid"));
     exit();
 }
 
@@ -34,8 +34,9 @@ else{
     let proceed_ = '<?php echo $proceed; ?>';
     if(proceed_ === "1"){
         setTimeout(function () {
-        $('#ref<?php echo $ref_id; ?>').fadeOut('fast');
+        reload();
         },400);
+        other_list('o_customers','<?php echo $_POST['record']; ?>','EDIT');
     }
 </script>
 

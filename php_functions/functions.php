@@ -577,6 +577,7 @@ function makeThumbnails($updir, $img,$w,$h,$fname)
         $imgt = "ImageGIF";
         $imgcreatefrom = "ImageCreateFromGIF";
     }
+    
     if ($arr_image_details[2] == 2) {
         $imgt = "ImageJPEG";
         $imgcreatefrom = "ImageCreateFromJPEG";
@@ -585,8 +586,9 @@ function makeThumbnails($updir, $img,$w,$h,$fname)
         $imgt = "ImagePNG";
         $imgcreatefrom = "ImageCreateFromPNG";
     }
+
     if ($imgt) {
-        $old_image = $imgcreatefrom("$updir"."$img");
+        $old_image = imagecreatefromjpeg("$updir"."$img");
         $new_image = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
 
         imagealphablending($new_image,false);
@@ -595,7 +597,8 @@ function makeThumbnails($updir, $img,$w,$h,$fname)
         $transparency=imagecolorallocatealpha($new_image,255,255,255,127);
         imagefilledrectangle($new_image,0,0,$w,$h,$transparency);
 
-        imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width, $original_height);
+        imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width,
+         $original_height);
         $imgt($new_image, "$updir"."$fname" . ".$ext");
     }
 }
@@ -605,6 +608,10 @@ function fileext_fetch($filename)
     $ext=pathinfo($filename, PATHINFO_EXTENSION);
     return $ext;
 }
+
+
+
+
 /////TOtal loans for a given month
 function month_loans($m)
 {

@@ -70,8 +70,9 @@ else
 <script>
     if("<?php echo $proceed; ?>"){
         setTimeout(function () {
-            other_list('o_customers','<?php echo $_POST['record']; ?>','EDIT');
-          //  clear_form('other_frm');
+            reload();
         },300);
+        other_list('o_customers','<?php echo $_POST['record']; ?>','EDIT');
+          //  clear_form('other_frm');
     }
 </script>

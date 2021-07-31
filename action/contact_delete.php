@@ -34,9 +34,10 @@ else{
     let proceed_ = '<?php echo $proceed; ?>';
     if(proceed_ === "1"){
         setTimeout(function () {
-        $('#cont<?php echo $contact_id; ?>').fadeOut('fast');
-
+        reload();
         },400);
+
+        //$('#cont<?php echo $contact_id; ?>').fadeOut('fast');
     }
 </script>
 

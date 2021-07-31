@@ -296,7 +296,7 @@ function customer_save_additional_contact(cid, contact_id) {
     }
 
     let customer_id = cid;
-    let contact_type = $('#contact_type').val();
+    let contact_type = parseInt($('#contact_type').val());
     let value = $('#contact_value').val();
     let params = "customer_id=" + customer_id + "&contact_type=" + contact_type + "&value=" + value
      + "&contact_id=" + contact_id;
@@ -530,10 +530,10 @@ function save_other(tbl, record) {
     })
 }
 
-function delete_other(refid) {
+function delete_other(other_id) {
     var result = confirm('Are you sure you want to delete this entry?');
     if (result) {
-        var params = "ref_id=" + refid;
+        var params = "other_id=" + other_id;
         dbaction('/action/customer_sec/delete', params, function (feed) {
             feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
         });

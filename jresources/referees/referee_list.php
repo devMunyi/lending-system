@@ -15,7 +15,7 @@ if($customer > 0){
             $uid = $t['uid'];
             $referee_name = $t['referee_name'];
             $referee_relationship = $t['relationship'];
-                   $relationship_name = fetchrow('o_referee_relationships',"uid='$referee_relationship'","name");
+                   $relationship_name = fetchrow('o_customer_referee_relationships',"uid='$referee_relationship'","name");
 
             if($action == 'EDIT') {
                 $act = "<a href=\"customers?customer-add-edit=$customer&referees=".encurl($uid)."\" title='Edit' class='pointer text-blue'><i class='fa fa-edit'></i></a> " . "<a onclick=\"delete_referee('".encurl($uid)."')\" title='Delete' class='pointer text-red'><i class='fa fa-trash'></i></a>"." <a onclick=\"view_referee('".encurl($uid)."')\" title='View' class='pointer text-green'><i class='fa fa-eye'></i></a>";

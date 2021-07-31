@@ -1,5 +1,5 @@
 <?php
-$server = "http://localhost:8080/lender-main";
+$server = "http://localhost/lender-main";
 $auth = "Basic dGVzdDp0ZXN0";
 
 ?>
