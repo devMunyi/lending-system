@@ -10,7 +10,7 @@
     $state  = fetchonerow('o_customer_statuses',"code='". $cust['status']."'","name, color");
     $status = "<span class='label ".$state['color']."'>".$state['name']."</span>";
 
-    $passport_photo = fetchrow('o_documents',"category='1' AND tbl='o_customers' AND rec='$customer' AND status=1","stored_address");
+    $passport_photo = fetchrow('o_documents',"category='1' AND tbl='o_customers' AND rec=$customer_id AND status=1","stored_address");
     if(!$passport_photo){
         $profile = "";
     }
@@ -52,7 +52,7 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
                         <div class="row">
-                            <div class="col-md-2">
+                            <div style="margin-top: 25px;" class="col-md-2">
                                 <?php echo $profile; ?>
                             </div>
                             <div class="col-md-7">
