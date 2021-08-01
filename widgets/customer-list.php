@@ -83,5 +83,5 @@
 </section>
 
 <?php
-echo "<div style='display: none ;'>".paging_values_hidden('uid > -1',0,10,'uid','desc','', 'customer_list', 1)."</div>"
+echo "<div style='display: none ;'>".paging_values_hidden('uid > 0',0,10,'uid','desc','', 'customer_list', 1)."</div>"
 ?>
