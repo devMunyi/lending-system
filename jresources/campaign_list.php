@@ -19,9 +19,58 @@ $offset_2 = $offset_ + $rpp_;
 $limit2 = $offset_+$rpp_;
 $rows = "";
 
+$run_array = array();
+$run_ = fetchtable2("o_campaign_running_statuses", "name LIKE \"%$search_%\"", "uid", "asc", "uid");
+$run_count = mysqli_num_rows($run_);
+if($run_count > 0){
+    while($run_list = mysqli_fetch_array($run_)){
+        $run_id = $run_list['uid'];
+        array_push($run_array, $run_id);
+    }
+    $camp_run_list = implode(", ", $run_array);
+    $orcamprunstate = " OR running_status IN ($camp_run_list)";
+}
+
+
+$frequency_array = array();
+$frequency_ = fetchtable2("o_campaign_frequencies", "name LIKE \"%$search_%\"", "uid", "asc", "uid");
+$frequency_count = mysqli_num_rows($frequency_);
+if($frequency_count > 0){
+    while($freq_list = mysqli_fetch_array($frequency_)){
+        $freq_id = $freq_list['uid'];
+        array_push($frequency_array, $freq_id);
+    }
+    $camp_freq_list = implode(", ", $frequency_array);
+    $orcampfreq = " OR frequency IN ($camp_freq_list)";
+}
+
+$repetitive_array = array();
+$repetitive = fetchtable2("o_campaigns_repetition_status", "name LIKE \"%$search_%\"", "uid", "asc", "uid");
+$repetitive_count = mysqli_num_rows($repetitive);
+if($repetitive_count > 0){
+    while($rep_list = mysqli_fetch_array($repetitive)){
+        $repetitive_id = $rep_list['uid'];
+        array_push($repetitive_array, $repetitive_id);
+    }
+    $camp_repetitive_list = implode(", ", $repetitive_array);
+    $orcamprepetitive = " OR repetitive IN ($camp_repetitive_list)";
+}
+
+$audience_array = array();
+$audience = fetchtable2("o_campaign_target_customers", "name LIKE \"%$search_%\"", "uid", "asc", "uid");
+$audience_count = mysqli_num_rows($audience);
+if($audience_count > 0){
+    while($aud_list = mysqli_fetch_array($audience)){
+        $audience_id = $aud_list['uid'];
+        array_push($audience_array, $audience_id);
+    }
+    $target_audience_list = implode(", ", $audience_array);
+    $ortargetaudience = "OR target_customers IN ($target_audience_list)";
+}
+
 
 if((input_available($search_)) == 1){
-    $andsearch = " AND (name LIKE \"%$search_%\" OR running_date LIKE \"%$search_%\" OR target_customers LIKE \"%$search_%\" )";
+    $andsearch = " AND (name LIKE \"%$search_%\" OR running_date LIKE \"%$search_%\" OR target_customers LIKE \"%$search_%\" $ortargetaudience $orcamprepetitive $orcampfreq $orcamprunstate)";
 }
 else{
     $andsearch = "";
@@ -79,8 +128,7 @@ if($alltotal > 0) {
         $running_date = $l["running_date"];
         $frequency = $l["frequency"]; $frequency_ = fetchrow("o_campaign_frequencies", "uid = $frequency", "name");
         $repetitive = $l["repetitive"]; $repetition_ = fetchrow("o_campaigns_repetition_status", "uid = $repetitive", "name");
-        $target_customers = $l["target_customers"]; 
-        $target_audience = fetchrow("o_campaign_target_customers", "uid ='$target_customers'", "name");
+        $target_customers = $l["target_customers"]; $target_audience = fetchrow("o_campaign_target_customers", "uid ='$target_customers'", "name");
         $status = $l['status']; $state = fetchonerow("o_campaign_statuses","code='$status'","color, name");
 
 
