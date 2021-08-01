@@ -714,6 +714,12 @@ function payment_list() {
     if (!rpp) {
         rpp = 10;
     }
+
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+
     let orderby = $('#_orderby_').val();
     if (!orderby) {
         orderby = 'uid';
@@ -727,9 +733,14 @@ function payment_list() {
         search = "";
     }
 
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "default_sort";
+    }
 
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" 
-    + dir + "&search_=" + search;
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no + 
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
     dbaction("/jresources/repayments/payment_list", params, function (feed) {
         console.log(params);
         $('#payment_list').html(feed);
@@ -760,6 +771,41 @@ function payment_save() {
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
     })
 }
+
+
+//payment sorts
+function all_payments(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+
+function oldest_payments(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('asc');
+    pager_home();
+}
+
+function mobile_payments(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+function bank_payments(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+
+function cash_payments(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
 
 /////////------------------------------End of repayments
 function formready(formid) {
@@ -795,8 +841,6 @@ function formhandler(formid) {
             if (suc >= 0) {
                 $(formid)[0].reset();
             }
-
-
         },
         error: function () {
             $("#message").html("<font color='red'> ERROR: unable to upload files</font>");

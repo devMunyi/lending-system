@@ -186,6 +186,20 @@ function fetchtable($table, $category,$orderby,$dir,$limit,$fds='*')      ////##
     return $result;
 
 }
+
+
+function fetchtable2($table, $category,$orderby,$dir,$fds='*')  
+////####################################Fetch whole table without a LIMIT
+{
+    global $con;
+    $query="SELECT $fds FROM ".$table." WHERE ".$category." ORDER BY ".$orderby.' '.$dir; 
+    //echo "<tr><td>".$query."</td></tr>";
+    $result=mysqli_query($con, $query);   //var_dump($query);
+
+    return $result;
+
+}
+
 function fetchtableGroup($table, $category,$orderby,$dir,$groupby,$limit)      ////####################################Fetch whole table
 {
     global $con;
@@ -1390,6 +1404,7 @@ function paging($url,$orderby,$dir,$offset,$rpp,$fds,$search,$box,$remaining,$wh
 
 
 function paging_values_hidden($where, $offset, $rpp, $orderby, $dir, $search, $func, $page_no = 1){
+    $vals.= "<input type='text' title='where' id='_where_' value='$where'>";
     $vals.= "<input type='text' title='offset' id='_offset_' value='$offset'>";
     $vals.= "<input type='text' title='rpp' id='_rpp_' value='$rpp'>";
     $vals.= "<input type='text' title='page_no' id='_page_no_' value='$page_no'>";

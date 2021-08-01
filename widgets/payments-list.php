@@ -22,11 +22,11 @@
                             <h3 class="box-title">
 
 
-                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-info-circle"></i> ALL Payments</a>
-                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Latest</a>
-                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Mobile</a>
-                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Bank</a>
-                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Cash</a>
+                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="all_payments('default_sort')"><i class="fa fa-info-circle"></i> ALL Payments</a>
+                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="oldest_payments('sort_1')"><i class="fa fa-chevron-circle-right"></i> Oldest</a>
+                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="mobile_payments('sort_2')"><i class="fa fa-chevron-circle-right"></i> Mobile</a>
+                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="bank_payments('sort_3')"><i class="fa fa-chevron-circle-right"></i> Bank</a>
+                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="cash_payments('sort_4')"><i class="fa fa-chevron-circle-right"></i> Cash</a>
 
                             </h3>
 
@@ -84,5 +84,5 @@
     </div>
 </section>
 <?php
-echo "<div style='display: none;'>".paging_values_hidden('status > -1',0,10,'uid','desc','','payment_list')."</div>";
+echo "<div style='display: none;'>".paging_values_hidden2("uid > 0",0,10,"uid","desc"," ","payment_list", "default_sort")."</div>";
 ?>
