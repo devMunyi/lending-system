@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2021 at 02:59 AM
+-- Generation Time: Aug 01, 2021 at 04:50 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -305,7 +305,10 @@ INSERT INTO `o_collateral` (`uid`, `customer_id`, `category`, `title`, `descript
 (3, 3, 2, 'TV', 'A 72 Inch Smart TV', 10000.00, '', '123456', '43455', '2021-05-20 14:22:27', 0, 10, 2),
 (4, 11, 2, '80x100 Plot', 'A land in Ruiru', 3000000.00, '', '54463678', '', '2021-06-11 13:21:00', 1, 0, 0),
 (5, 11, 1, 'Sedan Car KAG', 'The quick ', 500000.00, '', '646463643', '64636473', '2021-06-11 13:32:03', 1, 0, 0),
-(6, 11, 1, 'Car KAG 1', 'The Quickjjf', 10000.00, '190', '546364', '87575545', '2021-06-11 17:40:37', 1, 0, 1);
+(6, 11, 1, 'Car KAG 1', 'The Quickjjf', 10000.00, '190', '546364', '87575545', '2021-06-11 17:40:37', 1, 0, 1),
+(7, 12, 2, 'werty', '', 0.00, '', '', '', '2021-07-31 11:14:59', 51, 0, 1),
+(8, 12, 1, 'Toyota Land Cruiser', 'As good as new', 600000.00, 'rtyuiop765', 'yiop', 'dfghjk', '2021-07-31 15:08:25', 51, 0, 1),
+(9, 4, 1, 'Vehicle ', '', 700000.00, '', 'kbw', '345980', '2021-08-01 10:33:43', 51, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -421,18 +424,18 @@ CREATE TABLE `o_customers` (
 --
 
 INSERT INTO `o_customers` (`uid`, `full_name`, `primary_mobile`, `email_address`, `physical_address`, `town`, `passport_photo`, `national_id`, `gender`, `dob`, `added_by`, `added_date`, `branch`, `primary_product`, `loan_limit`, `events`, `status`) VALUES
-(1, 'Jonah Ngarama', '254716330450', 'ngaramajonah@gmail.com', 'Ngong\nKobo Flat', 1, '', '28153539', 'M', '1990-01-04', 0, '2021-05-17 10:09:01', 1, 1, 10000.00, 'Customer created at [2021-05-17 10:09:01] by [{}root]', 1),
-(2, 'Mercy Ezzy', '254702332796', 'mercyezzy92@gmail.com', 'Ngong\nKobo Flat', 1, '', '28153538', 'F', '2021-05-17', 0, '2021-05-17 10:24:24', 1, 1, 10.00, 'Customer created at [2021-05-17 10:24:24] by [{}root]', 2),
-(3, 'Peter Witu', '254756330450', 'peterwitu@gmail.com', 'Ngong\nKobo Flat', 1, '', '28156647', 'M', '2021-05-17', 0, '2021-05-17 19:22:01', 1, 1, 60000.00, 'Customer created at [2021-05-17 19:22:01] by [{}root]', 1),
-(4, 'Stephen Abundo', '254778999992', 'stephen@gmail.com', '217-202020                                                         ', 1, '', '6789034', 'M', '2021-07-01', 1, '2021-06-08 19:07:32', 2, 0, 10000.00, 'Customer created at [2021-06-08 19:07:32] by [Jonah Ngarama{1}root]', 1),
-(9, 'Paul Kin', '254717889887', 'ngaramajonah@gmail.com1', '123 street                                        ', 1, '', '78987689', 'M', '2021-06-08', 1, '2021-06-08 22:54:29', 1, 0, 0.00, 'Customer created at [2021-06-08 22:54:29] by [Jonah Ngarama{1}root]', 2),
-(10, 'Paul Muriithi111', '254724542111', 'ngaramampaul@gmail.com1111', 'Thome, Nyati Drive 1                                                                                                                                                       ', 1, '', '67788776', 'F', '1994-05-08', 1, '2021-06-08 23:02:25', 1, 2, 2000.00, 'Customer created at [2021-06-08 23:02:25] by [Jonah Ngarama{1}root]', 1),
-(11, 'Billy Mwalili', '254793884883', 'billymwalili@gmail.com', '233 2424 street                                                                                                                        ', 1, '', '6474343', 'M', '1990-07-09', 1, '2021-06-09 11:45:29', 1, 1, 100000.00, '', 1),
-(12, 'Samuel Munyi', '254112553167', 'samunyi90@gmail.com', '     214-20320                                                                        ', 1, '', '32909210', 'M', '1996-08-05', 51, '2021-07-12 11:11:28', 2, 0, 100000.00, '', 1),
-(13, 'John Doe', '254112553169', 'john@gmail.com', '       14-20320                                                                                                                 ', 1, '', '32909212', 'M', '2021-07-14', 51, '2021-07-14 11:24:05', 2, 2, 2500.00, '', 2),
-(14, 'Joseph Gitonga', '254711253167', 'lee@gmail.com', '                                        Sipili-Street', 1, '', '3456789', 'M', '2000-07-19', 51, '2021-07-19 09:23:44', 2, 1, 3000.00, '', 1),
-(15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                        ', 1, '', '34251678', 'M', '1997-07-01', 51, '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
-(16, 'Martin Mwangi', '254705609184', 'martin@gmail.com', '        Kimathi Street                                ', 1, '', '2345678', 'M', '2021-07-26', 51, '2021-07-26 12:39:58', 1, 2, 2500.00, '', 1);
+(1, 'Jonah Ngarama', '254716330450', 'ngaramajonah@gmail.com', 'Ngong\nKobo Flat', 1, '', '28153539', 'M', '1990-01-04', '0', '2021-05-17 10:09:01', 1, 1, 10000.00, 'Customer created at [2021-05-17 10:09:01] by [{}root]', 1),
+(2, 'Mercy Ezzy', '254702332796', 'mercyezzy92@gmail.com', 'Ngong\nKobo Flat', 1, '', '28153538', 'F', '2021-05-17', '0', '2021-05-17 10:24:24', 1, 1, 10.00, 'Customer created at [2021-05-17 10:24:24] by [{}root]', 2),
+(3, 'Peter Witu', '254756330450', 'peterwitu@gmail.com', 'Ngong\nKobo Flat', 1, '', '28156647', 'M', '2021-05-17', '0', '2021-05-17 19:22:01', 1, 1, 60000.00, 'Customer created at [2021-05-17 19:22:01] by [{}root]', 1),
+(4, 'Stephen Abundo', '254778999992', 'stephen@gmail.com', '217-202020                                                         ', 1, '', '6789034', 'M', '2021-07-01', '1', '2021-06-08 19:07:32', 2, 0, 10000.00, 'Customer created at [2021-06-08 19:07:32] by [Jonah Ngarama{1}root]', 1),
+(9, 'Paul Kin', '254717889887', 'ngaramajonah@gmail.com1', '123 street                                        ', 1, '', '78987689', 'M', '2021-06-08', '1', '2021-06-08 22:54:29', 1, 0, 0.00, 'Customer created at [2021-06-08 22:54:29] by [Jonah Ngarama{1}root]', 2),
+(10, 'Paul Muriithi111', '254724542111', 'ngaramampaul@gmail.com1111', 'Thome, Nyati Drive 1                                                                                                                                                       ', 1, '', '67788776', 'F', '1994-05-08', '1', '2021-06-08 23:02:25', 1, 2, 2000.00, 'Customer created at [2021-06-08 23:02:25] by [Jonah Ngarama{1}root]', 1),
+(11, 'Billy Mwalili', '254793884883', 'billymwalili@gmail.com', '233 2424 street                                                                                                                        ', 1, '', '6474343', 'M', '1990-07-09', '1', '2021-06-09 11:45:29', 1, 1, 100000.00, '', 1),
+(12, 'Samuel Munyi', '254112553167', 'samunyi90@gmail.com', '     214-20320                                                                        ', 1, '', '32909210', 'M', '1996-08-05', '51', '2021-07-12 11:11:28', 2, 0, 100000.00, '', 1),
+(13, 'John Doe', '254112553169', 'john@gmail.com', '       14-20320                                                                                                                 ', 1, '', '32909212', 'M', '2021-07-14', '51', '2021-07-14 11:24:05', 2, 2, 2500.00, '', 2),
+(14, 'Joseph Gitonga', '254711253167', 'lee@gmail.com', '                                        Sipili-Street', 1, '', '3456789', 'M', '2000-07-19', '51', '2021-07-19 09:23:44', 2, 1, 3000.00, '', 1),
+(15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                        ', 1, '', '34251678', 'M', '1997-07-01', '51', '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
+(16, 'Martin Mwangi', '254705609184', 'martin@gmail.com', '        Kimathi Street                                ', 1, '', '2345678', 'M', '2021-07-26', '51', '2021-07-26 12:39:58', 1, 2, 2500.00, '', 1);
 
 -- --------------------------------------------------------
 
@@ -485,7 +488,12 @@ INSERT INTO `o_customer_contacts` (`uid`, `customer_id`, `contact_type`, `value`
 (30, 12, 3, 'example@gmail.com', 1),
 (31, 13, 3, 'example@gmail.com', 1),
 (32, 13, 2, '0705609184', 0),
-(33, 13, 2, '0705609184', 1);
+(33, 13, 2, '0705609184', 1),
+(34, 16, 3, 'martin2@gmail.com', 1),
+(35, 12, 1, '254112567890', 1),
+(36, 4, 1, '254112456789', 1),
+(37, 4, 2, '254112553167', 0),
+(38, 4, 3, 'munyisamuel3@gmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -575,7 +583,33 @@ INSERT INTO `o_customer_referees` (`uid`, `customer_id`, `added_date`, `referee_
 (5, 11, '2021-06-11 10:47:30', 'Paul Muriithi', '12345673', '254716330450', 'Ngong\nKobo Flat', 'ngaramampaul@gmail.com', 2, 1),
 (6, 11, '2021-06-11 10:49:20', 'fkfjdf dfjduf', '7436453466', '254716330451', 'Ngong\nKobo Flat', 'jdjdjfj@uduusd.com', 1, 1),
 (7, 11, '2021-06-11 10:52:03', 'jonah ngarama1', '747488545', '254716330451', 'Ngong1\nKobo Flat', 'ngaramajonah@gmail.com1', 1, 0),
-(8, 11, '2021-06-11 10:53:52', 'Paul Muriithi1', '667377382', '254724542547', 'Thome, Nyati Drive\nSportview Road, Kasarani', 'ngaramampaul@gmail.com1', 1, 0);
+(8, 11, '2021-06-11 10:53:52', 'Paul Muriithi1', '667377382', '254724542547', 'Thome, Nyati Drive\nSportview Road, Kasarani', 'ngaramampaul@gmail.com1', 1, 0),
+(9, 12, '2021-07-31 10:18:08', 'Peter Munyi', '23450987', '254711345098', 'Narok Road', 'peter@gmail.com', 2, 1),
+(10, 12, '2021-07-31 10:19:04', 'Peter Munyi', '12349876', '254711345098', 'Allshops', 'munyisamuel3@gmail.com', 2, 0),
+(11, 12, '2021-07-31 10:24:31', 'Peter Munyi', '12349870', '254711345094', 'Allshops', 'munyisamuel4@gmail.com', 2, 1),
+(12, 12, '2021-07-31 10:42:40', 'Peter Munyi', '12349876', '254711345093', 'Allshops', 'munyisamuel5@gmail.com', 2, 1),
+(13, 4, '2021-08-01 10:35:25', 'Kennedy Abundo', '2345678', '254711567098', 'Nyamira Road', 'abundo@gmail.com', 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_customer_referee_relationships`
+--
+
+CREATE TABLE `o_customer_referee_relationships` (
+  `uid` int(5) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_customer_referee_relationships`
+--
+
+INSERT INTO `o_customer_referee_relationships` (`uid`, `name`, `status`) VALUES
+(1, 'Spouse (Husband, Wife', 1),
+(2, 'Sibling (Brother, Sister)', 1),
+(3, 'Parent(Father, Mother)', 1);
 
 -- --------------------------------------------------------
 
@@ -703,7 +737,18 @@ INSERT INTO `o_documents` (`uid`, `code_name`, `title`, `description`, `category
 (25, '', 'Passport', 'kkdkd', 2, 1, '2021-06-12 19:59:33', 'o_customers', 11, 'JRmLuZR4Y98pX6VGD2jfiUV31.jpg', 1),
 (26, '', 'TV', 'TV', 2, 1, '2021-06-12 19:59:58', 'o_customers', 11, 'o0xrsHJvPeL9UhWAvmFW9nF4u.jpg', 1),
 (27, '', 'Passport', 'The quick brown', 1, 1, '2021-06-15 02:38:00', 'o_customers', 11, 'pXiCIWJqsOZdWGMTflLjijYx6.jpg', 1),
-(28, '', 'nbgggg', 'jhgg', 1, 1, '2021-07-07 14:56:31', 'o_customers', 11, 'urMYED1HgShyoVss0oD356Ygn.jpeg', 1);
+(28, '', 'nbgggg', 'jhgg', 1, 1, '2021-07-07 14:56:31', 'o_customers', 11, 'urMYED1HgShyoVss0oD356Ygn.jpeg', 1),
+(29, '', 'National ID', 'Front Side', 2, 1, '2021-07-31 12:39:35', 'o_customers', 12, 'dXqKOkjaHEKRZTHh1EgAw4P6R.jpg', 0),
+(30, '', 'National ID', 'Front View', 2, 1, '2021-07-31 12:49:47', 'o_customers', 12, 'HrgwenpNkCal2gmBvEfnEuv3K.jpg', 0),
+(31, '', 'National ID', 'Front View', 2, 1, '2021-07-31 14:09:11', 'o_customers', 12, 'jPQheSMOtvvbVS1MFdgjEqbUB.jpg', 0),
+(32, '', 'Passport', 'Passport Photo size', 1, 1, '2021-07-31 14:11:40', 'o_customers', 12, 'fx97fyf83YxEcqEcMzCZBNDQZ.jpg', 0),
+(33, '', 'National ID', 'wergh', 1, 1, '2021-07-31 14:18:57', 'o_customers', 12, 'VjIISHPyNy6ADelYcJM5lcVJF.jpg', 0),
+(34, '', 'Photo', '', 1, 1, '2021-07-31 14:20:40', 'o_customers', 12, 'MoqlfgGI3ouR6GCNh4w1XatnF.jpg', 0),
+(35, '', 'Photo', 'sdfghjk', 1, 1, '2021-07-31 14:46:54', 'o_customers', 12, '3NKFh3poOcLpcx5Nol499ifKo.jpg', 0),
+(36, '', 'Passport', 'dfghjk', 3, 1, '2021-07-31 14:47:30', 'o_customers', 12, 'IdeJpSN321fDEsCwxXmrTcaMJ.jpg', 0),
+(37, '', 'Passport', 'Photo Jpeg', 1, 1, '2021-07-31 14:54:48', 'o_customers', 12, 'JAxJXAy8gXM5dnTwatd7Rh0E8.jpg', 1),
+(38, '', 'National ID', 'Front View', 2, 1, '2021-07-31 15:22:51', 'o_customers', 12, 'hvuVuUxvxFt0bglvNkyLAgtxL.jpg', 1),
+(39, '', 'National ID', 'Back View', 3, 1, '2021-07-31 15:23:50', 'o_customers', 12, '6AsNej2XUk7XwhxzQgVkVrXGS.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -849,7 +894,8 @@ CREATE TABLE `o_incoming_payments` (
 INSERT INTO `o_incoming_payments` (`uid`, `customer_id`, `payment_method`, `mobile_number`, `amount`, `transaction_code`, `loan_id`, `payment_date`, `recorded_date`, `record_method`, `comments`, `status`) VALUES
 (1, 0, 2, '254716330450', 4600.00, 'QWERSTSSU', 9, '2021-06-22 23:14:00', '0000-00-00 00:00:00', 'MANUAL', '', 1),
 (2, 3, 2, '0716330451', 600.09, '765678765uu', 10, '2021-06-21 00:00:00', '0000-00-00 00:00:00', 'MANUAL', 'the motor', 1),
-(3, 3, 1, '0716330450', 600.00, '76655444', 10, '2021-06-23 00:00:00', '0000-00-00 00:00:00', 'MANUAL', 'Wjys', 1);
+(3, 3, 1, '0716330450', 600.00, '76655444', 10, '2021-06-23 00:00:00', '0000-00-00 00:00:00', 'MANUAL', 'Wjys', 1),
+(4, 12, 2, '0112553167', 30000.00, 'PH172ORFO5', 11, '2021-08-01 00:00:00', '0000-00-00 00:00:00', 'MANUAL', 'Partial Payment From Sam', 1);
 
 -- --------------------------------------------------------
 
@@ -883,7 +929,15 @@ INSERT INTO `o_key_values` (`uid`, `tbl`, `record`, `key_`, `value_`, `added_by`
 (8, 'o_customers', 11, 'Alternate Address1', '434', 1, '2021-06-13 18:20:07', 1),
 (9, 'o_customers', 11, 'TYe', '33434', 1, '2021-06-13 18:37:14', 1),
 (10, 'o_customers', 11, '8ru', '32', 1, '2021-06-13 18:37:23', 1),
-(11, 'o_customers', 11, 'Huduma Number', '22333444', 1, '2021-06-21 15:14:48', 1);
+(11, 'o_customers', 11, 'Huduma Number', '22333444', 1, '2021-06-21 15:14:48', 1),
+(12, 'o_customers', 12, 'KRA PIN', '234', 51, '2021-07-31 11:16:09', 0),
+(13, 'o_customers', 12, 'KRA ', '1234', 0, '2021-07-31 11:32:31', 0),
+(14, 'o_customers', 12, 'KRA PIN2', '234r', 0, '2021-07-31 12:12:53', 0),
+(15, 'o_customers', 12, 'Huduma Number', '345678', 0, '2021-07-31 12:14:22', 0),
+(16, 'o_customers', 12, 'Peter Munyi', 'wertg', 0, '2021-07-31 12:16:42', 0),
+(17, 'o_customers', 12, 'Huduma Number', 'ertyu', 0, '2021-07-31 12:18:35', 0),
+(18, 'o_customers', 12, 'Huduma Number', '234567', 0, '2021-07-31 12:18:50', 1),
+(19, 'o_customers', 12, 'KRA PIN', '23456789', 0, '2021-07-31 12:19:03', 1);
 
 -- --------------------------------------------------------
 
@@ -938,7 +992,7 @@ INSERT INTO `o_loans` (`uid`, `customer_id`, `product_id`, `loan_amount`, `disbu
 (8, 1, 1, 10000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', 0, 0, 0, '2021-06-22 00:44:18', 0, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (9, 1, 1, 10000.00, 10000.00, 10000.00, 4600.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', 0, 0, 0, '2021-06-22 01:03:05', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
 (10, 3, 2, 3000.00, 2154.00, 3700.00, 1200.09, 5, '30', '15', '', 700.00, 846.00, 1, 0, 1, '2021-06-22', '2021-07-22', '2021-07-22', 0, 0, 0, '2021-06-22 12:41:51', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
-(11, 12, 1, 40000.00, 40000.00, 40000.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-12', '2021-07-19', '2021-08-26', 0, 0, 0, '2021-07-12 11:25:13', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(11, 12, 1, 40000.00, 40000.00, 40000.00, 30000.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-12', '2021-07-19', '2021-08-26', 0, 0, 0, '2021-07-12 11:25:13', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
 (12, 4, 2, 2000.00, 2000.00, 2000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', 0, 0, 0, '2021-07-13 10:29:57', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (13, 4, 1, 10000.00, 10000.00, 10000.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-13', '2021-07-20', '2021-08-27', 0, 0, 0, '2021-07-13 10:33:24', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (14, 4, 2, 1000.00, 1000.00, 1000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', 0, 0, 0, '2021-07-13 10:37:33', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0);
@@ -1218,7 +1272,9 @@ CREATE TABLE `o_payment_methods` (
 
 INSERT INTO `o_payment_methods` (`uid`, `name`, `account_details`, `status`) VALUES
 (1, 'Mobile Money', '', 1),
-(2, 'Safaricom M-Pesa', 'PayBill: 54772 <br/>\r\nAccount No: 74389 <br/>', 1);
+(2, 'Safaricom M-Pesa', 'PayBill: 54772 <br/>\r\nAccount No: 74389 <br/>', 1),
+(3, 'Bank', '', 1),
+(4, 'Cash', '', 1);
 
 -- --------------------------------------------------------
 
@@ -1347,27 +1403,6 @@ INSERT INTO `o_product_stages` (`uid`, `stage_id`, `stage_order`, `is_final_stag
 (8, 3, 30, 0, 2, '2021-06-16 08:47:35', 1),
 (9, 4, 40, 0, 2, '2021-06-16 08:47:36', 1),
 (10, 5, 50, 0, 2, '2021-06-16 08:47:38', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `o_referee_relationships`
---
-
-CREATE TABLE `o_customer_referee_relationships` (
-  `uid` int(5) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `o_referee_relationships`
---
-
-INSERT INTO `o_referee_relationships` (`uid`, `name`, `status`) VALUES
-(1, 'Spouse (Husband, Wife', 1),
-(2, 'Sibling (Brother, Sister)', 1),
-(3, 'Parent (Father, Mother)', 1);
 
 -- --------------------------------------------------------
 
@@ -1556,7 +1591,21 @@ INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`
 (117, 51, 'o4zLU0JcIs32sOAgUquSealdY0Z44sfmkTvgRZAZIONIuERTH5KATNEsWeHtO9ig', '2021-07-26 17:41:18', '2021-07-26 19:27:50', '', '', '', '', 0, 2),
 (118, 51, 'cumwlsq02HXrol58Gx0aC8T3M7Z1V3VlcisfzVNR65miNlzufh9aTzkTQVLv2FWA', '2021-07-26 19:27:50', '2021-07-26 19:30:05', '', '', '', '', 0, 2),
 (119, 51, '4wYcWtCcO9CQlYpiWJkINT4c7VuevmDy1Sw7og16P8M40B4CRkmcrD6PpXfrldGY', '2021-07-26 19:30:05', '2021-07-26 21:13:57', '', '', '', '', 0, 2),
-(120, 51, 'zi7cjjxE3C9TgftsDw72iPN0LwPiBAcBtRHnsLaXeaGA7tcMarNeJbp1C4bRsYFb', '2021-07-26 21:13:57', '2021-08-25 00:00:00', '', '', '', '', 0, 1);
+(120, 51, 'zi7cjjxE3C9TgftsDw72iPN0LwPiBAcBtRHnsLaXeaGA7tcMarNeJbp1C4bRsYFb', '2021-07-26 21:13:57', '2021-07-31 00:07:26', '', '', '', '', 0, 2),
+(121, 51, 'G9QM2fMU2u7Ngq0OVeJvjuf0kcGS4HvJuvwxqqvqAT2jgU6YmbqeCntMq6igpYvR', '2021-07-31 00:07:26', '2021-07-31 00:07:49', '', '', '', '', 0, 2),
+(122, 51, 'BOxTqBroHqbPM6f7qGTtqCb2quA9XMlGiyE5hhWJ4s2iG4TxEqqaby37w7juYlI7', '2021-07-31 00:07:49', '2021-07-31 00:12:46', '', '', '', '', 0, 2),
+(123, 51, 'Z9XivYIVvrU4IrRilJbzasiGtieCtnBgghVQeReqAqNqdqurLLXEIlfn7zuMRgG0', '2021-07-31 00:12:46', '2021-07-31 09:30:07', '', '', '', '', 0, 2),
+(124, 51, 'PUyz1j0hIFWSRnwd2hR4Br3opoi0GOwyLuDzXPEOCcwPLhQkmgfo5pQJmFjamjKF', '2021-07-31 09:30:07', '2021-07-31 10:31:15', '', '', '', '', 0, 2),
+(125, 51, 'Rxb5lAEyldy6ZxpNmYTAE3oMNKoIVOXamoj9lJSzJyXSkYG4fTyaqYFVHXBFUcdl', '2021-07-31 10:31:15', '2021-07-31 10:37:05', '', '', '', '', 0, 2),
+(126, 51, 'DldeDKIQ901xZKWxNwuY8mxPcCCHUAnmRm3HVLKktAr5EDouIbqkT4sd3wRz4nfs', '2021-07-31 10:37:05', '2021-07-31 14:49:28', '', '', '', '', 0, 2),
+(127, 51, 'W72bollPp6yXL0liIKID0gONeDvefWSe0vHvclA59WZDsx0ByonZMXviInp2kNsK', '2021-07-31 14:49:28', '2021-07-31 14:50:22', '', '', '', '', 0, 2),
+(128, 51, '8AAlNyuK28Xbb7bAvDf3hsYk3FbsTkx3jPawYcRStFX58Enru79EVVsuDV2f1wba', '2021-07-31 14:50:22', '2021-07-31 14:50:22', '', '', '', '', 0, 2),
+(129, 51, 'pwIfglBNHKkos30dKor08GOO8hhhDIDgfLhyoCueGTBrY7m0es5rU2ZaLkksxziF', '2021-07-31 14:50:22', '2021-07-31 14:51:24', '', '', '', '', 0, 2),
+(130, 51, 'NDWlrSbnwJ1Zo9YrY9pD12EYrnTImMB6OvDcGGm6Ib87i8PaWSZ1VehpkHEdfuiY', '2021-07-31 14:51:24', '2021-07-31 14:56:41', '', '', '', '', 0, 2),
+(131, 51, 'jme7K6lSitqAU5CLvCHSsMcrS9dfXDOPlts1ftRJK6HxdO8q6WduyjKuHYAIpOF0', '2021-07-31 14:56:41', '2021-07-31 15:38:12', '', '', '', '', 0, 2),
+(132, 51, 'MNpOKM5KWCilwaub86FKVqqkWNvGOSz91hKU25bA222abWAMkRWpyJ31WXCvhXtY', '2021-07-31 15:38:12', '2021-07-31 21:31:54', '', '', '', '', 0, 2),
+(133, 51, 'J9lRqHOWkC2BYSMEbgCpiMumaJNSvyFXPjQTytXfM4lUuXGEB3nsSE9GxOIOW5TW', '2021-07-31 21:31:54', '2021-07-31 22:48:52', '', '', '', '', 0, 2),
+(134, 51, 'WV64ZOv1tCXdV5VwNlDUWx7EksSI124OFT0L9yfoGjjeleCgrU1y0YnSzAMqACWd', '2021-07-31 22:48:52', '2021-08-30 00:00:00', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1766,6 +1815,13 @@ ALTER TABLE `o_customer_referees`
   ADD PRIMARY KEY (`uid`);
 
 --
+-- Indexes for table `o_customer_referee_relationships`
+--
+ALTER TABLE `o_customer_referee_relationships`
+  ADD PRIMARY KEY (`uid`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
 -- Indexes for table `o_customer_statuses`
 --
 ALTER TABLE `o_customer_statuses`
@@ -1920,13 +1976,6 @@ ALTER TABLE `o_product_stages`
   ADD PRIMARY KEY (`uid`);
 
 --
--- Indexes for table `o_referee_relationships`
---
-ALTER TABLE `o_referee_relationships`
-  ADD PRIMARY KEY (`uid`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
 -- Indexes for table `o_reports`
 --
 ALTER TABLE `o_reports`
@@ -2010,7 +2059,7 @@ ALTER TABLE `o_campaign_messages`
 -- AUTO_INCREMENT for table `o_collateral`
 --
 ALTER TABLE `o_collateral`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `o_collateral_statuses`
@@ -2046,7 +2095,7 @@ ALTER TABLE `o_customers`
 -- AUTO_INCREMENT for table `o_customer_contacts`
 --
 ALTER TABLE `o_customer_contacts`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `o_customer_conversations`
@@ -2064,7 +2113,13 @@ ALTER TABLE `o_customer_document_categories`
 -- AUTO_INCREMENT for table `o_customer_referees`
 --
 ALTER TABLE `o_customer_referees`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `o_customer_referee_relationships`
+--
+ALTER TABLE `o_customer_referee_relationships`
+  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `o_customer_statuses`
@@ -2088,7 +2143,7 @@ ALTER TABLE `o_disburse_methods`
 -- AUTO_INCREMENT for table `o_documents`
 --
 ALTER TABLE `o_documents`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `o_events`
@@ -2112,13 +2167,13 @@ ALTER TABLE `o_guarantors`
 -- AUTO_INCREMENT for table `o_incoming_payments`
 --
 ALTER TABLE `o_incoming_payments`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `o_key_values`
 --
 ALTER TABLE `o_key_values`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `o_loans`
@@ -2178,7 +2233,7 @@ ALTER TABLE `o_passes`
 -- AUTO_INCREMENT for table `o_payment_methods`
 --
 ALTER TABLE `o_payment_methods`
-  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `o_payment_schedule`
@@ -2211,12 +2266,6 @@ ALTER TABLE `o_product_stages`
   MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `o_referee_relationships`
---
-ALTER TABLE `o_referee_relationships`
-  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `o_reports`
 --
 ALTER TABLE `o_reports`
@@ -2232,7 +2281,7 @@ ALTER TABLE `o_staff_statuses`
 -- AUTO_INCREMENT for table `o_tokens`
 --
 ALTER TABLE `o_tokens`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `o_towns`
