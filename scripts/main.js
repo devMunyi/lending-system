@@ -772,20 +772,38 @@ function payment_save() {
     })
 }
 
-
-//payment sorts
 function all_payments(where){
     $('#_sort_').val(where);
     $('#_dir_').val('desc');
     pager_home();
 }
 
+//payment filters
+function repayment_filters() {
+    let loan_order = $('#repayment_order').val();
+    let sel_branch = parseInt($('#sel_branch').val());
 
-function oldest_payments(where){
-    $('#_sort_').val(where);
-    $('#_dir_').val('asc');
-    pager_home();
+    let wher = "uid > 0";
+    $('#_dir_').val(loan_order);
+
+    if (sel_branch > 0) {
+        wher += " AND branch_id=" + sel_branch;
+    }
+    
+    console.log("filt " + wher);
+
+    if (wher) {
+        $('#_where_').val(wher);
+        $('#_offset_').val(0);
+
+        pager_home();
+    } else {
+        $('#_where_').val(" status > -1");
+        $('#_offset_').val(0);
+    }
 }
+
+
 
 function mobile_payments(where){
     $('#_sort_').val(where);

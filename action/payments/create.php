@@ -56,6 +56,9 @@ if($loan_id > 0) {
     }
     else{
         $customer_id = fetchrow('o_loans',"uid='".decurl($loan_id)."'","customer_id");
+        if($customer_id > 0){
+            $branch_id = fetchrow("o_customers", "uid=$customer_id", "uid");
+        }
     }
 }
 else{
@@ -74,8 +77,8 @@ if($payment_method == 0){
 }
 
 
-$fds = array('customer_id','payment_method','mobile_number','amount','transaction_code','loan_id','payment_date','record_method','comments','status');
-$vals = array("$customer_id","$payment_method","$mobile_number","$amount","$transaction_code","".decurl($loan_id)."","$payment_date","$record_method","$comments","$status");
+$fds = array('customer_id','branch_id','payment_method','mobile_number','amount','transaction_code','loan_id','payment_date','record_method','comments','status');
+$vals = array("$customer_id","$branch_id","$payment_method","$mobile_number","$amount","$transaction_code","".decurl($loan_id)."","$payment_date","$record_method","$comments","$status");
 $create = addtodb('o_incoming_payments',$fds,$vals);
 if ($create == 1) {
     echo sucmes('Payment Recorded Successfully');

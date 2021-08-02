@@ -48,25 +48,41 @@ if($payment_meth_count > 0){
     $orpaymethod = " OR `payment_method` IN ($pyt_meth_list)";
 }
 
+$branch_array = array();
+$branch_ = fetchtable2("o_branches", "name LIKE \"%$search_%\"", "uid", "asc", "uid");
+$branch_count = mysqli_num_rows($branch_);
+if($branch_count > 0){
+    while($branch_list = mysqli_fetch_array($branch_)){
+        $branch_id = $branch_list['uid'];
+        array_push($branch_array, $branch_id);
+    }
+    $cust_branch_list = implode(", ", $branch_array);
+    $orcustbranch = " OR `branch_id` IN ($cust_branch_list)";
+}
+
 ///////////////===================End of search customers with full_keyword
 
 if ((input_available($search_)) == 1) {
 
-    $andsearch = "AND (uid = \"$search_\" OR DATE(payment_date) LIKE \"%$search_%\" OR transaction_code LIKE \"%$search_%\" OR amount LIKE \"%$search_%\" $orcustomer  $orpaymethod)";
+    $andsearch = "AND (uid = \"$search_\" OR DATE(payment_date) LIKE \"%$search_%\" OR transaction_code LIKE \"%$search_%\" OR amount LIKE \"%$search_%\" $orcustomer  $orpaymethod $orcustbranch)";
 } else {
     $andsearch = "";
 }
 
 
+if($customer_id > 0){
+    $i = fetchonerow("o_customers","uid=$customer_id","full_name, primary_mobile, national_id, branch");
+    $full_name = $i['full_name'];
+    $primary_mobile = $i['primary_mobile'];
+    $national_id = $i['national_id'];
+    $branch = $i['branch']; $branch_ = fetchrow("o_branches", "uid = $branch", "name");
+}else{
+    $full_name = "<i>Unspecified</i>";
+}
+
 //-----------------------------Reused Query
 //displaying list based on sort options
-if($sort_option == "sort_1"){
-    //sort by latest payments
-    $o_pays_ = fetchtable("o_incoming_payments", "$where_ AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
-    ///----------Paging Option
-    $alltotal = countotal("o_incoming_payments", "$where_ AND status > 0 $andsearch");
-    ///==========Paging Option
-}elseif($sort_option == "sort_2"){
+if($sort_option == "sort_2"){
     //Sort by mobile payments
     $o_pays_ = fetchtable("o_incoming_payments", "$where_ AND payment_method IN (1, 2) AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
@@ -97,6 +113,7 @@ if ($alltotal > 0) {
     while ($q = mysqli_fetch_array($o_pays_)) {
         $uid = $q['uid'];
         $customer_id = $q['customer_id'];
+        $branch_id = $q['branch_id']; $branch_name_ = fetchrow("o_branches", "uid=$branch_id", "name");
         $payment_method = $q['payment_method']; $pay_meth = fetchrow('o_payment_methods',"uid=\"$payment_method\"","name");
         $mobile_number = $q['mobile_number'];
         $amount = money($q['amount']);
@@ -105,7 +122,7 @@ if ($alltotal > 0) {
         $record_method = $q['record_method'];
 
         if($customer_id > 0){
-            $i = fetchonerow("o_customers","uid=$customer_id","full_name, primary_mobile, national_id");
+            $i = fetchonerow("o_customers","uid=$customer_id","full_name, primary_mobile, national_id, branch");
             $full_name = $i['full_name'];
             $primary_mobile = $i['primary_mobile'];
             $national_id = $i['national_id'];
@@ -129,6 +146,7 @@ if ($alltotal > 0) {
     <td>$uid</td><
     <td><a href=\"customers?cust=3232\"><span class=\"font-16\">$full_name</span><br/> <span class=\"text-muted font-13 font-bold\">$national_id</span></a>
     </td>
+    <td>$branch_name_</td>
     <td><span class=\"text-bold text-blue font-16\">$amount</span></td>
     <td><span>$pay_meth</span>
     </td>
