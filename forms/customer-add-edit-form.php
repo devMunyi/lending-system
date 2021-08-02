@@ -215,7 +215,7 @@
                                                 <option value="0">--Select One</option>
                                                 <?php
 
-                                                $recs = fetchtable('o_customer_referee_relationships', "status=1", "name", "asc", "100", "uid ,name");
+                                                $recs = fetchtable('o_customer_referee_relationships', "status=1", "name", "desc", "100", "uid ,name");
                                                 while ($r = mysqli_fetch_array($recs)) {
                                                     $uid = $r['uid'];
                                                     $name = $r['name'];

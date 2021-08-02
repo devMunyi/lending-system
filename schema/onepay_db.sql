@@ -609,7 +609,8 @@ CREATE TABLE `o_customer_referee_relationships` (
 INSERT INTO `o_customer_referee_relationships` (`uid`, `name`, `status`) VALUES
 (1, 'Spouse (Husband, Wife', 1),
 (2, 'Sibling (Brother, Sister)', 1),
-(3, 'Parent(Father, Mother)', 1);
+(3, 'Parent(Father, Mother)', 1),
+(4, 'Friend', 1);
 
 -- --------------------------------------------------------
 
