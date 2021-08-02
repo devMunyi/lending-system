@@ -29,18 +29,28 @@ else{
     die(errormes("Payment ID Invalid"));
     exit();
 }
-if ((input_length($transaction_code, 3)) == 1) {
-    $exists = checkrowexists('o_incoming_payments', "transaction_code='$transaction_code' AND loan_id!='".decurl($loan_id)."'");
-    if ($exists == 1) {
-        die(errormes("Transaction code exists"));
+
+if($payment_method == 4){
+    /*if(input_length($transaction_code,3) == 0){
+        
+    }*/
+    $transaction_code = "N/A";
+}else{
+    if (input_length($transaction_code, 3) == 1) {
+        $exists = checkrowexists('o_incoming_payments', "transaction_code='$transaction_code' AND loan_id!='".decurl($loan_id)."'");
+       
+        if ($exists == 1) {
+            die(errormes("Transaction code exists"));
+            exit();
+        }
+    }else {
+        //////------Invalid user ID
+        die(errormes("Please enter transaction code"));
         exit();
     }
-
-} else {
-    //////------Invalid user ID
-    die(errormes("Please enter transaction code"));
-    exit();
 }
+
+
 
 if($amount > 0){}
 else{
