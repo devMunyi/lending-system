@@ -72,7 +72,7 @@ else
         setTimeout(function () {
             reload();
         },300);
-        other_list('o_customers','<?php echo $_POST['record']; ?>','EDIT');
-          //  clear_form('other_frm');
+        //other_list('o_customers','<?php echo $_POST['record']; ?>','EDIT');
+        //  clear_form('other_frm');
     }
 </script>
