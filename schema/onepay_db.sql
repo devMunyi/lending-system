@@ -880,8 +880,8 @@ CREATE TABLE `o_incoming_payments` (
   `amount` double(50,2) NOT NULL,
   `transaction_code` varchar(50) NOT NULL,
   `loan_id` int(20) NOT NULL,
-  `payment_date` datetime NOT NULL,
-  `recorded_date` datetime NOT NULL,
+  `payment_date` date NOT NULL,
+  `recorded_date` datetime NOT NULL DEFAULT now(),
   `record_method` varchar(20) NOT NULL COMMENT 'API, MANUAL',
   `comments` varchar(250) NOT NULL,
   `status` int(1) NOT NULL
@@ -909,7 +909,7 @@ CREATE TABLE `o_key_values` (
   `record` int(10) NOT NULL,
   `key_` varchar(50) NOT NULL,
   `value_` varchar(250) NOT NULL,
-  `added_by` int(10) NOT NULL,
+  `added_by` varchar(50) NOT NULL,
   `added_date` datetime NOT NULL,
   `status` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Save key and values for anything';
