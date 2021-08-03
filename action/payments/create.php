@@ -57,7 +57,7 @@ if($loan_id > 0) {
     else{
         $customer_id = fetchrow('o_loans',"uid='".decurl($loan_id)."'","customer_id");
         if($customer_id > 0){
-            $branch_id = fetchrow("o_customers", "uid=$customer_id", "uid");
+            $branch_id = fetchrow("o_customers", "uid=$customer_id", "branch");
         }
     }
 }

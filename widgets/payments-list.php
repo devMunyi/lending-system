@@ -63,7 +63,7 @@
                             <th>ID</th>
                             <th>Customer</th>
                             <th>Branch</th>
-                            <th>Amount</th>
+                            <th>Amount Paid</th>
                             <th>Pay Method</th>
                             <th>Record Type</th>
                             <th>Transaction Code</th>
@@ -83,7 +83,7 @@
                             <th>ID</th>
                             <th>Customer</th>
                             <th>Branch</th>
-                            <th>Amount</th>
+                            <th>Amount Paid</th>
                             <th>Pay Method</th>
                             <th>Record Type</th>
                             <th>Transaction Code</th>

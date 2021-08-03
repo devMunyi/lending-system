@@ -19,7 +19,7 @@ $offset_2 = $offset_ + $rpp_;
 $limit2 = $offset_ + $rpp_;
 $rows = "";
 
-///////////////-------------------Search customers with full keyword
+///////////////-------------------Search customers with particular records keyword
 $cust_array = array();
 $customers = fetchtable2("o_customers","full_name LIKE \"%$search_%\" OR primary_mobile LIKE \"%$search_%\" OR email_address LIKE \"%$search_%\" OR national_id LIKE \"%$search_%\"","uid","asc","uid");
 
@@ -60,8 +60,6 @@ if($branch_count > 0){
     $orcustbranch = " OR `branch_id` IN ($cust_branch_list)";
 }
 
-///////////////===================End of search customers with full_keyword
-
 if ((input_available($search_)) == 1) {
 
     $andsearch = "AND (uid = \"$search_\" OR DATE(payment_date) LIKE \"%$search_%\" OR transaction_code LIKE \"%$search_%\" OR amount LIKE \"%$search_%\" $orcustomer  $orpaymethod $orcustbranch)";
@@ -69,6 +67,7 @@ if ((input_available($search_)) == 1) {
     $andsearch = "";
 }
 
+///////////////===================End of search with given keywords
 
 if($customer_id > 0){
     $i = fetchonerow("o_customers","uid=$customer_id","full_name, primary_mobile, national_id, branch");
