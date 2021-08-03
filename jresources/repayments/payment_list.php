@@ -79,34 +79,14 @@ if($customer_id > 0){
     $full_name = "<i>Unspecified</i>";
 }
 
+
 //-----------------------------Reused Query
-//displaying list based on sort options
-if($sort_option == "sort_2"){
-    //Sort by mobile payments
-    $o_pays_ = fetchtable("o_incoming_payments", "$where_ AND payment_method IN (1, 2) AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
-    ///----------Paging Option
-    $alltotal = countotal("o_incoming_payments", "$where_ AND payment_method IN (1, 2) AND status > 0 $andsearch");
-    ///==========Paging Option
-}elseif($sort_option == "sort_3"){
-    //Sort by Bank payments
-    $o_pays_ = fetchtable("o_incoming_payments", "$where_ AND payment_method = 3 AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
-    ///----------Paging Option
-    $alltotal = countotal("o_incoming_payments", "$where_ AND payment_method = 3 AND status > 0 $andsearch");
-    ///==========Paging Option
-}elseif($sort_option == "sort_4"){
-    //Sort by cash payments
-    $o_pays_ = fetchtable("o_incoming_payments", "$where_ AND payment_method = 4 AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
-    ///----------Paging Option
-    $alltotal = countotal("o_incoming_payments", "$where_ AND payment_method = 4 AND status > 0 $andsearch");
-    ///==========Paging Option
-}else{
-    //default sort/display all payments
     $o_pays_ = fetchtable("o_incoming_payments", "$where_ AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
     $alltotal = countotal("o_incoming_payments", "$where_ AND status > 0 $andsearch");
     ///==========Paging Option
-}
 
+//----End of Reused Query
 
 if ($alltotal > 0) {
     while ($q = mysqli_fetch_array($o_pays_)) {

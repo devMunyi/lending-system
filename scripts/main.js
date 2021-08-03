@@ -654,9 +654,8 @@ function loan_filters() {
         $('#_where_').val(" status > -1");
         $('#_offset_').val(0);
     }
-
-
 }
+
 
 function loan_addons(loan_id) {
     let params = "loan_id=" + loan_id;
@@ -772,16 +771,12 @@ function payment_save() {
     })
 }
 
-function all_payments(where){
-    $('#_sort_').val(where);
-    $('#_dir_').val('desc');
-    pager_home();
-}
 
 //payment filters
 function repayment_filters() {
     let loan_order = $('#repayment_order').val();
     let sel_branch = parseInt($('#sel_branch').val());
+    let repayment_method = parseInt($('#repayment_method').val());
 
     let wher = "uid > 0";
     $('#_dir_').val(loan_order);
@@ -790,6 +785,10 @@ function repayment_filters() {
         wher += " AND branch_id=" + sel_branch;
     }
     
+    if(repayment_method > 0){
+        wher += " AND payment_method=" + repayment_method;
+    }
+
     console.log("filt " + wher);
 
     if (wher) {
@@ -803,29 +802,9 @@ function repayment_filters() {
     }
 }
 
-
-
-function mobile_payments(where){
-    $('#_sort_').val(where);
-    $('#_dir_').val('desc');
-    pager_home();
-}
-
-function bank_payments(where){
-    $('#_sort_').val(where);
-    $('#_dir_').val('desc');
-    pager_home();
-}
-
-
-function cash_payments(where){
-    $('#_sort_').val(where);
-    $('#_dir_').val('desc');
-    pager_home();
-}
-
-
 /////////------------------------------End of repayments
+
+
 function formready(formid) {
     formhandler('#' + formid);
 }
