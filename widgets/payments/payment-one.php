@@ -63,10 +63,10 @@
                                     <tr><td class="text-bold">UID</td><td><?php echo $rep; ?></td></tr>
                                     <tr><td class="text-bold">Customer</td><td><?php echo $full_name; ?>
                                             <span class="font-italic text-muted"></span><?php echo $national_id; ?> <a href="customers?customer=<?php echo encurl($customer_id) ?>"><i class="fa fa-external-link"></i></a></td></tr>
-                                    <tr><td class="text-bold">Amount</td><td><span class = "text-bold text-20"><?php echo money($amount); ?></span></td></tr>
+                                    <tr><td class="text-bold">Amount</td><td><h4 class = "text-bold text-20"><?php echo money($amount); ?></h4></td></tr>
                                     <tr><td class="text-bold">Pay Method</td><td><?php echo $pay_meth; ?></td></tr>
                                     <tr><td class="text-bold">Record Type</td><td><?php echo $record_method; ?></td></tr>
-                                    <tr><td class="text-bold">Loan Balance</td><td><?php echo money($l['loan_balance']); ?></td></tr>
+                                    <tr><td class="text-bold">Loan Balance</td><td><h4 class="text-bold text-20 text-danger"><?php echo money($l['loan_balance']); ?></h4></td></tr>
                                     <tr><td class="text-bold">Pay Date</td><td><?php echo $payment_date; ?> </td></tr>
                                     <tr><td class="text-bold">Transaction Code</td><td><?php echo $transaction_code; ?></td></tr>
 
