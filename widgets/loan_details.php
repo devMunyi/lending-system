@@ -78,13 +78,13 @@ else{
                                     <tr><td class="text-bold">Customer</td><td><span class="font-16"><?php echo $customer['full_name'];  ?></span>
                                             <br/><span class="font-italic"><?php echo $customer['national_id'];  ?></span>
                                             <span class="font-italic text-muted"></span> <a href="customers?customer=<?php echo $l['customer_id'] ?>"><i class="fa fa-external-link"></i></a></td></tr>
-                                    <tr><td class="text-bold">Amount</td><td><h3><?php echo money($l['loan_amount']);  ?></h3></td></tr>
+                                    <tr><td class="text-bold">Amount</td><td><h4 class="text-bold"><?php echo money($l['loan_amount']);  ?></h4></td></tr>
                                     <tr><td class="text-bold">AddOns</td><td><?php echo money(loan_addons(decurl($loan_id))); ?></td></tr>
                                     <tr><td class="text-bold">Deductions</td><td><?php echo money(loan_deductions(decurl($loan_id))); ?></td></tr>
                                     <tr><td class="text-bold">Disbursed Amount</td><td><?php echo money($l['disbursed_amount']); ?></td></tr>
                                     <tr><td class="text-bold">Repayable Amount</td><td><?php echo money($l['total_repayable_amount']); ?></td></tr>
                                     <tr><td class="text-bold">Repaid</td><td><?php echo money($total_repaid); ?></td></tr>
-                                    <tr><td class="text-bold">Balance</td><td><h3 class="text-red"><?php echo money($balance); ?></h3> </td></tr>
+                                    <tr><td class="text-bold">Balance</td><td><h4 class="text-red text-bold"><?php echo money($balance); ?></h4> </td></tr>
                                     <tr><td class="text-bold">Product</td><td><?php echo $product_name; ?></td></tr>
                                     <tr><td class="text-bold">Given Date</td><td><?php echo $l['given_date']; ?></td></tr>
                                     <tr><td class="text-bold">Due Date</td><td><?php echo $l['final_due_date']; ?></td></tr>

@@ -13,13 +13,15 @@ $customer_id = $_POST['customer_id'];
 $product_id = $_POST['product_id'];
 $loan_amount = $_POST['loan_amount'];
 $application_mode = $_POST['application_mode'];
+$added_by = $userd['name'];
 //$status = $_POST['status'];
 
 
 ////////////////////////
 if ($customer_id > 0) {
-    $user_ = fetchonerow('o_customers', "uid='$customer_id'", "primary_product, loan_limit, status");
+    $user_ = fetchonerow('o_customers', "uid=$customer_id", "primary_product, loan_limit, branch, status");
     $loan_limit = $user_['loan_limit'];
+    $cust_branch = $user_['branch'];
     $status = $user_['status'];
     if ($status != 1) {
         die(errormes("Customer status is not Active"));
@@ -39,7 +41,7 @@ if ($customer_id > 0) {
 
 if ($loan_amount > 0) {
     if ($product_id > 0) {
-        $prod = fetchonerow('o_loan_products', "uid='$product_id'", "period, period_units, min_amount, max_amount, pay_frequency, percent_breakdown, status");
+        $prod = fetchonerow('o_loan_products', "uid=$product_id", "period, period_units, min_amount, max_amount, pay_frequency, percent_breakdown, status");
         $prod_period = $prod['period'];
         $prod_period_units = $prod['period_units'];
         $min_amount = $prod['min_amount'];
@@ -93,8 +95,8 @@ $loan_stage = $loan_stage_d['stage_id'];
 /////////////////////
 
 
-$fds = array('customer_id', 'product_id', 'loan_amount', 'disbursed_amount', 'period', 'period_units', 'payment_frequency', 'payment_breakdown', 'total_instalments', 'total_instalments_paid', 'current_instalment', 'given_date', 'next_due_date', 'final_due_date', 'added_by', 'added_date', 'loan_stage', 'application_mode', 'status');
-$vals = array("$customer_id", "$product_id", "$loan_amount", "$disbursed_amount", "$period", "$period_units", "$payment_frequency", "$payment_breakdown", "$total_instalments", "$total_instalments_paid", "$current_instalment", "$given_date", "$next_due_date", "$final_due_date", "$added_by", "$added_date", "$loan_stage", "$application_mode", "1");
+$fds = array('customer_id', 'product_id', 'loan_amount', 'disbursed_amount', 'period', 'period_units', 'payment_frequency', 'payment_breakdown', 'total_instalments', 'total_instalments_paid', 'current_instalment', 'given_date', 'next_due_date', 'final_due_date', 'added_by', 'current_branch', 'added_date', 'loan_stage', 'application_mode', 'status');
+$vals = array("$customer_id", "$product_id", "$loan_amount", "$disbursed_amount", "$period", "$period_units", "$payment_frequency", "$payment_breakdown", "$total_instalments", "$total_instalments_paid", "$current_instalment", "$given_date", "$next_due_date", "$final_due_date", "$added_by", "$cust_branch", "$added_date", "$loan_stage", "$application_mode", "1");
 $create = addtodb('o_loans', $fds, $vals);
 if ($create == 1) {
     echo sucmes('Loan Created Successfully');
