@@ -31,7 +31,7 @@ else{
     exit();
 }
 
-$allowed_formats = fetchrow('o_customer_document_categories',"uid='$category'","formats");
+$allowed_formats = fetchrow("o_customer_document_categories","uid=$category","formats");
 $allowed_formats_array = explode(",", $allowed_formats);
 
 if($file_size > 100){
