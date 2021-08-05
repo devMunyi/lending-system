@@ -80,6 +80,7 @@ else{
 
 //displaying list based on sort options
 if($sort_option == "sort_1"){
+    //All campaigns
     $o_campaigns_ = fetchtable("o_campaigns","$where_ AND status > 0 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
 
     ///----------Paging Option
@@ -87,20 +88,23 @@ if($sort_option == "sort_1"){
 
     ///==========Paging Option
 }elseif($sort_option == "sort_2"){
-    $o_campaigns_ = fetchtable("o_campaigns","$where_  AND running_date < \"$date\" AND status > 0 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
+    //past campaigns
+    $o_campaigns_ = fetchtable("o_campaigns","$where_  AND running_date < \"$date\" AND status = 1 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
 
     ///----------Paging Option
-    $alltotal = countotal("o_campaigns","$where_ AND running_date < \"$date\" AND status > 0 $andsearch");
+    $alltotal = countotal("o_campaigns","$where_ AND running_date < \"$date\" AND status = 1 $andsearch");
 
     ///==========Paging Option
 }elseif($sort_option == "sort_3"){
-    $o_campaigns_ = fetchtable("o_campaigns","$where_  AND running_date > \"$date\" AND status > 0 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
+    //upcoming campaigns
+    $o_campaigns_ = fetchtable("o_campaigns","$where_  AND running_date > \"$date\" AND status = 1 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
 
     ///----------Paging Option
-    $alltotal = countotal("o_campaigns","$where_ AND running_date > \"$date\" AND status > 0 $andsearch");
+    $alltotal = countotal("o_campaigns","$where_ AND running_date > \"$date\" AND status = 1 $andsearch");
 
     ///==========Paging Option
 }elseif($sort_option == "sort_4"){
+    //repetitive campaigns
      $o_campaigns_ = fetchtable("o_campaigns","$where_  AND repetitive = 1 AND status > 0 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
 
     ///----------Paging Option
@@ -108,11 +112,11 @@ if($sort_option == "sort_1"){
 
     ///==========Paging Option
 }else{
-    //default sort/sort by currently running campaign(s)
-     $o_campaigns_ = fetchtable("o_campaigns","$where_  AND running_date = \"$date\" AND status > 0 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
+    //default or running campaign(s)
+     $o_campaigns_ = fetchtable("o_campaigns","$where_  AND (running_date = \"$date\" OR target_customers = 2) AND status > 0 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
 
     ///----------Paging Option
-    $alltotal = countotal("o_campaigns","$where_ AND running_date = \"$date\" AND status > 0 $andsearch");
+    $alltotal = countotal("o_campaigns","$where_ AND (running_date = \"$date\" OR target_customers = 2) AND status > 0 $andsearch");
 
     ///==========Paging Option
 
@@ -142,8 +146,23 @@ if($alltotal > 0) {
         }elseif($target_customers == 3) {
             $cust_numbers =  countotal("o_customers", "uid >= 1 AND status = 1");
         }else{}
-                
-        $row .= "<tr><td>$uid</td>
+        
+        //filter happy campaign to run daily 
+        if($frequency_ == "Daily" AND $repetition_ == "Yes" AND $target_customers = 2){
+            $row .= "<tr><td>$uid</td>
+                            <td><span class='font-16'>$campaign_name</span></td>
+                            <td><span>$date</span><br/> <span class=\"text-orange font-13 font-bold\">".fancydate($date)."</span></td>
+                            <td><span class = 'label custom-color' style = 'background-color:".$running_state['color_code']."'>".$running_state['name']."</td>
+                            <td><span>$frequency_</span></td>
+                            <td><span>$repetition_</span></td>
+                            <td><span>$target_audience</span><br><span class='badge'>$cust_numbers</span></td>
+                            <td><span class='label ".$state['color']."'>".$state['name']." </span></td>
+                            <td><span><a href='?campaign=$uid_enc'><span class='fa fa-eye text-green'></span></td>
+                        </tr>
+                ";
+
+        }else{
+            $row .= "<tr><td>$uid</td>
                             <td><span class='font-16'>$campaign_name</span></td>
                             <td><span>$running_date</span><br/> <span class=\"text-orange font-13 font-bold\">".fancydate($running_date)."</span></td>
                             <td><span class = 'label custom-color' style = 'background-color:".$running_state['color_code']."'>".$running_state['name']."</td>
@@ -154,6 +173,7 @@ if($alltotal > 0) {
                             <td><span><a href='?campaign=$uid_enc'><span class='fa fa-eye text-green'></span></td>
                         </tr>
                 ";
+        }
 
         //////------Paging Variable ---
         //$page_total = $page_total + 1;
