@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2021 at 11:36 AM
+-- Generation Time: Aug 05, 2021 at 11:14 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -125,21 +125,21 @@ INSERT INTO `o_campaigns` (`uid`, `name`, `description`, `running_date`, `runnin
 (7, 'Eid al-Adha', 'Holiday wishes to our customers', '2021-07-20', 1, 6, 2, 3, '2021-07-23', '51', 1),
 (8, 'Huduma Day', 'Holiday wishes to our customers', '2021-10-11', 1, 6, 2, 3, '2021-07-23', '51', 1),
 (9, 'Mashujaa Day', 'Holiday wishes to our customers', '2021-10-20', 1, 6, 2, 3, '2021-07-24', '51', 1),
-(10, 'Jamhuri Day', 'Holiday wishes to our customers', '2021-12-13', 1, 6, 2, 3, '2021-07-24', '51', 1),
+(10, 'Jamhuri Day', 'Holiday wishes to our customers', '2021-12-13', 1, 6, 2, 3, '2021-07-24', '51', 0),
 (11, 'Christmas Day', 'Holiday wishes to our customers', '2021-12-25', 1, 6, 1, 3, '2021-07-24', '51', 1),
 (12, 'Utamaduni Day', 'Holiday wishes to our customers', '2021-12-27', 1, 6, 2, 3, '2021-07-24', '51', 2),
 (13, 'Testing_1', 'Birthday wishes', '2021-07-22', 1, 6, 2, 1, '2021-07-24', '51', 1),
-(14, 'Testing_2', 'Birthday wishes', '2021-07-23', 1, 6, 2, 1, '2021-07-24', '51', 1),
-(15, 'Testing_3', 'Birthday wishes', '2021-07-24', 1, 6, 2, 1, '2021-07-24', '51', 1),
-(16, 'Testing_4', 'Birthday wishes', '2021-07-25', 1, 6, 1, 2, '2021-07-24', '51', 1),
-(17, 'Testing_5', 'Activation', '2021-07-26', 1, 1, 1, 1, '2021-07-24', '51', 1),
+(14, 'Testing_2', 'Birthday wishes', '2021-07-23', 3, 6, 2, 1, '2021-07-24', '51', 1),
+(15, 'Testing_3', 'Birthday wishes', '2021-07-24', 1, 6, 2, 1, '2021-07-24', '51', 0),
+(16, 'Testing_4', 'Birthday wishes', '2021-07-25', 1, 6, 1, 2, '2021-07-24', '51', 0),
+(17, 'Testing_5', 'Activation', '2021-07-26', 1, 1, 1, 1, '2021-07-24', '51', 0),
 (18, 'Birthdays wishes', 'Send happy birthday message to all customers who have their birthdays  ', '2021-07-26', 1, 1, 1, 2, '2021-07-26', '51', 1),
 (19, 'Testing_6', 'Send message wishing happy holiday to our customers', '2021-07-26', 1, 6, 1, 3, '2021-07-26', '51', 1),
-(20, 'Holidays Wishes2', 'A message to wish customers happy holidays', '2021-07-27', 2, 1, 1, 3, '2021-07-26', '0', 1),
-(21, 'Testing_7', 'Campaign testing', '2021-07-26', 1, 1, 1, 1, '2021-07-26', '0', 1),
-(22, 'Testing_8', 'Campaign test', '2021-07-26', 1, 1, 1, 2, '2021-07-26', '0', 1),
-(23, 'test_', 'Campaign_test', '2021-07-26', 1, 2, 1, 1, '2021-07-26', '51', 1),
-(24, 'test_2', 'Campaign_2 test', '2021-07-27', 1, 2, 2, 3, '2021-07-26', 'Samuel Munyi', 1);
+(20, 'Holidays Wishes2', 'A message to wish customers happy holidays', '2021-07-27', 2, 1, 1, 3, '2021-07-26', '0', 0),
+(21, 'Testing_7', 'Campaign testing', '2021-07-26', 1, 1, 1, 1, '2021-07-26', '0', 0),
+(22, 'Testing_8', 'Campaign test', '2021-07-26', 1, 1, 1, 2, '2021-07-26', '0', 0),
+(23, 'test_', 'Campaign_test', '2021-07-26', 1, 2, 1, 1, '2021-07-26', '51', 0),
+(24, 'test_2', 'Campaign_2 test', '2021-07-27', 1, 2, 2, 3, '2021-07-26', 'Samuel Munyi', 0);
 
 -- --------------------------------------------------------
 
@@ -432,7 +432,7 @@ INSERT INTO `o_customers` (`uid`, `full_name`, `primary_mobile`, `email_address`
 (10, 'Paul Muriithi111', '254724542111', 'ngaramampaul@gmail.com1111', 'Thome, Nyati Drive 1                                                                                                                                                       ', 1, '', '67788776', 'F', '1994-05-08', '1', '2021-06-08 23:02:25', 1, 2, 2000.00, 'Customer created at [2021-06-08 23:02:25] by [Jonah Ngarama{1}root]', 1),
 (11, 'Billy Mwalili', '254793884883', 'billymwalili@gmail.com', '233 2424 street                                                                                                                        ', 1, '', '6474343', 'M', '1990-07-09', '1', '2021-06-09 11:45:29', 1, 1, 100000.00, '', 1),
 (12, 'Samuel Munyi', '254112553167', 'samunyi90@gmail.com', '     214-20320                                                                                                                ', 1, '', '32909210', 'M', '1996-08-05', '51', '2021-07-12 11:11:28', 2, 0, 100000.00, '', 1),
-(13, 'John Doe', '254112553169', 'john@gmail.com', '       14-20320                                                                                                                 ', 1, '', '32909212', 'M', '2021-07-14', '51', '2021-07-14 11:24:05', 2, 2, 2500.00, '', 2),
+(13, 'John Doe', '254112553169', 'john@gmail.com', '       14-20320                                                                                                                                                         ', 1, '', '32909212', 'M', '2021-07-14', '51', '2021-07-14 11:24:05', 2, 2, 2500.00, '', 1),
 (14, 'Joseph Gitonga', '254711253167', 'lee@gmail.com', '                                        Sipili-Street', 1, '', '3456789', 'M', '2000-07-19', '51', '2021-07-19 09:23:44', 2, 1, 3000.00, '', 1),
 (15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                        ', 1, '', '34251678', 'M', '1997-07-01', '51', '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
 (16, 'Martin Mwangi', '254705609184', 'martin@gmail.com', '        Kimathi Street                                ', 1, '', '2345678', 'M', '2021-07-26', '51', '2021-07-26 12:39:58', 1, 2, 2500.00, '', 1);
@@ -828,7 +828,8 @@ INSERT INTO `o_events` (`uid`, `tbl`, `fld`, `event_details`, `event_date`, `eve
 (54, 'o_customers', 13, 'Customer updated at [2021-07-21 21:35:16] by [Samuel Munyi{51}root]', '2021-07-21 21:35:16', 51, 1),
 (55, 'o_customers', 15, 'Customer updated at [2021-07-23 09:07:26] by [Samuel Munyi{51}root]', '2021-07-23 09:07:26', 51, 1),
 (56, 'o_customers', 21136, 'Customer created at [2021-07-26 12:39:58] by [Samuel Munyi{51}root]', '2021-07-26 12:39:58', 51, 1),
-(57, 'o_customers', 12, 'Customer updated at [2021-08-02 16:19:11] by [Samuel Munyi{51}root]', '2021-08-02 16:19:11', 51, 1);
+(57, 'o_customers', 12, 'Customer updated at [2021-08-02 16:19:11] by [Samuel Munyi{51}root]', '2021-08-02 16:19:11', 51, 1),
+(58, 'o_customers', 13, 'Customer updated at [2021-08-04 15:42:40] by [Samuel Munyi{51}root]', '2021-08-04 15:42:40', 51, 1);
 
 -- --------------------------------------------------------
 
@@ -885,38 +886,42 @@ CREATE TABLE `o_incoming_payments` (
   `loan_id` int(20) NOT NULL,
   `payment_date` date NOT NULL DEFAULT current_timestamp(),
   `recorded_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_by` varchar(50) NOT NULL,
   `record_method` varchar(20) NOT NULL COMMENT 'API, MANUAL',
-  `comments` varchar(250) NOT NULL,
-  `status` int(1) NOT NULL
+  `comments` varchar(100) NOT NULL DEFAULT 'Repayment',
+  `status` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `o_incoming_payments`
 --
 
-INSERT INTO `o_incoming_payments` (`uid`, `customer_id`, `branch_id`, `payment_method`, `mobile_number`, `amount`, `transaction_code`, `loan_id`, `payment_date`, `recorded_date`, `record_method`, `comments`, `status`) VALUES
-(1, 0, 0, 2, '254716330450', 4600.00, 'QWERSTSSU', 9, '2021-06-22', '0000-00-00 00:00:00', 'MANUAL', '', 1),
-(2, 3, 1, 2, '0716330451', 600.09, '765678765uu', 10, '2021-06-21', '0000-00-00 00:00:00', 'MANUAL', 'the motor', 1),
-(3, 3, 1, 1, '0716330450', 600.00, '76655444', 10, '2021-06-23', '0000-00-00 00:00:00', 'MANUAL', 'Wjys', 1),
-(4, 12, 2, 2, '0112553167', 30000.00, 'PH172ORFO5', 11, '2021-08-01', '0000-00-00 00:00:00', 'MANUAL', 'Partial Payment From Sam', 1),
-(5, 12, 2, 3, '112553167', 5000.00, 'ISO20022', 11, '2021-08-02', '0000-00-00 00:00:00', 'MANUAL', 'bank payment', 1),
-(6, 12, 2, 4, '0112553167', 2000.00, 'Null', 11, '2021-08-02', '0000-00-00 00:00:00', 'MANUAL', 'cash payment ', 1),
-(7, 1, 1, 3, '254716330450', 2500.00, 'ISO20021', 9, '2021-08-01', '0000-00-00 00:00:00', 'MANUAL', 'Bank Payment', 1),
-(8, 1, 1, 4, '254716330450', 2000.00, 'CashCode', 9, '2021-08-02', '0000-00-00 00:00:00', 'MANUAL', 'Cash Payment', 1),
-(9, 12, 2, 4, '254112553167', 1500.00, 'Null', 11, '2021-08-02', '0000-00-00 00:00:00', 'MANUAL', 'Cash Payment', 1),
-(10, 12, 2, 2, '0112553167', 500.00, 'RTUUGFGBVF', 11, '2021-08-02', '0000-00-00 00:00:00', 'MANUAL', 'Mobile Payment', 1),
-(11, 12, 2, 4, '254112553167', 200.00, 'Null', 11, '2021-08-02', '2021-08-02 10:09:34', 'MANUAL', 'Cash Payment', 1),
-(12, 12, 2, 4, '254112553167', 100.00, 'Not Available', 11, '2021-08-01', '2021-08-02 10:11:01', 'MANUAL', 'Cash Payment', 1),
-(13, 12, 2, 4, '254112553167', 100.00, 'n/a', 11, '2021-08-02', '2021-08-02 10:12:01', 'MANUAL', 'Cash Payment ', 1),
-(14, 12, 2, 4, '254112553167', 100.00, 'null', 11, '2021-08-02', '2021-08-02 10:14:55', 'MANUAL', 'Cash Payment', 1),
-(15, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, '2021-08-02', '2021-08-02 10:15:42', 'MANUAL', 'Cash Pay', 1),
-(16, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, '2021-08-02', '2021-08-02 10:17:50', 'MANUAL', 'Cash', 1),
-(17, 1, 1, 4, '254716330450', 200.00, 'N/A', 9, '2021-08-02', '2021-08-02 10:18:38', 'MANUAL', 'Cash Payment', 1),
-(18, 1, 1, 2, '254716330450', 100.00, 'FFGHJKKNB', 9, '2021-08-02', '2021-08-02 10:19:25', 'MANUAL', 'Mpesa Pay', 1),
-(19, 1, 1, 4, '254716330450', 100.00, 'N/A', 9, '2021-08-02', '2021-08-02 10:20:25', 'MANUAL', 'Mobile Pay', 1),
-(20, 1, 1, 2, '254716330450', 250.00, 'JGFUJHBNN', 9, '2021-08-02', '2021-08-02 15:50:00', 'MANUAL', 'M-pesa Payment', 1),
-(21, 12, 2, 3, '0112553167', 100.00, 'ISO20020', 11, '2021-08-03', '2021-08-03 09:07:37', 'MANUAL', 'Bank Payment', 1),
-(22, 11, 1, 2, '0112553167', 500.00, 'JHGFYUIJN', 16, '2021-08-03', '2021-08-03 12:34:26', 'MANUAL', 'Partial Pay Via MPESA', 1);
+INSERT INTO `o_incoming_payments` (`uid`, `customer_id`, `branch_id`, `payment_method`, `mobile_number`, `amount`, `transaction_code`, `loan_id`, `payment_date`, `recorded_date`, `added_by`, `record_method`, `comments`, `status`) VALUES
+(1, 0, 0, 2, '254716330450', 4600.00, 'QWERSTSSU', 9, '2021-06-22', '0000-00-00 00:00:00', '', 'MANUAL', '', 1),
+(2, 3, 1, 2, '0716330451', 600.09, '765678765uu', 10, '2021-06-21', '0000-00-00 00:00:00', '', 'MANUAL', 'the motor', 1),
+(3, 3, 1, 1, '0716330450', 600.00, '76655444', 10, '2021-06-23', '0000-00-00 00:00:00', '', 'MANUAL', 'Wjys', 1),
+(4, 12, 2, 2, '0112553167', 30000.00, 'PH172ORFO5', 11, '2021-08-01', '0000-00-00 00:00:00', '', 'MANUAL', 'Partial Payment From Sam', 1),
+(5, 12, 2, 3, '112553167', 5000.00, 'ISO20022', 11, '2021-08-02', '0000-00-00 00:00:00', '', 'MANUAL', 'bank payment', 1),
+(6, 12, 2, 4, '0112553167', 2000.00, 'Null', 11, '2021-08-02', '0000-00-00 00:00:00', '', 'MANUAL', 'cash payment ', 1),
+(7, 1, 1, 3, '254716330450', 2500.00, 'ISO20021', 9, '2021-08-01', '0000-00-00 00:00:00', '', 'MANUAL', 'Bank Payment', 1),
+(8, 1, 1, 4, '254716330450', 2000.00, 'CashCode', 9, '2021-08-02', '0000-00-00 00:00:00', '', 'MANUAL', 'Cash Payment', 1),
+(9, 12, 2, 4, '254112553167', 1500.00, 'Null', 11, '2021-08-02', '0000-00-00 00:00:00', '', 'MANUAL', 'Cash Payment', 1),
+(10, 12, 2, 2, '0112553167', 500.00, 'RTUUGFGBVF', 11, '2021-08-02', '0000-00-00 00:00:00', '', 'MANUAL', 'Mobile Payment', 1),
+(11, 12, 2, 4, '254112553167', 200.00, 'Null', 11, '2021-08-02', '2021-08-02 10:09:34', '', 'MANUAL', 'Cash Payment', 1),
+(12, 12, 2, 4, '254112553167', 100.00, 'Not Available', 11, '2021-08-01', '2021-08-02 10:11:01', '', 'MANUAL', 'Cash Payment', 1),
+(13, 12, 2, 4, '254112553167', 100.00, 'n/a', 11, '2021-08-02', '2021-08-02 10:12:01', '', 'MANUAL', 'Cash Payment ', 1),
+(14, 12, 2, 4, '254112553167', 100.00, 'null', 11, '2021-08-02', '2021-08-02 10:14:55', '', 'MANUAL', 'Cash Payment', 1),
+(15, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, '2021-08-02', '2021-08-02 10:15:42', '', 'MANUAL', 'Cash Pay', 1),
+(16, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, '2021-08-02', '2021-08-02 10:17:50', '', 'MANUAL', 'Cash', 1),
+(17, 1, 1, 4, '254716330450', 200.00, 'N/A', 9, '2021-08-02', '2021-08-02 10:18:38', '', 'MANUAL', 'Cash Payment', 1),
+(18, 1, 1, 2, '254716330450', 100.00, 'FFGHJKKNB', 9, '2021-08-02', '2021-08-02 10:19:25', '', 'MANUAL', 'Mpesa Pay', 1),
+(19, 1, 1, 4, '254716330450', 100.00, 'N/A', 9, '2021-08-02', '2021-08-02 10:20:25', '', 'MANUAL', 'Mobile Pay', 1),
+(20, 1, 1, 2, '254716330450', 250.00, 'JGFUJHBNN', 9, '2021-08-02', '2021-08-02 15:50:00', '', 'MANUAL', 'M-pesa Payment', 1),
+(21, 12, 2, 3, '0112553167', 100.00, 'ISO20020', 11, '2021-08-03', '2021-08-03 09:07:37', '', 'MANUAL', 'Bank Payment', 1),
+(22, 11, 1, 2, '0112553167', 500.00, 'JHGFYUIJN', 16, '2021-08-03', '2021-08-03 12:34:26', '', 'MANUAL', 'Partial Pay Via MPESA', 1),
+(23, 11, 1, 2, '0112553167', 500.00, 'FGHJKJHBV', 16, '2021-08-03', '2021-08-03 18:08:08', 'Samuel Munyi', 'MANUAL', 'Partial Pay', 1),
+(24, 12, 2, 2, '0112553167', 200.00, 'NBVCFGHUIJNB ', 11, '2021-08-04', '2021-08-04 15:21:56', 'Samuel Munyi', 'MANUAL', 'Loan Payment Completed', 1),
+(25, 12, 2, 2, '0112553167', 2000.00, 'VBJKJHGF', 11, '2021-08-04', '2021-08-04 15:23:29', 'Samuel Munyi', 'MANUAL', 'Loan Payment In Exceeding Borrowed Amount', 1);
 
 -- --------------------------------------------------------
 
@@ -1017,13 +1022,14 @@ INSERT INTO `o_loans` (`uid`, `customer_id`, `product_id`, `loan_amount`, `disbu
 (8, 1, 1, 10000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', '0', 0, 1, '2021-06-22 00:44:18', 0, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (9, 1, 1, 10000.00, 10000.00, 10000.00, 9750.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', '0', 0, 1, '2021-06-22 01:03:05', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
 (10, 3, 2, 3000.00, 2154.00, 3700.00, 1200.09, 5, '30', '15', '', 700.00, 846.00, 1, 0, 1, '2021-06-22', '2021-07-22', '2021-07-22', '0', 0, 1, '2021-06-22 12:41:51', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
-(11, 12, 1, 40000.00, 40000.00, 40000.00, 39800.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-12', '2021-07-19', '2021-08-26', '0', 0, 2, '2021-07-12 11:25:13', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(11, 12, 1, 40000.00, 40000.00, 40000.00, 42000.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-12', '2021-07-19', '2021-08-26', '0', 0, 2, '2021-07-12 11:25:13', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
 (12, 4, 2, 2000.00, 2000.00, 2000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', '0', 0, 0, '2021-07-13 10:29:57', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (13, 4, 1, 10000.00, 10000.00, 10000.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-13', '2021-07-20', '2021-08-27', '0', 0, 0, '2021-07-13 10:33:24', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (14, 4, 2, 1000.00, 1000.00, 1000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', '0', 0, 0, '2021-07-13 10:37:33', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(15, 4, 2, 3000.00, 3000.00, 3000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', '0', 0, 0, '2021-08-03 12:20:19', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1),
-(16, 11, 2, 2500.00, 2500.00, 2500.00, 500.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 'Samuel Munyi', 0, 0, '2021-08-03 12:26:41', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1),
-(17, 10, 2, 1000.00, 1000.00, 1000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 'Samuel Munyi', 0, 1, '2021-08-03 12:32:30', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1);
+(15, 4, 2, 3000.00, 3000.00, 3000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', '0', 0, 1, '2021-08-03 12:20:19', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1),
+(16, 11, 2, 2500.00, 2500.00, 2500.00, 1000.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 'Samuel Munyi', 0, 1, '2021-08-03 12:26:41', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1),
+(17, 10, 2, 1000.00, 1000.00, 1000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 'Samuel Munyi', 0, 1, '2021-08-03 12:32:30', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1),
+(18, 13, 2, 1500.00, 1500.00, 1500.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-04', '2021-09-03', '2021-09-03', 'Samuel Munyi', 0, 2, '2021-08-04 15:43:50', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1);
 
 -- --------------------------------------------------------
 
@@ -1299,10 +1305,11 @@ CREATE TABLE `o_payment_methods` (
 --
 
 INSERT INTO `o_payment_methods` (`uid`, `name`, `account_details`, `status`) VALUES
-(1, 'Mobile Money', '', 1),
+(1, 'Bank', '', 1),
 (2, 'Safaricom M-Pesa', 'PayBill: 54772 <br/>\r\nAccount No: 74389 <br/>', 1),
-(3, 'Bank', '', 1),
-(4, 'Cash', '', 1);
+(3, 'Mobile Payment', '', 1),
+(4, 'Cash', '', 1),
+(5, 'Other', '', 1);
 
 -- --------------------------------------------------------
 
@@ -1640,7 +1647,10 @@ INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`
 (138, 51, 'v4xLr17gdP9RpgwNPhV511r1FUpErzS3kf0aLEYzvWqOflzqy7FCgv2qqQmajNU3', '2021-08-02 09:24:17', '2021-08-02 09:33:46', '', '', '', '', 0, 2),
 (139, 51, 'rJzEfWgW8EC0RgeckFSgCUgiVk09b0flgcQGp3NHoHsLW64m4pheH7PJeFny5u3W', '2021-08-02 09:33:46', '2021-08-02 09:36:04', '', '', '', '', 0, 2),
 (140, 51, 'Hs1Ro5mU4tlquABf6sMH6FsrhwdNH7PussVBbPusLZHf8bBoIdxfdh8Xj3jX69ss', '2021-08-02 09:36:04', '2021-08-02 14:17:54', '', '', '', '', 0, 2),
-(141, 51, 'wRZW4xQV7ANKX7LfafgSDdoTnY0kTCCF9b6nBGYhlHh3yydr0HjRrLR5sRCW5oc7', '2021-08-02 14:17:54', '2021-09-01 00:00:00', '', '', '', '', 0, 1);
+(141, 51, 'wRZW4xQV7ANKX7LfafgSDdoTnY0kTCCF9b6nBGYhlHh3yydr0HjRrLR5sRCW5oc7', '2021-08-02 14:17:54', '2021-08-04 13:41:21', '', '', '', '', 0, 2),
+(142, 51, 'fmahE8uFEPZyA5DOEcekFbW8E3GHP7o4s6nzuzCamVoWiRfxB5dwBEYoU3LnbQUs', '2021-08-04 13:41:21', '2021-08-04 14:19:49', '', '', '', '', 0, 2),
+(143, 51, 'mOZ9ArUwuALD1gZ1IxgdMHnQfJ33vGijab6I4Y1huJTOwjZcJgitiVEy09YEGn7s', '2021-08-04 14:19:49', '2021-08-04 17:16:10', '', '', '', '', 0, 2),
+(144, 51, '7yCmRLh3XC5QqmmLarOrUl7k0t7WkS9weyViCdiOFsa9qWtFmRJZSWThwPVbtCMZ', '2021-08-04 17:16:10', '2021-09-03 00:00:00', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2184,7 +2194,7 @@ ALTER TABLE `o_documents`
 -- AUTO_INCREMENT for table `o_events`
 --
 ALTER TABLE `o_events`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `o_flags`
@@ -2202,7 +2212,7 @@ ALTER TABLE `o_guarantors`
 -- AUTO_INCREMENT for table `o_incoming_payments`
 --
 ALTER TABLE `o_incoming_payments`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `o_key_values`
@@ -2214,7 +2224,7 @@ ALTER TABLE `o_key_values`
 -- AUTO_INCREMENT for table `o_loans`
 --
 ALTER TABLE `o_loans`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `o_loan_addons`
@@ -2268,7 +2278,7 @@ ALTER TABLE `o_passes`
 -- AUTO_INCREMENT for table `o_payment_methods`
 --
 ALTER TABLE `o_payment_methods`
-  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `o_payment_schedule`
@@ -2316,7 +2326,7 @@ ALTER TABLE `o_staff_statuses`
 -- AUTO_INCREMENT for table `o_tokens`
 --
 ALTER TABLE `o_tokens`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `o_towns`
