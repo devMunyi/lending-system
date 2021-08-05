@@ -69,7 +69,7 @@ if ($loan_amount > 0) {
 }
 
 
-$has_loan = checkrowexists('o_loans', "customer_id = '$customer_id' AND status in (1,2,3,4,7,8)");
+$has_loan = checkrowexists('o_loans', "customer_id = $customer_id AND status in (1,2,3,4,7,8)");
 if ($has_loan == 1) {
     die(errormes("The customer has existing Loan"));
     exit();
