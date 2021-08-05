@@ -2,7 +2,7 @@
     <?php 
     $campaign = $_GET["campaign"];
     $campaign_id = decurl($campaign);
-    $campaign_ = fetchonerow("o_campaigns", "uid = '$campaign_id'");
+    $campaign_ = fetchonerow("o_campaigns", "uid = $campaign_id");
     $camp_id_ = $campaign_["uid"];
     $camp_id = encurl($camp_id_);
     $camp_name = $campaign_["name"];
