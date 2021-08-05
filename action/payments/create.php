@@ -20,6 +20,7 @@ $record_method = $_POST['record_method'];
 $comments = $_POST['comments'];
 $status = $_POST['status'];
 $status = 1;
+$added_by = $userd['name'];
 
 
 ////////////////////////
@@ -53,15 +54,13 @@ if($loan_id > 0) {
     if ($exists == 0) {
         die(errormes("The loan code doesn't exist"));
         exit();
-    }
-    else{
+    }else{
         $customer_id = fetchrow('o_loans',"uid='".decurl($loan_id)."'","customer_id");
         if($customer_id > 0){
             $branch_id = fetchrow("o_customers", "uid=$customer_id", "branch");
         }
     }
-}
-else{
+}else{
     die(errormes("Please enter loan code"));
     exit();
 }
@@ -77,8 +76,8 @@ if($payment_method == 0){
 }
 
 
-$fds = array('customer_id','branch_id','payment_method','mobile_number','amount','transaction_code','loan_id','payment_date','record_method','comments','status');
-$vals = array("$customer_id","$branch_id","$payment_method","$mobile_number","$amount","$transaction_code","".decurl($loan_id)."","$payment_date","$record_method","$comments","$status");
+$fds = array('customer_id','branch_id','payment_method','mobile_number','amount','transaction_code','loan_id','payment_date','record_method','added_by','comments','status');
+$vals = array("$customer_id","$branch_id","$payment_method","$mobile_number","$amount","$transaction_code","".decurl($loan_id)."","$payment_date","$record_method","$added_by","$comments","$status");
 $create = addtodb('o_incoming_payments',$fds,$vals);
 if ($create == 1) {
     echo sucmes('Payment Recorded Successfully');

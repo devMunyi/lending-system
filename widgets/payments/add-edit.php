@@ -89,7 +89,7 @@ $rep_id = $_GET['add-edit'];
                                                 <select class="form-control" name="type_" id="payment_method">
                                                     <option value="0">--Select One</option>
                                                     <?php
-                                                    $met = fetchtable('o_payment_methods',"status=1", "name", "asc", "0,10", "uid ,name ,account_details ");
+                                                    $met = fetchtable('o_payment_methods',"status=1", "uid", "asc", "0,10", "uid ,name ,account_details ");
                                                     while($m = mysqli_fetch_array($met))
                                                     {
                                                         $uid = $m['uid'];
@@ -176,7 +176,7 @@ $rep_id = $_GET['add-edit'];
                                                     </div>
                                                 </div>
 
-                                                <button type="submit" class="btn btn-lg btn-default">Cancel</button>
+                                                <button type="submit" onclick="" class="btn btn-lg btn-default">Cancel</button>
                                                 <button type="submit" class="btn btn-success btn-lg pull-right" onclick="formready('doc-upload');">Upload
                                                 </button>
                                             </div>

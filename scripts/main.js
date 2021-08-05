@@ -1235,12 +1235,11 @@ function repetitive_campaigns(where){
 
 function delete_campaign(campaign_id, title) {
     var result = confirm('Are you sure you want to ' + title + '?');
-    if (result) {
-        var params = "campaign_id=" + campaign_id;
-        dbaction('/action/campaign/delete', params, function (feed) {
-            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
-        });
-    }
+
+    var params = "campaign_id=" + campaign_id;
+    dbaction('/action/campaign/delete', params, function (feed) {
+        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+    });
 }
 
 function disable_campaign(campaign_id, title) {
