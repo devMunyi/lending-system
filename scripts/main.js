@@ -245,6 +245,37 @@ function staff_list() {
     })
 }
 
+
+//staff list filters
+function staff_filters() {
+    let loan_order = $('#staff_order').val();
+    let sel_branch = parseInt($('#sel_branch').val());
+    let user_group = parseInt($('#group_').val());
+
+    let wher = "uid > 0";
+    $('#_dir_').val(loan_order);
+
+    if (sel_branch > 0) {
+        wher += " AND branch=" + sel_branch;
+    }
+
+    if (user_group > 0) {
+        wher += " AND user_group=" + user_group;
+    }
+
+    console.log("filt " + wher);
+
+    if (wher) {
+        $('#_where_').val(wher);
+        $('#_offset_').val(0);
+
+        pager_home();
+    } else {
+        $('#_where_').val(" status > -1");
+        $('#_offset_').val(0);
+    }
+}
+
 function update_password() {
     let old_pass = $('#old_password').val();
     let new_password = $('#new_password').val();
@@ -396,6 +427,32 @@ function customer_list() {
         }, 500);
 
     })
+}
+
+
+//customer list filters
+function customer_filters() {
+    let loan_order = $('#customer_order').val();
+    let sel_branch = parseInt($('#sel_branch').val());
+
+    let wher = "uid > 0";
+    $('#_dir_').val(loan_order);
+
+    if (sel_branch > 0) {
+        wher += " AND branch=" + sel_branch;
+    }
+
+    console.log("filt " + wher);
+
+    if (wher) {
+        $('#_where_').val(wher);
+        $('#_offset_').val(0);
+
+        pager_home();
+    } else {
+        $('#_where_').val(" status > -1");
+        $('#_offset_').val(0);
+    }
 }
 
 
