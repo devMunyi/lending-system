@@ -20,8 +20,21 @@ $offset_2 = $offset_ + $rpp_;
 $limit2 = $offset_+$rpp_;
 $rows = "";
 
+$branch_array = array();
+$branch_ = fetchtable2("o_branches", "name LIKE \"%$search_%\"", "uid", "asc", "uid");
+$branch_count = mysqli_num_rows($branch_);
+if($branch_count > 0){
+    while($branch_list = mysqli_fetch_array($branch_)){
+        $branch_id = $branch_list['uid'];
+        array_push($branch_array, $branch_id);
+    }
+    $cust_branch_list = implode(", ", $branch_array);
+    $orstaffbranch = " OR `branch` IN ($cust_branch_list)";
+}
+
+
 if((input_available($search_)) == 1){
-    $andsearch = " AND (name LIKE '%$search_%' || email = '%$search_%' || phone = '%$search_%' )";
+    $andsearch = " AND (name LIKE \"%$search_%\" || email like \"%$search_%\" || phone like \"%$search_%\" $orstaffbranch)";
 }
 else{
     $andsearch = "";
@@ -44,7 +57,7 @@ while($c = mysqli_fetch_array($o_users_))
     $status = $c['status'];
 
     if($branch > 0) {
-        $br = fetchonerow("o_branches", "uid='$branch'", "uid, name");
+        $br = fetchonerow("o_branches", "uid=$branch", "uid, name");
         $branch_name = $br['name'];
     }
     else{

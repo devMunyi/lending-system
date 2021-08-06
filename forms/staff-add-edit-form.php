@@ -81,7 +81,7 @@
                                             <option value="0">--Select One</option>
                                             <?php
 
-                                            $recs = fetchtable('o_user_groups',"uid>0", "name", "asc", "100", "uid ,name");
+                                            $recs = fetchtable('o_user_groups',"uid>0", "uid", "asc", "100", "uid ,name");
                                             while($r = mysqli_fetch_array($recs))
                                             {
                                                 $uid = $r['uid'];
