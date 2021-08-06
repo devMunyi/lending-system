@@ -125,8 +125,7 @@ if ($alltotal > 0) {
     <td>$uid</td><
     <td><a href=\"customers?cust=3232\"><span class=\"font-16\">$full_name</span><br/> <span class=\"text-muted font-13 font-bold\">$national_id</span></a>
     </td>
-    <td>$branch_name_</td>
-    <td><span class=\"text-bold text-blue font-16\">$amount</span></td>
+    <td><span class=\"text-bold text-blue font-16\">$amount</span><br><span>$branch_name_</span></td>
     <td><span>$pay_meth</span>
     </td>
     <td>$record_method</td>

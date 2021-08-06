@@ -22,7 +22,7 @@
                                 <select class="btn font-16 btn-md btn-default text-bold top-select" id="repayment_method" onchange="repayment_filters()">
                                     <option value = "0"> All Payments</option>
                                     <?php
-                                    $pay_methods = fetchtable("o_payment_methods", "status > 0", "name", "asc", "0,100", "uid, name" );
+                                    $pay_methods = fetchtable("o_payment_methods", "status > 0", "uid", "asc", "0,100", "uid, name" );
                                     while ($m = mysqli_fetch_array($pay_methods)) {
                                         $uid = $m['uid'];
                                         $name = $m['name'];
@@ -67,7 +67,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Customer</th>
-                            <th>Branch</th>
                             <th>Amount Paid</th>
                             <th>Pay Method</th>
                             <th>Record Type</th>
@@ -87,7 +86,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Customer</th>
-                            <th>Branch</th>
                             <th>Amount Paid</th>
                             <th>Pay Method</th>
                             <th>Record Type</th>

@@ -776,7 +776,7 @@ function recalculate_loan($loan_id){
 
 }
 
-///TOtal collection for a given month
+///Total collection for a given month
 function month_collections($m)
 {
     $totall = totaltable('s_incoming_payments',"month(date_received) = $m AND status in (1,2)","amount");

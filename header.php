@@ -24,7 +24,7 @@ else{
 
 ?>
 <header class="main-header" style="background-color: #333333 !important;">
-    <div id="standardnotif" class="alert aler-dismissible"></div>
+    <div id="standardnotif" class="alert alert-dismissible"></div>
     <!-- Logo -->
     <a href="index" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
