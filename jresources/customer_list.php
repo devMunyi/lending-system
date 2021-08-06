@@ -19,7 +19,7 @@ $limit2 = $offset_+$rpp_;
 $rows = "";
 
 if((input_available($search_)) == 1){
-    $andsearch = " AND (full_name LIKE '%$search_%' OR email_address LIKE '%$search_%' OR primary_mobile LIKE '%$search_%' )";
+    $andsearch = " AND (full_name LIKE \"%$search_%\" OR email_address LIKE \"%$search_%\" OR primary_mobile LIKE \"%$search_%\" )";
 }
 else{
     $andsearch = "";

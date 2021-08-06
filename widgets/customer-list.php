@@ -26,11 +26,24 @@
                     <div class="row">
                         <div class="col-md-10">
                             <h3 class="box-title font-16">
-                                <a class="btn font-16 btn-md bg-navy text-bold" href="customers"><i class="fa fa-clone"></i> All</a>
-                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="orderby('uid', 'desc')"><i class="fa fa-arrow-up"></i> Newest</a>
-                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="orderby('uid', 'asc')"><i class="fa fa-arrow-down"></i> Oldest</a>
+                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="customer_order" onchange="customer_filters()">
+                                    <option value="desc">Newest First</option>
+                                    <option value="asc">Oldest First</option>
+                                </select>
 
 
+                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_branch" onchange="customer_filters()">
+                                    <option value="0">All Branches</option>
+                                    <?php
+                                    $o_branches_ = fetchtable('o_branches',"status > 0", "name", "asc", "0,100", "uid ,name ");
+                                    while($w = mysqli_fetch_array($o_branches_))
+                                    {
+                                        $uid = $w['uid'];
+                                        $name = $w['name'];
+                                        echo "<option value='$uid'>$name</option>";
+                                    }
+                                    ?>
+                                </select>
                             </h3>
                         </div>
                         <div class="col-md-2">
