@@ -11,7 +11,6 @@ $page_no = $_POST['page_no'];
 $orderby = $_POST['orderby'];
 $dir = $_POST['dir'];
 $search_ = trim($_POST['search_']);
-$sort_option = $_POST['sort_option'];
 
 
 $limit = "$offset_, $rpp_";
