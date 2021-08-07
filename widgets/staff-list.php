@@ -31,7 +31,8 @@
                                                 echo "<option value=\"$uid\">$name</option>";
                                             }
                                             ?>
-                                        </select>
+                                </select>
+
                                 <select class="btn font-16 btn-md btn-default text-bold top-select" id="staff_order" onchange="staff_filters()">
                                     <option value="desc">Newest First</option>
                                     <option value="asc">Oldest First</option>

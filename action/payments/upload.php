@@ -14,15 +14,14 @@ $upload_location = '../../uploads_/incoming_payments/';
 $allowed_formats = "csv";
 $allowed_formats_array = explode(",", $allowed_formats);
 
-if($file_size > 100){
+if($file_size > 10){
     if((file_type($file_name, $allowed_formats_array)) == 0){
         die(errormes("The format is not allowed. Only $allowed_formats files"));
     }
-
-}
-else{
+}else{
     die(errormes("File not attached or has invalid size"));
 }
+
 
 $handle = fopen($file_tmp, "r");
 $i = 0;
@@ -63,6 +62,14 @@ while(($data = fgetcsv($handle)) !== FALSE){
 
 				if($create == 1){
 					recalculate_loan($loan_code);
+
+				    $ld = fetchmaxid("o_incoming_payments", "status > 0 AND loan_id = $loan_code", "uid");
+				    $max_pid = $ld["uid"];
+
+				    $balance = loan_balance($loan_code);
+				    updatedb("o_incoming_payments", "loan_balance = $balance", "uid = $max_pid");
+
+				    $proceed = 1;
 				}
 			}
 		$i++;

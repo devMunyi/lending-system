@@ -98,6 +98,7 @@ if ($alltotal > 0) {
         $transaction_code = $q['transaction_code'];
         $payment_date = $q['payment_date'];
         $record_method = $q['record_method'];
+        $loan_balance_ = $q['loan_balance'];
 
         if($customer_id > 0){
             $i = fetchonerow("o_customers","uid=$customer_id","full_name, primary_mobile, national_id, branch");
@@ -108,10 +109,11 @@ if ($alltotal > 0) {
         else{
             $full_name = "<i>Unspecified</i>";
         }
+        
         $loan_id = $q['loan_id'];
         if($loan_id > 0){
             $l = loan_obj($loan_id);
-            $loan_balance = money($l['loan_balance']);
+            $loan_balance = money($loan_balance_);
             $next_due = $l['next_due_date'];
         } else{
             $loan_balance = "<i>Unspecified</i>";

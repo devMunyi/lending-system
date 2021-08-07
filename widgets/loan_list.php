@@ -23,11 +23,11 @@
                         else {
                             ?>
                             <h3 class="box-title">
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="loan_order" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="loan_order" onchange="loan_filters()">
                                     <option value="desc">Newest First</option>
                                     <option value="asc">Oldest First</option>
                                 </select>
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_product" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="sel_product" onchange="loan_filters()">
                                     <option value="0">All Products</option>
                                     <?php
                                     $o_loan_products_ = fetchtable('o_loan_products',"status=1", "name", "asc", "0,100", "uid ,name ");
@@ -41,7 +41,7 @@
                                     ?>
 
                                 </select>
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_branch" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="sel_branch" onchange="loan_filters()">
                                     <option value="0">All Branches</option>
                                     <?php
                                     $o_branches_ = fetchtable('o_branches',"status!=0", "name", "asc", "0,100", "uid ,name ");
@@ -53,7 +53,7 @@
                                     }
                                     ?>
                                 </select>
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_stage" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="sel_stage" onchange="loan_filters()">
                                     <option value="0">All Stages</option>
                                     <?php
                                     $o_loan_stages_ = fetchtable('o_loan_stages',"status=1", "uid", "desc", "0,100", "uid ,name ");
@@ -66,7 +66,7 @@
 
                                     ?>
                                 </select>
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_status" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="sel_status" onchange="loan_filters()">
                                     <option>All Statuses</option>
                                     <?php
                                     $o_loan_statuses_ = fetchtable('o_loan_statuses',"status=1", "name", "desc", "0,100", "uid ,name ");

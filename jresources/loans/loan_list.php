@@ -43,12 +43,12 @@ if ((input_available($search_)) == 1) {
 }
 
 //-----------------------------Reused Query
-$o_users_ = fetchtable('o_loans', "$where_ AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
+$o_loans_ = fetchtable('o_loans', "$where_ AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
 ///----------Paging Option
 $alltotal = countotal("o_loans", "$where_ AND status > 0 $andsearch");
 ///==========Paging Option
 if ($alltotal > 0) {
-    while ($n = mysqli_fetch_array($o_users_)) {
+    while ($n = mysqli_fetch_array($o_loans_)) {
         $uid = $n['uid'];
         $customer_id = $n['customer_id'];
                 $i = fetchonerow("o_customers","uid='$customer_id'","full_name, primary_mobile");

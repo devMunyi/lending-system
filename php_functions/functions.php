@@ -776,6 +776,7 @@ function recalculate_loan($loan_id){
 
 }
 
+
 ///Total collection for a given month
 function month_collections($m)
 {
