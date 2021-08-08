@@ -26,7 +26,9 @@ if($file_size > 10){
 $handle = fopen($file_tmp, "r");
 $i = 0;
 
-while(($data = fgetcsv($handle)) !== FALSE){
+//while(($data = fgetcsv($handle)) !== FALSE){
+while(!feof($handle)){
+	$data = fgetcsv($handle);
 		if($i == 0){
 			$i++;
 			continue;
@@ -55,26 +57,65 @@ while(($data = fgetcsv($handle)) !== FALSE){
 				    die(errormes("Please enter loan code"));
 				}
 
+				if($payment_method == 4){
+					$transaction_code = "N/A";
+				}else{
+				    if (input_available($transaction_code) == 1) {
+				        $exists = checkrowexists('o_incoming_payments', "transaction_code=\"$transaction_code\"");
+				       
+				        if ($exists == 1) {
+				            die(errormes("Transaction code exists"));
+				            exit();
+				        }
+				    }else {
+				        //////------Invalid user ID
+				        die(errormes("Please enter transaction code"));
+				        exit();
+				    }
+				}
+
+
+				if($amount > 0){}
+				else{
+				    die(errormes("Amount is required"));
+				    exit();
+				}
+
+				if($loan_code > 0) {
+				    $exists = checkrowexists('o_loans', "uid = $loan_code AND status != 0");
+				    if ($exists == 0) {
+				        die(errormes("The loan code doesn't exist"));
+				        exit();
+				    }else{
+				        $customer_id = fetchrow('o_loans',"uid=$loan_code","customer_id");
+				        if($customer_id > 0){
+				            $branch_id = fetchrow("o_customers", "uid=$customer_id", "branch");
+				        }
+				    }
+				}else{
+				    die(errormes("Please enter loan code"));
+				    exit();
+				}
+
+				$phone_number = make_phone_valid($mobile_number);
+
 				$fds = array('customer_id','branch_id','payment_method','mobile_number','amount','transaction_code','loan_id','payment_date','added_by', 'record_method', 'status');
-				$vals = array("$customer_id","$branch_id","$payment_method","$mobile_number","$amount","$transaction_code","$loan_code","$date","$added_by", "$record_method", "$status");
-			}else{
-				die(errormes("All fields must be filled"))
+				$vals = array("$customer_id","$branch_id","$payment_method","$phone_number","$amount","$transaction_code","$loan_code","$date","$added_by", "$record_method", "$status");
+
+				$create = addtodb("o_incoming_payments", $fds,$vals);
+				recalculate_loan($loan_code);
+
+				$ld = fetchmaxid("o_incoming_payments", "status > 0 AND loan_id=$loan_code", "uid");
+				$max_pid = $ld["uid"];
+
+				$balance = loan_balance($loan_code);
+				updatedb("o_incoming_payments", "loan_balance = $balance", "uid = $max_pid");
 			}
 		$i++;
 }
 
-$create = addtodb("o_incoming_payments", $fds,$vals);
-
 if($create == 1){
-
 	echo sucmes('File Uploaded Successfully');
-	recalculate_loan($loan_code);
-
-	$ld = fetchmaxid("o_incoming_payments", "status > 0 AND loan_id = $loan_code", "uid");
-	$max_pid = $ld["uid"];
-
-	$balance = loan_balance($loan_code);
-	updatedb("o_incoming_payments", "loan_balance = $balance", "uid = $max_pid");
 }else{
 	die(errormes('Unable Upload File'));
 }
