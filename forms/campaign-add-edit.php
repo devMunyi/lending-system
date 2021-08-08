@@ -165,13 +165,16 @@
                     </div>
                     <div class="col-sm-3 box-body">
                         <?php
-                        /*if($cid > 1) {
+                        if($cid > 0) {
+                            ?>
+                            <button onclick="disable_campaign('<?php echo decurl($cid);?>', 'disable this campaign')" class="btn btn-warning btn-md pull-right"><i class="fa fa-ban"></i> Stop Campaign</button>
+                            <?php
                         }
                         else{
                             ?>
-                            <button class="btn btn-danger btn-md pull-right"><i class="fa fa-ban"></i> Stop Campaign </button>
+                            
                             <?php
-                        }*/
+                        }
                         ?>
 
                     </div>

@@ -288,6 +288,16 @@ function update_password() {
 
 }
 
+function block_member(member_id, title) {
+    var result = confirm('Are you sure you want to ' + title + '?');
+    if (result) {
+        var params = "member_id=" + member_id;
+        dbaction('/action/staff/delete', params, function (feed) {
+            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+        });
+    }
+}
+
 /////////==============End of staff update
 
 /////////--------------Customers

@@ -164,11 +164,14 @@
                     </div>
                     <div class="col-sm-3 box-body">
                         <?php
-                        if($sid > 1) {
+                        if($sid > 0) {
+                            ?>
+                            <button onclick="block_member('<?php echo decurl($sid);?>', 'block this member')" class="btn btn-danger btn-md pull-right"><i class="fa fa-ban"></i> Block Member </button>
+                            <?php
                         }
                         else{
                             ?>
-                            <button class="btn btn-danger btn-md pull-right"><i class="fa fa-ban"></i> Block Member </button>
+                            
                             <?php
                         }
                         ?>
