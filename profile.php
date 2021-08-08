@@ -103,12 +103,6 @@ $company = company_settings();
                                                         </div>
 
                                                     </div>
-
-
-
-
-
-
                                                     <div class="col-sm-3"></div>
                                                     <div class="col-sm-9">
                                                         <div class="box-footer">
@@ -138,7 +132,7 @@ $company = company_settings();
                                                 <tr><td>Phone</td><td><?php echo $userd['phone']; ?></td></tr>
                                                 <tr><td>Join Date</td><td><?php echo $userd['join_date']; ?></td></tr>
                                                 <tr><td>Group</td><td><?php echo $group_name; ?></td></tr>
-                                                <tr><td>Branch</td><td><?php echo fetchrow('o_branches',"uid='".$userd['user_group']."'","name"); ?></td></tr>
+                                                <tr><td>Branch</td><td><?php echo fetchrow('o_branches',"uid='".$userd['branch']."'","name"); ?></td></tr>
 
                                             </table>
                                             <hr/>
