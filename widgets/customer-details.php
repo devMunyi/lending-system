@@ -302,7 +302,7 @@
                                     $category = $q['category'];
                                     $stored_address = $q['stored_address'];
 
-                                    echo "<a title = \"click to view details\" target='_blank' class='pointer' onclick=\"view_file('".encurl($uid)."','VIEW');\"><div class=\"box box-solid col-sm-5\" style=\"width: 30%; margin: 1em;\">
+                                    echo "<a title = \"click to view details\" target='_blank' class='pointer' onclick=\"view_file('".encurl($uid)."','EDIT');\"><div class=\"box box-solid col-sm-5\" style=\"width: 30%; margin: 1em;\">
                                      <img class='img-bordered' src=\"uploads_/$stored_address\" width='100%'>
                                     <div class=\"box-body\">
                                    
@@ -315,7 +315,7 @@
                             </div>
                             <div class="col-md-2">
                                 <table class="table">
-                                    <tr><td><a href="customers?customer-add-edit=<?php echo $customer_; ?>&uploads" class="btn btn-success btn-block btn-md"><i class="fa fa-plus"></i> Upload File</a></td></tr>
+                                    <tr><td><a href="customers?customer-add-edit=<?php echo $customer_; ?>&uploads" class="btn btn-success btn-block btn-md"><i class="fa fa-plus"></i> Upload/Edit File</a></td></tr>
                                     <tr style="display: none;"><td><button class="btn btn-primary btn-block  btn-md grid-width-10"><i class="fa fa-pencil"></i> Update File</button></td></tr>
                                     <tr style="display: none;"><td><button class="btn btn-danger btn-block btn-md"><i class="fa fa-times"></i> Delete File</button></td></tr>
                                 </table>

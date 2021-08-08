@@ -115,39 +115,33 @@ $company = company_settings();
                            </table>
                         </div>
                     </div>
-
-
                     </div>
-                    <?php
-                }
-                elseif (isset($_GET['add-edit'])){
-                    ?>
+                <?php
+                }elseif(isset($_GET['add-edit'])){
+                ?>
                 <div class="col-xs-12">
                     <!-- /.box -->
                     <div class="row">
+
                         <div class="col-md-2"></div>
                             <div class="col-md-8">
                                 <div class="box box-success">
                                     <div class="box-header with-border">
-                                        <h3 class="box-title font-bold"><?php echo arrow_back('reports',"Reports"); ?>Add New Report</h3>
+                                        <?php
+                                            $report_id = $_GET['add-edit'];
+                                            if($report_id > 0){
+                                                $z = fetchonerow("o_reports","uid ='".decurl($report_id)."'");
+                                                echo " <h3 class=\"box-title font-bold\">".arrow_back('reports','Reports')."Edit Report </h3>";
+                                            }else{
+                                                echo " <h3 class=\"box-title font-bold\">".arrow_back('reports','Reports')."Add new Report </h3>";
+                                                $z = array();
+                                            }
+                                        ?>
 
                                         <!-- /.box-tools -->
                                     </div>
                                     <!-- /.box-header -->
                                     <div class="box-body">
-                                        <?php
-                                        $z = fetchonerow("o_reports","uid='".decurl($_GET['add-edit'])."'","*");
-                                        $uid = $z['uid'];
-                                        $title = $z['title'];
-                                        $description = $z['description'];
-                                        $row_query = $z['row_query'];
-                                        $added_by = $z['added_by'];
-                                        $added_date = $z['added_date'];
-                                        $viewable_by = $z['viewable_by'];
-                                        $status = $z['status'];
-
-                                        ?>
-
                                         <form class="form-horizontal" id="other_frm" onsubmit="return false;" method="post">
                                             <div class="box-body">
                                                 <div class="form-group">
@@ -155,7 +149,7 @@ $company = company_settings();
                                                     <label for="title" class="col-sm-3 control-label">Title</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" value="<?php echo $title; ?>" id="title">
+                                                        <input type="text" class="form-control" value="<?php echo $z['title']; ?>" id="title">
                                                     </div>
                                                 </div>
 
@@ -163,7 +157,7 @@ $company = company_settings();
                                                     <label for="description" class="col-sm-3 control-label">Description</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control"  id="description" aria-invalid="description" placeholder=""><?php echo $title; ?></textarea>
+                                                        <textarea class="form-control"  id="description" aria-invalid="description" placeholder=""><?php echo $z['description']; ?></textarea>
                                                     </div>
                                                 </div>
 
@@ -171,7 +165,7 @@ $company = company_settings();
                                                     <label for="row_query" class="col-sm-3 control-label">SQL Query</label>
 
                                                     <div class="col-sm-9">
-                                                        <textarea class="form-control" style="height: 160px; background: #0a0a0a; color: lightgrey; font-family: Monospace;"  id="row_query" aria-invalid="description" placeholder=""><?php echo $row_query; ?></textarea>
+                                                        <textarea class="form-control" style="height: 160px; background: #0a0a0a; color: lightgrey; font-family: Monospace;"  id="row_query" aria-invalid="description" placeholder=""><?php echo $z['row_query']; ?></textarea>
                                                         <span class="font-italic"> For variables like date user triple curly e.g.  {{{start_date}}}, {{{end_date}}}</span>
                                                     </div>
                                                 </div>
@@ -179,7 +173,7 @@ $company = company_settings();
                                                     <label for="viewable_by" class="col-sm-3 control-label">Viewable by</label>
 
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" value="<?php echo $viewable_by; ?>" id="viewable_by">
+                                                        <input type="text" class="form-control" value="<?php echo $z['viewable_by']; ?>" id="viewable_by">
                                                        <span class="font-italic">Enter the groups separated by comma that can view this report. 0 is for all groups:
                                                            <?php
                                                            $o_user_groups_ = fetchtable('o_user_groups',"status=1", "uid", "asc", "0,100", "uid ,name ");

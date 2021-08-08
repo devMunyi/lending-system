@@ -12,8 +12,8 @@ $rep_id = $_GET['add-edit'];
         <small>Payment #$rep_id</small>";
         }
         else{
-            echo arrow_back("incoming-payments","Payments")."Add Payment
-        <small>New</small>";
+            echo arrow_back("incoming-payments","Payments")."Add Payment<small>New</small>";
+            $P = array();
         }
         ?>
 
@@ -156,7 +156,6 @@ $rep_id = $_GET['add-edit'];
                                     <div class="box-body">
 
                                         <div class="form-group">
-
                                             <label for="file_" class="col-sm-3 control-label">File</label>
 
                                             <div class="col-sm-9">
@@ -176,7 +175,7 @@ $rep_id = $_GET['add-edit'];
                                                     </div>
                                                 </div>
 
-                                                <button type="submit" onclick="" class="btn btn-lg btn-default">Cancel</button>
+                                                <button type="submit" class="btn btn-lg btn-default">Cancel</button>
                                                 <button type="submit" class="btn btn-success btn-lg pull-right" onclick="formready('doc-upload');">Upload
                                                 </button>
                                             </div>

@@ -77,7 +77,7 @@
                             <div class="col-md-3">
                                 <table class="table">
                                     <tr><td><a href="incoming-payments?add-edit" class="btn btn-success btn-block  btn-md grid-width-10"><i class="fa fa-plus"></i> Add a Payment</a></td></tr>
-                                    <tr><td><a href="incoming-payments?add-edit=<?php echo $rep; ?>" class="btn btn-warning btn-block btn-md"><i class="fa fa-pencil"></i> Edit this Payment</a></td></tr>
+                                    <tr><td><a href="incoming-payments?add-edit=<?php echo $rep_; ?>" class="btn btn-warning btn-block btn-md"><i class="fa fa-pencil"></i> Edit this Payment</a></td></tr>
 
                                 </table>
                             </div>

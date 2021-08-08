@@ -57,26 +57,24 @@ while(($data = fgetcsv($handle)) !== FALSE){
 
 				$fds = array('customer_id','branch_id','payment_method','mobile_number','amount','transaction_code','loan_id','payment_date','added_by', 'record_method', 'status');
 				$vals = array("$customer_id","$branch_id","$payment_method","$mobile_number","$amount","$transaction_code","$loan_code","$date","$added_by", "$record_method", "$status");
-					
-				$create = addtodb("o_incoming_payments", $fds,$vals);
-
-				if($create == 1){
-					recalculate_loan($loan_code);
-
-				    $ld = fetchmaxid("o_incoming_payments", "status > 0 AND loan_id = $loan_code", "uid");
-				    $max_pid = $ld["uid"];
-
-				    $balance = loan_balance($loan_code);
-				    updatedb("o_incoming_payments", "loan_balance = $balance", "uid = $max_pid");
-
-				    $proceed = 1;
-				}
+			}else{
+				die(errormes("All fields must be filled"))
 			}
 		$i++;
 }
 
+$create = addtodb("o_incoming_payments", $fds,$vals);
+
 if($create == 1){
+
 	echo sucmes('File Uploaded Successfully');
+	recalculate_loan($loan_code);
+
+	$ld = fetchmaxid("o_incoming_payments", "status > 0 AND loan_id = $loan_code", "uid");
+	$max_pid = $ld["uid"];
+
+	$balance = loan_balance($loan_code);
+	updatedb("o_incoming_payments", "loan_balance = $balance", "uid = $max_pid");
 }else{
 	die(errormes('Unable Upload File'));
 }

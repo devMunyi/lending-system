@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2021 at 03:09 PM
+-- Generation Time: Aug 08, 2021 at 11:18 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -493,7 +493,9 @@ INSERT INTO `o_customer_contacts` (`uid`, `customer_id`, `contact_type`, `value`
 (35, 12, 1, '254112567890', 1),
 (36, 4, 1, '254112456789', 1),
 (37, 4, 2, '254112553167', 0),
-(38, 4, 3, 'munyisamuel3@gmail.com', 1);
+(38, 4, 3, 'munyisamuel3@gmail.com', 1),
+(39, 12, 2, '254705609184', 0),
+(40, 12, 2, '254705609184', 1);
 
 -- --------------------------------------------------------
 
@@ -747,9 +749,11 @@ INSERT INTO `o_documents` (`uid`, `code_name`, `title`, `description`, `category
 (34, '', 'Photo', '', 1, 1, '2021-07-31 14:20:40', 'o_customers', 12, 'MoqlfgGI3ouR6GCNh4w1XatnF.jpg', 0),
 (35, '', 'Photo', 'sdfghjk', 1, 1, '2021-07-31 14:46:54', 'o_customers', 12, '3NKFh3poOcLpcx5Nol499ifKo.jpg', 0),
 (36, '', 'Passport', 'dfghjk', 3, 1, '2021-07-31 14:47:30', 'o_customers', 12, 'IdeJpSN321fDEsCwxXmrTcaMJ.jpg', 0),
-(37, '', 'Passport', 'Photo Jpeg', 1, 1, '2021-07-31 14:54:48', 'o_customers', 12, 'JAxJXAy8gXM5dnTwatd7Rh0E8.jpg', 1),
+(37, '', 'Passport', 'Photo Jpeg', 1, 1, '2021-07-31 14:54:48', 'o_customers', 12, 'JAxJXAy8gXM5dnTwatd7Rh0E8.jpg', 0),
 (38, '', 'National ID', 'Front View', 2, 1, '2021-07-31 15:22:51', 'o_customers', 12, 'hvuVuUxvxFt0bglvNkyLAgtxL.jpg', 1),
-(39, '', 'National ID', 'Back View', 3, 1, '2021-07-31 15:23:50', 'o_customers', 12, '6AsNej2XUk7XwhxzQgVkVrXGS.jpg', 1);
+(39, '', 'National ID', 'Back View', 3, 1, '2021-07-31 15:23:50', 'o_customers', 12, '6AsNej2XUk7XwhxzQgVkVrXGS.jpg', 1),
+(40, '', 'Test', 'photo', 1, 1, '2021-08-07 16:18:38', 'o_customers', 12, '8P6ru56ny65v0GEVAnB6kKTaH.jpg', 1),
+(41, '', 'Photo', 'id', 3, 1, '2021-08-07 16:19:46', 'o_customers', 12, 'aXtOi99O2WjJNiEL98JDUcKdB.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -1560,7 +1564,8 @@ CREATE TABLE `o_reports` (
 --
 
 INSERT INTO `o_reports` (`uid`, `title`, `description`, `row_query`, `added_by`, `added_date`, `viewable_by`, `status`) VALUES
-(1, 'Customer Acquisition', 'Customer Acquisition', 'SELECT uid, full_name,primary_mobile,email_address,	physical_address,	town,	passport_photo FROM o_customers WHERE uid > 0 order by uid asc limit 0,4', 1, '2021-06-18 18:23:30', '0', 1);
+(1, 'Customer Acquisition', 'Customer Acquisition', 'SELECT uid, full_name,primary_mobile,email_address,	physical_address,	town,	passport_photo FROM o_customers WHERE uid > 0 order by uid asc limit 0,5', 1, '2021-06-18 18:23:30', '0', 1),
+(3, 'Payments Acqusation', 'Payments Acquisition', 'SELECT uid, customer_id, branch_id, amount, payment_date, loan_balance FROM o_incoming_payments WHERE status > 0 AND uid > 0 order by uid desc LIMIT 0,4;  ', 51, '2021-08-08 12:00:26', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -2241,7 +2246,7 @@ ALTER TABLE `o_customers`
 -- AUTO_INCREMENT for table `o_customer_contacts`
 --
 ALTER TABLE `o_customer_contacts`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `o_customer_conversations`
@@ -2289,7 +2294,7 @@ ALTER TABLE `o_disburse_methods`
 -- AUTO_INCREMENT for table `o_documents`
 --
 ALTER TABLE `o_documents`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `o_events`
@@ -2415,7 +2420,7 @@ ALTER TABLE `o_product_stages`
 -- AUTO_INCREMENT for table `o_reports`
 --
 ALTER TABLE `o_reports`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `o_staff_statuses`

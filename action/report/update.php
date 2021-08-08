@@ -9,7 +9,7 @@ if($userd == null){
     exit();
 }
 
-$uid = $_POST['uid'];
+$uid = decurl($_POST['uid']);
 $title = $_POST['title'];
 $description = $_POST['description'];
 $row_query = $_POST['row_query'];
@@ -18,35 +18,51 @@ $added_date = $fulldate;
 $viewable_by = $_POST['viewable_by'];
 $status = 1;
 
+echo $status;
+//echo $uid + 10;
+
 if($uid > 0){}
 else{
     echo errormes("The report id is required");
     die();
 }
 
-if((input_length($title,2)) == 0){
+if(input_available($title) == 0){
+    echo errormes("Title is required");
+    die();
+}elseif(input_length($title,2) == 0){
     echo errormes("Title too short");
     die();
-}
-else{
-    if((checkrowexists('o_reports', "title='$title' AND status=1 AND uid!='".decurl($uid)."")) == 1){
+}else{
+    $title_exists = checkrowexists("o_reports", "title = \"$title\" AND status = 1 AND uid != $uid");
+    if($title_exists == 1){
         echo errormes("Report will similar title exists");
         die();
     }
 }
 
 
+if(input_available($row_query) == 0){
+    echo errormes("Query is required");
+    die();
+}elseif(input_length($row_query, 30) == 0){
+    echo errormes("Query too short");
+    die();
+}else{
+    if((checkrowexists('o_reports', "row_query=\"$row_query\" AND status=1 AND uid != $uid")) == 1){
+        echo errormes("Report will similar query exists");
+        die();
+    }
+}
 
-$update_flds = " title='$title', description='$description', row_query='$row_query', viewable_by='$viewable_by', status='$status'";
-$update = updatedb('o_reports', $update_flds, "uid='".decurl($uid)."'");
-if($update == 1)
-{
+
+$update_flds = " title=\"$title\", description=\"$description\", row_query=\"$row_query\", viewable_by=\"$viewable_by\", status=$status";
+$update = updatedb('o_reports', $update_flds, "uid=$uid");
+if($update == 1){
     echo sucmes('Report Created Successfully');
     $proceed = 1;
 
-}
-else
-{
+}else{
     echo errormes('Unable to Save Report');
 }
 
@@ -54,7 +70,7 @@ else
 <script>
     if("<?php echo $proceed; ?>"){
         setTimeout(function () {
-            reload();
-        },1000);
+            gotourl("reports?report=<?php echo encurl($uid)?>");
+        },1500);
     }
 </script>
