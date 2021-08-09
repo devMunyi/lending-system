@@ -90,7 +90,7 @@ function gotourl(url){
 function pager(tableid) {
 
     $("<div id='pager_header' class='row page-header'>\n" +
-        "                        <div class='col-sm-6'><span class='font-18 font-italic text-black'><span id='total_results_'>0</span> Records Found</span></div>\n" +
+        "                        <div class='col-sm-6'><span style=\"font-family:sans-serif\" class='font-18 font-italic text-black text-mute'><span class = \"badge font-16\" id='total_results_'>0</span> Records Found</span></div>\n" +
         "                        <div class='col-sm-6'><input type='text' class='form-control' id='search_' onkeyup='search();' placeholder='Search'></div>\n" +
         "                    </div>\n").insertBefore(tableid);
 
@@ -188,6 +188,9 @@ function pager_refactor() {
     let current_rpp = parseInt($('#_rpp_').val());
     let total_records = parseInt($('#_alltotal_').val());
     $('#total_results_').html(total_records);
+    $('#approvals').html(total_records);
+    let total_uploads = parseInt($('#uploads_count').val());
+    $('#total_docs').html(total_uploads);
 
     let current_page = parseInt($('#_pageno_').val());
     $('#page_no').html(current_page);
@@ -210,6 +213,6 @@ function pager_refactor() {
 }
 
 
-
-
-
+function list_items_count(item){
+    let num = $('#')
+}

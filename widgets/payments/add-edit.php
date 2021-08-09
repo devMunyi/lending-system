@@ -30,7 +30,7 @@ $rep_id = $_GET['add-edit'];
                 <ul class="nav nav-tabs nav-justified font-16">
 
                     <li class="nav-item nav-100 active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><i class="fa fa-save"></i> Record Payment</a></li>
-                    <li class="nav-item nav-100"><a href="#tab_2" data-toggle="tab" aria-expanded="false"><i class="fa fa-cloud-upload"></i> Upload Payments</a></li>
+                    <li class="nav-item nav-100"><a href="#tab_2" data-toggle="tab" aria-expanded="false"><i class="fa fa-cloud-upload"></i> Upload Payments (CSV File Only)</a></li>
 
 
 

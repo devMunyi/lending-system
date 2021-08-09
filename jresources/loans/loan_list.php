@@ -51,9 +51,9 @@ if ($alltotal > 0) {
     while ($n = mysqli_fetch_array($o_loans_)) {
         $uid = $n['uid'];
         $customer_id = $n['customer_id'];
-                $i = fetchonerow("o_customers","uid='$customer_id'","full_name, primary_mobile");
-                $full_name = $i['full_name'];
-                $primary_mobile = $i['primary_mobile'];
+        $i = fetchonerow("o_customers","uid='$customer_id'","full_name, primary_mobile");
+        $full_name = $i['full_name'];
+        $primary_mobile = $i['primary_mobile'];
         $product_id = $n['product_id'];
         $loan_amount = $n['loan_amount'];
         $disbursed_amount = $n['disbursed_amount'];

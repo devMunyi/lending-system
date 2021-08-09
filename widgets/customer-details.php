@@ -299,6 +299,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
+                                    <span class='font-18 font-italic text-black text-mute'><span class = 'badge font-16' id='total_docs'>0</span> Files Found</span>
                                 </div>
                                 <div class="row">
                                 <?php
@@ -321,10 +322,11 @@
                                         </div>
                                         </div></a>";
                                     }
-                                }else{
+                                }
+                                /*else{
                                     echo " <span class='font-18 font-italic text-black'>No Uploads Found</span>";
                                 }
-                                
+                                */
                                 echo "<input type = \"hidden\" id =\"uploads_count\" value = \"$uploads_total\">";
                                 ?>
                                 </div>

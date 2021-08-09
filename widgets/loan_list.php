@@ -13,7 +13,7 @@
                             ?>
                             <h3 class="box-title">
 
-                                <a class="btn font-16 text-black font-bold" href=""><i class="fa fa-check-square-o"></i>REQUIRES YOUR APPROVAL <label id="approvals" class="label label-danger"></label></a>
+                                <a class="btn font-16 text-black font-bold" href=""><i class="fa fa-check-square-o"></i>REQUIRES YOUR APPROVAL <label id="approvals" class="label label-danger">0</label></a>
                             </h3>
                             <?php
                         }
