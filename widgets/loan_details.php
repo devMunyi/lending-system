@@ -280,7 +280,7 @@ else{
                             </div>
                             <div class="col-md-7">
                                 <table class="table-bordered font-14 table table-hover">
-                                    <thead><tr><th>Date</th><th>Amount</th><th>Status</th</tr></thead>
+                                    <thead><tr><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
                                     <tbody>
                                     <?php
 

@@ -59,7 +59,7 @@ else{
 }
 
 if($loan_id > 0) {
-    $exists = checkrowexists('o_loans', "uid = $loan_id AND status !=0");
+    $exists = checkrowexists('o_loans', "uid = $loan_id AND status != 0");
     if ($exists == 0) {
         die(errormes("The loan code doesn't exist"));
         exit();

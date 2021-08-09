@@ -13,7 +13,7 @@ $customer_id = $_POST['customer_id'];
 $product_id = $_POST['product_id'];
 $loan_amount = $_POST['loan_amount'];
 $application_mode = $_POST['application_mode'];
-$added_by = $userd['name'];
+$added_by = $userd['uid'];
 //$status = $_POST['status'];
 
 

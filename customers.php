@@ -74,8 +74,6 @@ $company = company_settings();
     <?php
     include_once("footer.php");
     ?>
-
-
     <!-- Control Sidebar -->
 
     <!-- /.control-sidebar -->
@@ -122,7 +120,6 @@ include_once("footer_includes.php");
     if ('<?php echo $other_list; ?>') {
       other_list('o_customers', '<?php echo $other_list; ?>', 'EDIT');
     }
-
   })
   </script>
 </body>

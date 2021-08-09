@@ -20,7 +20,7 @@ $record_method = $_POST['record_method'];
 $comments = $_POST['comments'];
 $status = $_POST['status'];
 $status = 1;
-$added_by = $userd['name'];
+$added_by = $userd['uid'];
 
 
 ////////////////////////
@@ -50,7 +50,7 @@ else{
 }
 
 if($loan_id > 0) {
-    $exists = checkrowexists('o_loans', "uid = $loan_id AND status !=0");
+    $exists = checkrowexists('o_loans', "uid = $loan_id AND status != 0");
     if ($exists == 0) {
         die(errormes("The loan code doesn't exist"));
         exit();

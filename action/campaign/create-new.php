@@ -4,7 +4,7 @@ include_once ("../../php_functions/functions.php");
 include_once ("../../configs/conn.inc");
 
 $userd = session_details();
-$added_by = $userd['name'];
+$added_by = $userd['id'];
 $title = $_POST['title'];
 $description = $_POST['description'];
 $campaign_date = $_POST['date'];

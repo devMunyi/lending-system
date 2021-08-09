@@ -53,7 +53,7 @@ else{
 }
 
 
-$update_flds = " key_='$key_', value_='$value_'";
+$update_flds = " key_='$key_', value_='$value_', added_by = '$added_by'";
 $create = updatedb('o_key_values',$update_flds,"uid=".decurl($recid));
 if($create == 1)
 {

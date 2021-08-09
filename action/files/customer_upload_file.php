@@ -20,7 +20,7 @@ $upload_location = '../../uploads_/';
 
 if((input_available($title)) == 0)
 {
-    die(errormes("Title is required short"));
+    die(errormes("Title is required"));
     exit();
 }
 if($category > 0){

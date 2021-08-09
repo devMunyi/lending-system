@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-md-7">
                                 <table class="table-bordered font-14 table table-hover">
-                                    <tr><td class="text-bold">UID</td><td><?php echo $rep; ?></td></tr>
+                                    <tr><td class="text-bold">UID</td><td><?php echo $rep_; ?></td></tr>
                                     <tr><td class="text-bold">Customer</td><td><?php echo $full_name; ?>
                                             <span class="font-italic text-muted"></span><?php echo $national_id; ?> <a href="customers?customer=<?php echo encurl($customer_id) ?>"><i class="fa fa-external-link"></i></a></td></tr>
                                     <tr><td class="text-bold">Amount</td><td><h4 class = "text-bold text-20"><?php echo money($amount); ?></h4></td></tr>

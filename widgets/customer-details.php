@@ -172,8 +172,9 @@
                                     <tbody>
                                     <?php
                                     $o_customer_referees_ = fetchtable('o_customer_referees',"status=1 AND customer_id=$customer_id", "uid", "desc", "0,10", "uid ,referee_name ,id_no ,mobile_no ,physical_address ,email_address ,relationship ,status ");
-                                    while($y = mysqli_fetch_array($o_customer_referees_))
-                                    {
+                                    $reftotal = countotal("o_customer_referees","uid > 0 AND status = 1 AND customer_id = $customer_id");
+                                    if($reftotal > 0){
+                                         while($y = mysqli_fetch_array($o_customer_referees_)){
                                         $uid = $y['uid'];
                                         $referee_name = $y['referee_name'];
                                         $id_no = $y['id_no'];
@@ -183,7 +184,11 @@
                                         $relationship = $y['relationship'];   $relationship_name  = fetchrow("o_customer_referee_relationships","uid='$relationship'","name");
                                         $status = $y['status'];
                                         echo "  <tr><td>$referee_name</td><td>$id_no</td><td>$mobile_no</td><td>$email_address</td><td>$physical_address</td><td>$relationship_name</td> </tr>";
+                                        }
+                                    }else{
+                                        echo "<tr><td colspan='8'><i>No Records Found</i></td></tr>";
                                     }
+                                   
                                     ?>
 
                                     </tbody>
@@ -211,9 +216,11 @@
                                     <thead><tr><th>Category</th><th>Title</th><th>Description</th><th>Current Worth</th><th>Ref Number</th><th>File Number</th><th>Added Date</th><th>Status</th></tr></thead>
                                     <tbody>
                                     <?php
-                                    $o_collateral_ = fetchtable("o_collateral","status=1 AND customer_id=$customer_id", "uid", "desc", "0,10", "uid ,category ,title ,description ,money_value ,document_scan_address ,doc_reference_no ,filling_reference_no ,added_date ,added_by ,status ");
-                                    while($i = mysqli_fetch_array($o_collateral_))
-                                    {
+                                    $o_collateral_ = fetchtable("o_collateral","status > 0 AND customer_id=$customer_id", "uid", "desc", "0,10", "uid ,category ,title ,description ,money_value ,document_scan_address ,doc_reference_no ,filling_reference_no ,added_date ,added_by ,status ");
+                                    $collateral_total = countotal("o_collateral","uid > 0 AND status > 0 AND customer_id = $customer_id");
+
+                                    if($collateral_total > 0){
+                                        while($i = mysqli_fetch_array($o_collateral_)){
                                         $uid = $i['uid'];
                                         $category = $i['category'];   $category_name = fetchrow('o_asset_categories',"uid='$category'","name");
                                         $title = $i['title'];
@@ -233,13 +240,15 @@
 
 
                                         echo "<tr><td>$category_name</td><td>$title</td><td>$description</td><td>$money_value</td><td>$doc_reference_no</td><td>$filling_reference_no</td><td>$added_date</td><td>$name</td></tr>";
+                                        }
+                                    }else{
+                                        echo "<tr><td colspan='8'><i>No Records Found</i></td></tr>";
                                     }
+                                    
 
                                     ?>
 
                                     </tbody>
-
-
                                 </table>
                             </div>
                             <div class="col-md-2">
@@ -261,8 +270,9 @@
                                 <table class="table-bordered font-14 table table-hover">
                                     <thead><tr><th>Event</th><th>Date</th></tr></thead>
                                     <tbody>
+
                                 <?php
-                                $o_events_ = fetchtable('o_events',"tbl='o_customers' AND fld='$customer'", "uid", "asc", "0,10", "uid ,event_details ,event_date ,event_by ,status ");
+                                $o_events_ = fetchtable('o_events',"tbl='o_customers' AND fld='$customer_id'", "uid", "asc", "0,100", "uid ,event_details ,event_date ,event_by ,status ");
                                 while($d = mysqli_fetch_array($o_events_))
                                 {
                                     $uid = $d['uid'];
@@ -274,7 +284,6 @@
                                     echo " <tr><td>$event_details</td><td>$event_date</td> </tr>";
                                 }
                                 ?>
-
                                     </tbody>
 
 
@@ -290,26 +299,33 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
-
+                                </div>
+                                <div class="row">
                                 <?php
                                 $o_documents_ = fetchtable('o_documents',"tbl='o_customers' AND rec=$customer_id AND status=1", "uid", "desc", "0,10", "uid ,code_name ,title ,description ,category ,stored_address ");
-                                while($q = mysqli_fetch_array($o_documents_))
-                                {
-                                    $uid = $q['uid'];
-                                    $code_name = $q['code_name'];
-                                    $title = $q['title'];
-                                    $description = $q['description'];
-                                    $category = $q['category'];
-                                    $stored_address = $q['stored_address'];
+                                $uploads_total = countotal("o_documents","status = 1 AND rec = $customer_id");
+                                if($uploads_total > 0){
+                                    while($q = mysqli_fetch_array($o_documents_)){
+                                        $uid = $q['uid'];
+                                        $code_name = $q['code_name'];
+                                        $title = $q['title'];
+                                        $description = $q['description'];
+                                        $category = $q['category'];
+                                        $stored_address = $q['stored_address'];
 
-                                    echo "<a title = \"click to view details\" target='_blank' class='pointer' onclick=\"view_file('".encurl($uid)."','EDIT');\"><div class=\"box box-solid col-sm-5\" style=\"width: 30%; margin: 1em;\">
-                                     <img class='img-bordered' src=\"uploads_/$stored_address\" width='100%'>
-                                    <div class=\"box-body\">
-                                   
-                                        <h5 class=\"box-title\">$title</h5> 
-                                    </div>
-                                </div></a>";
+                                        echo "<br><a title = \"click to view details\" target='_blank' class='pointer' onclick=\"view_file('".encurl($uid)."','EDIT');\"><div class=\"box box-solid col-sm-5\" style=\"width: 30%; margin: 1em;\">
+                                         <img class='img-bordered' src=\"uploads_/$stored_address\" width='100%'>
+                                        <div class=\"box-body\">
+                                       
+                                            <h5 class=\"box-title\">$title</h5> 
+                                        </div>
+                                        </div></a>";
+                                    }
+                                }else{
+                                    echo " <span class='font-18 font-italic text-black'>No Uploads Found</span>";
                                 }
+                                
+                                echo "<input type = \"hidden\" id =\"uploads_count\" value = \"$uploads_total\">";
                                 ?>
                                 </div>
                             </div>

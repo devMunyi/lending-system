@@ -8,7 +8,7 @@ $tbl = $_POST['tbl'];
 $record = decurl($_POST['record']);
 $key_ = $_POST['key_'];
 $value_ = $_POST['value_'];
-$added_by = $userd['name'];
+$added_by = $userd['uid'];
 $added_date = $fulldate;
 $status = 1;
 

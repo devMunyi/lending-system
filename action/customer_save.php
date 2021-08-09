@@ -17,7 +17,7 @@ $town = $_POST['town'];
 $national_id = $_POST['national_id'];
 $gender = $_POST['gender'];
 $dob = $_POST['dob'];
-$added_by = $userd['name'];
+$added_by = $userd['uid'];
 $added_date = $fulldate;
 $branch = $_POST['branch'];
 $primary_product = $_POST['primary_product'];
@@ -115,7 +115,7 @@ if($create == 1)
     echo sucmes('Customer Saved Successfully');
     $customer_id = encurl(fetchrow('o_customers',"primary_mobile='$primary_mobile'","uid"));
     $proceed = 1;
-    store_event('o_customers', $customer_id,"$events");
+    store_event('o_customers', decurl($customer_id),"$events");
 }
 else
 {

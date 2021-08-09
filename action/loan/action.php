@@ -24,7 +24,8 @@ else{
 
 
     $update_loan_stage = updatedb('o_loans',"status='$action'","uid=".decurl($loan_id));
-    if($update_loan_stage == 1){
+    $update_incoming_payments_status = updatedb("o_incoming_payments", "status = '$action'", "loan_id=".decurl($loan_id));
+    if($update_loan_stage == 1 AND $update_incoming_payments_status == 1){
         $proceed = 1;
         echo sucmes("Success");
         $action_name = fetchrow('o_loan_statuses',"uid='$action'","name");
@@ -33,14 +34,13 @@ else{
         if($action == 0){
             $delete = "1";
         }
+    }else{
+        die(errormes("Oops!.An error occured. Try again"));
     }
 
 
 
 ///////------------End of validation
-
-
-
 ?>
 <script>
     modal_hide();
