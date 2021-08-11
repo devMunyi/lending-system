@@ -898,6 +898,7 @@ function updatedb($tb, $fds, $where)
     else
     {
         return 1;
+        logupdate($tb, $insertq);
     }
 
 }
@@ -1774,6 +1775,10 @@ function loan_balance($loan_id){
 }
 
 /// //////////////=============End of loan calculations
-
+function logupdate($table, $query){
+    
+    //////Save the log in the o_logs_update table 
+    $fds = array('','','','');
+}
 
 ?>

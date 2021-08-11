@@ -1,9 +1,11 @@
+use uzmancok_sbs;
+
 -- phpMyAdmin SQL Dump
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 09, 2021 at 08:47 PM
+-- Generation Time: Aug 10, 2021 at 02:43 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -27,7 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `o_addons`
 --
 
-CREATE TABLE `o_addons` (
+/*CREATE TABLE `o_addons`(
   `uid` int(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(250) NOT NULL,
@@ -106,7 +108,7 @@ CREATE TABLE `o_campaigns` (
   `frequency` int(5) DEFAULT NULL,
   `repetitive` int(5) DEFAULT NULL,
   `target_customers` int(5) NOT NULL,
-  `added_date` date NOT NULL DEFAULT current_timestamp(),
+  `added_date` datetime NOT NULL DEFAULT now(),
   `added_by` int(10) NOT NULL,
   `status` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -194,18 +196,22 @@ INSERT INTO `o_campaign_frequencies` (`uid`, `name`, `status`) VALUES
 
 CREATE TABLE `o_campaign_messages` (
   `uid` int(10) NOT NULL,
+  `campaign_id` int(10) DEFAULT NULL,
   `message` varchar(250) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `added_by` int(5) DEFAULT NULL
+  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_by` int(5) DEFAULT NULL,
+  `status` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `o_campaign_messages`
 --
 
-INSERT INTO `o_campaign_messages` (`uid`, `message`, `added_date`, `added_by`) VALUES
-(3, 'Dear $fname we would like to wish you a happy holiday', '2021-07-26 19:35:42', 0),
-(4, 'Dear $fname we would like to wish you a happy holiday2', '2021-07-26 19:47:23', 0);
+INSERT INTO `o_campaign_messages` (`uid`, `campaign_id`, `message`, `added_date`, `added_by`, `status`) VALUES
+(3, NULL, 'Dear $fname we would like to wish you a happy holiday', '2021-07-26 19:35:42', 0, 1),
+(4, NULL, 'Dear $fname we would like to wish you a happy holiday2', '2021-07-26 19:47:23', 0, 1),
+(5, NULL, 'Dear, we would like to wish you a happy Holiday.', '2021-08-09 22:21:18', 51, 1),
+(6, 25, 'Message Testing', '2021-08-09 23:04:56', 51, 1);
 
 -- --------------------------------------------------------
 
@@ -415,7 +421,7 @@ CREATE TABLE `o_customers` (
   `gender` varchar(5) NOT NULL COMMENT 'M, F',
   `dob` date NOT NULL,
   `added_by` int(10) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_date` datetime NOT NULL DEFAULT now(),
   `branch` int(5) NOT NULL COMMENT 'From o_branches',
   `primary_product` int(5) NOT NULL COMMENT 'From o_products',
   `loan_limit` double(100,2) NOT NULL DEFAULT 0.00,
@@ -440,7 +446,7 @@ INSERT INTO `o_customers` (`uid`, `full_name`, `primary_mobile`, `email_address`
 (14, 'Joseph Gitonga', '254711253167', 'lee@gmail.com', '                                        Sipili-Street', 1, '', '3456789', 'M', '2000-07-19', 51, '2021-07-19 09:23:44', 2, 1, 3000.00, '', 1),
 (15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                        ', 1, '', '34251678', 'M', '1997-07-01', 51, '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
 (16, 'Martin Mwangi', '254705609184', 'martin567@gmail.com', '        Kimathi Street                                                                                                                                                        ', 1, '', '2345678', 'M', '2021-07-26', 51, '2021-07-26 12:39:58', 1, 2, 2500.00, '', 1),
-(17, 'Irene Maingi', '254711567098', 'irene@gmail.com', '       Kiambu                                                                                                                 ', 1, '', '327069', 'F', '2021-08-09', 51, '2021-08-09 18:07:46', 2, 1, 5000.00, '', 1);
+(17, 'Irene Maingi', '254711567098', 'irene@gmail.com', '       Kiambu                                                                                                                                                                                                                                         ', 1, '', '327069', 'F', '2021-08-09', 51, '2021-08-09 18:07:46', 2, 2, 5000.00, '', 1);
 
 -- --------------------------------------------------------
 
@@ -889,7 +895,11 @@ INSERT INTO `o_events` (`uid`, `tbl`, `fld`, `event_details`, `event_date`, `eve
 (100, 'o_customers', 17, 'Customer created at [2021-08-09 18:07:46] by [Samuel Munyi{51}root]', '2021-08-09 18:07:46', 51, 1),
 (101, 'o_customers', 17, 'Customer updated at [2021-08-09 18:12:24] by [Samuel Munyi{51}root]', '2021-08-09 18:12:24', 51, 1),
 (102, 'o_customers', 17, 'Customer updated at [2021-08-09 18:14:59] by [Samuel Munyi{51}root]', '2021-08-09 18:14:59', 51, 1),
-(103, 'o_customers', 17, 'Customer updated at [2021-08-09 18:14:59] by [Samuel Munyi{51}root]', '2021-08-09 18:14:59', 51, 1);
+(103, 'o_customers', 17, 'Customer updated at [2021-08-09 18:14:59] by [Samuel Munyi{51}root]', '2021-08-09 18:14:59', 51, 1),
+(104, 'o_customers', 17, 'Customer updated at [2021-08-10 08:18:53] by [Samuel Munyi{51}root]', '2021-08-10 08:18:53', 51, 1),
+(105, 'o_customers', 17, 'Customer updated at [2021-08-10 08:20:54] by [Samuel Munyi{51}root]', '2021-08-10 08:20:54', 51, 1),
+(106, 'o_loans', 21, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-10 08:21:18] with comment [<i></i>]', '2021-08-10 08:21:18', 51, 1),
+(107, 'o_customers', 17, 'Customer updated at [2021-08-10 08:21:53] by [Samuel Munyi{51}root]', '2021-08-10 08:21:53', 51, 1);
 
 -- --------------------------------------------------------
 
@@ -945,8 +955,8 @@ CREATE TABLE `o_incoming_payments` (
   `transaction_code` varchar(50) NOT NULL,
   `loan_id` int(20) NOT NULL,
   `loan_balance` double(8,2) NOT NULL DEFAULT 0.00,
-  `payment_date` date NOT NULL DEFAULT current_timestamp(),
-  `recorded_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `payment_date` date NOT NULL,
+  `recorded_date` datetime NOT NULL DEFAULT now(),
   `added_by` int(10) NOT NULL,
   `record_method` varchar(20) NOT NULL COMMENT 'API, MANUAL',
   `comments` varchar(100) NOT NULL DEFAULT 'Repayment',
@@ -956,7 +966,7 @@ CREATE TABLE `o_incoming_payments` (
 --
 -- Dumping data for table `o_incoming_payments`
 --
-
+*/
 INSERT INTO `o_incoming_payments` (`uid`, `customer_id`, `branch_id`, `payment_method`, `mobile_number`, `amount`, `transaction_code`, `loan_id`, `loan_balance`, `payment_date`, `recorded_date`, `added_by`, `record_method`, `comments`, `status`) VALUES
 (1, 0, 0, 2, '254716330450', 4600.00, 'QWERSTSSU', 9, 0.00, '2021-06-22', '0000-00-00 00:00:00', 0, 'MANUAL', '', 1),
 (2, 3, 1, 2, '0716330451', 600.09, '765678765uu', 10, 0.00, '2021-06-21', '0000-00-00 00:00:00', 0, 'MANUAL', 'the motor', 1),
@@ -1195,7 +1205,9 @@ INSERT INTO `o_loans` (`uid`, `customer_id`, `product_id`, `loan_amount`, `disbu
 (17, 10, 2, 1000.00, 1000.00, 1000.00, 1950.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 0, 0, 1, '2021-08-03 12:32:30', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
 (18, 13, 2, 1500.00, 1500.00, 1500.00, 2100.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-04', '2021-09-03', '2021-09-03', 0, 0, 2, '2021-08-04 15:43:50', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (19, 9, 2, 3000.00, 3000.00, 3000.00, 3300.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-07', '2021-09-06', '2021-09-06', 0, 0, 1, '2021-08-07 16:03:45', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(20, 13, 1, 17000.00, 17000.00, 21580.00, 1550.00, 45, '1', '7', '', 4580.00, 0.00, 6, 0, 1, '2021-08-09', '2021-08-16', '2021-09-23', 0, 0, 2, '2021-08-09 10:31:27', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2);
+(20, 13, 1, 17000.00, 17000.00, 21580.00, 1550.00, 45, '1', '7', '', 4580.00, 0.00, 6, 0, 1, '2021-08-09', '2021-08-16', '2021-09-23', 0, 0, 2, '2021-08-09 10:31:27', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(21, 17, 2, 3000.00, 3000.00, 3000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-10', '2021-09-09', '2021-09-09', 51, 0, 2, '2021-08-10 08:20:00', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(22, 17, 2, 3000.00, 3000.00, 3000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-10', '2021-09-09', '2021-09-09', 51, 0, 2, '2021-08-10 08:22:26', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1);
 
 -- --------------------------------------------------------
 
@@ -2316,7 +2328,7 @@ ALTER TABLE `o_campaigns`
 -- AUTO_INCREMENT for table `o_campaign_messages`
 --
 ALTER TABLE `o_campaign_messages`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `o_collateral`
@@ -2412,7 +2424,7 @@ ALTER TABLE `o_documents`
 -- AUTO_INCREMENT for table `o_events`
 --
 ALTER TABLE `o_events`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
 
 --
 -- AUTO_INCREMENT for table `o_flags`
@@ -2442,7 +2454,7 @@ ALTER TABLE `o_key_values`
 -- AUTO_INCREMENT for table `o_loans`
 --
 ALTER TABLE `o_loans`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `o_loan_addons`

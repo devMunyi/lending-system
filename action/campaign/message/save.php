@@ -23,8 +23,8 @@ if(input_available($message) == 0){
 
 
 ///////////------------------Save
-$fds = array("message", "added_by");
-$vals = array("$message", "$added_by");
+$fds = array("campaign_id","message", "added_by");
+$vals = array("$campaign_id","$message", "$added_by");
 
 $create = addtodb('o_campaign_messages', $fds, $vals);
 if($create == 1){

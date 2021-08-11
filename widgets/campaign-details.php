@@ -155,29 +155,56 @@
 
                                 <div class="tab-pane" id="tab_3">
                                     <div class="box-body">
-                                        <div style="margin-top: 20px;" class="row">
+                                        <div class="row">
                                             <div class="col-sm-2">
                                                 <span style="align-content: center;" class="info-box-icon"><i class="fa fa-pencil"></i></span>
                                             </div>
-                                            <div class = "col-sm-10">
+                                            <div class = "col-md-6">
                                             <form class="form-horizontal" onsubmit="return false"; method="post">
                                                 <div class="form-group">
-                                                    <label class="control-label col-sm-3">Message</label>
-                                                    <div class="col-sm-7">
-                                                        <textarea class="form-control" id="message"></textarea>
+                                                    <label class="control-label col-md-3">Message</label>
+                                                    <div class="col-md-9">
+                                                        <textarea class="form-control" style="height: 160px; background: #0a0a0a; color: lightgrey; font-family: Monospace;" id="message"></textarea>
                                                     </div>
                                                 </div>
                                                 
                                                 <div class="col-sm-3"></div>
-                                                <div class="col-sm-7">
+                                                <div class="col-sm-9">
                                                 <div class="box-footer">
                                                     <br/>
                                                     <button type="submit" class="btn btn-lg btn-default btn-flat">Cancel</button>
                                                     <button type="submit" class="btn btn-primary btn-lg btn-flat pull-right" onclick="save_message();">Save</button>
                                                 </div>
-                                    </div>
-                                            </form>
                                         </div>
+                                            </form>
+
+                                    <!--
+                                    </div>
+                                        <div class="col-md-4">
+                                                <div class="col-md-2">
+                                                    <span class="info-box-icon"><i class="fa fa-envelope"></i></span>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <table class="table-bordered font-14 table table-hover">
+                                                        <tr><td class="text-bold">Primary Phone</td><td><?//php echo $cust['primary_mobile']; ?></td></tr>
+                                                        <?php
+
+                                                        ?>
+
+
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <table class="table">
+                                                        <tr><td><a href="customers?customer-add-edit=<?php echo $customer_; ?>&contact" class="btn btn-success btn-block  btn-md"><i class="fa  fa-plus"></i> Add/Edit Contact</a></td></tr>
+                                                        <tr style="display: none;"><td><button class="btn btn-primary btn-block btn-md"><i class="fa  fa-pencil"></i> Edit Contact</button></td></tr>
+                                                        <tr style="display: none;"><td><button class="btn btn-danger btn-block btn-md"><i class="fa  fa-times"></i> Remove Contact</button></td></tr>
+                                                    </table>
+                                                </div>
+                        </div>
+                                        </div>
+                                    -->
+
                                         </div>
                                         
                                     </div>

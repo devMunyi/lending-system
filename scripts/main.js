@@ -1073,7 +1073,10 @@ function approve_disburse(loan_id) {
 
 ///////--------------------------End Loan Stages
 ///////////----------------------Interactions
-function load_interactions(customer) {
+
+
+
+function load_interactions() {
     let where = $('#_where_').val();
     if (!where) {
         where = "uid > 0";
@@ -1086,6 +1089,12 @@ function load_interactions(customer) {
     if (!rpp) {
         rpp = 10;
     }
+
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+
     let orderby = $('#_orderby_').val();
     if (!orderby) {
         orderby = 'uid';
@@ -1099,20 +1108,13 @@ function load_interactions(customer) {
         search = "";
     }
 
-    if ((parseInt(customer)) > 0) {
-        let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&customer=" + customer;
-        dbaction("/jresources/interactions/interactions-list", params, function (feed) {
-            console.log(params);
-            $('#interaction_customer').html(feed);
-            setTimeout(function () {
-                pager_refactor();
-            }, 200);
-
-        });
-    } else {
-
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "default_sort";
     }
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&customer=0";
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no + "&orderby=" + orderby + 
+    "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
     dbaction("/jresources/interactions/interactions-list", params, function (feed) {
         console.log(params);
         $('#interactions_').html(feed);
@@ -1121,7 +1123,23 @@ function load_interactions(customer) {
         }, 200);
 
     });
+}
 
+function specific_customer_interactions(){
+    let customer = $("#cust_id_").val();
+    if(!customer){
+        customer = "";
+    }
+
+    let params = "customer= " + customer;
+    dbaction("/jresources/interactions/specific_customer_interactions", params, function (feed) {
+        console.log(params);
+        $('#customer_interactions').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 200);
+
+    });
 }
 
 function save_interaction() {
@@ -1144,6 +1162,33 @@ function view_interaction(iid) {
     let params = "iid=" + iid;
     modal_view('/jresources/interactions/view-one', params, "Interaction Details");
 }
+
+
+function all_interactions(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+
+function face_to_face_interactions(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+function chat_interactions(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+function call_interactions(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('asc');
+    pager_home();
+}
+
 
 //////////=======================End of interactions
 /////////----------------Settings
@@ -1392,5 +1437,16 @@ function save_message(){
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
     })
 }
+
+function message_list(campaign) {
+
+    let params = "customer=" + campaign;
+    dbaction("/jresources/message_list", params, function (feed) {
+        console.log(JSON.stringify(feed));
+        $('#contacts_').html(feed)
+    })
+}
+
+
 
 ////////================End of Campaigns

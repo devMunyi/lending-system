@@ -90,7 +90,7 @@ function gotourl(url){
 function pager(tableid) {
 
     $("<div id='pager_header' class='row page-header'>\n" +
-        "                        <div class='col-sm-6'><span style=\"font-family:sans-serif\" class='font-18 font-italic text-black text-mute'><span class = \"badge font-16\" id='total_results_'>0</span> Records Found</span></div>\n" +
+        "                        <div class='col-sm-6'><span style=\"font-family:sans-serif\" class='font-18 font-italic text-black text-mute'><span class = \"badge font-16\" id='total_results_'>0</span> Record(s) Found</span></div>\n" +
         "                        <div class='col-sm-6'><input type='text' class='form-control' id='search_' onkeyup='search();' placeholder='Search'></div>\n" +
         "                    </div>\n").insertBefore(tableid);
 

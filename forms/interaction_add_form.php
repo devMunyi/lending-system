@@ -19,15 +19,6 @@ include_once ("../configs/conn.inc");
                         </div>
 
                     </div>
-
-
-                    <div class="form-group">
-                        <label for="details" class="col-sm-3 control-label">Details</label>
-
-                        <div class="col-sm-9">
-                            <textarea class="form-control" id="details"></textarea>
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="conversation_method" class="col-sm-3 control-label">Conversation Method</label>
 
@@ -64,6 +55,13 @@ include_once ("../configs/conn.inc");
                             }
                             ?>
 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="details" class="col-sm-3 control-label">Outcome/Details</label>
+
+                        <div class="col-sm-9">
+                            <textarea class="form-control" id="details"></textarea>
                         </div>
                     </div>
                     <div class="form-group">

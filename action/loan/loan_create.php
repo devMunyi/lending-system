@@ -98,6 +98,7 @@ $loan_stage = $loan_stage_d['stage_id'];
 $fds = array('customer_id', 'product_id', 'loan_amount', 'disbursed_amount', 'period', 'period_units', 'payment_frequency', 'payment_breakdown', 'total_instalments', 'total_instalments_paid', 'current_instalment', 'given_date', 'next_due_date', 'final_due_date', 'added_by', 'current_branch', 'added_date', 'loan_stage', 'application_mode', 'status');
 $vals = array("$customer_id", "$product_id", "$loan_amount", "$disbursed_amount", "$period", "$period_units", "$payment_frequency", "$payment_breakdown", "$total_instalments", "$total_instalments_paid", "$current_instalment", "$given_date", "$next_due_date", "$final_due_date", "$added_by", "$cust_branch", "$added_date", "$loan_stage", "$application_mode", "1");
 $create = addtodb('o_loans', $fds, $vals);
+updatedb("o_customers", "primary_product = $product_id", "uid = $customer_id");
 if ($create == 1) {
     echo sucmes('Loan Created Successfully');
     $proceed = 1;

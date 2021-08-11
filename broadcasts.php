@@ -88,6 +88,7 @@ include_once("footer_includes.php");
         pager("#example1");
 
         audience_list();
+        message_list();
         let camp_status = '<?php echo $camp_status ?>';
 
         if(camp_status == 1){

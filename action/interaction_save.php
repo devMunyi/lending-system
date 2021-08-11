@@ -19,7 +19,8 @@ $status = 1;
 
 
 ///////----------Validation
-if(($customer_id > 0)){}
+if(($customer_id > 0)){
+}
 else{
     die(errormes("Please select customer"));
     exit();
