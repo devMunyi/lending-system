@@ -6,7 +6,7 @@ include_once ("../../../configs/conn.inc");
 $userd = session_details();
 $added_by = $userd['uid'];
 $message = $_POST['message'];
-$campaign_id = $_POST['campaign_id'];
+$campaign_id = decurl($_POST['campaign_id']); 
 
 
 ////////////////validation
@@ -14,9 +14,9 @@ if(input_available($message) == 0){
     echo errormes(x: "Message is required");
     die();
 }else{
-    $exists = checkrowexists("o_campaign_messages","message='$message'");
+    $exists = checkrowexists("o_campaign_messages","campaign_id = $campaign_id");
     if($exists == 1){
-        echo errormes("Message with similar description exists");
+        echo errormes("Message for this campaign already exists");
         die();
     }
 }
@@ -41,7 +41,8 @@ else{
 <script>
     if('<?php echo $proceed ?>'){
         setTimeout(function () {
-            gotourl('broadcasts?campaign=<?php echo encurl($campaign_id); ?>');
+            reload();
+            //gotourl('broadcasts?campaign=<?php// echo encurl($campaign_id); ?>');
         }, 1500);
 
     }

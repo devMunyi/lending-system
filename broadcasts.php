@@ -87,8 +87,8 @@ include_once("footer_includes.php");
         campaign_list();
         pager("#example1");
 
+        ////////-------------Doc Load Other Function
         audience_list();
-        message_list();
         let camp_status = '<?php echo $camp_status ?>';
 
         if(camp_status == 1){
@@ -98,12 +98,9 @@ include_once("footer_includes.php");
             $("#inactive_campaign").html("<p class =\"font-14 text-red alert\" style='text-align:center'><b>No audience for inactive campaign</b></p>");
         }
 
-
-        /*let cust_dob = $('#_dob_').val();
-
-        if(length(cust_dob) < 1{
-            $('#example2').remove(".dob");
-        }*/
+        if ('<?php echo $message_list; ?>') {
+          message_list('<?php echo $message_list; ?>', 'EDIT');
+        }
     })
 </script>
 </body>

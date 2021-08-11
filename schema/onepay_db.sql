@@ -1,11 +1,9 @@
-use uzmancok_sbs;
-
 -- phpMyAdmin SQL Dump
 -- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2021 at 02:43 PM
+-- Generation Time: Aug 11, 2021 at 03:12 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -29,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `o_addons`
 --
 
-/*CREATE TABLE `o_addons`(
+CREATE TABLE `o_addons` (
   `uid` int(10) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(250) NOT NULL,
@@ -108,7 +106,7 @@ CREATE TABLE `o_campaigns` (
   `frequency` int(5) DEFAULT NULL,
   `repetitive` int(5) DEFAULT NULL,
   `target_customers` int(5) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_date` date NOT NULL DEFAULT current_timestamp(),
   `added_by` int(10) NOT NULL,
   `status` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -198,7 +196,7 @@ CREATE TABLE `o_campaign_messages` (
   `uid` int(10) NOT NULL,
   `campaign_id` int(10) DEFAULT NULL,
   `message` varchar(250) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
   `added_by` int(5) DEFAULT NULL,
   `status` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -380,7 +378,8 @@ CREATE TABLE `o_conversation_methods` (
 
 INSERT INTO `o_conversation_methods` (`uid`, `name`, `details`, `status`) VALUES
 (1, 'Face to face', 'fa-user-circle-o', 1),
-(2, 'Chat', 'fa-comment-o', 1);
+(2, 'Chat', 'fa-comment-o', 1),
+(3, 'Call', 'fa fa-phone', 1);
 
 -- --------------------------------------------------------
 
@@ -421,7 +420,7 @@ CREATE TABLE `o_customers` (
   `gender` varchar(5) NOT NULL COMMENT 'M, F',
   `dob` date NOT NULL,
   `added_by` int(10) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
   `branch` int(5) NOT NULL COMMENT 'From o_branches',
   `primary_product` int(5) NOT NULL COMMENT 'From o_products',
   `loan_limit` double(100,2) NOT NULL DEFAULT 0.00,
@@ -525,7 +524,7 @@ CREATE TABLE `o_customer_conversations` (
   `transcript` varchar(250) NOT NULL,
   `conversation_method` int(5) NOT NULL COMMENT 'From o_conversation_methods',
   `conversation_date` datetime NOT NULL,
-  `next_interaction` datetime NOT NULL,
+  `next_interaction` date DEFAULT NULL,
   `next_steps` int(5) NOT NULL COMMENT 'From o_next_steps',
   `flag` int(5) NOT NULL,
   `outcome` int(10) NOT NULL,
@@ -537,14 +536,19 @@ CREATE TABLE `o_customer_conversations` (
 --
 
 INSERT INTO `o_customer_conversations` (`uid`, `customer_id`, `agent_id`, `loan_id`, `transcript`, `conversation_method`, `conversation_date`, `next_interaction`, `next_steps`, `flag`, `outcome`, `status`) VALUES
-(1, 1, 1, 1, 'THe event that was', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1, 0, 0),
-(2, 1, 1, 1, 'The trans', 2, '2021-06-02 21:36:22', '2021-06-02 00:00:00', 2, 2, 0, 1),
-(3, 3, 1, 1, 'He is not at home', 2, '2021-06-02 21:47:01', '2021-06-02 00:00:00', 2, 2, 0, 1),
-(4, 10, 1, 1, 'The Client said they are not available', 2, '2021-06-17 18:50:14', '2021-06-19 00:00:00', 2, 1, 0, 1),
-(5, 11, 1, 1, 'The client will not pay', 1, '2021-06-18 11:23:11', '2021-06-25 00:00:00', 2, 1, 0, 1),
-(6, 9, 1, 1, 'Yestes', 1, '2021-06-18 12:38:05', '2021-06-17 00:00:00', 2, 2, 0, 1),
-(7, 1, 1, 1, 'Another Interaction', 1, '2021-06-18 14:32:42', '2021-07-01 00:00:00', 1, 1, 0, 1),
-(8, 9, 1, 1, 'Not Available', 1, '2021-07-10 11:50:41', '2021-07-10 00:00:00', 1, 1, 0, 1);
+(1, 1, 1, 1, 'THe event that was', 2, '0000-00-00 00:00:00', '0000-00-00', 0, 1, 0, 0),
+(2, 1, 1, 1, 'The trans', 2, '2021-06-02 21:36:22', '2021-06-02', 2, 2, 0, 1),
+(3, 3, 1, 1, 'He is not at home', 2, '2021-06-02 21:47:01', '2021-06-02', 2, 2, 0, 1),
+(4, 10, 1, 1, 'The Client said they are not available', 2, '2021-06-17 18:50:14', '2021-06-19', 2, 1, 0, 1),
+(5, 11, 1, 1, 'The client will not pay', 1, '2021-06-18 11:23:11', '2021-06-25', 2, 1, 0, 1),
+(6, 9, 1, 1, 'Yestes', 1, '2021-06-18 12:38:05', '2021-06-17', 2, 2, 0, 1),
+(7, 1, 1, 1, 'Another Interaction', 1, '2021-06-18 14:32:42', '2021-07-01', 1, 1, 0, 1),
+(8, 9, 1, 1, 'Not Available', 1, '2021-07-10 11:50:41', '2021-07-10', 1, 1, 0, 1),
+(9, 11, 1, 1, 'Client promised to pay in the course of the week', 1, '2021-08-11 09:58:29', '2021-08-11', 0, 1, 0, 1),
+(10, 13, 1, 1, 'Yesterday', 2, '2021-08-11 09:59:34', '2021-08-10', 1, 2, 0, 1),
+(11, 3, 1, 1, 'Today', 1, '2021-08-11 10:01:23', '2021-08-13', 2, 2, 0, 1),
+(12, 4, 1, 1, 'Talked Today', 2, '2021-08-11 10:02:51', '0000-00-00', 0, 1, 0, 1),
+(13, 10, 1, 1, 'Called Today,pledged to pay tomorrow', 3, '2021-08-11 11:51:34', '2021-08-12', 0, 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -955,8 +959,8 @@ CREATE TABLE `o_incoming_payments` (
   `transaction_code` varchar(50) NOT NULL,
   `loan_id` int(20) NOT NULL,
   `loan_balance` double(8,2) NOT NULL DEFAULT 0.00,
-  `payment_date` date NOT NULL,
-  `recorded_date` datetime NOT NULL DEFAULT now(),
+  `payment_date` date NOT NULL DEFAULT current_timestamp(),
+  `recorded_date` datetime NOT NULL DEFAULT current_timestamp(),
   `added_by` int(10) NOT NULL,
   `record_method` varchar(20) NOT NULL COMMENT 'API, MANUAL',
   `comments` varchar(100) NOT NULL DEFAULT 'Repayment',
@@ -966,7 +970,7 @@ CREATE TABLE `o_incoming_payments` (
 --
 -- Dumping data for table `o_incoming_payments`
 --
-*/
+
 INSERT INTO `o_incoming_payments` (`uid`, `customer_id`, `branch_id`, `payment_method`, `mobile_number`, `amount`, `transaction_code`, `loan_id`, `loan_balance`, `payment_date`, `recorded_date`, `added_by`, `record_method`, `comments`, `status`) VALUES
 (1, 0, 0, 2, '254716330450', 4600.00, 'QWERSTSSU', 9, 0.00, '2021-06-22', '0000-00-00 00:00:00', 0, 'MANUAL', '', 1),
 (2, 3, 1, 2, '0716330451', 600.09, '765678765uu', 10, 0.00, '2021-06-21', '0000-00-00 00:00:00', 0, 'MANUAL', 'the motor', 1),
@@ -1873,7 +1877,8 @@ INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`
 (149, 51, 'D2K2QAIRn2LmB1xyjQqidaqSxFNtgxqUxPNSahY2VUKrX9o8VJh2klqrHwwAVF01', '2021-08-08 21:58:59', '2021-08-08 22:27:32', '', '', '', '', 0, 2),
 (150, 52, 'nZk4lWMRmrOJA2sGVWWkUfiYOJLcJISOrNxZoU9uM9YpVnMBa99r7ZR6wO6m1HEw', '2021-08-08 22:27:01', '2021-09-07 00:00:00', '', '', '', '', 0, 1),
 (151, 51, 'ZCWaMOU0hZHB81dkokERIBBDS4D2W4piblUFDXYLKljCF1haUxgzX5uVE4C0zg5y', '2021-08-08 22:27:32', '2021-08-09 17:54:41', '', '', '', '', 0, 2),
-(152, 51, 'sn91j7Ntw3WLDX65VtEM0tQcPAWSX2FfTtqlTIH8OTjqT5IsnHB9yXYOYDVk4Mef', '2021-08-09 17:54:41', '2021-09-08 00:00:00', '', '', '', '', 0, 1);
+(152, 51, 'sn91j7Ntw3WLDX65VtEM0tQcPAWSX2FfTtqlTIH8OTjqT5IsnHB9yXYOYDVk4Mef', '2021-08-09 17:54:41', '2021-08-11 09:32:56', '', '', '', '', 0, 2),
+(153, 51, '1TOw90B68kjsTG0HFTrsb4ibMBjxUrASIB2oZipvl52GIrQJ7SMT8NdeNH4halXc', '2021-08-11 09:32:56', '2021-09-10 00:00:00', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2352,7 +2357,7 @@ ALTER TABLE `o_contact_types`
 -- AUTO_INCREMENT for table `o_conversation_methods`
 --
 ALTER TABLE `o_conversation_methods`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `o_conversation_outcome`
@@ -2376,7 +2381,7 @@ ALTER TABLE `o_customer_contacts`
 -- AUTO_INCREMENT for table `o_customer_conversations`
 --
 ALTER TABLE `o_customer_conversations`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `o_customer_document_categories`
@@ -2562,7 +2567,7 @@ ALTER TABLE `o_staff_statuses`
 -- AUTO_INCREMENT for table `o_tokens`
 --
 ALTER TABLE `o_tokens`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT for table `o_towns`

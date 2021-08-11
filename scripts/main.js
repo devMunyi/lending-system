@@ -1423,8 +1423,44 @@ function audience_list() {
 }
 
 
+function campaign_save_message(cid, message_id) {
+    let url = "campaign_save_message";
+    if ((parseInt(message_id)) > 0) {
+        url = "campaign_update_message";
+    } else {
+        url = "campaign_save_message";
+    }
 
-function save_message(){
+    let campaign_id = cid;
+    let message = $('#description').val();
+    let params = "campaign_id=" + campaign_id + "&message_id=" + message_id + "&message=" + message;
+    dbaction("/action/campaign/message/" + url, params, function (feed) {
+        console.log(JSON.stringify(feed));
+        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+    })
+}
+
+
+function message_list(campaign, action) {
+
+    let params = "campaign= " + campaign + "&action= " + action;
+    dbaction("/jresources/campaign_sec/message_list", params, function (feed) {
+        console.log(JSON.stringify(feed));
+        $('#message_').html(feed)
+    })
+}
+
+
+function delete_message(message_id) {
+    var result = confirm('Are you sure you want to delete this message?');
+    if (result) {
+        var params = "message_id=" + message_id;
+        dbaction('/action/campaign/message/message_delete', params, function (feed) {
+            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+        });
+    }
+}
+/*function save_message(){
     let message = $('#message').val();
     let campaign_id = $('#_camp_id_').val();
 
@@ -1447,6 +1483,6 @@ function message_list(campaign) {
     })
 }
 
-
+*/
 
 ////////================End of Campaigns

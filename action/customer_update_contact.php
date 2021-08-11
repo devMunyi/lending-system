@@ -87,6 +87,6 @@ else
         setTimeout(function(){
             reload();
         }, 2500)
-        //contact_list('<?php echo $customer_id; ?>','EDIT');
+        //contact_list('<?php //echo $customer_id; ?>','EDIT');
     }
 </script>
