@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("php_functions/authenticator.php");
+include_once ("php_functions/authenticator.php");
 include_once ("php_functions/functions.php");
 include_once ("configs/conn.inc");
 
@@ -71,19 +71,7 @@ $company = company_settings();
 include_once("footer_includes.php");
 ?>
 <script>
-    $(function () {
-        //('#example1').DataTable()
-        /*$('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })**/
-
-        
-    
+    $(function () {  
         campaign_list();
         pager("#example1");
 

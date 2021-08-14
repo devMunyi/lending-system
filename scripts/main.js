@@ -1149,7 +1149,7 @@ function save_interaction() {
     let flag = $('input[name="flag"]:checked').val();
     let next_interaction = $('#next_int').val();
     let next_steps = $('#next_stage').val();
-    let params = "&customer_id=" + customer_id + "&transcript=" + transcript + "&conversation_method=" 
+    let params = "customer_id=" + customer_id + "&transcript=" + transcript + "&conversation_method=" 
     + conversation_method + "&next_interaction=" + next_interaction + "&next_steps=" + next_steps + "&flag=" + flag;
     dbaction("/action/interaction_save", params, function (feed) {
         console.log(JSON.stringify(feed));
@@ -1203,6 +1203,21 @@ function permissions(group_id, user_id, tbl, rec, act, value) {
 }
 
 
+function save_settings() {
+    let name = $('#name').val();
+    let logo = $('#logo').val();
+    let icon = $('#icon').val();
+    let link = $('#link').val();
+
+    let params = "name=" + name + "&logo=" + logo + "&icon=" + icon + "&link=" + link;
+    dbaction("/action/system/system_settings_update", params, function (feed) {
+        console.log(JSON.stringify(feed));
+        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+    })
+}
+
+
+
 ////////----------------End of settings
 
 
@@ -1234,6 +1249,13 @@ function save_report() {
 /////////----------------Campaigns
 function save_campaign(){
     let cid = parseInt($('#cid').val());
+    let url = 'campaign_save';
+    if (cid > 0) {
+        url = 'campaign_update';
+    }else{
+        url = 'campaign_save';
+    }
+    
     let title = $('#title').val();
     let description = $('#description').val();
     let date = $('#date').val();
@@ -1242,23 +1264,13 @@ function save_campaign(){
     let repetitive = $('#repetitive').val();
     let status = $('#status').val();
 
-    let endpoint = "create-new";
-    if (cid > 0) {
-        endpoint = "update";
-    }
+    let params = "cid=" + cid + "&title=" + title + "&description=" + description + "&date=" + date + "&frequency=" + frequency + "&repetitive=" + repetitive + "&target_customers=" + target_customers + "&status=" + status;
 
-    let params = "cid=" + cid + "&title=" + title + "&description=" + description + "&date=" + date
-    + "&frequency=" + frequency + "&repetitive=" + repetitive + "&target_customers=" + target_customers 
-    + "&status="+status;
-
-    dbaction("/action/campaign/" + endpoint, params, function (feed) {
+    dbaction("/action/campaign/" + url, params, function (feed) {
         console.log(JSON.stringify(feed));
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
     })
 }
-
-
-
 
 
 function campaign_list() {
@@ -1424,17 +1436,17 @@ function audience_list() {
 
 
 function campaign_save_message(cid, message_id) {
-    let url = "campaign_save_message";
+    let url = 'campaign_message_save';
     if ((parseInt(message_id)) > 0) {
-        url = "campaign_update_message";
+        url = 'campaign_message_update';
     } else {
-        url = "campaign_save_message";
+        url = 'campaign_message_save';
     }
 
     let campaign_id = cid;
     let message = $('#description').val();
     let params = "campaign_id=" + campaign_id + "&message_id=" + message_id + "&message=" + message;
-    dbaction("/action/campaign/message/" + url, params, function (feed) {
+    dbaction("/action/campaign/" + url, params, function (feed) {
         console.log(JSON.stringify(feed));
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
     })
@@ -1455,34 +1467,10 @@ function delete_message(message_id) {
     var result = confirm('Are you sure you want to delete this message?');
     if (result) {
         var params = "message_id=" + message_id;
-        dbaction('/action/campaign/message/message_delete', params, function (feed) {
+        dbaction('/action/campaign/message_delete', params, function (feed) {
             feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
         });
     }
 }
-/*function save_message(){
-    let message = $('#message').val();
-    let campaign_id = $('#_camp_id_').val();
-
-    let endpoint = "save";
-
-    let params = "message=" + message + "&campaign_id=" + campaign_id;
-
-    dbaction("/action/campaign/message/" + endpoint, params, function (feed) {
-        console.log(JSON.stringify(feed));
-        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
-    })
-}
-
-function message_list(campaign) {
-
-    let params = "customer=" + campaign;
-    dbaction("/jresources/message_list", params, function (feed) {
-        console.log(JSON.stringify(feed));
-        $('#contacts_').html(feed)
-    })
-}
-
-*/
 
 ////////================End of Campaigns

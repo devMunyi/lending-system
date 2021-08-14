@@ -5,13 +5,15 @@
         $sid = $_GET['add-edit'];
         if($sid > 0){
             $staff = fetchonerow('o_users',"uid='".decurl($sid)."'");
-            echo "Staff <small>Edit</small>";
+            $staff_name = $staff['name'];
             $pass = "";
-        }
-        else{
+            echo "Staff <small>Edit</small> <span class='text-green text-bold'>$staff_name</span> <a title='Back to staff list' class='font-16' href=\"staff?staff=$sid\"><i class='fa fa-arrow-circle-up'></i></a>";
+            $act = "<span class='text-orange'><i class='fa fa-edit'></i>Edit</span>";
+        }else{
             $staff = array();
             $pass = generateRandomString(6);
             echo "Staff <small>Add</small>";
+            $act = "<span class='text-green'><i class='fa fa-edit'></i>Add</span>";
         }
         ?>
 
@@ -31,9 +33,11 @@
 
                 <!-- /.box-header -->
                 <div class="row">
+                    <div class="col-sm-2"></div>
                     <div class="col-sm-7 box-body">
                         <!-- /.box-header -->
                         <!-- form start -->
+                        <h3><?php echo $act; ?> Staff Details</h3>
                         <form class="form-horizontal" onsubmit="return false;" method="post">
                             <div class="box-body">
                                 <div class="form-group">
@@ -166,7 +170,7 @@
                         <?php
                         if($sid > 0) {
                             ?>
-                            <button onclick="block_member('<?php echo decurl($sid);?>', 'block this member')" class="btn btn-danger btn-md pull-right"><i class="fa fa-ban"></i> Block Member </button>
+                            <button style="margin-top: 20px; margin-left: 90px;" onclick="block_member('<?php echo decurl($sid);?>', 'block this member')" class="btn btn-danger btn-md"><i class="fa fa-ban"></i> Block Member </button>
                             <?php
                         }
                         else{

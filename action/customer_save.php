@@ -108,7 +108,7 @@ else{
 
 
 $fds = array('full_name','primary_mobile','email_address','physical_address','town','national_id','gender','dob','added_by','added_date','branch','primary_product','loan_limit','status');
-$vals = array("$full_name","$primary_mobile",$email_address,"$physical_address","$town","$national_id","$gender","$dob","$added_by","$added_date","$branch","$primary_product","$loan_limit","$status");
+$vals = array("$full_name","$primary_mobile","$email_address","$physical_address","$town","$national_id","$gender","$dob","$added_by","$added_date","$branch","$primary_product","$loan_limit","$status");
 $create = addtodb('o_customers',$fds,$vals);
 if($create == 1)
 {

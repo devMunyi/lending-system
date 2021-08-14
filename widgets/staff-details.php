@@ -56,7 +56,7 @@ $p = fetchonerow("o_users","uid='$sid'","*");
                                     $f = fetchonerow("o_staff_statuses","uid='$status'","name");
                                     $status_name = $f['name'];
                                     ?>
-                                    <tr><td class="text-bold">UID</td><td><?php echo $uid; ?></td></tr>
+                                    <tr><td class="text-bold">UID</td><td><?php echo encurl($uid); ?></td></tr>
                                     <tr><td class="text-bold">Name</td><td><?php echo $name; ?></td></tr>
                                     <tr><td class="text-bold">Phone</td><td><?php echo $phone; ?></td></tr>
                                     <tr><td class="text-bold">Email</td><td><?php echo $email; ?></td></tr>
@@ -162,7 +162,7 @@ $p = fetchonerow("o_users","uid='$sid'","*");
                             </div>
                             <div class="col-md-2">
                                 <table class="table">
-                                    <tr><td><button class="btn btn-success btn-block  btn-md"><i class="fa  fa-plus"></i> Add Interaction</button></td></tr>
+                                    <tr><td><button class="btn btn-success btn-block  btn-md"><i class="fa  fa-plus"></i> Add Permissions</button></td></tr>
 
                                 </table>
                             </div>

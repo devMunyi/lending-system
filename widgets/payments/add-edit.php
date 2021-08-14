@@ -124,7 +124,7 @@ $rep_id = $_GET['add-edit'];
                                             <div class="box-footer">
                                                 <br>
                                                 <button type="submit" class="btn btn-lg btn-default">Cancel</button>
-                                                <button type="submit" class="btn bg-green-gradient btn-lg pull-right" onclick="payment_save();">Save
+                                                <button type="submit" class="btn btn-success btn-lg pull-right" onclick="payment_save();">Save
                                                 </button>
                                             </div>
 

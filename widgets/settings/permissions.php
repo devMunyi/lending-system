@@ -7,8 +7,7 @@
         $i = 0;
         $g = $_GET['g'];
         $o_user_groups_ = fetchtable('o_user_groups',"status=1", "uid", "desc", "0,10", "uid ,name ,description ,status ");
-        while($s = mysqli_fetch_array($o_user_groups_))
-        {
+        while($s = mysqli_fetch_array($o_user_groups_)){
             $i = $i + 1;
             $uid = $s['uid'];
             $name = $s['name'];

@@ -1,7 +1,7 @@
 <?php
 session_start();
-include_once ("../../../php_functions/functions.php");
-include_once ("../../../configs/conn.inc");
+include_once ("../../php_functions/functions.php");
+include_once ("../../configs/conn.inc");
 
 $userd = session_details();
 if($userd == null){

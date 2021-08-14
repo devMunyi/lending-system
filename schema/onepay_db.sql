@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2021 at 03:12 PM
+-- Generation Time: Aug 13, 2021 at 08:47 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -103,11 +103,11 @@ CREATE TABLE `o_campaigns` (
   `description` varchar(250) NOT NULL,
   `running_date` date NOT NULL,
   `running_status` int(5) NOT NULL DEFAULT 1,
-  `frequency` int(5) DEFAULT NULL,
-  `repetitive` int(5) DEFAULT NULL,
+  `frequency` int(5) NOT NULL,
+  `repetitive` int(5) NOT NULL,
   `target_customers` int(5) NOT NULL,
-  `added_date` date NOT NULL DEFAULT current_timestamp(),
-  `added_by` int(10) NOT NULL,
+  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_by` int(5) NOT NULL,
   `status` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -116,31 +116,34 @@ CREATE TABLE `o_campaigns` (
 --
 
 INSERT INTO `o_campaigns` (`uid`, `name`, `description`, `running_date`, `running_status`, `frequency`, `repetitive`, `target_customers`, `added_date`, `added_by`, `status`) VALUES
-(1, 'New Year', 'Holiday wishes to our customers', '2021-01-01', 1, 6, 1, 3, '2021-07-20', 51, 1),
-(2, 'Good Friday', 'Holiday Wishes to all our customers', '2021-04-02', 1, 6, 2, 3, '2021-07-20', 51, 1),
-(3, 'Easter Monday', 'Holiday wishes to our customers', '2021-04-05', 1, 6, 2, 3, '2021-07-20', 51, 1),
-(4, 'Labour Day', 'Holiday wishes to our esteemed customers', '2021-05-01', 1, 6, 2, 3, '2021-07-20', 51, 1),
-(5, 'Eld al_Fitr', 'Holiday wishes to our esteemed customers', '2021-05-14', 1, 6, 2, 3, '2021-07-20', 51, 1),
-(6, 'Madaraka Day', 'Holiday wishes to our esteemed customers', '2021-06-01', 1, 6, 2, 3, '2021-07-20', 51, 1),
-(7, 'Eid al-Adha', 'Holiday wishes to our customers', '2021-07-20', 1, 6, 2, 3, '2021-07-23', 51, 1),
-(8, 'Huduma Day', 'Holiday wishes to our customers', '2021-10-11', 1, 6, 2, 3, '2021-07-23', 51, 1),
-(9, 'Mashujaa Day', 'Holiday wishes to our customers', '2021-10-20', 1, 6, 2, 3, '2021-07-24', 51, 1),
-(10, 'Jamhuri Day', 'Holiday wishes to our customers', '2021-12-13', 1, 6, 2, 3, '2021-07-24', 51, 0),
-(11, 'Christmas Day', 'Holiday wishes to our customers', '2021-12-25', 1, 6, 1, 3, '2021-07-24', 51, 1),
-(12, 'Utamaduni Day', 'Holiday wishes to our customers', '2021-12-27', 1, 6, 2, 3, '2021-07-24', 51, 2),
-(13, 'Testing_1', 'Birthday wishes', '2021-07-22', 1, 6, 2, 1, '2021-07-24', 51, 1),
-(14, 'Testing_2', 'Birthday wishes', '2021-07-23', 3, 6, 2, 1, '2021-07-24', 51, 1),
-(15, 'Testing_3', 'Birthday wishes', '2021-07-24', 1, 6, 2, 1, '2021-07-24', 51, 0),
-(16, 'Testing_4', 'Birthday wishes', '2021-07-25', 1, 6, 1, 2, '2021-07-24', 51, 0),
-(17, 'Testing_5', 'Activation', '2021-07-26', 1, 1, 1, 1, '2021-07-24', 51, 0),
-(18, 'Birthdays wishes', 'Send happy birthday message to all customers who have their birthdays  ', '2021-08-08', 1, 1, 1, 2, '2021-07-26', 51, 1),
-(19, 'Testing_6', 'Send message wishing happy holiday to our customers', '2021-07-26', 1, 6, 1, 3, '2021-07-26', 51, 1),
-(20, 'Holidays Wishes2', 'A message to wish customers happy holidays', '2021-07-27', 2, 1, 1, 3, '2021-07-26', 0, 0),
-(21, 'Testing_7', 'Campaign testing', '2021-07-26', 1, 1, 1, 1, '2021-07-26', 0, 0),
-(22, 'Testing_8', 'Campaign test', '2021-07-26', 1, 1, 1, 2, '2021-07-26', 0, 0),
-(23, 'test_', 'Campaign_test', '2021-07-26', 1, 2, 1, 1, '2021-07-26', 51, 0),
-(24, 'test_2', 'Campaign_2 test', '2021-07-27', 1, 2, 2, 3, '2021-07-26', 0, 0),
-(25, 'Message', 'Activation', '2021-08-09', 1, 6, 2, 1, '2021-08-09', 0, 1);
+(1, 'New Year', 'Holiday wishes to our customers', '2021-01-01', 1, 6, 1, 3, '2021-07-20 00:00:00', 51, 1),
+(2, 'Good Friday', 'Holiday Wishes to all our customers', '2021-04-02', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(3, 'Easter Monday', 'Holiday wishes to our customers', '2021-04-05', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(4, 'Labour Day', 'Holiday wishes to our esteemed customers', '2021-05-01', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(5, 'Eld al_Fitr', 'Holiday wishes to our esteemed customers', '2021-05-14', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(6, 'Madaraka Day', 'Holiday wishes to our esteemed customers', '2021-06-01', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(7, 'Eid al-Adha', 'Holiday wishes to our customers', '2021-07-20', 1, 6, 2, 3, '2021-07-23 00:00:00', 51, 1),
+(8, 'Huduma Day', 'Holiday wishes to our customers', '2021-10-11', 1, 6, 2, 3, '2021-07-23 00:00:00', 51, 1),
+(9, 'Mashujaa Day', 'Holiday wishes to our customers', '2021-10-20', 1, 6, 2, 3, '2021-07-24 00:00:00', 51, 1),
+(10, 'Jamhuri Day', 'Holiday wishes to our customers', '2021-12-13', 1, 6, 2, 3, '2021-07-24 00:00:00', 51, 0),
+(11, 'Christmas Day', 'Holiday wishes to our customers', '2021-12-25', 1, 6, 1, 3, '2021-07-24 00:00:00', 51, 1),
+(12, 'Utamaduni Day', 'Holiday wishes to our customers', '2021-12-27', 1, 6, 2, 3, '2021-07-24 00:00:00', 51, 2),
+(13, 'Testing_1', 'Birthday wishes', '2021-07-22', 1, 6, 2, 1, '2021-07-24 00:00:00', 51, 1),
+(14, 'Testing_2', 'Birthday wishes', '2021-07-23', 3, 6, 2, 1, '2021-07-24 00:00:00', 51, 1),
+(15, 'Testing_3', 'Birthday wishes', '2021-07-24', 1, 6, 2, 1, '2021-07-24 00:00:00', 51, 0),
+(16, 'Testing_4', 'Birthday wishes', '2021-07-25', 1, 6, 1, 2, '2021-07-24 00:00:00', 51, 0),
+(17, 'Testing_5', 'Activation', '2021-07-26', 1, 1, 1, 1, '2021-07-24 00:00:00', 51, 0),
+(18, 'Birthdays wishes', 'Send happy birthday message to all customers who have their birthdays  today ', '2021-08-08', 1, 1, 1, 2, '2021-07-26 00:00:00', 51, 1),
+(19, 'Testing_6', 'Send message wishing happy holiday to our customers', '2021-07-26', 1, 6, 1, 3, '2021-07-26 00:00:00', 51, 1),
+(20, 'Holidays Wishes2', 'A message to wish customers happy holidays', '2021-07-27', 2, 1, 1, 3, '2021-07-26 00:00:00', 0, 0),
+(21, 'Testing_7', 'Campaign testing', '2021-07-26', 1, 1, 1, 1, '2021-07-26 00:00:00', 0, 0),
+(22, 'Testing_8', 'Campaign test', '2021-07-26', 1, 1, 1, 2, '2021-07-26 00:00:00', 0, 0),
+(23, 'test_', 'Campaign_test', '2021-07-26', 1, 2, 1, 1, '2021-07-26 00:00:00', 51, 0),
+(24, 'test_2', 'Campaign_2 test', '2021-07-27', 1, 2, 2, 3, '2021-07-26 00:00:00', 0, 0),
+(25, 'Message', 'Activation', '2021-08-09', 1, 6, 2, 1, '2021-08-09 00:00:00', 0, 1),
+(26, 'Holiday Wishes', '', '2021-12-05', 1, 6, 2, 3, '2021-08-11 00:00:00', 0, 1),
+(27, 'Campaign Testing', 'Wjhgfd', '2021-08-13', 1, 6, 2, 3, '2021-08-12 15:56:16', 0, 1),
+(28, 'Campaign Testing_', 'testing', '2021-08-12', 1, 1, 1, 2, '2021-08-12 16:06:09', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -194,10 +197,10 @@ INSERT INTO `o_campaign_frequencies` (`uid`, `name`, `status`) VALUES
 
 CREATE TABLE `o_campaign_messages` (
   `uid` int(10) NOT NULL,
-  `campaign_id` int(10) DEFAULT NULL,
+  `campaign_id` int(10) NOT NULL,
   `message` varchar(250) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `added_by` int(5) DEFAULT NULL,
+  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_by` int(5) NOT NULL,
   `status` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -206,10 +209,17 @@ CREATE TABLE `o_campaign_messages` (
 --
 
 INSERT INTO `o_campaign_messages` (`uid`, `campaign_id`, `message`, `added_date`, `added_by`, `status`) VALUES
-(3, NULL, 'Dear $fname we would like to wish you a happy holiday', '2021-07-26 19:35:42', 0, 1),
-(4, NULL, 'Dear $fname we would like to wish you a happy holiday2', '2021-07-26 19:47:23', 0, 1),
-(5, NULL, 'Dear, we would like to wish you a happy Holiday.', '2021-08-09 22:21:18', 51, 1),
-(6, 25, 'Message Testing', '2021-08-09 23:04:56', 51, 1);
+(3, 0, 'Dear $fname we would like to wish you a happy holiday', '2021-07-26 19:35:42', 0, 1),
+(4, 0, 'Dear $fname we would like to wish you a happy holiday2', '2021-07-26 19:47:23', 0, 1),
+(5, 0, 'Dear, we would like to wish you a happy Holiday.', '2021-08-09 22:21:18', 51, 1),
+(6, 25, 'Dear {{fname}} we offer the following products at low interest.', '2021-08-09 23:04:56', 51, 1),
+(7, 25, 'Message Testing 2', '2021-08-11 20:39:11', 51, 0),
+(8, 25, 'Message _testing ', '2021-08-11 20:41:14', 51, 0),
+(9, 18, 'Dear {{fname}}, we would like to wish you a happy birthday.', '2021-08-11 22:44:14', 51, 1),
+(10, 26, 'Dear {{fname}}, we would like to wish you happy holidays and a prosperous new year.', '2021-08-11 22:48:01', 51, 1),
+(11, 11, 'Dear {{fname}}, we would like to wish you a merry Christmas.', '2021-08-11 22:51:28', 51, 1),
+(12, 27, 'Holiday wishes to all our customers', '2021-08-12 16:02:40', 51, 1),
+(13, 19, 'FGHJKLKJB', '2021-08-12 16:04:35', 51, 0);
 
 -- --------------------------------------------------------
 
@@ -311,7 +321,7 @@ INSERT INTO `o_collateral` (`uid`, `customer_id`, `category`, `title`, `descript
 (4, 11, 2, '80x100 Plot', 'A land in Ruiru', 3000000.00, '', '54463678', '', '2021-06-11 13:21:00', 1, 0, 0),
 (5, 11, 1, 'Sedan Car KAG', 'The quick ', 500000.00, '', '646463643', '64636473', '2021-06-11 13:32:03', 1, 0, 0),
 (6, 11, 1, 'Car KAG 1', 'The Quickjjf', 10000.00, '190', '546364', '87575545', '2021-06-11 17:40:37', 1, 0, 1),
-(7, 12, 2, 'werty', '', 0.00, '', '', '', '2021-07-31 11:14:59', 51, 0, 1),
+(7, 12, 2, 'Land', '50 x 100', 300000.00, '', '', '', '2021-07-31 11:14:59', 51, 0, 1),
 (8, 12, 1, 'Toyota Land Cruiser', 'As good as new', 600000.00, 'rtyuiop765', 'yiop', 'dfghjk', '2021-07-31 15:08:25', 51, 11, 1),
 (9, 4, 1, 'Vehicle ', '', 700000.00, '', 'kbw', '345980', '2021-08-01 10:33:43', 51, 0, 1),
 (10, 16, 2, 'Land', 'Located at Syokimau', 600000.00, '54321', '344322', '23456', '2021-08-08 22:37:55', 51, 0, 1),
@@ -420,7 +430,7 @@ CREATE TABLE `o_customers` (
   `gender` varchar(5) NOT NULL COMMENT 'M, F',
   `dob` date NOT NULL,
   `added_by` int(10) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_date` datetime NOT NULL DEFAULT now(),
   `branch` int(5) NOT NULL COMMENT 'From o_branches',
   `primary_product` int(5) NOT NULL COMMENT 'From o_products',
   `loan_limit` double(100,2) NOT NULL DEFAULT 0.00,
@@ -443,7 +453,7 @@ INSERT INTO `o_customers` (`uid`, `full_name`, `primary_mobile`, `email_address`
 (12, 'Samuel Munyi', '254112553167', 'samunyi90@gmail.com', '     214-20320                                                                                                                ', 1, '', '32909210', 'M', '1996-08-05', 51, '2021-07-12 11:11:28', 2, 0, 100000.00, '', 1),
 (13, 'John Doe', '254112553169', 'john@gmail.com', '       14-20320                                                                                                                                                                                                 ', 1, '', '32909212', 'M', '2021-07-14', 51, '2021-07-14 11:24:05', 2, 1, 25000.00, '', 1),
 (14, 'Joseph Gitonga', '254711253167', 'lee@gmail.com', '                                        Sipili-Street', 1, '', '3456789', 'M', '2000-07-19', 51, '2021-07-19 09:23:44', 2, 1, 3000.00, '', 1),
-(15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                        ', 1, '', '34251678', 'M', '1997-07-01', 51, '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
+(15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                                                                                                        ', 1, '', '34251678', 'M', '1997-07-01', 51, '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
 (16, 'Martin Mwangi', '254705609184', 'martin567@gmail.com', '        Kimathi Street                                                                                                                                                        ', 1, '', '2345678', 'M', '2021-07-26', 51, '2021-07-26 12:39:58', 1, 2, 2500.00, '', 1),
 (17, 'Irene Maingi', '254711567098', 'irene@gmail.com', '       Kiambu                                                                                                                                                                                                                                         ', 1, '', '327069', 'F', '2021-08-09', 51, '2021-08-09 18:07:46', 2, 2, 5000.00, '', 1);
 
@@ -548,7 +558,8 @@ INSERT INTO `o_customer_conversations` (`uid`, `customer_id`, `agent_id`, `loan_
 (10, 13, 1, 1, 'Yesterday', 2, '2021-08-11 09:59:34', '2021-08-10', 1, 2, 0, 1),
 (11, 3, 1, 1, 'Today', 1, '2021-08-11 10:01:23', '2021-08-13', 2, 2, 0, 1),
 (12, 4, 1, 1, 'Talked Today', 2, '2021-08-11 10:02:51', '0000-00-00', 0, 1, 0, 1),
-(13, 10, 1, 1, 'Called Today,pledged to pay tomorrow', 3, '2021-08-11 11:51:34', '2021-08-12', 0, 1, 0, 1);
+(13, 10, 1, 1, 'Called Today,pledged to pay tomorrow', 3, '2021-08-11 11:51:34', '2021-08-12', 0, 1, 0, 1),
+(14, 15, 1, 1, 'Could not be reached', 3, '2021-08-12 17:48:55', '2021-08-10', 1, 2, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -903,7 +914,20 @@ INSERT INTO `o_events` (`uid`, `tbl`, `fld`, `event_details`, `event_date`, `eve
 (104, 'o_customers', 17, 'Customer updated at [2021-08-10 08:18:53] by [Samuel Munyi{51}root]', '2021-08-10 08:18:53', 51, 1),
 (105, 'o_customers', 17, 'Customer updated at [2021-08-10 08:20:54] by [Samuel Munyi{51}root]', '2021-08-10 08:20:54', 51, 1),
 (106, 'o_loans', 21, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-10 08:21:18] with comment [<i></i>]', '2021-08-10 08:21:18', 51, 1),
-(107, 'o_customers', 17, 'Customer updated at [2021-08-10 08:21:53] by [Samuel Munyi{51}root]', '2021-08-10 08:21:53', 51, 1);
+(107, 'o_customers', 17, 'Customer updated at [2021-08-10 08:21:53] by [Samuel Munyi{51}root]', '2021-08-10 08:21:53', 51, 1),
+(108, 'o_campaign_messages', 8, 'Campaign message updated at [2021-08-11 22:08:30] by [{}root]', '2021-08-11 22:08:30', 0, 1),
+(109, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:10:57] by [{}root]', '2021-08-11 22:10:57', 0, 1),
+(110, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:11:39] by [{}root]', '2021-08-11 22:11:39', 0, 1),
+(111, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:13:48] by [{}root]', '2021-08-11 22:13:48', 0, 1),
+(112, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:13:58] by [{}root]', '2021-08-11 22:13:58', 0, 1),
+(113, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:33:06] by [{}root]', '2021-08-11 22:33:06', 0, 1),
+(114, 'o_campaign_messages', 9, 'Campaign message updated at [2021-08-11 22:44:26] by [{}root]', '2021-08-11 22:44:26', 0, 1),
+(115, 'o_campaign_messages', 9, 'Campaign message updated at [2021-08-11 22:44:41] by [{}root]', '2021-08-11 22:44:41', 0, 1),
+(116, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-12 16:03:15] by [{}root]', '2021-08-12 16:03:15', 0, 1),
+(117, 'o_customers', 15, 'Customer updated at [2021-08-12 21:23:54] by [Samuel Munyi{51}root]', '2021-08-12 21:23:54', 51, 1),
+(118, 'o_customers', 15, 'Customer updated at [2021-08-12 21:26:50] by [Samuel Munyi{51}root]', '2021-08-12 21:26:50', 51, 1),
+(119, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-13 08:46:14] by [Samuel Munyi{51}root]', '2021-08-13 08:46:14', 51, 1),
+(120, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-13 09:45:48] by [Samuel Munyi{51}root]', '2021-08-13 09:45:48', 51, 1);
 
 -- --------------------------------------------------------
 
@@ -959,8 +983,8 @@ CREATE TABLE `o_incoming_payments` (
   `transaction_code` varchar(50) NOT NULL,
   `loan_id` int(20) NOT NULL,
   `loan_balance` double(8,2) NOT NULL DEFAULT 0.00,
-  `payment_date` date NOT NULL DEFAULT current_timestamp(),
-  `recorded_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `payment_date` date NOT NULL,
+  `recorded_date` datetime NOT NULL DEFAULT now(),
   `added_by` int(10) NOT NULL,
   `record_method` varchar(20) NOT NULL COMMENT 'API, MANUAL',
   `comments` varchar(100) NOT NULL DEFAULT 'Repayment',
@@ -1096,7 +1120,13 @@ INSERT INTO `o_incoming_payments` (`uid`, `customer_id`, `branch_id`, `payment_m
 (127, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, -250.00, '2021-08-08', '2021-08-08 16:12:03', 0, 'MANUAL', 'Repayment', 0),
 (128, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, -300.00, '2021-08-08', '2021-08-08 16:13:29', 0, 'MANUAL', 'Repayment', 0),
 (129, 13, 2, 4, '2541125531167', 50.00, 'N/A', 20, 21530.00, '2021-08-09', '2021-08-09 21:30:55', 0, 'MANUAL', 'Repayment', 1),
-(130, 13, 2, 4, '2541125531167', 1500.00, 'N/A', 20, 20030.00, '2021-08-09', '2021-08-09 21:32:00', 0, 'MANUAL', 'Repayment', 1);
+(130, 13, 2, 4, '2541125531167', 1500.00, 'N/A', 20, 20030.00, '2021-08-09', '2021-08-09 21:32:00', 0, 'MANUAL', 'Repayment', 1),
+(131, 13, 2, 1, '254716330450', 10000.00, '4567890', 20, 10030.00, '2021-08-12', '2021-08-12 14:28:11', 51, 'MANUAL', 'Bank Partial Repayment', 1),
+(132, 13, 2, 4, '2541125531167', 500.00, 'N/A', 20, 9530.00, '2021-08-12', '2021-08-12 14:30:09', 0, 'MANUAL', 'Repayment', 1),
+(133, 13, 2, 2, '2541125531167', 600.00, 'ERTYUIOP', 20, 8930.00, '2021-08-12', '2021-08-12 14:34:17', 0, 'MANUAL', 'Repayment', 1),
+(134, 13, 2, 1, '2541125531167', 1600.00, '34567876', 20, 7330.00, '2021-08-12', '2021-08-12 14:39:54', 0, 'CSV Upload', 'Repayment', 1),
+(135, 13, 2, 4, '2541125531167', 600.00, 'N/A', 20, 6730.00, '2021-08-12', '2021-08-12 14:43:31', 0, 'CSV Upload', 'Repayment', 1),
+(136, 13, 2, 4, '2541125531167', 600.00, 'N/A', 20, 6130.00, '2021-08-12', '2021-08-12 14:47:07', 51, 'MANUAL', 'Repayment', 1);
 
 -- --------------------------------------------------------
 
@@ -1209,7 +1239,7 @@ INSERT INTO `o_loans` (`uid`, `customer_id`, `product_id`, `loan_amount`, `disbu
 (17, 10, 2, 1000.00, 1000.00, 1000.00, 1950.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 0, 0, 1, '2021-08-03 12:32:30', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
 (18, 13, 2, 1500.00, 1500.00, 1500.00, 2100.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-04', '2021-09-03', '2021-09-03', 0, 0, 2, '2021-08-04 15:43:50', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (19, 9, 2, 3000.00, 3000.00, 3000.00, 3300.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-07', '2021-09-06', '2021-09-06', 0, 0, 1, '2021-08-07 16:03:45', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(20, 13, 1, 17000.00, 17000.00, 21580.00, 1550.00, 45, '1', '7', '', 4580.00, 0.00, 6, 0, 1, '2021-08-09', '2021-08-16', '2021-09-23', 0, 0, 2, '2021-08-09 10:31:27', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(20, 13, 1, 17000.00, 17000.00, 21580.00, 15450.00, 45, '1', '7', '', 4580.00, 0.00, 6, 0, 1, '2021-08-09', '2021-08-16', '2021-09-23', 0, 0, 2, '2021-08-09 10:31:27', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
 (21, 17, 2, 3000.00, 3000.00, 3000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-10', '2021-09-09', '2021-09-09', 51, 0, 2, '2021-08-10 08:20:00', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (22, 17, 2, 3000.00, 3000.00, 3000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-10', '2021-09-09', '2021-09-09', 51, 0, 2, '2021-08-10 08:22:26', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 1);
 
@@ -1503,7 +1533,8 @@ INSERT INTO `o_passes` (`uid`, `user`, `pass`, `pass_reset_token`, `reset_status
 (3, 0, 'DFU5+O1HunX~t}g_|.89BD%4u@qsLylz', NULL, 0),
 (4, 22, 'VwQ@L1uA{o{hZ.S+LxIC}O{kL1[1WxFo', NULL, 0),
 (5, 51, 'wn@ivDGX%2>0U6!tRPh0o2(u{hUujE<S', NULL, 0),
-(6, 52, 'B1X6sZ-{h0DEEKPA(dwB({n-jhpzCX^E', NULL, 0);
+(6, 52, 'B1X6sZ-{h0DEEKPA(dwB({n-jhpzCX^E', NULL, 0),
+(7, 53, 'D_d))HNWPH+Unp7V{>c(TK>9Z_o7U|#@', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1711,7 +1742,7 @@ CREATE TABLE `o_tokens` (
   `uid` int(20) NOT NULL,
   `userid` int(20) NOT NULL,
   `token` varchar(245) NOT NULL,
-  `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `creation_date` datetime NOT NULL DEFAULT now(),
   `expiry_date` datetime NOT NULL,
   `device_id` varchar(245) DEFAULT NULL,
   `browsername` varchar(250) DEFAULT NULL,
@@ -1878,7 +1909,10 @@ INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`
 (150, 52, 'nZk4lWMRmrOJA2sGVWWkUfiYOJLcJISOrNxZoU9uM9YpVnMBa99r7ZR6wO6m1HEw', '2021-08-08 22:27:01', '2021-09-07 00:00:00', '', '', '', '', 0, 1),
 (151, 51, 'ZCWaMOU0hZHB81dkokERIBBDS4D2W4piblUFDXYLKljCF1haUxgzX5uVE4C0zg5y', '2021-08-08 22:27:32', '2021-08-09 17:54:41', '', '', '', '', 0, 2),
 (152, 51, 'sn91j7Ntw3WLDX65VtEM0tQcPAWSX2FfTtqlTIH8OTjqT5IsnHB9yXYOYDVk4Mef', '2021-08-09 17:54:41', '2021-08-11 09:32:56', '', '', '', '', 0, 2),
-(153, 51, '1TOw90B68kjsTG0HFTrsb4ibMBjxUrASIB2oZipvl52GIrQJ7SMT8NdeNH4halXc', '2021-08-11 09:32:56', '2021-09-10 00:00:00', '', '', '', '', 0, 1);
+(153, 51, '1TOw90B68kjsTG0HFTrsb4ibMBjxUrASIB2oZipvl52GIrQJ7SMT8NdeNH4halXc', '2021-08-11 09:32:56', '2021-08-11 19:31:12', '', '', '', '', 0, 2),
+(154, 51, 'kXMQcePnBi2u8Ug4Cz8kbIjpFEYn833vC4wkYipw5zEBhTo4fmEIsTqX6tuhmQhn', '2021-08-11 19:31:12', '2021-08-12 14:23:07', '', '', '', '', 0, 2),
+(155, 51, 'I4Kw4ec58rfF8VGoQWuS9V00h3Z79QTGcNEp8t5oq5DIkpkKzq9XKU5Nui4bP2PM', '2021-08-12 14:23:07', '2021-08-12 15:08:04', '', '', '', '', 0, 2),
+(156, 51, 'lPHm7dPmmQbFXyMqnq0fF7S8Bgy7Oa7UR6A8Xpkpt85WhyAPYKNQs9E3R8Eg8G8p', '2021-08-12 15:08:04', '2021-09-11 00:00:00', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1939,7 +1973,8 @@ INSERT INTO `o_users` (`uid`, `name`, `email`, `phone`, `national_id`, `join_dat
 (22, 'jonah ngarama', 'ngaramajonah@gmail.com7', '254716330870', '123456737', '2021-06-20 00:21:47', '8da143a5de9523eb95bba84949c4539a17b649045d74ed2f75c1bc9807a5188d', 1, 2, 1),
 (50, 'Samuel Munyi', 'samunyi90@gmail.com', '254112553167', '3209876543', '2021-03-20 04:45:58', '190e94b55e3678bb4d643e76968000eda840142ab79e3638c41aed8a44b54795', 1, 2, 2),
 (51, 'Samuel Munyi', 'munyisamuel3@gmail.com', '254112553177', '32909210', '2021-07-12 10:51:40', 'a2bbc0d689af1e9f149912fe17cf1f2e85a8f3aa24a7e1cef398676188e909ca', 3, 1, 1),
-(52, 'Kelvin Kilonzo', 'kilonzo@gmail.com', '254711567098', '327069', '2021-08-08 21:51:50', '6fadfcde0d900ce80339f2c0afe6da57f15b425321c300232c05e7f512fbee4c', 3, 2, 1);
+(52, 'Kelvin Kilonzo', 'kilonzo@gmail.com', '254711567098', '327069', '2021-08-08 21:51:50', '6fadfcde0d900ce80339f2c0afe6da57f15b425321c300232c05e7f512fbee4c', 3, 2, 1),
+(53, 'Sam Munyi', 'munyi@gmail.com', '254709123095', '2345671', '2021-08-12 21:18:13', '32e3c496ab8b290946c6cccc6a6e49d4d99ae777e289856922ebe481174f1638', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -2327,13 +2362,13 @@ ALTER TABLE `o_branches`
 -- AUTO_INCREMENT for table `o_campaigns`
 --
 ALTER TABLE `o_campaigns`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `o_campaign_messages`
 --
 ALTER TABLE `o_campaign_messages`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `o_collateral`
@@ -2381,7 +2416,7 @@ ALTER TABLE `o_customer_contacts`
 -- AUTO_INCREMENT for table `o_customer_conversations`
 --
 ALTER TABLE `o_customer_conversations`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `o_customer_document_categories`
@@ -2429,7 +2464,7 @@ ALTER TABLE `o_documents`
 -- AUTO_INCREMENT for table `o_events`
 --
 ALTER TABLE `o_events`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `o_flags`
@@ -2447,7 +2482,7 @@ ALTER TABLE `o_guarantors`
 -- AUTO_INCREMENT for table `o_incoming_payments`
 --
 ALTER TABLE `o_incoming_payments`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT for table `o_key_values`
@@ -2513,7 +2548,7 @@ ALTER TABLE `o_notifications`
 -- AUTO_INCREMENT for table `o_passes`
 --
 ALTER TABLE `o_passes`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `o_payment_methods`
@@ -2567,7 +2602,7 @@ ALTER TABLE `o_staff_statuses`
 -- AUTO_INCREMENT for table `o_tokens`
 --
 ALTER TABLE `o_tokens`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `o_towns`
@@ -2579,7 +2614,7 @@ ALTER TABLE `o_towns`
 -- AUTO_INCREMENT for table `o_users`
 --
 ALTER TABLE `o_users`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `o_user_groups`

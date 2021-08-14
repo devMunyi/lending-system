@@ -3,11 +3,13 @@ session_start();
 include_once ("../../php_functions/functions.php");
 include_once ("../../configs/conn.inc");
 
+/////----------Session Check
 $userd = session_details();
 if($userd == null){
     die(errormes("Your session is invalid. Please re-login"));
     exit();
 }
+/////---------End of session check
 
 $uid = decurl($_POST['uid']);
 $title = $_POST['title'];
@@ -59,11 +61,11 @@ if(input_available($row_query) == 0){
 $update_flds = " title=\"$title\", description=\"$description\", row_query=\"$row_query\", viewable_by=\"$viewable_by\", status=$status";
 $update = updatedb('o_reports', $update_flds, "uid=$uid");
 if($update == 1){
-    echo sucmes('Report Created Successfully');
+    echo sucmes('Report Updated Successfully');
     $proceed = 1;
 
 }else{
-    echo errormes('Unable to Save Report');
+    echo errormes('Unable to Update Report');
 }
 
 ?>

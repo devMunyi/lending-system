@@ -28,7 +28,7 @@ function session_details(){
         }
         else{
             $token_user = fetchrow('o_tokens',"token='$token'","userid");
-            $userd = fetchonerow('o_users',"uid='$token_user'","uid, name, email, phone");
+            $userd = fetchonerow('o_users',"uid='$token_user'","*");
 
         }
 

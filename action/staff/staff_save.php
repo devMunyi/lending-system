@@ -90,6 +90,8 @@ if($create == 1)
     $savesalt = addtodb('o_passes', $fdss, $valss);
     echo sucmes('Record Created Successfully');
     $proceed = 1;
+    $last_staff = fetchmax('o_users',"email='$email'","uid","uid");
+    $sid = $last_staff['uid'];
 
 }
 else
@@ -106,7 +108,7 @@ else
     let proceed = '<?php echo $proceed; ?>';
     if(proceed === "1"){
         setTimeout(function () {
-           reload();
+           gotourl("staff?staff=<?php echo encurl($sid); ?>")
         },2000);
     }
 </script>

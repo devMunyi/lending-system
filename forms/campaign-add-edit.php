@@ -214,7 +214,6 @@
                             <?php
                         }
                         ?>
-                        <input type="hidden" id="cid" value="<?php echo $cid; ?>">
                     </div>
                     <div class="col-sm-4 box-body">
                         <?php

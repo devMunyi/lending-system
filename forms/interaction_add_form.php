@@ -1,6 +1,14 @@
 <?php
+session_start();
 include_once ("../php_functions/functions.php");
 include_once ("../configs/conn.inc");
+/////----------Session Check
+$userd = session_details();
+if($userd == null){
+    die(errormes("Your session is invalid. Please re-login"));
+    exit();
+}
+/////---------End of session check
 ?>
 
 
@@ -89,7 +97,6 @@ include_once ("../configs/conn.inc");
 
                             ?>
                             </select>
-
                         </div>
                     </div>
                     <div class="col-sm-3"></div>
@@ -98,7 +105,7 @@ include_once ("../configs/conn.inc");
                             <br/>
                             <button type="submit" class="btn btn-lg btn-default">Cancel</button>
                             <button type="submit"
-                                    class="btn btn-success bg-green-gradient btn-lg pull-right"
+                                    class="btn btn-success btn-lg pull-right"
                                     onclick="save_interaction('<?php echo $sid; ?>');">
                                 Save
                             </button>

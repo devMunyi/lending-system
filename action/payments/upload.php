@@ -5,6 +5,7 @@ include_once ("../../configs/conn.inc");
 
 
 $userd = session_details();
+$added_by = $userd['uid'];
 $file_name = $_FILES['file_']['name'];
 $file_size = $_FILES['file_']['size'];
 $file_tmp = $_FILES['file_']['tmp_name'];
@@ -39,8 +40,7 @@ while(!feof($handle)){
 			$transaction_code = trim(mysqli_real_escape_string($con, $data[3]));
 			$mobile_number = trim(mysqli_real_escape_string($con, $data[4]));
 			$status = 1;
-			$record_method = "MANUAL";
-			$added_by = $userd["name"];
+			$record_method = "CSV Upload";
 
 			if(!empty($loan_code) && !empty($amount) && !empty($payment_method) && !empty($transaction_code) && !empty($mobile_number)){
 				if($loan_code > 0) {
@@ -133,8 +133,7 @@ if($upload == '0')
 <script>
     if('<?php echo $proceed; ?>'){
         setTimeout(function (){
-            reload();
+            gotourl("incoming-payments");
         }, 1000);
-        //upload_list('<?php //echo encurl($rec); ?>','EDIT');
     }
 </script>
