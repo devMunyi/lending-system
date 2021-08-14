@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2021 at 08:47 AM
+-- Generation Time: Aug 14, 2021 at 08:27 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -106,7 +106,7 @@ CREATE TABLE `o_campaigns` (
   `frequency` int(5) NOT NULL,
   `repetitive` int(5) NOT NULL,
   `target_customers` int(5) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
   `added_by` int(5) NOT NULL,
   `status` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -142,7 +142,7 @@ INSERT INTO `o_campaigns` (`uid`, `name`, `description`, `running_date`, `runnin
 (24, 'test_2', 'Campaign_2 test', '2021-07-27', 1, 2, 2, 3, '2021-07-26 00:00:00', 0, 0),
 (25, 'Message', 'Activation', '2021-08-09', 1, 6, 2, 1, '2021-08-09 00:00:00', 0, 1),
 (26, 'Holiday Wishes', '', '2021-12-05', 1, 6, 2, 3, '2021-08-11 00:00:00', 0, 1),
-(27, 'Campaign Testing', 'Wjhgfd', '2021-08-13', 1, 6, 2, 3, '2021-08-12 15:56:16', 0, 1),
+(27, 'Campaign Testing', 'Wjhgfd', '2021-08-13', 1, 6, 2, 3, '2021-08-12 15:56:16', 0, 2),
 (28, 'Campaign Testing_', 'testing', '2021-08-12', 1, 1, 1, 2, '2021-08-12 16:06:09', 0, 0);
 
 -- --------------------------------------------------------
@@ -199,7 +199,7 @@ CREATE TABLE `o_campaign_messages` (
   `uid` int(10) NOT NULL,
   `campaign_id` int(10) NOT NULL,
   `message` varchar(250) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
   `added_by` int(5) NOT NULL,
   `status` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -430,7 +430,7 @@ CREATE TABLE `o_customers` (
   `gender` varchar(5) NOT NULL COMMENT 'M, F',
   `dob` date NOT NULL,
   `added_by` int(10) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT now(),
+  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
   `branch` int(5) NOT NULL COMMENT 'From o_branches',
   `primary_product` int(5) NOT NULL COMMENT 'From o_products',
   `loan_limit` double(100,2) NOT NULL DEFAULT 0.00,
@@ -927,7 +927,25 @@ INSERT INTO `o_events` (`uid`, `tbl`, `fld`, `event_details`, `event_date`, `eve
 (117, 'o_customers', 15, 'Customer updated at [2021-08-12 21:23:54] by [Samuel Munyi{51}root]', '2021-08-12 21:23:54', 51, 1),
 (118, 'o_customers', 15, 'Customer updated at [2021-08-12 21:26:50] by [Samuel Munyi{51}root]', '2021-08-12 21:26:50', 51, 1),
 (119, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-13 08:46:14] by [Samuel Munyi{51}root]', '2021-08-13 08:46:14', 51, 1),
-(120, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-13 09:45:48] by [Samuel Munyi{51}root]', '2021-08-13 09:45:48', 51, 1);
+(120, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-13 09:45:48] by [Samuel Munyi{51}root]', '2021-08-13 09:45:48', 51, 1),
+(121, 'platform_settings', 1, '', '2021-08-13 23:16:08', 51, 1),
+(122, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:26:22] by [Samuel Munyi{51}root]', '2021-08-13 23:26:22', 51, 1),
+(123, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:27:04] by [Samuel Munyi{51}root]', '2021-08-13 23:27:04', 51, 1),
+(124, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:27:45] by [Samuel Munyi{51}root]', '2021-08-13 23:27:45', 51, 1),
+(125, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:30:07] by [Samuel Munyi{51}root]', '2021-08-13 23:30:07', 51, 1),
+(126, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:46:33] by [Samuel Munyi{51}root]', '2021-08-13 23:46:33', 51, 1),
+(127, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:49:42] by [Samuel Munyi{51}root]', '2021-08-13 23:49:42', 51, 1),
+(128, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:21:09] by [Samuel Munyi{51}root]', '2021-08-14 08:21:09', 51, 1),
+(129, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:35:30] by [Samuel Munyi{51}root]', '2021-08-14 08:35:30', 51, 1),
+(130, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:48:57] by [Samuel Munyi{51}root]', '2021-08-14 08:48:57', 51, 1),
+(131, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:50:59] by [Samuel Munyi{51}root]', '2021-08-14 08:50:59', 51, 1),
+(132, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:56:50] by [Samuel Munyi{51}root]', '2021-08-14 08:56:50', 51, 1),
+(133, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:59:31] by [Samuel Munyi{51}root]', '2021-08-14 08:59:31', 51, 1),
+(134, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:10:14] by [Samuel Munyi{51}root]', '2021-08-14 09:10:14', 51, 1),
+(135, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:11:55] by [Samuel Munyi{51}root]', '2021-08-14 09:11:55', 51, 1),
+(136, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:12:15] by [Samuel Munyi{51}root]', '2021-08-14 09:12:15', 51, 1),
+(137, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:21:55] by [Samuel Munyi{51}root]', '2021-08-14 09:21:55', 51, 1),
+(138, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:23:20] by [Samuel Munyi{51}root]', '2021-08-14 09:23:20', 51, 1);
 
 -- --------------------------------------------------------
 
@@ -984,7 +1002,7 @@ CREATE TABLE `o_incoming_payments` (
   `loan_id` int(20) NOT NULL,
   `loan_balance` double(8,2) NOT NULL DEFAULT 0.00,
   `payment_date` date NOT NULL,
-  `recorded_date` datetime NOT NULL DEFAULT now(),
+  `recorded_date` datetime NOT NULL DEFAULT current_timestamp(),
   `added_by` int(10) NOT NULL,
   `record_method` varchar(20) NOT NULL COMMENT 'API, MANUAL',
   `comments` varchar(100) NOT NULL DEFAULT 'Repayment',
@@ -1742,7 +1760,7 @@ CREATE TABLE `o_tokens` (
   `uid` int(20) NOT NULL,
   `userid` int(20) NOT NULL,
   `token` varchar(245) NOT NULL,
-  `creation_date` datetime NOT NULL DEFAULT now(),
+  `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
   `expiry_date` datetime NOT NULL,
   `device_id` varchar(245) DEFAULT NULL,
   `browsername` varchar(250) DEFAULT NULL,
@@ -1912,7 +1930,15 @@ INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`
 (153, 51, '1TOw90B68kjsTG0HFTrsb4ibMBjxUrASIB2oZipvl52GIrQJ7SMT8NdeNH4halXc', '2021-08-11 09:32:56', '2021-08-11 19:31:12', '', '', '', '', 0, 2),
 (154, 51, 'kXMQcePnBi2u8Ug4Cz8kbIjpFEYn833vC4wkYipw5zEBhTo4fmEIsTqX6tuhmQhn', '2021-08-11 19:31:12', '2021-08-12 14:23:07', '', '', '', '', 0, 2),
 (155, 51, 'I4Kw4ec58rfF8VGoQWuS9V00h3Z79QTGcNEp8t5oq5DIkpkKzq9XKU5Nui4bP2PM', '2021-08-12 14:23:07', '2021-08-12 15:08:04', '', '', '', '', 0, 2),
-(156, 51, 'lPHm7dPmmQbFXyMqnq0fF7S8Bgy7Oa7UR6A8Xpkpt85WhyAPYKNQs9E3R8Eg8G8p', '2021-08-12 15:08:04', '2021-09-11 00:00:00', '', '', '', '', 0, 1);
+(156, 51, 'lPHm7dPmmQbFXyMqnq0fF7S8Bgy7Oa7UR6A8Xpkpt85WhyAPYKNQs9E3R8Eg8G8p', '2021-08-12 15:08:04', '2021-08-13 22:50:38', '', '', '', '', 0, 2),
+(157, 51, 'fdATG6byNgnUwkHvz45ql3eQbSFuBuZvudQZ26rjkiwYnzSY1TVNl5zx4G3SFZR1', '2021-08-13 22:50:38', '2021-08-13 23:05:03', '', '', '', '', 0, 2),
+(158, 51, 'lIggenz69qFtCCP7YuOEHMsfLlzveFYaivmQHI15EIWjCHU1GKCqI1v8hCG7qIHD', '2021-08-13 23:05:03', '2021-08-13 23:05:04', '', '', '', '', 0, 2),
+(159, 51, 'hzIGlFwslmIOy1LQk5yWokGKOSNaOxKc1z03t6KizP5hxyxy7QQqsX22EbonHs93', '2021-08-13 23:05:04', '2021-08-13 23:11:19', '', '', '', '', 0, 2),
+(160, 51, 'inZ1c7enZ83HeeXcTaFpKcvjTMSiWstA1KFYzH0NJn2utky6q03VdmMUkYht5Oo8', '2021-08-13 23:11:19', '2021-08-13 23:29:20', '', '', '', '', 0, 2),
+(161, 51, '9eZrsThMoGpAAJ9ovO6NycAkn8rxkHIKHUCYkIrgbsP9NVPMiOIdLOfUpQehtJXg', '2021-08-13 23:29:20', '2021-08-13 23:43:51', '', '', '', '', 0, 2),
+(162, 51, 'cNz2TX287YxU4SXW8UHjOOHbFLbRXBBg9TDWF2SGdPcFUPSP1U1jKVh2RzBppWHq', '2021-08-13 23:43:51', '2021-08-13 23:43:52', '', '', '', '', 0, 2),
+(163, 51, 'imwelYa9J6DTH33MR0kwS4A7hrmFQKagZLud6ZBwhOwWChmSu8WV8cAsEcKdTVpY', '2021-08-13 23:43:52', '2021-08-14 08:35:13', '', '', '', '', 0, 2),
+(164, 51, 'Qh7lfejGqRcDVCK4mBvKKTWjqlhWFBu9idj0exjBmTczm7JaXa11Mv3RafCRn0DH', '2021-08-14 08:35:13', '2021-09-13 00:00:00', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1972,7 +1998,7 @@ INSERT INTO `o_users` (`uid`, `name`, `email`, `phone`, `national_id`, `join_dat
 (21, 'jonah ngarama', 'ngaramajonah@gmail.com11', '254789330450', '567654', '2021-06-20 00:18:05', 'bb0f5872ac86548d90be04688c3d99de19550e7abc98c1b7d316f2e1fd82b90e', 2, 2, 1),
 (22, 'jonah ngarama', 'ngaramajonah@gmail.com7', '254716330870', '123456737', '2021-06-20 00:21:47', '8da143a5de9523eb95bba84949c4539a17b649045d74ed2f75c1bc9807a5188d', 1, 2, 1),
 (50, 'Samuel Munyi', 'samunyi90@gmail.com', '254112553167', '3209876543', '2021-03-20 04:45:58', '190e94b55e3678bb4d643e76968000eda840142ab79e3638c41aed8a44b54795', 1, 2, 2),
-(51, 'Samuel Munyi', 'munyisamuel3@gmail.com', '254112553177', '32909210', '2021-07-12 10:51:40', 'a2bbc0d689af1e9f149912fe17cf1f2e85a8f3aa24a7e1cef398676188e909ca', 3, 1, 1),
+(51, 'Samuel Munyi', 'munyisamuel3@gmail.com', '254112553177', '32909210', '2021-07-12 10:51:40', 'a2bbc0d689af1e9f149912fe17cf1f2e85a8f3aa24a7e1cef398676188e909ca', 1, 1, 1),
 (52, 'Kelvin Kilonzo', 'kilonzo@gmail.com', '254711567098', '327069', '2021-08-08 21:51:50', '6fadfcde0d900ce80339f2c0afe6da57f15b425321c300232c05e7f512fbee4c', 3, 2, 1),
 (53, 'Sam Munyi', 'munyi@gmail.com', '254709123095', '2345671', '2021-08-12 21:18:13', '32e3c496ab8b290946c6cccc6a6e49d4d99ae777e289856922ebe481174f1638', 3, 1, 1);
 
@@ -2017,7 +2043,7 @@ CREATE TABLE `platform_settings` (
 --
 
 INSERT INTO `platform_settings` (`uid`, `name`, `logo`, `icon`, `link`) VALUES
-(1, 'SBS', 'sbs.png', 'sbs.ico', 'localhost/onepay');
+(1, 'SBS    ', 'sbs.png', 'sbs.ico', 'localhost/onepay');
 
 --
 -- Indexes for dumped tables
@@ -2464,7 +2490,7 @@ ALTER TABLE `o_documents`
 -- AUTO_INCREMENT for table `o_events`
 --
 ALTER TABLE `o_events`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `o_flags`
@@ -2602,7 +2628,7 @@ ALTER TABLE `o_staff_statuses`
 -- AUTO_INCREMENT for table `o_tokens`
 --
 ALTER TABLE `o_tokens`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT for table `o_towns`
