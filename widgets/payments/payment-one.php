@@ -110,7 +110,7 @@
                                     <?php
 
                                     //-----------------------------Reused Query
-                                    $o_pays_ = fetchtable('o_incoming_payments', "customer_id=$customer_id AND status > 0", "uid", "desc", "0,1000", "*");
+                                    $o_pays_ = fetchtable('o_incoming_payments', "customer_id=$customer_id AND status > 0", "uid", "desc", "0,100", "*");
                                     ///----------Paging Option
                                     $alltotal = countotal("o_incoming_payments", "customer_id=$customer_id AND status > 0");
                                     ///==========Paging Option

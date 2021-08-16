@@ -87,7 +87,7 @@ include_once("footer_includes.php");
         }
 
         if ('<?php echo $message_list; ?>') {
-          message_list('<?php echo $message_list; ?>', 'EDIT');
+         campaign_message_list('<?php echo $message_list; ?>', 'EDIT');
         }
     })
 </script>

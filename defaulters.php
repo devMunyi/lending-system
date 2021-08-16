@@ -56,10 +56,7 @@ $company = company_settings();
                             <div class="box-header bg-info">
                                 <div class="row">
                                     <div class="col-md-10">
-
                                             <h3 class="box-title">
-
-
                                                 <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-info-circle"></i> ALL Defaulters</a>
                                                 <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Newest</a>
                                                 <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Oldest</a>
@@ -68,7 +65,6 @@ $company = company_settings();
                                                 <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> None-Committed</a>
 
                                             </h3>
-
                                     </div>
 
                                 </div>
@@ -85,40 +81,26 @@ $company = company_settings();
                                         <th>Deductions</th>
                                         <th>Repaid</th>
                                         <th>Balance</th>
-                                        <th>Given</th>
-                                        <th>Due</th>
+                                        <th>Given Date</th>
+                                        <th>Due Date</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>1445</td>
-                                        <td><span class="font-16">Peter Witu</span><br/> <span class="text-muted font-13 font-bold">0716330450</span>
-                                        </td>
-                                        <td><span class="text-bold text-blue font-16">50,000.00</span></td>
-                                        <td><span>12,000.00</span><br/> <span class="text-red font-13 font-bold">4 Total</span>
-                                        </td>
-                                        <td><span>15,000.00</span><br/> <span class="text-muted font-13 font-italic">3 Total</span></td>
-                                        <td><span>14,000.00</span><br/> <span class="text-muted font-13 font-italic">4 Weeks Ago</span></td>
-                                        <td><span class="font-bold text-red">5,000.00</span><br/> <span class="text-muted font-13 font-italic">Next Pay: 14/Jan/2021</span></td>
-                                        <td><span>4/6/2020</span><br/> <span class="text-orange font-13 font-bold">3 Weeks Ago</span></td>
-                                        <td><span>5/7/2020</span><br/> <span class="text-orange font-13 font-bold">In 2 Months</span></td>
-                                        <td><span><span class="label label-success">Active</span> </span></td>
-                                        <td><span><a href="?loan=123"><span class="fa fa-eye text-green"></span></a></span><h4><a><i class="fa fa-comments-o text-blue"></i></a></h4></td>
-                                    </tr>
-
-
+                                    <tbody id="defaulters_list">
+                                    
                                     </tbody>
                                     <tfoot>
                                     <tr>
                                         <th>CODE</th>
                                         <th>Customer</th>
                                         <th>Amount</th>
-                                        <th>Total</th>
+                                        <th>AddOns</th>
+                                        <th>Deductions</th>
                                         <th>Repaid</th>
                                         <th>Balance</th>
-                                        <th>Date</th>
+                                        <th>Given Date</th>
+                                        <th>Due Date</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -134,11 +116,16 @@ $company = company_settings();
             </section>
 
 
-
+            <?php
+            echo "<div style='display: none ;'>".paging_values_hidden2('uid > 0',0,10,'uid','desc','', 'defaulters_list', 'default_sort')."</div>";
+            ?>
         <!-- /.content -->
     </div>
 
+
     <!-- /.content-wrapper -->
+
+
     <?php
     include_once("footer.php");
     ?>
@@ -157,17 +144,10 @@ $company = company_settings();
 include_once("footer_includes.php");
 ?>
 <script>
-    $(function () {
-        $('#example1').DataTable()
-        $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
-    })
+$(document).ready(function () {
+   defaulters_list();
+   pager('#example1');
+});
 </script>
 </body>
 </html>

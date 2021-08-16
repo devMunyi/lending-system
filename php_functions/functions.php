@@ -67,8 +67,7 @@ function passencrypt($pass)
 }
 
 
-function profile($sid)
-{
+function profile($sid){
     $rid = decurl($sid);
     $d = fetchonerow('s_staff',"uid='$rid'");
     $fname = $d['first_name'];
@@ -77,16 +76,17 @@ function profile($sid)
     return $fname.' '.$lname ;
 
 }
-function username($sid)
-{
 
+
+function username($sid){
     $rid = decurl($sid);
     $d = fetchonerow('s_staff',"uid='$rid'","user_name");
     $username = $d['user_name'];
 
-
     return $username;
 }
+
+
 function generateRandomString($length) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -96,6 +96,8 @@ function generateRandomString($length) {
     }
     return $randomString;
 }
+
+
 function crazystring($length)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#%^*()_+-~{}[];:|.<>';
@@ -569,8 +571,7 @@ function upload_file($fname,$tmpName,$upload_dir)
         return $nfileName;
     }
 }
-function makeThumbnails($updir, $img,$w,$h,$fname)
-{
+function makeThumbnails($updir, $img,$w,$h,$fname){
     $thumbnail_width = $w;
     $thumbnail_height = $h;
     $thumb_beforeword = "thumb";
@@ -601,8 +602,18 @@ function makeThumbnails($updir, $img,$w,$h,$fname)
         $imgcreatefrom = "ImageCreateFromPNG";
     }
 
-    if ($imgt) {
+    if ($imgt == "ImageJPEG") {
         $old_image = imagecreatefromjpeg("$updir"."$img");
+    }
+
+    if($imgt == "ImagePNG"){
+        $old_image = imagecreatefrompng("$updir"."$img");
+    }
+
+    if($imgt == "ImageGIF"){
+        $old_image = imagecreatefromgif("$updir"."$img");
+    }
+
         $new_image = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
 
         imagealphablending($new_image,false);
@@ -614,8 +625,8 @@ function makeThumbnails($updir, $img,$w,$h,$fname)
         imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width,
          $original_height);
         $imgt($new_image, "$updir"."$fname" . ".$ext");
-    }
 }
+
 
 function fileext_fetch($filename)
 {
@@ -759,6 +770,8 @@ function repay_schedule($loan_id){
     }
 
 }
+
+
 function recalculate_loan($loan_id){
     $l = fetchonerow("o_loans","uid='".$loan_id."'","*");
     /////////------------deductions
@@ -1482,9 +1495,7 @@ function payment_schedule($loanid)
 
 
 ///__________Function to check customer balance
-function customer_balance($cid)
-{
-
+function customer_balance($cid){
     $last_loan = fetchmaxid('s_loans',"customer_id='$cid' AND status in (2,5,6)","uid");
     $lid = $last_loan['uid'];
     if($lid > 0)
@@ -1743,11 +1754,13 @@ function total_instalments($period, $period_units, $payment_frequency){
     }
   return $total_instalments;
 }
+
 function final_due_date($given_date, $period, $period_units){
     $total_days = $period * $period_units;
     $final_day = dateadd($given_date,0,0, $total_days);
     return $final_day;
 }
+
 function next_due_date($given_date, $period, $period_units, $payment_frequency){
     $total_days = $period * $period_units;
 
@@ -1759,6 +1772,7 @@ function next_due_date($given_date, $period, $period_units, $payment_frequency){
     }
     return $next_due;
 }
+
 function total_repaid($loan_id){
     $total_pay = totaltable('o_incoming_payments',"loan_id='$loan_id' AND status=1","amount");
     return $total_pay;

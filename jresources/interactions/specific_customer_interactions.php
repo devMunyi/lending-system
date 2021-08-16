@@ -22,7 +22,7 @@ $rows = "";
 
 if($customer > 0) {
     //query for specific customer list
-        $o_specific_conversations_ = fetchtable('o_customer_conversations',"customer_id = $customer AND status > 0", "uid", "desc", "0,100", "*");
+        $o_specific_conversations_ = fetchtable('o_customer_conversations',"customer_id = $customer AND status > 0", "uid", "desc", "0,100", "uid, customer_id, agent_id, loan_id, conversation_method, DATE(conversation_date) AS conversation_date, next_interaction, transcript, flag, next_steps, outcome");
         while ($sp_i = mysqli_fetch_array($o_specific_conversations_)) {
             $sp_uid = $sp_i['uid'];
             $sp_customer_id = $sp_i['customer_id'];    $sp_customer_name = fetchrow('o_customers',"uid='$sp_customer_id'","full_name");

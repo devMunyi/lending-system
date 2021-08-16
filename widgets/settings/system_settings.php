@@ -17,20 +17,18 @@ if($userd == null){
     <div class="col-md-10">
         <table class="table table-bordered table-condensed">
 
-        <thead><tr><th>Name</th><th>Logo</th><th>Icon</th><th>Link</th><th>Action</th></tr></thead>
+        <thead><tr><th>Name</th><th>Logo</th><th>Action</th></tr></thead>
         <tbody>
             <?php
             //query platform settings table
             $sys = fetchonerow("platform_settings", "uid = 1", "*");
             $name = $sys['name'];
             $logo = $sys['logo'];
-            $icon = $sys['icon'];
-            $link = $sys['link'];
             ?>
-            <tr><td><?php echo $name; ?></td><td><?php echo $logo;?></td><td><?php echo $icon;?></td><td><?php echo $link;?></td><td><span class="btn btn-xs alert-warning" onclick="modal_view('/forms/system_settings_edit.php','','Edit Settings')"><i class="fa fa-edit"> </i><span>Edit</span></span></td></tr>
+            <tr><td><?php echo $name; ?></td><td><?php echo $logo;?></td><td><span class="btn btn-xs alert-warning" onclick="modal_view('/forms/system_settings_edit.php','','Edit Settings')"><i class="fa fa-edit"> </i><span>Edit</span></span></td></tr>
         </tbody>
         <tfoot>
-            <tr><th>Name</th><th>Logo</th><th>Icon</th><th>Link</th><th>Action</th></tr>
+            <tr><th>Name</th><th>Logo</th><th>Action</th></tr>
         </tfoot>
     </table>
     </div>

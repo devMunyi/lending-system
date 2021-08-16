@@ -85,10 +85,7 @@
                                             echo "<tr><td class=\"text-bold\">$key_</td><td>$value_</td></tr>";
                                         }
                                         ?>
-
-                                   
                                 </table>
-
                             </div>
                             <div class="col-md-3">
                                 <table class="table">
@@ -119,8 +116,6 @@
                                         echo "<tr><td class=\"text-bold\">$contact_type_name</td><td>$value</td></tr>";
                                     }
                                     ?>
-
-
                                 </table>
                             </div>
                             <div class="col-md-3">
@@ -190,10 +185,7 @@
                                     }
                                    
                                     ?>
-
                                     </tbody>
-
-
                                 </table>
                             </div>
                             <div class="col-md-3">

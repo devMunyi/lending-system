@@ -96,10 +96,6 @@ include_once("footer_includes.php");
             loan_stages('<?php echo $loan_; ?>');
         }
     })
-
-
-    
-
 </script>
 
 </body>

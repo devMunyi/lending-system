@@ -72,26 +72,26 @@ else{
 //displaying list based on sort options
 if($sort_option == "sort_1"){
     //face to face interactions
-    $o_conversations = fetchtable('o_customer_conversations',"$where_ AND conversation_method = 1 AND status > 0 $andsearch $andcustomer", "$orderby", "$dir", "$limit", "*");
+    $o_conversations = fetchtable('o_customer_conversations',"$where_ AND conversation_method = 1 AND status > 0 $andsearch $andcustomer", "$orderby", "$dir", "$limit", "uid, customer_id, agent_id, loan_id, conversation_method, DATE(conversation_date) AS conversation_date, next_interaction, transcript, flag, next_steps, outcome");
     ///----------Paging Option
     $alltotal = countotal("o_customer_conversations","$where_ AND conversation_method = 1 AND status > 0 $andsearch");
     ///==========Paging Option
 
 }elseif($sort_option == "sort_2"){
     //chat interactions
-    $o_conversations = fetchtable('o_customer_conversations',"$where_ AND conversation_method = 2 AND status > 0 $andsearch $andcustomer", "$orderby", "$dir", "$limit", "*");
+    $o_conversations = fetchtable('o_customer_conversations',"$where_ AND conversation_method = 2 AND status > 0 $andsearch $andcustomer", "$orderby", "$dir", "$limit", "uid, customer_id, agent_id, loan_id, conversation_method, DATE(conversation_date) AS conversation_date, next_interaction, transcript, flag, next_steps, outcome");
     ///----------Paging Option
     $alltotal = countotal("o_customer_conversations","$where_ AND conversation_method = 2 AND status > 0 $andsearch");
     ///==========Paging Option
 }elseif($sort_option == "sort_3"){
     //call interactions
-    $o_conversations = fetchtable('o_customer_conversations',"$where_ AND conversation_method = 3 AND status > 0 $andsearch $andcustomer", "$orderby", "$dir", "$limit", "*");
+    $o_conversations = fetchtable('o_customer_conversations',"$where_ AND conversation_method = 3 AND status > 0 $andsearch $andcustomer", "$orderby", "$dir", "$limit", "uid, customer_id, agent_id, loan_id, conversation_method, DATE(conversation_date) AS conversation_date, next_interaction, transcript, flag, next_steps, outcome");
     ///----------Paging Option
     $alltotal = countotal("o_customer_conversations","$where_ AND conversation_method = 3 AND status > 0 $andsearch");
     ///==========Paging Option
 }else{
     //default or all interactions
-     $o_conversations = fetchtable('o_customer_conversations',"$where_ AND status > 0 $andsearch $andcustomer", "$orderby", "$dir", "$limit", "*");
+     $o_conversations = fetchtable('o_customer_conversations',"$where_ AND status > 0 $andsearch $andcustomer", "$orderby", "$dir", "$limit", "uid, customer_id, agent_id, loan_id, conversation_method, DATE(conversation_date) AS conversation_date, next_interaction, transcript, flag, next_steps, outcome");
     ///----------Paging Option
     $alltotal = countotal("o_customer_conversations","$where_ AND status > 0 $andsearch");
     ///==========Paging Option

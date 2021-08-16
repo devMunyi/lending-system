@@ -99,8 +99,8 @@
                         <th>Deductions</th>
                         <th>Repaid</th>
                         <th>Balance</th>
-                        <th>Given</th>
-                        <th>Due</th>
+                        <th>Given Date</th>
+                        <th>Due Date</th>
                         <th>Stage</th>
                         <th>Status</th>
                         <th>Flag</th>
@@ -122,8 +122,8 @@
                         <th>Deductions</th>
                         <th>Repaid</th>
                         <th>Balance</th>
-                        <th>Given</th>
-                        <th>Due</th>
+                        <th>Given Date</th>
+                        <th>Due Date</th>
                         <th>Stage</th>
                         <th>Status</th>
                         <th>Flag</th>

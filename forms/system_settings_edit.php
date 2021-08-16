@@ -17,54 +17,52 @@ $logo_ = $row['logo'];
 $icon_ = $row['icon'];
 $link_ = $row['link'];
 ?>
-            <form class="form-horizontal" autocomplete="off" onsubmit="return false;" method="post">
+            <form class="form-horizontal" id="doc-upload" method="POST" action="action/system/system_settings_update" enctype="multipart/form-data">
                 <div class="box-body">
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label">Name</label>
 
                         <div class="col-sm-9">
-                            <input class="form-control" type="text" id="name" value="<?php echo $name_; ?> ">
+                            <input class="form-control" type="text" name="name" id="name" value="<?php echo $name_; ?> ">
                         </div>
 
                     </div>
 
                     <div class="form-group">
-                        <label for="logo" class="col-sm-3 control-label">Logo</label>
 
+                        <label for="file_" class="col-sm-3 control-label">Logo</label>
                         <div class="col-sm-9">
-                            <input class="form-control" type="text" id="logo" value="<?php echo $logo_; ?>">
+                            <input type="file" class="form-control" id="file_" name="file_">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="icon" class="col-sm-3 control-label">Icon</label>
+
+                        <label for="make_thumbnail" class="col-sm-3 control-label">Make a Thumbnail</label>
 
                         <div class="col-sm-9">
-                            <input class="form-control" type="text" id="icon" value="<?php echo $icon_; ?>">
-                        </div>
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="link" class="col-sm-3 control-label">Link</label>
-
-                        <div class="col-sm-9">
-                            <input class="form-control" type="text" id="link" value="<?php echo $link_; ?>">
+                            <label> <input type="checkbox" value="1" CHECKED id="make_thumbnail" name="make_thumbnail"> Yes</label>
                         </div>
                     </div>
+
                     <div class="col-sm-3"></div>
                     <div class="col-sm-9">
                         <div class="box-footer">
                             <br/>
+                            <div class="prgress">
+                                <div class="messagedoc-upload" id="message"></div>
+                                <div class="progressdoc-upload" id="progress">
+                                    <div class="bardo-upload" id="bar"></div>
+                                    <br/>
+                                    <div class="percentdoc-upload" id="percent"></div>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-lg btn-default">Cancel</button>
-                            <button type="submit"
-                                    class="btn btn-success btn-lg pull-right"
-                                    onclick="save_settings();">
-                                Save
-                            </button>
+                            <button type="submit" class="btn btn-success btn-lg pull-right" onclick="formready('doc-upload');">Submit </button>
                         </div>
                     </div>
-
+                    
                 </div>
                 <!-- /.box-body -->
 

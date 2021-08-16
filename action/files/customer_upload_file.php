@@ -60,7 +60,7 @@ if($make_thumbnail == 1) {
 //echo errormes(makeThumbnails($upload_location, "7UpkJa8zGa.jpg",50,50,"ddd.jpg"));
 
 
-$added_by = 1;
+$added_by = $userd['uid'];
 $added_date = $fulldate;
 $tbl = $_POST['tbl'];
 $rec = $_POST['rec'];

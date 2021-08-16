@@ -248,12 +248,12 @@ function staff_list() {
 
 //staff list filters
 function staff_filters() {
-    let loan_order = $('#staff_order').val();
+    let staff_order = $('#staff_order').val();
     let sel_branch = parseInt($('#sel_branch').val());
     let user_group = parseInt($('#group_').val());
 
     let wher = "uid > 0";
-    $('#_dir_').val(loan_order);
+    $('#_dir_').val(staff_order);
 
     if (sel_branch > 0) {
         wher += " AND branch=" + sel_branch;
@@ -509,6 +509,12 @@ function loan_collateral_list(loan_id) {
     load_std('/jresources/loans/loan_collateral', '#collateral_', params);
 }
 
+function loan_repayment_list(loan_id) {
+
+    let params = "loan_id=" + loan_id;
+    load_std('/jresources/loans/loan_repayments', '#repayments_', params);
+}
+
 function loan_collateral_action(loan_id, collateral_id, action) {
 
     let params = "loan_id=" + loan_id + "&collateral_id=" + collateral_id + "&action=" + action;
@@ -762,6 +768,109 @@ function loan_action(loan_id, act, title) {
             feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
         });
     }
+}
+
+
+function defaulters_list(){
+    let where = $('_where_').val();
+    if(!where){
+        where = "uid > 0";
+    }
+    let offset = $('#_offset_').val();
+    if (!offset) {
+        offset = 0;
+    }
+    let rpp = $('#_rpp_').val();
+    if (!rpp) {
+        rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+    let orderby = $('#_orderby_').val();
+    if (!orderby) {
+        orderby = 'uid';
+    }
+    let dir = $('#_dir_').val();
+    if (!dir) {
+        dir = 'desc'
+    }
+    let search = $('#search_').val();
+    if (!search) {
+        search = "";
+    }
+
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "default_sort";
+    }
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
+    dbaction("/jresources/loans/defaulters_list", params, function (feed) {
+        console.log(params);
+        $('#defaulters_list').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 0);
+
+    })
+}
+
+
+function falling_due_list(){
+    let where = $('_where_').val();
+    if(!where){
+        where = "uid > 0";
+    }
+    let offset = $('#_offset_').val();
+    if (!offset) {
+        offset = 0;
+    }
+    let rpp = $('#_rpp_').val();
+    if (!rpp) {
+        rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+    let orderby = $('#_orderby_').val();
+    if (!orderby) {
+        orderby = 'uid';
+    }
+    let dir = $('#_dir_').val();
+    if (!dir) {
+        dir = 'desc'
+    }
+    let search = $('#search_').val();
+    if (!search) {
+        search = "";
+    }
+
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "all";
+    }
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
+    dbaction("/jresources/loans/falling_due_list", params, function (feed) {
+        console.log(params);
+        $('#falling_due_list').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 0);
+
+    })
+}
+
+//defaulters filter
+function defaulters_filter(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
 }
 
 ///////////-----------------------------End of Loans
@@ -1453,10 +1562,10 @@ function campaign_save_message(cid, message_id) {
 }
 
 
-function message_list(campaign, action) {
+function campaign_message_list(campaign, action) {
 
     let params = "campaign= " + campaign + "&action= " + action;
-    dbaction("/jresources/campaign_sec/message_list", params, function (feed) {
+    dbaction("/jresources/campaign_sec/campaign_message_list", params, function (feed) {
         console.log(JSON.stringify(feed));
         $('#message_').html(feed)
     })
