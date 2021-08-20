@@ -9,15 +9,16 @@
                     <div class="col-md-10">
                         <?php
                         if(isset($_GET['approvals'])) {
-
+                            $need_approval = "need approval";
                             ?>
                             <h3 class="box-title">
 
-                                <a class="btn font-16 text-black font-bold" href=""><i class="fa fa-check-square-o"></i>REQUIRES YOUR APPROVAL <label id="approvals" class="label label-danger">0</label></a>
+                                <a class="btn font-16 text-black font-bold" href=""><i class="fa fa-check-square-o"></i>REQUIRES YOUR APPROVAL <label id="approvals" class="label label-primary">0</label></a> 
                             </h3>
                             <?php
                         }
                         else {
+                            $need_approval = "";
                             ?>
                             <h3 class="box-title">
                                 <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="loan_order" onchange="loan_filters()">
@@ -139,5 +140,6 @@
     <!-- /.col -->
 </div>
 <?php
+echo "<input type='hidden' id = '_approvals_' value = \"$need_approval\">";
 echo "<div style='display: none;'>".paging_values_hidden('status > -1',0,10,'uid','desc','','loan_list')."</div>"
 ?>

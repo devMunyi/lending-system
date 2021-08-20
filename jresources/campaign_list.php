@@ -89,18 +89,18 @@ if($sort_option == "sort_1"){
     ///==========Paging Option
 }elseif($sort_option == "sort_2"){
     //past campaigns
-    $o_campaigns_ = fetchtable("o_campaigns","$where_  AND running_date < \"$date\" AND status = 1 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
+    $o_campaigns_ = fetchtable("o_campaigns","$where_  AND DATEDIFF(running_date, \"$date\") < 0 AND status = 1 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
 
     ///----------Paging Option
-    $alltotal = countotal("o_campaigns","$where_ AND running_date < \"$date\" AND status = 1 $andsearch");
+    $alltotal = countotal("o_campaigns","$where_ AND DATEDIFF(running_date, \"$date\") < 0 AND status = 1 $andsearch");
 
     ///==========Paging Option
 }elseif($sort_option == "sort_3"){
     //upcoming campaigns
-    $o_campaigns_ = fetchtable("o_campaigns","$where_  AND running_date > \"$date\" AND status = 1 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
+    $o_campaigns_ = fetchtable("o_campaigns","$where_  AND DATEDIFF(running_date, \"$date\") > 0 AND status = 1 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
 
     ///----------Paging Option
-    $alltotal = countotal("o_campaigns","$where_ AND running_date > \"$date\" AND status = 1 $andsearch");
+    $alltotal = countotal("o_campaigns","$where_ AND DATEDIFF(running_date, \"$date\") > 0 AND status = 1 $andsearch");
 
     ///==========Paging Option
 }elseif($sort_option == "sort_4"){
@@ -113,10 +113,10 @@ if($sort_option == "sort_1"){
     ///==========Paging Option
 }else{
     //default or running campaign(s)
-     $o_campaigns_ = fetchtable("o_campaigns","$where_  AND (running_date = \"$date\" OR target_customers = 2) AND status > 0 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
+     $o_campaigns_ = fetchtable("o_campaigns","$where_  AND (DATEDIFF(running_date, \"$date\") = 0 OR target_customers = 2) AND status > 0 $andsearch", "$orderby", "$dir", "$limit","uid, name, description, running_date, running_status, frequency, repetitive, added_date, target_customers, status");
 
     ///----------Paging Option
-    $alltotal = countotal("o_campaigns","$where_ AND (running_date = \"$date\" OR target_customers = 2) AND status > 0 $andsearch");
+    $alltotal = countotal("o_campaigns","$where_ AND (DATEDIFF(running_date, \"$date\") = 0 OR target_customers = 2) AND status > 0 $andsearch");
 
     ///==========Paging Option
 
@@ -148,7 +148,7 @@ if($alltotal > 0) {
         }else{}
         
         //filter happy campaign to run daily 
-        if($frequency_ == "Daily" AND $repetition_ == "Yes" AND $target_customers = 2){
+        if($frequency_ == "Daily" AND $repetition_ == "Yes" AND $target_customers = 2 AND $sort_option != "sort_2"){
             $row .= "<tr><td>$uid</td>
                             <td><span class='font-16'>$campaign_name</span></td>
                             <td><span>$date</span><br/> <span class=\"text-orange font-13 font-bold\">".fancydate($date)."</span></td>

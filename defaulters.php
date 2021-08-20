@@ -57,12 +57,12 @@ $company = company_settings();
                                 <div class="row">
                                     <div class="col-md-10">
                                             <h3 class="box-title">
-                                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-info-circle"></i> ALL Defaulters</a>
-                                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Newest</a>
-                                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Oldest</a>
-                                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Maximum Amount</a>
-                                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> Minimum Amount</a>
-                                                <a class="btn font-16 btn-md btn-default text-bold" href=""><i class="fa fa-chevron-circle-right"></i> None-Committed</a>
+                                                <a onclick="defaulters_filter('all')" class="btn font-16 btn-md btn-default text-bold" href="#"><i class="fa fa-info-circle"></i> ALL Defaulters</a>
+                                                <a onclick="defaulters_filter('newest')" class="btn font-16 btn-md btn-default text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> Newest</a>
+                                                <a onclick="defaulters_filter('oldest')" class="btn font-16 btn-md btn-default text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> Oldest</a>
+                                                <a onclick="defaulters_filter('max')" class="btn font-16 btn-md btn-default text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> Maximum Amount</a>
+                                                <a onclick="defaulters_filter('min')" class="btn font-16 btn-md btn-default text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> Minimum Amount</a>
+                                                <a onclick="defaulters_filter('uncommitted')" class="btn font-16 btn-md btn-default text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> Uncommitted</a>
 
                                             </h3>
                                     </div>
@@ -117,7 +117,7 @@ $company = company_settings();
 
 
             <?php
-            echo "<div style='display: none ;'>".paging_values_hidden2('uid > 0',0,10,'uid','desc','', 'defaulters_list', 'default_sort')."</div>";
+            echo "<div style='display: none ;'>".paging_values_hidden2('uid > 0',0,10,'uid','desc','', 'defaulters_list', 'all')."</div>";
             ?>
         <!-- /.content -->
     </div>

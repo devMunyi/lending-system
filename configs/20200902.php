@@ -1,7 +1,10 @@
 <?php
-$server = "http://localhost/super-lender";
+/*$server = "http://braavos.zhen.co.ke"; 
 $auth = "Basic dGVzdDp0ZXN0";
-//$server = "http://localhost/lender-main";
+*/
+
+$server = "http://localhost/super-lender"; 
+$auth = "Basic dGVzdDp0ZXN0";
 
 ?>
 

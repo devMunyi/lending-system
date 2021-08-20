@@ -1375,7 +1375,7 @@ class loan_details
     function last_repayment_date()
     {
         $loanid = $this -> loanid;
-        $last_d = fetchmax('s_incoming_payments',"loan_id='$loanid'","date_received","date_received");
+        $last_d = fetchmax('o_incoming_payments',"loan_id='$loanid'","date_received","date_received");
         $last_payment_date = $last_d['date_received'];
         return $last_payment_date;
     }
@@ -1515,8 +1515,7 @@ function customer_balance($cid){
 
 
 
-function sms_service($cat, $vals, $phone, $product,$shortcode, $nu=0)
-{
+function sms_service($cat, $vals, $phone, $product,$shortcode, $nu=0){
     global $fulldate;
     $cust = fetchonerow('s_users_primary',"primary_phone='$phone'");
     $first_name = $cust['first_name'];
@@ -1784,7 +1783,7 @@ function loan_balance($loan_id){
    $repayable_amount = $loan['total_repayable_amount'];
 
    $balance = $repayable_amount - $repaid;
-
+   updatedb("o_loans", "loan_balance=$balance", "uid=$loan_id AND status > 0");
    return $balance;
 }
 

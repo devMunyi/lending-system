@@ -2,6 +2,7 @@
 $loan_id = $_GET['loan'];
 recalculate_loan(decurl($loan_id));
 $l = fetchonerow("o_loans","uid='".decurl($loan_id)."'","*");
+$customer_ = encurl($l['customer_id']);
 $total_repaid = total_repaid(decurl($loan_id));
 $balance = loan_balance(decurl($loan_id));
 $product_ = fetchonerow("o_loan_products","uid='".$l['product_id']."'","name, disburse_method");
@@ -196,7 +197,7 @@ else{
                             </div>
                             <div class="col-md-3">
                                 <table class="table">
-                                    <tr><td><a href="incoming-payments?add-edit" class="btn btn-success btn-block btn-md"><i class="fa fa-plus"></i> Record Payment</a></td></tr>
+                                    <tr><td><a href="incoming-payments?add-edit" class="btn btn-primary btn-block btn-md"><i class="fa fa-plus"></i> Record Payment</a></td></tr>
                                 </table>
                             </div>
                         </div>
@@ -303,7 +304,8 @@ else{
                             </div>
                             <div class="col-md-3">
                                 <table class="table">
-                                    <tr><td><button class="btn btn-default"><i class="fa  fa-edit"></i> Edit Collateral</button></td></tr>
+                                    <tr><td><a href="customers?customer-add-edit=<?php echo $customer_; ?>&collateral" class="btn btn-primary"><i class="fa  fa-edit"></i> Add/
+                                    Edit Collateral</a></td></tr>
                                 </table>
                             </div>
                         </div>

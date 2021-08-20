@@ -90,6 +90,13 @@ $update = updatedb('o_incoming_payments',$update_flds,"uid = $pid");
 if ($update == 1) {
     echo sucmes('Payment Updated Successfully');
     recalculate_loan($loan_id);
+    
+    $ld = fetchmaxid("o_incoming_payments", "status > 0 AND loan_id = $loan_id", "uid");
+    $max_pid = $ld["uid"];
+
+    $balance = loan_balance($loan_id);
+    updatedb("o_incoming_payments", "loan_balance = $balance", "uid = $max_pid");
+    updatedb("o_loans", "loan_balance = $balance", "uid = $loan_id");
     $proceed = 1;
 } else {
     echo errormes('Error Updating Payment');

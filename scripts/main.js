@@ -680,10 +680,13 @@ function loan_list() {
         search = "";
     }
 
-
+    let approvals = $('#_approvals_').val();
+    if(!approvals){
+        approvals = "";
+    }
 
     let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
-    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&need_approval=" + approvals;
     dbaction("/jresources/loans/loan_list", params, function (feed) {
         console.log(params);
         $('#loan_list').html(feed);
@@ -693,6 +696,104 @@ function loan_list() {
 
     })
 }
+
+
+function defaulters_list(){
+    let where = $('_where_').val();
+    if(!where){
+        where = "uid > 0";
+    }
+    let offset = $('#_offset_').val();
+    if (!offset) {
+        offset = 0;
+    }
+    let rpp = $('#_rpp_').val();
+    if (!rpp) {
+        rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+    let orderby = $('#_orderby_').val();
+    if (!orderby) {
+        orderby = 'uid';
+    }
+    let dir = $('#_dir_').val();
+    if (!dir) {
+        dir = 'desc'
+    }
+    let search = $('#search_').val();
+    if (!search) {
+        search = "";
+    }
+
+    let sort_opt = $("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "default_sort";
+    }
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
+    dbaction("/jresources/loans/defaulters_list", params, function (feed) {
+        console.log(params);
+        $('#defaulters_list').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 0);
+
+    })
+}
+
+
+function falling_due_list(){
+    let where = $('_where_').val();
+    if(!where){
+        where = "uid > 0";
+    }
+    let offset = $('#_offset_').val();
+    if (!offset) {
+        offset = 0;
+    }
+    let rpp = $('#_rpp_').val();
+    if (!rpp) {
+        rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+    let orderby = $('#_orderby_').val();
+    if (!orderby) {
+        orderby = 'uid';
+    }
+    let dir = $('#_dir_').val();
+    if (!dir) {
+        dir = 'desc'
+    }
+    let search = $('#search_').val();
+    if (!search) {
+        search = "";
+    }
+
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "all";
+    }
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
+    dbaction("/jresources/loans/falling_due_list", params, function (feed) {
+        console.log(params);
+        $('#falling_due_list').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 0);
+
+    })
+}
+
+
 
 function loan_filters() {
     let loan_order = $('#loan_order').val();
@@ -763,7 +864,7 @@ function loan_deductions_action(action, loan_id, deduction_id) {
 function loan_action(loan_id, act, title) {
     var result = confirm('Are you sure you want to ' + title + '?');
     if (result) {
-        var params = "loan_id=" + loan_id + "&act=" + act;
+        var params = "loan_id=" + loan_id + "&action=" + act;
         dbaction('/action/loan/action', params, function (feed) {
             feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
         });
@@ -771,99 +872,12 @@ function loan_action(loan_id, act, title) {
 }
 
 
-function defaulters_list(){
-    let where = $('_where_').val();
-    if(!where){
-        where = "uid > 0";
-    }
-    let offset = $('#_offset_').val();
-    if (!offset) {
-        offset = 0;
-    }
-    let rpp = $('#_rpp_').val();
-    if (!rpp) {
-        rpp = 10;
-    }
-    let page_no = $('#_page_no_').val();
-    if (!page_no) {
-        page_no = 1;
-    }
-    let orderby = $('#_orderby_').val();
-    if (!orderby) {
-        orderby = 'uid';
-    }
-    let dir = $('#_dir_').val();
-    if (!dir) {
-        dir = 'desc'
-    }
-    let search = $('#search_').val();
-    if (!search) {
-        search = "";
-    }
 
-    let sort_opt =$("#_sort_").val();
-    if(!sort_opt){
-        sort_opt = "default_sort";
-    }
-
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
-    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
-    dbaction("/jresources/loans/defaulters_list", params, function (feed) {
-        console.log(params);
-        $('#defaulters_list').html(feed);
-        setTimeout(function () {
-            pager_refactor();
-        }, 0);
-
-    })
-}
-
-
-function falling_due_list(){
-    let where = $('_where_').val();
-    if(!where){
-        where = "uid > 0";
-    }
-    let offset = $('#_offset_').val();
-    if (!offset) {
-        offset = 0;
-    }
-    let rpp = $('#_rpp_').val();
-    if (!rpp) {
-        rpp = 10;
-    }
-    let page_no = $('#_page_no_').val();
-    if (!page_no) {
-        page_no = 1;
-    }
-    let orderby = $('#_orderby_').val();
-    if (!orderby) {
-        orderby = 'uid';
-    }
-    let dir = $('#_dir_').val();
-    if (!dir) {
-        dir = 'desc'
-    }
-    let search = $('#search_').val();
-    if (!search) {
-        search = "";
-    }
-
-    let sort_opt =$("#_sort_").val();
-    if(!sort_opt){
-        sort_opt = "all";
-    }
-
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
-    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
-    dbaction("/jresources/loans/falling_due_list", params, function (feed) {
-        console.log(params);
-        $('#falling_due_list').html(feed);
-        setTimeout(function () {
-            pager_refactor();
-        }, 0);
-
-    })
+//dues filter
+function dues_filter(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
 }
 
 //defaulters filter

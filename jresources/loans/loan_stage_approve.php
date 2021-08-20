@@ -17,9 +17,7 @@ if($loan_id > 0) {
     $current_stage = $l['loan_stage'];
 
 
-
-
-  $next_stage = loan_next_stage(decurl($loan_id));
+$next_stage = loan_next_stage(decurl($loan_id));
 if($next_stage['stage_details']['uid'] > 0){
     ?>
     <h4 class="text-black alert bg-gray-light font-italic"><i class="fa fa-info-circle"></i> When you approve the loan

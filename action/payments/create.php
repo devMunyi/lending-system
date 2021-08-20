@@ -89,6 +89,7 @@ if ($create == 1) {
 
     $balance = loan_balance($loan_id);
     updatedb("o_incoming_payments", "loan_balance = $balance", "uid = $max_pid");
+    updatedb("o_loans", "loan_balance = $balance", "uid = $loan_id");
 
     $proceed = 1;
 } else {

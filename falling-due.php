@@ -57,14 +57,15 @@ $company = company_settings();
                                 <div class="row">
                                     <div class="col-md-10">
                                             <h3 class="box-title">
-                                                <a onclick="defaulters_filter('all')" class="btn font-16 btn-md bg-navy text-bold" href="#"><i class="fa fa-clone"></i>All</a>
-                                                <a onclick="defaulters_filter('today')" class="btn font-16 btn-md btn-danger text-bold" href="#"><i class="fa fa-info-circle"></i> Today</a>
-                                                <a onclick="defaulters_filter('tomorrow')" class="btn font-16 btn-md btn-warning text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> Tomorrow</a>
-                                                <a onclick="defaulters_filter('2days')" class="btn font-16 btn-md bg-orange text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> 2 Days</a>
-                                                <a onclick="defaulters_filter('3days')" class="btn font-16 btn-md btn-primary text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> 3 Days</a>
-                                                <a onclick="defaulters_filter('7days')" class="btn font-16 btn-md bg-purple text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> 7 Days</a>
-                                                <a onclick="defaulters_filter('14days')" class="btn font-16 btn-md btn-success text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> 14 Days</a>
-                                                <a onclick="defaulters_filter('custom')" class="btn font-16 btn-md btn-default text-bold" href="#"><i class="fa fa-chevron-circle-right"></i> Custom</a>
+                                                <a onclick="dues_filter('all')" class="btn font-16 btn-md bg-navy text-bold" href="#"><i class="fa fa-clone"></i>All</a>
+                                                <a onclick="dues_filter('today')" class="btn font-16 btn-md btn-danger text-bold" href="#"><i class="fa fa-info-circle"></i> Today</a>
+                                                <a onclick="dues_filter('tomorrow')" class="btn font-16 btn-md btn-warning text-bold" href="#"><i class="fa fa-info-circle"></i> Tomorrow</a>
+                                                <a onclick="dues_filter('2days')" class="btn font-16 btn-md bg-orange text-bold" href="#"><i class="fa fa-chevron-circle-left"></i> 2 Days</a>
+                                                <a onclick="dues_filter('3days')" class="btn font-16 btn-md btn-primary text-bold" href="#"><i class="fa fa-chevron-circle-left"></i> 3 Days</a>
+                                                <a onclick="dues_filter('7days')" class="btn font-16 btn-md bg-purple text-bold" href="#"><i class="fa fa-chevron-circle-left"></i> 7 Days</a>
+                                                <a onclick="dues_filter('14days')" class="btn font-16 btn-md btn-success text-bold" href="#"><i class="fa fa-chevron-circle-left"></i> 14 Days</a>
+                                                <a onclick="dues_filter('uncommitted')" class="btn font-16 btn-md btn-info text-bold" href="#"><i class="fa fa-info-circle"></i> Uncommitted</a>
+                                                <a style="display:none;" onclick="dues_filter('custom')" class="btn font-16 btn-md btn-default text-bold" href="#"><i class="fa fa-chevron-circle-left"></i> Custom</a>
                                           </h3>
                                     </div>
                                 </div>

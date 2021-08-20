@@ -46,8 +46,6 @@
                     <li class="nav-item nav-100"><a href="#tab_5" data-toggle="tab" aria-expanded="false"><i class="fa fa-tag"></i> Collateral</a></li>
                     <li class="nav-item nav-100"><a href="#tab_7" data-toggle="tab" aria-expanded="false"><i class="fa fa-cloud-upload"></i> Uploads</a></li>
                     <li class="nav-item nav-100"><a href="#tab_6" data-toggle="tab" aria-expanded="false"><i class="fa fa-clock-o"></i> Events</a></li>
-
-
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab_1">
@@ -291,7 +289,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="row">
-                                    <span class='font-18 font-italic text-black text-mute'><span class = 'badge font-16' id='total_docs'>0</span> Files Found</span>
+                                    <span class='font-18 font-italic text-black text-mute'><span class = 'badge font-16' id='total_docs'>0</span> File(s) Found</span>
                                 </div>
                                 <div class="row">
                                 <?php

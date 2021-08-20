@@ -7,7 +7,7 @@ include_once ("../configs/conn.inc");
 
 $customer_id = $_POST['customer_id'];
 $agent_id = 1;
-$loan_id = 1;  ///////////////------------Current active loan
+//$loan_id = 1;  ///////////////------------Current active loan
 $transcript = $_POST['transcript'];
 $conversation_method = $_POST['conversation_method'];
 $conversation_date = $fulldate;
@@ -20,6 +20,13 @@ $status = 1;
 
 ///////----------Validation
 if(($customer_id > 0)){
+    $l = fetchmaxid("o_loans", "customer_id = $customer_id AND status > 0", "uid");
+    $loan_id = $l['uid'];
+    if($loan_id > 0){
+        $loan_id = $l['uid'];
+    }else{
+        $loan_id = 0;
+    }
 }
 else{
     die(errormes("Please select customer"));

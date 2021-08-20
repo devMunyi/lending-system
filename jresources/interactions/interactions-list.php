@@ -113,9 +113,18 @@ if($alltotal > 0) {
         $next_steps = $i['next_steps'];
         $outcome = $i['outcome'];                        $outc = fetchrow('o_conversation_outcome',"uid='$outcome'","name");
 
+           if($customer_id > 0){
+               $l = fetchmaxid("o_loans", "customer_id = $customer_id AND status > 0", "uid, loan_balance");
+               $loan_id = encurl($l['uid']);
+               $loan_bal = $l['loan_balance'];
 
-           if($loan_id > 0){
-               $bal = 0.00;
+               if($loan_bal < 0){
+                $loan_bal = 0;
+               }
+
+               if($loan_id < 1){
+                $loan_id = "<b>Null</b>";
+               }
             }
                 $row = $row."<tr><td>$uid</td>
                     <td><span class=\"font-16\">$customer_name <br/> ".flag($flag)."</span>
@@ -125,7 +134,7 @@ if($alltotal > 0) {
                     <td>$agent_name</td>
                     <td><span>$transcript</span></td>
                     <td><span>$next_interaction</span><br/> <span class=\"text-muted font-12\">".fancydate($next_interaction)."</span></td>
-                    <td><span>Loan: $loan_id</span><br/> <span class=\"text-muted font-12 font-bold\">Balance: $bal</span></td>
+                    <td><span>Loan ID: <span class=\"text-bold\">$loan_id</span></span><br/> <span class=\"text-muted font-12 font-bold\">Balance: <span class=\"text-danger\">".money($loan_bal)."</span></span></td>
                     
                     <td><span title =\"click to view this interaction's details\"><a class='pointer' onclick=\"view_interaction($uid);\"><span class=\"fa fa-eye text-green\"></span></a></span><h4 title =\"click to view this customer's other interactions\"><a href='interactions?customer=".encurl($customer_id)."'><i class=\"fa fa-reorder text-blue\"></i></a></h4></td>
                     </tr>";

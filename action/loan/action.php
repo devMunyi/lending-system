@@ -23,8 +23,8 @@ else{
 }
 
 
-    $update_loan_stage = updatedb('o_loans',"status='$action'","uid=".decurl($loan_id));
-    $update_incoming_payments_status = updatedb("o_incoming_payments", "status = '$action'", "loan_id=".decurl($loan_id));
+    $update_loan_stage = updatedb('o_loans',"status=\"$action\"","uid=".decurl($loan_id));
+    $update_incoming_payments_status = updatedb("o_incoming_payments", "status = 0", "loan_id=".decurl($loan_id));
     if($update_loan_stage == 1 AND $update_incoming_payments_status == 1){
         $proceed = 1;
         echo sucmes("Success");

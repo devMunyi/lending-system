@@ -73,17 +73,28 @@ if($alltotal > 0) {
                      $profile = "<img src='uploads_/thumb_$passport_photo' height='65px'>";
                  }
 
+                 ////-------Lastest Loans Query
+                 $loans = fetchmaxid("o_loans", "customer_id = $uid AND status > 0", "loan_amount, loan_balance, final_due_date");
+                 $latest_loan = $loans['loan_amount'];
+                 $balance = $loans['loan_balance'];
+                 $final_due_date = $loans['final_due_date'];
+
+                 if($balance == 0.00){
+                    $final_due_date = "None";
+                 }
+
+                 /////-------End of latest loans query
         $row .= "<tr><td>$uid</td>
                             <td style='padding: 0;'><span>$profile</span></td>
                             <td><span class='font-400'>$full_name</span><br/> <span class='text-muted font-13 font-bold'>$email_address</span>
                             </td>
                             <td><span>$primary_mobile </span></td>
                             <td><span>$branch_name</span><br/> <span class='text-muted font-13 font-bold'>Prod: $primary_product_name</span></td>
-                            <td><span>".$latest_loan['amount']."</span><br/> <span class='text-red font-13 font-bold'>Bal: ".$latest_loan['balance']." &bull; Due: ".$latest_loan['due_date']."</span>
+                            <td><span>".money($latest_loan)."</span><br/> <span class='text-red font-13 font-bold'>Bal: ".money($balance)." &bull; Due: $final_due_date</span>
                             </td>
                             <td><span>$physical_address</span><br/> <span class='text-muted font-13 font-bold'>$town_name</span></td>
-                            <td><span class='label ".$state['color']."'>".$state['name']." </span><br/> <span class='text-muted font-13 font-bold'>$total_loans Loans</span></td>
-                            <td><span><a href='?customer=$uid_enc'><span class='fa fa-eye text-green'></span></a></span><h4><a><i class='fa fa-comments-o text-blue'></i></a></h4></td>
+                            <td><span class='label ".$state['color']."'>".$state['name']." </span><br/> <span class='text-muted font-13 font-bold'></span></td>
+                            <td><span><a href='?customer=$uid_enc'><span class='fa fa-eye text-green'></span></a></span></td>
                         </tr>
                 ";
 

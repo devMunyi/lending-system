@@ -106,7 +106,7 @@ if ($create == 1) {
     $loan_id = $created_loan['uid'];
 
 } else {
-    echo errormes('Unable Update Record');
+    echo errormes('Unable Create Record');
 }
 ?>
 

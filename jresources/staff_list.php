@@ -64,13 +64,14 @@ while($c = mysqli_fetch_array($o_users_))
         $branch_name = "<i>No Branch</i>";
     }
 
-    $f = fetchonerow("o_staff_statuses","uid='$status'","name");
+    $f = fetchonerow("o_staff_statuses","uid='$status'","name, color");
     $status_name = $f['name'];
+    $state_col = $f['color'];
 
     $row.=" <tr><td>$uid</td><td><span class='font-16'>$name </td><td><span>$email </span></td>
  <td><span>$phone</span></td><td>$user_group</td><td><span>$branch_name</span></td>
  <td><span>$join_date</span></td>
- <td><span>$status_name </span></td><td><span><a href='?staff=$encstaff'><span class='fa fa-eye text-green'></span></a></span></td></tr>";
+ <td><span class = 'label $ ".$state_col."'>$status_name </span></td><td><span><a href='?staff=$encstaff'><span class='fa fa-eye text-green'></span></a></span></td></tr>";
 
     //////------Paging Variable ---
     //$page_total = $page_total + 1;

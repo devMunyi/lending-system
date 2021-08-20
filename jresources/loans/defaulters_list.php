@@ -11,6 +11,7 @@ $page_no = $_POST['page_no'];
 $orderby = $_POST['orderby'];
 $dir = $_POST['dir'];
 $search_ = trim($_POST['search_']);
+$sort_option = $_POST['sort_option'];
 
 
 $limit = "$offset_, $rpp_";
@@ -20,33 +21,65 @@ $rows = "";
 
 ///////////////-------------------Search customers with full keyword
 $cust_array = array();
- $customers = fetchtable('o_customers',"full_name LIKE '%$search_%' OR primary_mobile ='$search_' OR email_address='$search_' OR national_id='$search_'","uid","asc","10","uid");
- $customer_hits = mysqli_num_rows($customers);
- if($customer_hits > 0) {
+ $customers = fetchtable('o_customers',"full_name LIKE '%$search_%' OR primary_mobile LIKE '%$search_%' OR national_id LIKE '%$search_%'","uid","asc","10","uid");
+ $customer_lists = mysqli_num_rows($customers);
+ if($customer_lists > 0) {
      while ($cu = mysqli_fetch_array($customers)) {
         $customer_uid = $cu['uid'];
         array_push($cust_array, $customer_uid);
      }
-     $customet_list = implode(",", $cust_array);
-     $orcustomer = " OR customer_id in ($customet_list)";
+     $customer_list = implode(",", $cust_array);
+     $orcustomer = " OR customer_id in ($customer_list)";
  }
  else{
      $orcustomer = "";
  }
 
 ///////////////===================End of search customers with full_keyword
-
 if ((input_available($search_)) == 1) {
-    $andsearch = " AND (uid = '$search_' OR given_date = '%$search_%' OR next_due_date = '%$search_%' OR final_due_date = '%$search_%' OR loan_amount = '$search_' $orcustomer)";
+    $andsearch = " AND (uid = '$search_' OR given_date LIKE '%$search_%' OR next_due_date LIKE '%$search_%' OR final_due_date LIKE '%$search_%' OR loan_amount LIKE '%$search_%' $orcustomer)";
 } else {
     $andsearch = "";
 }
 
+
 //-----------------------------Reused Query
-$o_loans_ = fetchtable('o_loans', "$where_ AND status > 0 $andsearch AND da", "$orderby", "$dir", "$limit", "*");
-///----------Paging Option
-$alltotal = countotal("o_loans", "$where_ AND status > 0 $andsearch");
-///==========Paging Option
+
+$mx_bal = fetchonerow("o_loans", "uid > 0 AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0)", "max(loan_balance) AS max_bal");
+$max_bal = $mx_bal['max_bal'];
+
+$mn_bal = fetchonerow("o_loans", "uid > 0 AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0)", "min(loan_balance) AS min_bal");
+$min_bal = $mn_bal['min_bal'];
+
+
+if($sort_option == "newest"){
+    $o_loans_ = fetchtable("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) $andsearch", "$orderby", "$dir", "$limit", "*");
+    ///----------Paging Option
+    $alltotal = countotal("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) $andsearch");
+ }elseif($sort_option == "oldest"){
+    $o_loans_ = fetchtable("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) $andsearch", "$orderby", "asc", "$limit", "*");
+    ///----------Paging Option
+    $alltotal = countotal("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) $andsearch");
+ }elseif($sort_option == "max"){
+    $o_loans_ = fetchtable("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) AND loan_balance = $max_bal $andsearch", "$orderby", "$dir", "$limit", "*");
+    ///----------Paging Option
+    $alltotal = countotal("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) AND loan_balance = $max_bal $andsearch");
+ }elseif($sort_option == "min"){
+    $o_loans_ = fetchtable("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) AND loan_balance = $min_bal $andsearch", "$orderby", "$dir", "$limit", "*");
+    ///----------Paging Option
+    $alltotal = countotal("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) AND loan_balance = $min_bal $andsearch");
+ }elseif($sort_option == "uncommitted"){
+    $o_loans_ = fetchtable("o_loans", "$where_ AND status IN (7, 8) AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) AND loan_balance > 0 AND total_repaid = 0.00 AND DATEDIFF($date, given_date) >= 7 $andsearch", "$orderby", "$dir", "$limit", "*");
+    ///----------Paging Option
+    $alltotal = countotal("o_loans", "$where_ AND status IN (7, 8) AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) AND loan_balance > 0 AND total_repaid = 0.00 AND DATEDIFF($date, given_date) >= 7 $andsearch");
+ }else{
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0)  $andsearch", "$orderby", "$dir", "$limit", "*");
+    ///----------Paging Option
+    $alltotal = countotal("o_loans", "$where_ AND status IN (7, 8) AND loan_balance > 0 AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) $andsearch");
+    ///==========Paging Option
+}
+
+
 if ($alltotal > 0) {
     while ($n = mysqli_fetch_array($o_loans_)) {
         $uid = $n['uid'];
@@ -96,7 +129,7 @@ if ($alltotal > 0) {
                         <td><span>$given_date</span><br/> <span class=\"text-orange font-13 font-bold\">".fancydate($given_date)."</span></td>
                         <td><span>$next_due_date</span><br/> <span class=\"text-orange font-13 font-bold\">".fancydate($next_due_date)."</span></td>
                         <td><span class='label custom-color' style='background-color: ".$status_d['color_code'].";'>".$status_d['name']."</span></td>
-                        <td><span><a href=\"?loan=".encurl($uid)."\"><span class=\"fa fa-eye text-green\"></span></a></span></td>
+                        <td><span><a href=\"loans?loan=".encurl($uid)."\"><span class=\"fa fa-eye text-green\"></span></a></span></td>
                     </tr>";
 
         //////------Paging Variable ---
