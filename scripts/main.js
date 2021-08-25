@@ -245,6 +245,37 @@ function staff_list() {
     })
 }
 
+
+//staff list filters
+function staff_filters() {
+    let staff_order = $('#staff_order').val();
+    let sel_branch = parseInt($('#sel_branch').val());
+    let user_group = parseInt($('#group_').val());
+
+    let wher = "uid > 0";
+    $('#_dir_').val(staff_order);
+
+    if (sel_branch > 0) {
+        wher += " AND branch=" + sel_branch;
+    }
+
+    if (user_group > 0) {
+        wher += " AND user_group=" + user_group;
+    }
+
+    console.log("filt " + wher);
+
+    if (wher) {
+        $('#_where_').val(wher);
+        $('#_offset_').val(0);
+
+        pager_home();
+    } else {
+        $('#_where_').val(" status > -1");
+        $('#_offset_').val(0);
+    }
+}
+
 function update_password() {
     let old_pass = $('#old_password').val();
     let new_password = $('#new_password').val();
@@ -255,6 +286,16 @@ function update_password() {
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "3");
     })
 
+}
+
+function block_member(member_id, title) {
+    var result = confirm('Are you sure you want to ' + title + '?');
+    if (result) {
+        var params = "member_id=" + member_id;
+        dbaction('/action/staff/delete', params, function (feed) {
+            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+        });
+    }
 }
 
 /////////==============End of staff update
@@ -296,7 +337,7 @@ function customer_save_additional_contact(cid, contact_id) {
     }
 
     let customer_id = cid;
-    let contact_type = $('#contact_type').val();
+    let contact_type = parseInt($('#contact_type').val());
     let value = $('#contact_value').val();
     let params = "customer_id=" + customer_id + "&contact_type=" + contact_type + "&value=" + value
      + "&contact_id=" + contact_id;
@@ -399,6 +440,32 @@ function customer_list() {
 }
 
 
+//customer list filters
+function customer_filters() {
+    let loan_order = $('#customer_order').val();
+    let sel_branch = parseInt($('#sel_branch').val());
+
+    let wher = "uid > 0";
+    $('#_dir_').val(loan_order);
+
+    if (sel_branch > 0) {
+        wher += " AND branch=" + sel_branch;
+    }
+
+    console.log("filt " + wher);
+
+    if (wher) {
+        $('#_where_').val(wher);
+        $('#_offset_').val(0);
+
+        pager_home();
+    } else {
+        $('#_where_').val(" status > -1");
+        $('#_offset_').val(0);
+    }
+}
+
+
 function contact_list(customer, action) {
 
     let params = "customer=" + customer + "&action=" + action;
@@ -440,6 +507,12 @@ function loan_collateral_list(loan_id) {
 
     let params = "loan_id=" + loan_id;
     load_std('/jresources/loans/loan_collateral', '#collateral_', params);
+}
+
+function loan_repayment_list(loan_id) {
+
+    let params = "loan_id=" + loan_id;
+    load_std('/jresources/loans/loan_repayments', '#repayments_', params);
 }
 
 function loan_collateral_action(loan_id, collateral_id, action) {
@@ -530,10 +603,10 @@ function save_other(tbl, record) {
     })
 }
 
-function delete_other(refid) {
+function delete_other(other_id) {
     var result = confirm('Are you sure you want to delete this entry?');
     if (result) {
-        var params = "ref_id=" + refid;
+        var params = "other_id=" + other_id;
         dbaction('/action/customer_sec/delete', params, function (feed) {
             feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
         });
@@ -607,10 +680,13 @@ function loan_list() {
         search = "";
     }
 
-
+    let approvals = $('#_approvals_').val();
+    if(!approvals){
+        approvals = "";
+    }
 
     let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
-    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search;
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&need_approval=" + approvals;
     dbaction("/jresources/loans/loan_list", params, function (feed) {
         console.log(params);
         $('#loan_list').html(feed);
@@ -620,6 +696,104 @@ function loan_list() {
 
     })
 }
+
+
+function defaulters_list(){
+    let where = $('_where_').val();
+    if(!where){
+        where = "uid > 0";
+    }
+    let offset = $('#_offset_').val();
+    if (!offset) {
+        offset = 0;
+    }
+    let rpp = $('#_rpp_').val();
+    if (!rpp) {
+        rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+    let orderby = $('#_orderby_').val();
+    if (!orderby) {
+        orderby = 'uid';
+    }
+    let dir = $('#_dir_').val();
+    if (!dir) {
+        dir = 'desc'
+    }
+    let search = $('#search_').val();
+    if (!search) {
+        search = "";
+    }
+
+    let sort_opt = $("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "default_sort";
+    }
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
+    dbaction("/jresources/loans/defaulters_list", params, function (feed) {
+        console.log(params);
+        $('#defaulters_list').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 0);
+
+    })
+}
+
+
+function falling_due_list(){
+    let where = $('_where_').val();
+    if(!where){
+        where = "uid > 0";
+    }
+    let offset = $('#_offset_').val();
+    if (!offset) {
+        offset = 0;
+    }
+    let rpp = $('#_rpp_').val();
+    if (!rpp) {
+        rpp = 10;
+    }
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+    let orderby = $('#_orderby_').val();
+    if (!orderby) {
+        orderby = 'uid';
+    }
+    let dir = $('#_dir_').val();
+    if (!dir) {
+        dir = 'desc'
+    }
+    let search = $('#search_').val();
+    if (!search) {
+        search = "";
+    }
+
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "all";
+    }
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no +
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
+    dbaction("/jresources/loans/falling_due_list", params, function (feed) {
+        console.log(params);
+        $('#falling_due_list').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 0);
+
+    })
+}
+
+
 
 function loan_filters() {
     let loan_order = $('#loan_order').val();
@@ -654,9 +828,8 @@ function loan_filters() {
         $('#_where_').val(" status > -1");
         $('#_offset_').val(0);
     }
-
-
 }
+
 
 function loan_addons(loan_id) {
     let params = "loan_id=" + loan_id;
@@ -691,11 +864,27 @@ function loan_deductions_action(action, loan_id, deduction_id) {
 function loan_action(loan_id, act, title) {
     var result = confirm('Are you sure you want to ' + title + '?');
     if (result) {
-        var params = "loan_id=" + loan_id + "&act=" + act;
+        var params = "loan_id=" + loan_id + "&action=" + act;
         dbaction('/action/loan/action', params, function (feed) {
             feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
         });
     }
+}
+
+
+
+//dues filter
+function dues_filter(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+//defaulters filter
+function defaulters_filter(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
 }
 
 ///////////-----------------------------End of Loans
@@ -714,6 +903,12 @@ function payment_list() {
     if (!rpp) {
         rpp = 10;
     }
+
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+
     let orderby = $('#_orderby_').val();
     if (!orderby) {
         orderby = 'uid';
@@ -727,9 +922,14 @@ function payment_list() {
         search = "";
     }
 
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "default_sort";
+    }
 
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" 
-    + dir + "&search_=" + search;
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no + 
+    "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
     dbaction("/jresources/repayments/payment_list", params, function (feed) {
         console.log(params);
         $('#payment_list').html(feed);
@@ -761,7 +961,40 @@ function payment_save() {
     })
 }
 
+
+//payment filters
+function repayment_filters() {
+    let loan_order = $('#repayment_order').val();
+    let sel_branch = parseInt($('#sel_branch').val());
+    let repayment_method = parseInt($('#repayment_method').val());
+
+    let wher = "uid > 0";
+    $('#_dir_').val(loan_order);
+
+    if (sel_branch > 0) {
+        wher += " AND branch_id=" + sel_branch;
+    }
+    
+    if(repayment_method > 0){
+        wher += " AND payment_method=" + repayment_method;
+    }
+
+    console.log("filt " + wher);
+
+    if (wher) {
+        $('#_where_').val(wher);
+        $('#_offset_').val(0);
+
+        pager_home();
+    } else {
+        $('#_where_').val(" status > -1");
+        $('#_offset_').val(0);
+    }
+}
+
 /////////------------------------------End of repayments
+
+
 function formready(formid) {
     formhandler('#' + formid);
 }
@@ -795,8 +1028,6 @@ function formhandler(formid) {
             if (suc >= 0) {
                 $(formid)[0].reset();
             }
-
-
         },
         error: function () {
             $("#message").html("<font color='red'> ERROR: unable to upload files</font>");
@@ -965,7 +1196,10 @@ function approve_disburse(loan_id) {
 
 ///////--------------------------End Loan Stages
 ///////////----------------------Interactions
-function load_interactions(customer) {
+
+
+
+function load_interactions() {
     let where = $('#_where_').val();
     if (!where) {
         where = "uid > 0";
@@ -978,6 +1212,12 @@ function load_interactions(customer) {
     if (!rpp) {
         rpp = 10;
     }
+
+    let page_no = $('#_page_no_').val();
+    if (!page_no) {
+        page_no = 1;
+    }
+
     let orderby = $('#_orderby_').val();
     if (!orderby) {
         orderby = 'uid';
@@ -991,20 +1231,13 @@ function load_interactions(customer) {
         search = "";
     }
 
-    if ((parseInt(customer)) > 0) {
-        let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&customer=" + customer;
-        dbaction("/jresources/interactions/interactions-list", params, function (feed) {
-            console.log(params);
-            $('#interaction_customer').html(feed);
-            setTimeout(function () {
-                pager_refactor();
-            }, 200);
-
-        });
-    } else {
-
+    let sort_opt =$("#_sort_").val();
+    if(!sort_opt){
+        sort_opt = "default_sort";
     }
-    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&orderby=" + orderby + "&dir=" + dir + "&search_=" + search + "&customer=0";
+
+    let params = "where_=" + where + "&offset=" + offset + "&rpp=" + rpp + "&page_no=" + page_no + "&orderby=" + orderby + 
+    "&dir=" + dir + "&search_=" + search + "&sort_option=" + sort_opt;
     dbaction("/jresources/interactions/interactions-list", params, function (feed) {
         console.log(params);
         $('#interactions_').html(feed);
@@ -1013,7 +1246,23 @@ function load_interactions(customer) {
         }, 200);
 
     });
+}
 
+function specific_customer_interactions(){
+    let customer = $("#cust_id_").val();
+    if(!customer){
+        customer = "";
+    }
+
+    let params = "customer= " + customer;
+    dbaction("/jresources/interactions/specific_customer_interactions", params, function (feed) {
+        console.log(params);
+        $('#customer_interactions').html(feed);
+        setTimeout(function () {
+            pager_refactor();
+        }, 200);
+
+    });
 }
 
 function save_interaction() {
@@ -1023,7 +1272,7 @@ function save_interaction() {
     let flag = $('input[name="flag"]:checked').val();
     let next_interaction = $('#next_int').val();
     let next_steps = $('#next_stage').val();
-    let params = "&customer_id=" + customer_id + "&transcript=" + transcript + "&conversation_method=" 
+    let params = "customer_id=" + customer_id + "&transcript=" + transcript + "&conversation_method=" 
     + conversation_method + "&next_interaction=" + next_interaction + "&next_steps=" + next_steps + "&flag=" + flag;
     dbaction("/action/interaction_save", params, function (feed) {
         console.log(JSON.stringify(feed));
@@ -1037,6 +1286,33 @@ function view_interaction(iid) {
     modal_view('/jresources/interactions/view-one', params, "Interaction Details");
 }
 
+
+function all_interactions(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+
+function face_to_face_interactions(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+function chat_interactions(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('desc');
+    pager_home();
+}
+
+function call_interactions(where){
+    $('#_sort_').val(where);
+    $('#_dir_').val('asc');
+    pager_home();
+}
+
+
 //////////=======================End of interactions
 /////////----------------Settings
 function permissions(group_id, user_id, tbl, rec, act, value) {
@@ -1048,6 +1324,21 @@ function permissions(group_id, user_id, tbl, rec, act, value) {
         $('#perm').html(feed);
     });
 }
+
+
+function save_settings() {
+    let name = $('#name').val();
+    let logo = $('#logo').val();
+    let icon = $('#icon').val();
+    let link = $('#link').val();
+
+    let params = "name=" + name + "&logo=" + logo + "&icon=" + icon + "&link=" + link;
+    dbaction("/action/system/system_settings_update", params, function (feed) {
+        console.log(JSON.stringify(feed));
+        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+    })
+}
+
 
 
 ////////----------------End of settings
@@ -1081,6 +1372,13 @@ function save_report() {
 /////////----------------Campaigns
 function save_campaign(){
     let cid = parseInt($('#cid').val());
+    let url = 'campaign_save';
+    if (cid > 0) {
+        url = 'campaign_update';
+    }else{
+        url = 'campaign_save';
+    }
+    
     let title = $('#title').val();
     let description = $('#description').val();
     let date = $('#date').val();
@@ -1089,23 +1387,13 @@ function save_campaign(){
     let repetitive = $('#repetitive').val();
     let status = $('#status').val();
 
-    let endpoint = "create-new";
-    if (cid > 0) {
-        endpoint = "update";
-    }
+    let params = "cid=" + cid + "&title=" + title + "&description=" + description + "&date=" + date + "&frequency=" + frequency + "&repetitive=" + repetitive + "&target_customers=" + target_customers + "&status=" + status;
 
-    let params = "cid=" + cid + "&title=" + title + "&description=" + description + "&date=" + date
-    + "&frequency=" + frequency + "&repetitive=" + repetitive + "&target_customers=" + target_customers 
-    + "&status="+status;
-
-    dbaction("/action/campaign/" + endpoint, params, function (feed) {
+    dbaction("/action/campaign/" + url, params, function (feed) {
         console.log(JSON.stringify(feed));
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
     })
 }
-
-
-
 
 
 function campaign_list() {
@@ -1194,12 +1482,11 @@ function repetitive_campaigns(where){
 
 function delete_campaign(campaign_id, title) {
     var result = confirm('Are you sure you want to ' + title + '?');
-    if (result) {
-        var params = "campaign_id=" + campaign_id;
-        dbaction('/action/campaign/delete', params, function (feed) {
-            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
-        });
-    }
+
+    var params = "campaign_id=" + campaign_id;
+    dbaction('/action/campaign/delete', params, function (feed) {
+        feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+    });
 }
 
 function disable_campaign(campaign_id, title) {
@@ -1271,19 +1558,42 @@ function audience_list() {
 }
 
 
+function campaign_save_message(cid, message_id) {
+    let url = 'campaign_message_save';
+    if ((parseInt(message_id)) > 0) {
+        url = 'campaign_message_update';
+    } else {
+        url = 'campaign_message_save';
+    }
 
-function save_message(){
-    let message = $('#message').val();
-    let campaign_id = $('#_camp_id_').val();
-
-    let endpoint = "save";
-
-    let params = "message=" + message + "&campaign_id=" + campaign_id;
-
-    dbaction("/action/campaign/message/" + endpoint, params, function (feed) {
+    let campaign_id = cid;
+    let message = $('#description').val();
+    let params = "campaign_id=" + campaign_id + "&message_id=" + message_id + "&message=" + message;
+    dbaction("/action/campaign/" + url, params, function (feed) {
         console.log(JSON.stringify(feed));
         feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
     })
+}
+
+
+function campaign_message_list(campaign, action) {
+
+    let params = "campaign= " + campaign + "&action= " + action;
+    dbaction("/jresources/campaign_sec/campaign_message_list", params, function (feed) {
+        console.log(JSON.stringify(feed));
+        $('#message_').html(feed)
+    })
+}
+
+
+function delete_message(message_id) {
+    var result = confirm('Are you sure you want to delete this message?');
+    if (result) {
+        var params = "message_id=" + message_id;
+        dbaction('/action/campaign/message_delete', params, function (feed) {
+            feedback("DEFAULT", "TOAST", ".feedback_", feed, "4");
+        });
+    }
 }
 
 ////////================End of Campaigns

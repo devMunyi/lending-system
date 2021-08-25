@@ -176,11 +176,10 @@ $company = company_settings();
                                 <div class="row">
                                     <div class="col-md-10">
                                         <h3 class="box-title font-16">
-                                            <a class="btn font-16 btn-md bg-navy text-bold" href="interactions"><i class="fa fa-clone"></i> All</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-user-circle-o"></i> Face to Face</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-comment-o"></i> Chat</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href=""><i class="fa fa-phone"></i> Call</a>
-
+                                            <a class="btn font-16 btn-md bg-navy text-bold" href="#" onclick="all_interactions('default_sort')"><i class="fa fa-clone"></i> All</a>
+                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href="#" onclick="face_to_face_interactions('sort_1')"><i class="fa fa-user-circle-o"></i> Face to Face</a>
+                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href="#" onclick="chat_interactions('sort_2')"><i class="fa fa-comment-o"></i> Chat</a>
+                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href="#" onclick="call_interactions('sort_3')"><i class="fa fa-phone"></i> Call</a>
                                         </h3>
                                     </div>
                                     <div class="col-md-2">
@@ -196,7 +195,7 @@ $company = company_settings();
                                     <tr>
                                         <th>ID</th>
                                         <th>Customer Name</th>
-                                        <th>Method</th>
+                                        <th>Interaction Mode</th>
                                         <th>Date</th>
                                         <th>Agent</th>
                                         <th>Outcome</th>
@@ -214,7 +213,7 @@ $company = company_settings();
                                     <tr>
                                         <th>ID</th>
                                         <th>Customer Name</th>
-                                        <th>Method</th>
+                                        <th>Interaction Mode</th>
                                         <th>Date</th>
                                         <th>Agent</th>
                                         <th>Outcome</th>
@@ -239,12 +238,13 @@ $company = company_settings();
                                 $for_customer = 1;
                                 ?>
                                 <h4>Interactions for <b><?php echo $customer_name; ?></b></h4>
+                                <input type='hidden' id='cust_id_' value= '<?php echo $_GET["customer"];?>'>
                                 <table id="hd" style="background: white; padding: 5px; font-size: 12px;" class="table table-condensed table-striped">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Customer Name</th>
-                                        <th>Method</th>
+                                        <th>Interaction Mode</th>
                                         <th>Date</th>
                                         <th>Agent</th>
                                         <th>Outcome</th>
@@ -253,7 +253,7 @@ $company = company_settings();
                                         <th>Action</th>
                                     </tr>
                                     </thead>
-                                    <tbody id="interaction_customer">
+                                    <tbody id="customer_interactions">
 
 
 
@@ -262,7 +262,7 @@ $company = company_settings();
                                     <tr>
                                         <th>ID</th>
                                         <th>Customer Name</th>
-                                        <th>Method</th>
+                                        <th>Interaction Mode</th>
                                         <th>Date</th>
                                         <th>Agent</th>
                                         <th>Outcome</th>
@@ -284,8 +284,9 @@ $company = company_settings();
                     <!-- /.col -->
                 </div>
             </section>
-            <?php
-        }
+         <?php
+     }
+        echo "<div style='display: none ;'>".paging_values_hidden2('uid > 0',0,10,'uid','desc','', 'load_interactions', 'default_sort')."</div>"
         ?>
 
 
@@ -311,8 +312,11 @@ $company = company_settings();
 include_once("footer_includes.php");
 ?>
 <script>
-$('document').ready(function () {
-   load_interactions('<?php echo $for_customer; ?>');
+$(document).ready(function () {
+   load_interactions();
+   specific_customer_interactions();
+
+   pager('#example1');
 });
 </script>
 </body>

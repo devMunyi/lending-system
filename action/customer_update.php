@@ -125,7 +125,7 @@ $update_flds = " full_name='$full_name', primary_mobile='$primary_mobile', email
 $update = updatedb('o_customers', $update_flds, "uid=".$user_dec);
 if($update == 1)
 {
-    echo sucmes('Customer Saved Successfully');
+    echo sucmes('Customer Updated Successfully');
     $customer_id = "Success updating data";
     $proceed = 1;
     store_event('o_customers', $user_dec,"$events");

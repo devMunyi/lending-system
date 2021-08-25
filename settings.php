@@ -51,15 +51,17 @@ $company = company_settings();
                     <div class="col-xs-3 font-14">
                         <ol class="list-group">
                             <li class="list-group-item">
-                                <a class="text-navy" href="settings?general"><i class="fa fa-gears"></i> General Settings</a>
-                            </li>
-                            <li class="list-group-item">
                                 <a class="text-navy" href="settings?group-permissions"><i class="fa fa-lock"></i> Group Permissions</a>
                             </li>
                             <li class="list-group-item">
                                 <a class="text-navy" href="settings?user-permissions"><i class="fa text-red fa-lock"></i> User Permissions</a>
                             </li>
-
+                            <li class="list-group-item">
+                                <a class="text-navy" href="settings?general"><i class="fa fa-wrench"></i> General Settings</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a class="text-navy" href="settings?system"><i class="fa fa-gears"></i> System Settings</a>
+                            </li>
                         </ol>
                     </div>
                     <div class="col-xs-9">
@@ -68,12 +70,18 @@ $company = company_settings();
 
                         <div class="box">
                             <div class="box-header bg-info">
-
+                                <span class="font-16 text-bold">Settings</span>
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <?php
-                                if(isset($_GET['group-permissions'])){
+                                if (isset($_GET['user-permissions'])) {
+                                    include_once ("widgets/settings/permissions.php");
+                                }elseif(isset($_GET['general'])){
+                                    include_once ("widgets/settings/permissions.php");
+                                }elseif(isset($_GET['system'])){
+                                    include_once ("widgets/settings/system_settings.php");
+                                }else{
                                     include_once ("widgets/settings/permissions.php");
                                 }
                                 ?>

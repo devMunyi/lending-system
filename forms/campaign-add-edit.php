@@ -1,27 +1,29 @@
 <section class="content-header">
+    <h1>
+    <?php echo arrow_back('broadcasts','Broadcasts'); ?>
     <?php
     $cid = $_GET['campaign-add-edit'];
     if($cid > 0){
-        $campaign = fetchonerow('o_campaigns',"uid='".decurl($cid)."'");
-        $cid = $_GET['campaign-add-edit'];
+        $campaign = fetchonerow('o_campaigns',"uid='".decurl($cid)."'"); 
+        $target_cust = $campaign['target_customers']; $target_cust_ = fetchrow("o_campaign_target_customers", "uid = $target_cust", "name");
+        $campaign_id = $_GET['campaign-add-edit'];
 
-    echo " <h1>".arrow_back('broadcasts','Broadcasts')."Edit Campaign </h1>";
+        echo "Campaign <small>Edit</small> <span class='text-green text-bold'>$target_cust_</span> <a title='Back to campaign' class='font-16' href=\"broadcasts?campaign=$cid\"><i class='fa fa-arrow-circle-up'></i></a>";
+        $act = "<span class='text-orange'><i class='fa fa-edit'></i>Edit</span>";
     }
     else{
-    echo " <h1>".arrow_back('broadcasts','Broadcasts'). "Add Campaign </h1>";
         $campaign = array();
-        $cid = "";
+        $campaign_id = "";
+        echo "Campaign <small>Add</small>";
+        $act = "<span class='text-green'><i class='fa fa-edit'></i>Add</span>";
     }
     ?>
 
+    </h1>
+    
     <ol class="breadcrumb">
         <li><a href="index"><i class="fa fa-dashboard"></i> Home</a></li>
-        <?php if($cid > 0){
-            echo "<li class=\"active\">Campaign/Edit</li>";
-        }else{
-            echo "<li class=\"active\">Campaign/Add</li>";
-        }
-        ?>
+        <li class="active">Campaign</li>
     </ol>
 </section>
 <section class="content">
@@ -34,10 +36,58 @@
 
                 <!-- /.box-header -->
                 <div class="row">
-                    <div class="col-sm-7 box-body">
-                        <!-- /.box-header -->
-                        <!-- form start -->
-                        <form class="form-horizontal" onsubmit="return false;" method="post">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-6">
+                        <?php
+                        //message form start
+                        if(isset($_GET['message'])){
+                            $message_id = $_GET['message'];
+                            if($message_id > 0){
+                                echo "<h3>Edit Message";
+                                $message = fetchrow("o_campaign_messages","uid=".decurl($message_id),"message");
+                            }
+                            else{
+                                echo "<h3>Add Message";
+                                $message = "";
+                            }
+                            ?>
+                            <a class="btn-outline-black pull-right"  href="broadcasts?campaign=<?php echo $cid; ?>">Finish <i class="fa fa-angle-double-right"></i></a><a href="broadcasts?campaign-add-edit=<?php echo $cid; ?>&message" class="btn-outline-black pull-right">New <i class="fa fa-plus"></i></a>
+
+                            </h3>
+
+                            <form class="form-horizontal" onsubmit="return false;" id="" method="post">
+                                <div class="box-body">
+                                    <div class="form-group">
+                                        <label for="description" class="col-sm-3 control-label">Description</label>
+
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" id="description"><?php echo $message; ?></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-9">
+                                        <div class="box-footer">
+                                            <br/>
+                                            <button type="submit" class="btn btn-lg btn-flat btn-default">Cancel</button>
+                                            <button type="submit"
+                                                    class="btn btn-success btn-flat bg-green-gradient btn-lg pull-right"
+                                                    onclick="campaign_save_message('<?php echo $cid; ?>','<?php echo $message_id; ?>');">
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- /.box-body -->
+
+                                <!-- /.box-footer -->
+                            </form>
+                            <?php
+                        }else{
+                                ?>
+                            <h3><?php echo $act; ?> Campaign Details</h3>
+                            <form class="form-horizontal" onsubmit="return false;" method="post">
                             <div class="box-body">
                                 <div class="form-group">
                                     <input type="hidden" id="cid" value="<?php echo $cid; ?>">
@@ -160,21 +210,25 @@
                             <!-- /.box-body -->
 
                             <!-- /.box-footer -->
-                        </form>
-
-                    </div>
-                    <div class="col-sm-3 box-body">
-                        <?php
-                        /*if($cid > 1) {
-                        }
-                        else{
-                            ?>
-                            <button class="btn btn-danger btn-md pull-right"><i class="fa fa-ban"></i> Stop Campaign </button>
+                            </form>
                             <?php
-                        }*/
+                        }
                         ?>
-
                     </div>
+                    <div class="col-sm-4 box-body">
+                        <?php
+                        if (isset($_GET['message'])) {
+                            $message_list = $_GET['campaign-add-edit'];
+                            ?>
+                        <div class="small_list" id="message_">
+                            Loading ...
+                        </div>
+
+                        <?php
+                        }
+                        ?>
+                    </div>
+
                 </div>
                 <!-- /.box-body -->
             </div>

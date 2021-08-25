@@ -13,7 +13,7 @@ $action = $_POST['action'];
 $loan_id = $_POST['loan_id'];
 $deduction_id = $_POST['deduction_id'];
 
-$loan = fetchonerow('s_loans',"uid='".decurl($loan_id)."'","loan_amount");
+$loan = fetchonerow('o_loans',"uid='".decurl($loan_id)."'","loan_amount");
 
 
 
@@ -35,7 +35,7 @@ else{
 
 
 if($action == 'ADD'){
-   $exists = checkrowexists('o_loan_deductions',"loan_id='".decurl($loan_id)."'  AND deduction_id = '$deduction_id' AND status=1");
+   $exists = checkrowexists('o_loan_deductions',"loan_id='".decurl($loan_id)."' AND deduction_id = '$deduction_id' AND status=1");
     $deduction_amount = deduction_amount($loan['loan_amount'], $deduction_id);
    if($exists == 1){
        //////It exists but has been removed, enable it

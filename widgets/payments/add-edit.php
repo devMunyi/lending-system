@@ -12,8 +12,8 @@ $rep_id = $_GET['add-edit'];
         <small>Payment #$rep_id</small>";
         }
         else{
-            echo arrow_back("incoming-payments","Payments")."Add Payment
-        <small>New</small>";
+            echo arrow_back("incoming-payments","Payments")."Add Payment<small>New</small>";
+            $P = array();
         }
         ?>
 
@@ -30,7 +30,7 @@ $rep_id = $_GET['add-edit'];
                 <ul class="nav nav-tabs nav-justified font-16">
 
                     <li class="nav-item nav-100 active"><a href="#tab_1" data-toggle="tab" aria-expanded="false"><i class="fa fa-save"></i> Record Payment</a></li>
-                    <li class="nav-item nav-100"><a href="#tab_2" data-toggle="tab" aria-expanded="false"><i class="fa fa-cloud-upload"></i> Upload Payments</a></li>
+                    <li class="nav-item nav-100"><a href="#tab_2" data-toggle="tab" aria-expanded="false"><i class="fa fa-cloud-upload"></i> Upload Payments (CSV File Only)</a></li>
 
 
 
@@ -89,7 +89,7 @@ $rep_id = $_GET['add-edit'];
                                                 <select class="form-control" name="type_" id="payment_method">
                                                     <option value="0">--Select One</option>
                                                     <?php
-                                                    $met = fetchtable('o_payment_methods',"status=1", "name", "asc", "0,10", "uid ,name ,account_details ");
+                                                    $met = fetchtable('o_payment_methods',"status=1", "uid", "asc", "0,10", "uid ,name ,account_details ");
                                                     while($m = mysqli_fetch_array($met))
                                                     {
                                                         $uid = $m['uid'];
@@ -124,7 +124,7 @@ $rep_id = $_GET['add-edit'];
                                             <div class="box-footer">
                                                 <br>
                                                 <button type="submit" class="btn btn-lg btn-default">Cancel</button>
-                                                <button type="submit" class="btn bg-green-gradient btn-lg pull-right" onclick="payment_save();">Save
+                                                <button type="submit" class="btn btn-success btn-lg pull-right" onclick="payment_save();">Save
                                                 </button>
                                             </div>
 
@@ -156,7 +156,6 @@ $rep_id = $_GET['add-edit'];
                                     <div class="box-body">
 
                                         <div class="form-group">
-
                                             <label for="file_" class="col-sm-3 control-label">File</label>
 
                                             <div class="col-sm-9">

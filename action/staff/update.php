@@ -112,7 +112,7 @@ else
     let proceed = '<?php echo $proceed; ?>';
     if(proceed === "1"){
         setTimeout(function () {
-            reload();
+            gotourl("staff?staff=<?php echo $staff_id; ?>")
         },2000);
     }
 </script>

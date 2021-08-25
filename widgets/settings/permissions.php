@@ -6,9 +6,8 @@
         <?php
         $i = 0;
         $g = $_GET['g'];
-        $o_user_groups_ = fetchtable('o_user_groups',"status=1", "uid", "desc", "0,10", "uid ,name ,description ,status ");
-        while($s = mysqli_fetch_array($o_user_groups_))
-        {
+        $o_user_groups_ = fetchtable('o_user_groups',"status=1", "uid", "desc", "0,10", "uid ,name ,description ,status");
+        while($s = mysqli_fetch_array($o_user_groups_)){
             $i = $i + 1;
             $uid = $s['uid'];
             $name = $s['name'];
@@ -23,7 +22,7 @@
     </div>
     <div class="col-sm-3 scroll-hor">
         <h4>Tables</h4>
-        <table class="table  table-striped table-condensed">
+        <table class="table  table-striped table-condensed table-scrollable">
         <?php
         if(isset($_GET['g'])){
            /////---------List All Tables

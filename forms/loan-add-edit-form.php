@@ -2,15 +2,15 @@
     <h1>
         <?php echo arrow_back('loans', 'loans'); ?>
         <?php
-        $sid = $_GET['customer-add-edit'];
-        if ($sid > 0) {
-            $cust = fetchonerow('o_staff', "uid='" . decurl($sid) . "'");
-            $customer_id = $_GET['customer-add-edit'];
+        $lid = $_GET['loan-add-edit'];
+        if ($lid > 0) {
+            $loan = fetchonerow('o_loans', "uid='" . decurl($lid) . "'");
+            $loan_id = $_GET['loan-add-edit'];
 
             echo "Loan <small>Edit</small>";
         } else {
-            $cust = array();
-            $customer_id = "";
+            $loan = array();
+            $loan_id = "";
             echo "Loan <small>Add</small>";
         }
         ?>
@@ -43,7 +43,7 @@
                                         <label for="customer" class="col-sm-3 control-label">Customer</label>
 
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" autocomplete="off" onkeyup="search_cust();" id="customer_search" placeholder="Start typing customer name ...">
+                                            <input class="form-control" type="text" autocomplete="off" onkeyup="search_cust();" id="customer_search" value="<?php echo $loan['customer_id'];?>" placeholder="Start typing customer name ...">
                                             <input type="hidden" id="customer_id_">
                                             <div id="customer_results">
 
@@ -65,7 +65,13 @@
                                                     $uid = $o['uid'];
                                                     $name = $o['name'];
                                                     $description = $o['description'];
-                                                    echo "<option value='$uid'>$name</option>";
+
+                                                    if(($loan['product_id']) == $uid){
+                                                        $selected_l = 'SELECTED';
+                                                    }else{
+                                                        $selected_l = '';
+                                                    }
+                                                    echo "<option $selected_l value='$uid'>$name</option>";
                                                 }
 
                                                 ?>
@@ -76,7 +82,7 @@
                                         <label for="amount" class="col-sm-3 control-label">Amount</label>
 
                                         <div class="col-sm-9">
-                                            <input class="form-control text-bold font-18" type="number" id="amount" placeholder="0.00">
+                                            <input class="form-control text-bold font-18" type="number" value="<?php echo $loan['loan_amount']; ?>" id="amount" placeholder="0.00">
                                         </div>
                                     </div>
 

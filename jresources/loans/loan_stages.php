@@ -24,7 +24,7 @@ $l = fetchonerow("o_loans","uid='".decurl($loan_id)."'","*");
             $is_final_stage = $b['is_final_stage'];
             if ($l['loan_stage'] == $stage_id) {
                 $action1 = "<button onclick=\"modal_view('/jresources/loans/loan_stage_approve','loan_id=$loan_id','Approve to Next Stage')\" class='btn btn-success btn-sm'><i class='fa fa-check'></i>Approve</button>";
-                $action2 = "<button class='btn btn-danger btn-sm'><i class='fa fa-times'></i> Reject</button>";
+                $action2 = "<button onclick=\"loan_action($loan_id, 6, 'Reject this loan')\" class='btn btn-danger btn-sm'><i class='fa fa-times'></i> Reject</button>";
                 echo "<tr class='font-18 font-bold text-green'><td colspan='2'><span class='badge bg-green-gradient'>$st</span> $stage_name (Current) <br/><div class='inaction'> $action1 $action2</div></td></tr>";
             } else {
                 echo "<tr><td colspan='2'><span class='badge'>$st</span> $stage_name</td></tr>";

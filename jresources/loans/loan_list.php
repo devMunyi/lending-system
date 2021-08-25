@@ -11,6 +11,7 @@ $page_no = $_POST['page_no'];
 $orderby = $_POST['orderby'];
 $dir = $_POST['dir'];
 $search_ = trim($_POST['search_']);
+$need_approval = $_POST['need_approval'];
 
 
 $limit = "$offset_, $rpp_";
@@ -20,7 +21,7 @@ $rows = "";
 
 ///////////////-------------------Search customers with full keyword
 $cust_array = array();
- $customers = fetchtable('o_customers',"full_name LIKE '%$search_%' OR primary_mobile ='$search_' OR email_address='$search_' OR national_id='$search_'","uid","asc","10","uid");
+ $customers = fetchtable('o_customers',"full_name LIKE '%$search_%' OR primary_mobile LIKE '%$search_%' OR email_address LIKE '%$search_%' OR national_id LIKE '%$search_%'","uid","asc","10","uid");
  $customer_hits = mysqli_num_rows($customers);
  if($customer_hits > 0) {
      while ($cu = mysqli_fetch_array($customers)) {
@@ -37,23 +38,36 @@ $cust_array = array();
 ///////////////===================End of search customers with full_keyword
 
 if ((input_available($search_)) == 1) {
-    $andsearch = " AND (uid = '$search_' OR given_date = '%$search_%' OR next_due_date = '%$search_%' OR final_due_date = '%$search_%' OR loan_amount = '$search_' $orcustomer)";
+    $andsearch = " AND (uid = '$search_' OR given_date LIKE '%$search_%' OR next_due_date LIKE '%$search_%' OR final_due_date LIKE '%$search_%' OR loan_amount LIKE '%$search_%' $orcustomer)";
 } else {
     $andsearch = "";
 }
 
 //-----------------------------Reused Query
-$o_users_ = fetchtable('o_loans', "$where_ AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
-///----------Paging Option
-$alltotal = countotal("o_loans", "$where_ AND status > 0 $andsearch");
-///==========Paging Option
+if($need_approval == "need approval"){
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (1, 2) $andsearch", "$orderby", "$dir", "$limit", "*");
+    ///----------Paging Option
+    $alltotal = countotal("o_loans", "$where_ AND status IN (1, 2) $andsearch");
+    ///==========Paging Option
+}else{
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status > 0 $andsearch", "$orderby", "$dir", "$limit", "*");
+    ///----------Paging Option
+    $alltotal = countotal("o_loans", "$where_ AND status > 0 $andsearch");
+    ///==========Paging Option
+}
+
+
+
+
+
+
 if ($alltotal > 0) {
-    while ($n = mysqli_fetch_array($o_users_)) {
+    while ($n = mysqli_fetch_array($o_loans_)) {
         $uid = $n['uid'];
         $customer_id = $n['customer_id'];
-                $i = fetchonerow("o_customers","uid='$customer_id'","full_name, primary_mobile");
-                $full_name = $i['full_name'];
-                $primary_mobile = $i['primary_mobile'];
+        $i = fetchonerow("o_customers","uid='$customer_id'","full_name, primary_mobile");
+        $full_name = $i['full_name'];
+        $primary_mobile = $i['primary_mobile'];
         $product_id = $n['product_id'];
         $loan_amount = $n['loan_amount'];
         $disbursed_amount = $n['disbursed_amount'];

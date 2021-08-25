@@ -1,5 +1,9 @@
 <?php
-$server = "http://localhost/OnePay";
+/*$server = "http://braavos.zhen.co.ke"; 
+$auth = "Basic dGVzdDp0ZXN0";
+*/
+
+$server = "http://localhost/super-lender"; 
 $auth = "Basic dGVzdDp0ZXN0";
 
 ?>

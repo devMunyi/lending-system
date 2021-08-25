@@ -1,7 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['o-token']))
-{
+if(isset($_SESSION['o-token'])){
 
     $token = $_SESSION['o-token'];
     $valid = validatetoken($token);
@@ -24,13 +23,13 @@ else{
 
 ?>
 <header class="main-header" style="background-color: #333333 !important;">
-    <div id="standardnotif" class="alert aler-dismissible"></div>
+    <div id="standardnotif" class="alert alert-dismissible"></div>
     <!-- Logo -->
     <a href="index" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>O</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><img src="dist/img/<?php echo $company['logo']; ?>" style="height: 50px"></span>
+        <span class="logo-lg"><img src="dist/img/<?php echo $company['logo']; ?>" style="height: 50px;"></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -38,7 +37,6 @@ else{
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
-
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->

@@ -13,8 +13,6 @@ $file_size = $_FILES['file_']['size'];
 $file_tmp = $_FILES['file_']['tmp_name'];
 $make_thumbnail = $_POST['make_thumbnail'];
 
-
-
 $reference_number = $_POST['reference_number'];
 $upload_location = '../../uploads_/';
 
@@ -22,7 +20,7 @@ $upload_location = '../../uploads_/';
 
 if((input_available($title)) == 0)
 {
-    die(errormes("Title is too short"));
+    die(errormes("Title is required"));
     exit();
 }
 if($category > 0){
@@ -33,7 +31,7 @@ else{
     exit();
 }
 
-$allowed_formats = fetchrow('o_customer_document_categories',"uid='$category'","formats");
+$allowed_formats = fetchrow("o_customer_document_categories","uid=$category","formats");
 $allowed_formats_array = explode(",", $allowed_formats);
 
 if($file_size > 100){
@@ -62,7 +60,7 @@ if($make_thumbnail == 1) {
 //echo errormes(makeThumbnails($upload_location, "7UpkJa8zGa.jpg",50,50,"ddd.jpg"));
 
 
-$added_by = 1;
+$added_by = $userd['uid'];
 $added_date = $fulldate;
 $tbl = $_POST['tbl'];
 $rec = $_POST['rec'];
@@ -86,6 +84,9 @@ else
 ?>
 <script>
     if('<?php echo $proceed; ?>'){
+        setTimeout(function (){
+            reload();
+        }, 400);
         upload_list('<?php echo encurl($rec); ?>','EDIT');
     }
 </script>

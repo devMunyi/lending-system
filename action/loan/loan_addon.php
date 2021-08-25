@@ -13,7 +13,7 @@ $action = $_POST['action'];
 $loan_id = $_POST['loan_id'];
 $addon_id = $_POST['addon_id'];
 
-$loan = fetchonerow('s_loans',"uid='".decurl($loan_id)."'","loan_amount");
+$loan = fetchonerow('o_loans',"uid='".decurl($loan_id)."'","loan_amount");
 
 
 

@@ -18,17 +18,32 @@ $added_date = $fulldate;
 $viewable_by = $_POST['viewable_by'];
 $status = 1;
 
-if((input_length($title,2)) == 0){
+if(input_available($title) == 0){
+    echo errormes("Title is required");
+    die();
+}elseif(input_length($title,2) == 0){
     echo errormes("Title too short");
     die();
-}
-else{
+}else{
     if((checkrowexists('o_reports', "title='$title' AND status=1")) == 1){
         echo errormes("Report will similar title exists");
         die();
     }
 }
 
+
+if(input_available($row_query) == 0){
+    echo errormes("Query is required");
+    die();
+}elseif(input_length($row_query,30) == 0){
+    echo errormes("Query too short");
+    die();
+}else{
+    if((checkrowexists('o_reports', "row_query='$row_query' AND status=1")) == 1){
+        echo errormes("Report will similar query exists");
+        die();
+    }
+}
 
 
 $fds = array('title','description','row_query','added_by','added_date','viewable_by','status');

@@ -43,7 +43,7 @@
 <script src="scripts/jquery.form.js"></script>
 
 <script>
-    $('document').ready(function () {
+    $(document).ready(function () {
         notifications_count();
         const interval = setInterval(function() {
             // method to be executed;

@@ -24,11 +24,13 @@ if((input_available($value_)) == 0)
     exit();
 }
 
-if((input_available($tbl)) == 0)
+/*if((input_available($tbl)) == 0)
 {
     die(errormes("Table is not selected"));
     exit();
 }
+*/
+
 if($record > 0){
 
     ////////-------------Check of table and record exists
@@ -40,7 +42,7 @@ if($record > 0){
         }
     }
     ////////-------Check if record exists
-    $exists = checkrowexists('o_key_values',"tbl='$tbl' AND record='$record' AND key_='$key_'");
+    $exists = checkrowexists("o_key_values","tbl=\"$tbl\" AND record=\"$record\" AND key_=\"$key_\" AND status = 1");
     if($exists == 1){
         die(errormes("Record already exists"));
         exit();
@@ -70,8 +72,9 @@ else
 <script>
     if("<?php echo $proceed; ?>"){
         setTimeout(function () {
-            other_list('o_customers','<?php echo $_POST['record']; ?>','EDIT');
-            clear_form('other_frm');
+            reload();
         },300);
+        //other_list('o_customers','<?php echo $_POST['record']; ?>','EDIT');
+        //clear_form('other_frm');
     }
 </script>

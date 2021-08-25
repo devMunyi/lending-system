@@ -1,7 +1,7 @@
 <section class="content-header">
     <?php
-    $rep = $_GET['repayment'];
-    $j = fetchonerow("o_incoming_payments","uid='".decurl($rep)."'","*");
+    $rep_ = $_GET['repayment']; $rep = decurl($rep_);
+    $j = fetchonerow("o_incoming_payments","uid= $rep","*");
     $customer_id = $j['customer_id'];
     $payment_method = $j['payment_method'];
     $mobile_number = $j['mobile_number'];
@@ -24,8 +24,9 @@
     }
     $loan_id = $j['loan_id'];
     if($loan_id > 0){
+        $loan_balance_ = $j['loan_balance'];
+        $loan_balance = money($loan_balance_);
         $l = loan_obj($loan_id);
-        $loan_balance = money($l['loan_balance']);
         $next_due = $l['next_due_date'];
     } else{
         $loan_balance = "<i>Unspecified</i>";
@@ -34,7 +35,7 @@
     ?>
     <h1>
      <?php echo arrow_back("incoming-payments","Payments") ?>   Payment Info
-        <small>Payment #<?php echo $rep; ?></small>
+        <small>Payment #<?php echo encurl($rep); ?></small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="index"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -60,13 +61,13 @@
                             </div>
                             <div class="col-md-7">
                                 <table class="table-bordered font-14 table table-hover">
-                                    <tr><td class="text-bold">UID</td><td><?php echo $rep; ?></td></tr>
+                                    <tr><td class="text-bold">UID</td><td><?php echo $rep_; ?></td></tr>
                                     <tr><td class="text-bold">Customer</td><td><?php echo $full_name; ?>
                                             <span class="font-italic text-muted"></span><?php echo $national_id; ?> <a href="customers?customer=<?php echo encurl($customer_id) ?>"><i class="fa fa-external-link"></i></a></td></tr>
-                                    <tr><td class="text-bold">Amount</td><td><h3><?php echo money($amount); ?></h3></td></tr>
+                                    <tr><td class="text-bold">Amount</td><td><h4 class = "text-bold text-20"><?php echo money($amount); ?></h4></td></tr>
                                     <tr><td class="text-bold">Pay Method</td><td><?php echo $pay_meth; ?></td></tr>
                                     <tr><td class="text-bold">Record Type</td><td><?php echo $record_method; ?></td></tr>
-                                    <tr><td class="text-bold">Loan Balance</td><td><?php echo money($l['loan_balance']); ?></td></tr>
+                                    <tr><td class="text-bold">Loan Balance</td><td><h4 class="text-bold text-20 text-danger"><?php echo $loan_balance_; ?></h4></td></tr>
                                     <tr><td class="text-bold">Pay Date</td><td><?php echo $payment_date; ?> </td></tr>
                                     <tr><td class="text-bold">Transaction Code</td><td><?php echo $transaction_code; ?></td></tr>
 
@@ -76,7 +77,7 @@
                             <div class="col-md-3">
                                 <table class="table">
                                     <tr><td><a href="incoming-payments?add-edit" class="btn btn-success btn-block  btn-md grid-width-10"><i class="fa fa-plus"></i> Add a Payment</a></td></tr>
-                                    <tr><td><a href="incoming-payments?add-edit=<?php echo $rep; ?>" class="btn btn-warning btn-block btn-md"><i class="fa fa-pencil"></i> Edit this Payment</a></td></tr>
+                                    <tr><td><a href="incoming-payments?add-edit=<?php echo $rep_; ?>" class="btn btn-warning btn-block btn-md"><i class="fa fa-pencil"></i> Edit this Payment</a></td></tr>
 
                                 </table>
                             </div>
@@ -109,7 +110,7 @@
                                     <?php
 
                                     //-----------------------------Reused Query
-                                    $o_pays_ = fetchtable('o_incoming_payments', "customer_id=$customer_id AND status > 0", "uid", "asc", "0,1000", "*");
+                                    $o_pays_ = fetchtable('o_incoming_payments', "customer_id=$customer_id AND status > 0", "uid", "desc", "0,100", "*");
                                     ///----------Paging Option
                                     $alltotal = countotal("o_incoming_payments", "customer_id=$customer_id AND status > 0");
                                     ///==========Paging Option
@@ -126,14 +127,14 @@
 
                                             $loan_id = $q['loan_id'];
                                             if($loan_id > 0){
+                                                $loan_balance_ = $q['loan_balance'];
+                                                $loan_balance = money($loan_balance_);
                                                 $l = loan_obj($loan_id);
-                                                $loan_balance = money($l['loan_balance']);
                                                 $next_due = $l['next_due_date'];
                                             } else{
                                                 $loan_balance = "<i>Unspecified</i>";
                                                 $next_due ="<i>Unspecified</i>";
                                             }
-
 
 
                                             $row .= "<tr>
@@ -150,7 +151,7 @@
 </tr>";
 
                                             //////------Paging Variable ---
-                                            $page_total = $page_total + 1;
+                                            //$page_total = $page_total + 1;
                                             /////=======Paging Variable ---
 
 

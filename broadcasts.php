@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("php_functions/authenticator.php");
+include_once ("php_functions/authenticator.php");
 include_once ("php_functions/functions.php");
 include_once ("configs/conn.inc");
 
@@ -71,22 +71,11 @@ $company = company_settings();
 include_once("footer_includes.php");
 ?>
 <script>
-    $(function () {
-        //('#example1').DataTable()
-        /*$('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })**/
-
-        
-    
+    $(function () {  
         campaign_list();
         pager("#example1");
 
+        ////////-------------Doc Load Other Function
         audience_list();
         let camp_status = '<?php echo $camp_status ?>';
 
@@ -97,12 +86,9 @@ include_once("footer_includes.php");
             $("#inactive_campaign").html("<p class =\"font-14 text-red alert\" style='text-align:center'><b>No audience for inactive campaign</b></p>");
         }
 
-
-        /*let cust_dob = $('#_dob_').val();
-
-        if(length(cust_dob) < 1{
-            $('#example2').remove(".dob");
-        }*/
+        if ('<?php echo $message_list; ?>') {
+         campaign_message_list('<?php echo $message_list; ?>', 'EDIT');
+        }
     })
 </script>
 </body>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 27, 2021 at 02:59 AM
+-- Generation Time: Aug 19, 2021 at 08:24 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -103,11 +103,11 @@ CREATE TABLE `o_campaigns` (
   `description` varchar(250) NOT NULL,
   `running_date` date NOT NULL,
   `running_status` int(5) NOT NULL DEFAULT 1,
-  `frequency` int(5) DEFAULT NULL,
-  `repetitive` int(5) DEFAULT NULL,
+  `frequency` int(5) NOT NULL,
+  `repetitive` int(5) NOT NULL,
   `target_customers` int(5) NOT NULL,
-  `added_date` date NOT NULL DEFAULT current_timestamp(),
-  `added_by` varchar(50) NOT NULL,
+  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_by` int(5) NOT NULL,
   `status` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -116,30 +116,34 @@ CREATE TABLE `o_campaigns` (
 --
 
 INSERT INTO `o_campaigns` (`uid`, `name`, `description`, `running_date`, `running_status`, `frequency`, `repetitive`, `target_customers`, `added_date`, `added_by`, `status`) VALUES
-(1, 'New Year', 'Holiday wishes to our customers', '2021-01-01', 1, 6, 1, 3, '2021-07-20', '51', 1),
-(2, 'Good Friday', 'Holiday Wishes to all our customers', '2021-04-02', 1, 6, 2, 3, '2021-07-20', '51', 1),
-(3, 'Easter Monday', 'Holiday wishes to our customers', '2021-04-05', 1, 6, 2, 3, '2021-07-20', '51', 1),
-(4, 'Labour Day', 'Holiday wishes to our esteemed customers', '2021-05-01', 1, 6, 2, 3, '2021-07-20', '51', 1),
-(5, 'Eld al_Fitr', 'Holiday wishes to our esteemed customers', '2021-05-14', 1, 6, 2, 3, '2021-07-20', '51', 1),
-(6, 'Madaraka Day', 'Holiday wishes to our esteemed customers', '2021-06-01', 1, 6, 2, 3, '2021-07-20', '51', 1),
-(7, 'Eid al-Adha', 'Holiday wishes to our customers', '2021-07-20', 1, 6, 2, 3, '2021-07-23', '51', 1),
-(8, 'Huduma Day', 'Holiday wishes to our customers', '2021-10-11', 1, 6, 2, 3, '2021-07-23', '51', 1),
-(9, 'Mashujaa Day', 'Holiday wishes to our customers', '2021-10-20', 1, 6, 2, 3, '2021-07-24', '51', 1),
-(10, 'Jamhuri Day', 'Holiday wishes to our customers', '2021-12-13', 1, 6, 2, 3, '2021-07-24', '51', 1),
-(11, 'Christmas Day', 'Holiday wishes to our customers', '2021-12-25', 1, 6, 1, 3, '2021-07-24', '51', 1),
-(12, 'Utamaduni Day', 'Holiday wishes to our customers', '2021-12-27', 1, 6, 2, 3, '2021-07-24', '51', 2),
-(13, 'Testing_1', 'Birthday wishes', '2021-07-22', 1, 6, 2, 1, '2021-07-24', '51', 1),
-(14, 'Testing_2', 'Birthday wishes', '2021-07-23', 1, 6, 2, 1, '2021-07-24', '51', 1),
-(15, 'Testing_3', 'Birthday wishes', '2021-07-24', 1, 6, 2, 1, '2021-07-24', '51', 1),
-(16, 'Testing_4', 'Birthday wishes', '2021-07-25', 1, 6, 1, 2, '2021-07-24', '51', 1),
-(17, 'Testing_5', 'Activation', '2021-07-26', 1, 1, 1, 1, '2021-07-24', '51', 1),
-(18, 'Birthdays wishes', 'Send happy birthday message to all customers who have their birthdays  ', '2021-07-26', 1, 1, 1, 2, '2021-07-26', '51', 1),
-(19, 'Testing_6', 'Send message wishing happy holiday to our customers', '2021-07-26', 1, 6, 1, 3, '2021-07-26', '51', 1),
-(20, 'Holidays Wishes2', 'A message to wish customers happy holidays', '2021-07-27', 2, 1, 1, 3, '2021-07-26', '0', 1),
-(21, 'Testing_7', 'Campaign testing', '2021-07-26', 1, 1, 1, 1, '2021-07-26', '0', 1),
-(22, 'Testing_8', 'Campaign test', '2021-07-26', 1, 1, 1, 2, '2021-07-26', '0', 1),
-(23, 'test_', 'Campaign_test', '2021-07-26', 1, 2, 1, 1, '2021-07-26', '51', 1),
-(24, 'test_2', 'Campaign_2 test', '2021-07-27', 1, 2, 2, 3, '2021-07-26', 'Samuel Munyi', 1);
+(1, 'New Year', 'Holiday wishes to our customers', '2021-01-01', 1, 6, 1, 3, '2021-07-20 00:00:00', 51, 1),
+(2, 'Good Friday', 'Holiday Wishes to all our customers', '2021-04-02', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(3, 'Easter Monday', 'Holiday wishes to our customers', '2021-04-05', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(4, 'Labour Day', 'Holiday wishes to our esteemed customers', '2021-05-01', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(5, 'Eld al_Fitr', 'Holiday wishes to our esteemed customers', '2021-05-14', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(6, 'Madaraka Day', 'Holiday wishes to our esteemed customers', '2021-06-01', 1, 6, 2, 3, '2021-07-20 00:00:00', 51, 1),
+(7, 'Eid al-Adha', 'Holiday wishes to our customers', '2021-07-20', 1, 6, 2, 3, '2021-07-23 00:00:00', 51, 1),
+(8, 'Huduma Day', 'Holiday wishes to our customers', '2021-10-11', 1, 6, 2, 3, '2021-07-23 00:00:00', 51, 1),
+(9, 'Mashujaa Day', 'Holiday wishes to our customers', '2021-10-20', 1, 6, 2, 3, '2021-07-24 00:00:00', 51, 1),
+(10, 'Jamhuri Day', 'Holiday wishes to our customers', '2021-12-13', 1, 6, 2, 3, '2021-07-24 00:00:00', 51, 0),
+(11, 'Christmas Day', 'Holiday wishes to our customers', '2021-12-25', 1, 6, 1, 3, '2021-07-24 00:00:00', 51, 1),
+(12, 'Utamaduni Day', 'Holiday wishes to our customers', '2021-12-27', 1, 6, 2, 3, '2021-07-24 00:00:00', 51, 2),
+(13, 'Testing_1', 'Birthday wishes', '2021-07-22', 1, 6, 2, 1, '2021-07-24 00:00:00', 51, 1),
+(14, 'Testing_2', 'Birthday wishes', '2021-07-23', 3, 6, 2, 1, '2021-07-24 00:00:00', 51, 1),
+(15, 'Testing_3', 'Birthday wishes', '2021-07-24', 1, 6, 2, 1, '2021-07-24 00:00:00', 51, 0),
+(16, 'Testing_4', 'Birthday wishes', '2021-07-25', 1, 6, 1, 2, '2021-07-24 00:00:00', 51, 0),
+(17, 'Testing_5', 'Activation', '2021-07-26', 1, 1, 1, 1, '2021-07-24 00:00:00', 51, 0),
+(18, 'Birthdays wishes', 'Send happy birthday message to all customers who have their birthdays  today ', '2021-08-08', 1, 1, 1, 2, '2021-07-26 00:00:00', 51, 1),
+(19, 'Testing_6', 'Send message wishing happy holiday to our customers', '2021-07-26', 1, 6, 1, 3, '2021-07-26 00:00:00', 51, 0),
+(20, 'Holidays Wishes2', 'A message to wish customers happy holidays', '2021-07-27', 2, 1, 1, 3, '2021-07-26 00:00:00', 0, 0),
+(21, 'Testing_7', 'Campaign testing', '2021-07-26', 1, 1, 1, 1, '2021-07-26 00:00:00', 0, 0),
+(22, 'Testing_8', 'Campaign test', '2021-07-26', 1, 1, 1, 2, '2021-07-26 00:00:00', 0, 0),
+(23, 'test_', 'Campaign_test', '2021-07-26', 1, 2, 1, 1, '2021-07-26 00:00:00', 51, 0),
+(24, 'test_2', 'Campaign_2 test', '2021-07-27', 1, 2, 2, 3, '2021-07-26 00:00:00', 0, 0),
+(25, 'Message', 'Activation', '2021-08-09', 1, 6, 2, 1, '2021-08-09 00:00:00', 0, 1),
+(26, 'Holiday Wishes', '', '2021-12-05', 1, 6, 2, 3, '2021-08-11 00:00:00', 0, 1),
+(27, 'Campaign Testing', 'Wjhgfd', '2021-08-13', 1, 6, 2, 3, '2021-08-12 15:56:16', 0, 2),
+(28, 'Campaign Testing_', 'testing', '2021-08-12', 1, 1, 1, 2, '2021-08-12 16:06:09', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -193,18 +197,29 @@ INSERT INTO `o_campaign_frequencies` (`uid`, `name`, `status`) VALUES
 
 CREATE TABLE `o_campaign_messages` (
   `uid` int(10) NOT NULL,
+  `campaign_id` int(10) NOT NULL,
   `message` varchar(250) NOT NULL,
   `added_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `added_by` varchar(100) DEFAULT NULL
+  `added_by` int(5) NOT NULL,
+  `status` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `o_campaign_messages`
 --
 
-INSERT INTO `o_campaign_messages` (`uid`, `message`, `added_date`, `added_by`) VALUES
-(3, 'Dear $fname we would like to wish you a happy holiday', '2021-07-26 19:35:42', 'Samuel Munyi'),
-(4, 'Dear $fname we would like to wish you a happy holiday2', '2021-07-26 19:47:23', 'Samuel Munyi');
+INSERT INTO `o_campaign_messages` (`uid`, `campaign_id`, `message`, `added_date`, `added_by`, `status`) VALUES
+(3, 0, 'Dear $fname we would like to wish you a happy holiday', '2021-07-26 19:35:42', 0, 1),
+(4, 0, 'Dear $fname we would like to wish you a happy holiday2', '2021-07-26 19:47:23', 0, 1),
+(5, 0, 'Dear, we would like to wish you a happy Holiday.', '2021-08-09 22:21:18', 51, 1),
+(6, 25, 'Dear {{fname}} we offer the following products at low interest.', '2021-08-09 23:04:56', 51, 1),
+(7, 25, 'Message Testing 2', '2021-08-11 20:39:11', 51, 0),
+(8, 25, 'Message _testing ', '2021-08-11 20:41:14', 51, 0),
+(9, 18, 'Dear {{fname}}, we would like to wish you a happy birthday.', '2021-08-11 22:44:14', 51, 1),
+(10, 26, 'Dear {{fname}}, we would like to wish you happy holidays and a prosperous new year.', '2021-08-11 22:48:01', 51, 1),
+(11, 11, 'Dear {{fname}}, we would like to wish you a merry Christmas.', '2021-08-11 22:51:28', 51, 1),
+(12, 27, 'Holiday wishes to all our customers', '2021-08-12 16:02:40', 51, 1),
+(13, 19, 'FGHJKLKJB', '2021-08-12 16:04:35', 51, 0);
 
 -- --------------------------------------------------------
 
@@ -305,7 +320,13 @@ INSERT INTO `o_collateral` (`uid`, `customer_id`, `category`, `title`, `descript
 (3, 3, 2, 'TV', 'A 72 Inch Smart TV', 10000.00, '', '123456', '43455', '2021-05-20 14:22:27', 0, 10, 2),
 (4, 11, 2, '80x100 Plot', 'A land in Ruiru', 3000000.00, '', '54463678', '', '2021-06-11 13:21:00', 1, 0, 0),
 (5, 11, 1, 'Sedan Car KAG', 'The quick ', 500000.00, '', '646463643', '64636473', '2021-06-11 13:32:03', 1, 0, 0),
-(6, 11, 1, 'Car KAG 1', 'The Quickjjf', 10000.00, '190', '546364', '87575545', '2021-06-11 17:40:37', 1, 0, 1);
+(6, 11, 1, 'Car KAG 1', 'The Quickjjf', 10000.00, '190', '546364', '87575545', '2021-06-11 17:40:37', 1, 0, 1),
+(7, 12, 2, 'Land', '50 x 100', 300000.00, '', '', '', '2021-07-31 11:14:59', 51, 0, 1),
+(8, 12, 1, 'Toyota Land Cruiser', 'As good as new', 600000.00, 'rtyuiop765', 'yiop', 'dfghjk', '2021-07-31 15:08:25', 51, 11, 1),
+(9, 4, 1, 'Vehicle ', '', 700000.00, '', 'kbw', '345980', '2021-08-01 10:33:43', 51, 0, 1),
+(10, 16, 2, 'Land', 'Located at Syokimau', 600000.00, '54321', '344322', '23456', '2021-08-08 22:37:55', 51, 0, 1),
+(11, 16, 1, 'Vehicle', 'Model  Harrier', 1500000.00, 'k9876543', '56789', '98765', '2021-08-08 22:40:07', 51, 0, 1),
+(12, 13, 1, 'Vehicle', 'Toyota Premio, as good as new.', 700000.00, '345678', '234567', '876543', '2021-08-09 15:08:37', 51, 20, 2);
 
 -- --------------------------------------------------------
 
@@ -367,7 +388,8 @@ CREATE TABLE `o_conversation_methods` (
 
 INSERT INTO `o_conversation_methods` (`uid`, `name`, `details`, `status`) VALUES
 (1, 'Face to face', 'fa-user-circle-o', 1),
-(2, 'Chat', 'fa-comment-o', 1);
+(2, 'Chat', 'fa-comment-o', 1),
+(3, 'Call', 'fa fa-phone', 1);
 
 -- --------------------------------------------------------
 
@@ -424,15 +446,17 @@ INSERT INTO `o_customers` (`uid`, `full_name`, `primary_mobile`, `email_address`
 (1, 'Jonah Ngarama', '254716330450', 'ngaramajonah@gmail.com', 'Ngong\nKobo Flat', 1, '', '28153539', 'M', '1990-01-04', 0, '2021-05-17 10:09:01', 1, 1, 10000.00, 'Customer created at [2021-05-17 10:09:01] by [{}root]', 1),
 (2, 'Mercy Ezzy', '254702332796', 'mercyezzy92@gmail.com', 'Ngong\nKobo Flat', 1, '', '28153538', 'F', '2021-05-17', 0, '2021-05-17 10:24:24', 1, 1, 10.00, 'Customer created at [2021-05-17 10:24:24] by [{}root]', 2),
 (3, 'Peter Witu', '254756330450', 'peterwitu@gmail.com', 'Ngong\nKobo Flat', 1, '', '28156647', 'M', '2021-05-17', 0, '2021-05-17 19:22:01', 1, 1, 60000.00, 'Customer created at [2021-05-17 19:22:01] by [{}root]', 1),
-(4, 'Stephen Abundo', '254778999992', 'stephen@gmail.com', '217-202020                                                         ', 1, '', '6789034', 'M', '2021-07-01', 1, '2021-06-08 19:07:32', 2, 0, 10000.00, 'Customer created at [2021-06-08 19:07:32] by [Jonah Ngarama{1}root]', 1),
-(9, 'Paul Kin', '254717889887', 'ngaramajonah@gmail.com1', '123 street                                        ', 1, '', '78987689', 'M', '2021-06-08', 1, '2021-06-08 22:54:29', 1, 0, 0.00, 'Customer created at [2021-06-08 22:54:29] by [Jonah Ngarama{1}root]', 2),
+(4, 'Stephen Abundo', '254778999992', 'stephen@gmail.com', '217-202020                                                                                                 ', 1, '', '6789034', 'M', '2021-07-01', 1, '2021-06-08 19:07:32', 2, 1, 10000.00, 'Customer created at [2021-06-08 19:07:32] by [Jonah Ngarama{1}root]', 1),
+(9, 'Paul Kin', '254717889887', 'ngaramajonah@gmail.com1', '123 street                                                                                                                                                                                                                                                ', 1, '', '78987689', 'M', '2021-06-08', 1, '2021-06-08 22:54:29', 1, 0, 5000.00, 'Customer created at [2021-06-08 22:54:29] by [Jonah Ngarama{1}root]', 1),
 (10, 'Paul Muriithi111', '254724542111', 'ngaramampaul@gmail.com1111', 'Thome, Nyati Drive 1                                                                                                                                                       ', 1, '', '67788776', 'F', '1994-05-08', 1, '2021-06-08 23:02:25', 1, 2, 2000.00, 'Customer created at [2021-06-08 23:02:25] by [Jonah Ngarama{1}root]', 1),
 (11, 'Billy Mwalili', '254793884883', 'billymwalili@gmail.com', '233 2424 street                                                                                                                        ', 1, '', '6474343', 'M', '1990-07-09', 1, '2021-06-09 11:45:29', 1, 1, 100000.00, '', 1),
-(12, 'Samuel Munyi', '254112553167', 'samunyi90@gmail.com', '     214-20320                                                                        ', 1, '', '32909210', 'M', '1996-08-05', 51, '2021-07-12 11:11:28', 2, 0, 100000.00, '', 1),
-(13, 'John Doe', '254112553169', 'john@gmail.com', '       14-20320                                                                                                                 ', 1, '', '32909212', 'M', '2021-07-14', 51, '2021-07-14 11:24:05', 2, 2, 2500.00, '', 2),
-(14, 'Joseph Gitonga', '254711253167', 'lee@gmail.com', '                                        Sipili-Street', 1, '', '3456789', 'M', '2000-07-19', 51, '2021-07-19 09:23:44', 2, 1, 3000.00, '', 1),
-(15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                        ', 1, '', '34251678', 'M', '1997-07-01', 51, '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
-(16, 'Martin Mwangi', '254705609184', 'martin@gmail.com', '        Kimathi Street                                ', 1, '', '2345678', 'M', '2021-07-26', 51, '2021-07-26 12:39:58', 1, 2, 2500.00, '', 1);
+(12, 'Samuel Munyi', '254112553167', 'samunyi90@gmail.com', '     214-20320                                                                                                                ', 1, '', '32909210', 'M', '1996-08-05', 51, '2021-07-12 11:11:28', 2, 0, 100000.00, '', 1),
+(13, 'John Doe', '254112553169', 'john@gmail.com', '       14-20320                                                                                                                                                                                                 ', 1, '', '32909212', 'M', '2021-07-14', 51, '2021-07-14 11:24:05', 2, 1, 25000.00, '', 1),
+(14, 'Grace Kagiri', '254711253167', 'kagiri@gmail.com', '                                        Sipili-Street                                                                                ', 1, '', '3456789', 'F', '2000-07-19', 51, '2021-07-19 09:23:44', 2, 1, 3000.00, '', 1),
+(15, 'Aron Kinyanjui', '254711253177', 'aron@gmail.com', '                                        kiambaa Flat                                                                                                                        ', 1, '', '34251678', 'M', '1997-07-01', 51, '2021-07-19 09:26:04', 2, 1, 4000.00, '', 1),
+(16, 'Martin Mwangi', '254705609184', 'martin567@gmail.com', '        Kimathi Street                                                                                                                                                        ', 1, '', '2345678', 'M', '2021-07-26', 51, '2021-07-26 12:39:58', 1, 2, 2500.00, '', 1),
+(17, 'Irene Maingi', '254711567098', 'irene@gmail.com', '       Kiambu                                                                                                                                                                                                                                             ', 1, '', '327069', 'F', '2021-08-09', 51, '2021-08-09 18:07:46', 2, 1, 25000.00, '', 1),
+(18, 'Jane Wanjiku', '254709123095', 'wanjiku21@gmail.com', '                       Embakasi                                                         ', 1, '', '54327890', 'F', '2021-08-17', 51, '2021-08-17 21:10:17', 2, 1, 12000.00, '', 1);
 
 -- --------------------------------------------------------
 
@@ -485,7 +509,17 @@ INSERT INTO `o_customer_contacts` (`uid`, `customer_id`, `contact_type`, `value`
 (30, 12, 3, 'example@gmail.com', 1),
 (31, 13, 3, 'example@gmail.com', 1),
 (32, 13, 2, '0705609184', 0),
-(33, 13, 2, '0705609184', 1);
+(33, 13, 2, '0705609184', 1),
+(34, 16, 3, 'martin3@gmail.com', 1),
+(35, 12, 1, '254112567890', 1),
+(36, 4, 1, '254112456789', 1),
+(37, 4, 2, '254112553167', 0),
+(38, 4, 3, 'munyisamuel3@gmail.com', 1),
+(39, 12, 2, '254705609184', 0),
+(40, 12, 2, '254705609184', 1),
+(41, 16, 1, '254112459805', 1),
+(42, 16, 2, '254234098761', 0),
+(43, 16, 3, 'mwangi2@gmail.com', 0);
 
 -- --------------------------------------------------------
 
@@ -501,7 +535,7 @@ CREATE TABLE `o_customer_conversations` (
   `transcript` varchar(250) NOT NULL,
   `conversation_method` int(5) NOT NULL COMMENT 'From o_conversation_methods',
   `conversation_date` datetime NOT NULL,
-  `next_interaction` datetime NOT NULL,
+  `next_interaction` date DEFAULT NULL,
   `next_steps` int(5) NOT NULL COMMENT 'From o_next_steps',
   `flag` int(5) NOT NULL,
   `outcome` int(10) NOT NULL,
@@ -513,14 +547,20 @@ CREATE TABLE `o_customer_conversations` (
 --
 
 INSERT INTO `o_customer_conversations` (`uid`, `customer_id`, `agent_id`, `loan_id`, `transcript`, `conversation_method`, `conversation_date`, `next_interaction`, `next_steps`, `flag`, `outcome`, `status`) VALUES
-(1, 1, 1, 1, 'THe event that was', 2, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 1, 0, 0),
-(2, 1, 1, 1, 'The trans', 2, '2021-06-02 21:36:22', '2021-06-02 00:00:00', 2, 2, 0, 1),
-(3, 3, 1, 1, 'He is not at home', 2, '2021-06-02 21:47:01', '2021-06-02 00:00:00', 2, 2, 0, 1),
-(4, 10, 1, 1, 'The Client said they are not available', 2, '2021-06-17 18:50:14', '2021-06-19 00:00:00', 2, 1, 0, 1),
-(5, 11, 1, 1, 'The client will not pay', 1, '2021-06-18 11:23:11', '2021-06-25 00:00:00', 2, 1, 0, 1),
-(6, 9, 1, 1, 'Yestes', 1, '2021-06-18 12:38:05', '2021-06-17 00:00:00', 2, 2, 0, 1),
-(7, 1, 1, 1, 'Another Interaction', 1, '2021-06-18 14:32:42', '2021-07-01 00:00:00', 1, 1, 0, 1),
-(8, 9, 1, 1, 'Not Available', 1, '2021-07-10 11:50:41', '2021-07-10 00:00:00', 1, 1, 0, 1);
+(1, 1, 1, 1, 'THe event that was', 2, '0000-00-00 00:00:00', '0000-00-00', 0, 1, 0, 0),
+(2, 1, 1, 1, 'The trans', 2, '2021-06-02 21:36:22', '2021-06-02', 2, 2, 0, 1),
+(3, 3, 1, 1, 'He is not at home', 2, '2021-06-02 21:47:01', '2021-06-02', 2, 2, 0, 1),
+(4, 10, 1, 1, 'The Client said they are not available', 2, '2021-06-17 18:50:14', '2021-06-19', 2, 1, 0, 1),
+(5, 11, 1, 1, 'The client will not pay', 1, '2021-06-18 11:23:11', '2021-06-25', 2, 1, 0, 1),
+(6, 9, 1, 1, 'Yestes', 1, '2021-06-18 12:38:05', '2021-06-17', 2, 2, 0, 1),
+(7, 1, 1, 1, 'Another Interaction', 1, '2021-06-18 14:32:42', '2021-07-01', 1, 1, 0, 1),
+(8, 9, 1, 1, 'Not Available', 1, '2021-07-10 11:50:41', '2021-07-10', 1, 1, 0, 1),
+(9, 11, 1, 1, 'Client promised to pay in the course of the week', 1, '2021-08-11 09:58:29', '2021-08-11', 0, 1, 0, 1),
+(10, 13, 1, 1, 'Yesterday', 2, '2021-08-11 09:59:34', '2021-08-10', 1, 2, 0, 1),
+(11, 3, 1, 1, 'Today', 1, '2021-08-11 10:01:23', '2021-08-13', 2, 2, 0, 1),
+(12, 4, 1, 1, 'Talked Today', 2, '2021-08-11 10:02:51', '0000-00-00', 0, 1, 0, 1),
+(13, 10, 1, 1, 'Called Today,pledged to pay tomorrow', 3, '2021-08-11 11:51:34', '2021-08-12', 0, 1, 0, 1),
+(14, 15, 1, 1, 'Could not be reached', 3, '2021-08-12 17:48:55', '2021-08-10', 1, 2, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -575,7 +615,37 @@ INSERT INTO `o_customer_referees` (`uid`, `customer_id`, `added_date`, `referee_
 (5, 11, '2021-06-11 10:47:30', 'Paul Muriithi', '12345673', '254716330450', 'Ngong\nKobo Flat', 'ngaramampaul@gmail.com', 2, 1),
 (6, 11, '2021-06-11 10:49:20', 'fkfjdf dfjduf', '7436453466', '254716330451', 'Ngong\nKobo Flat', 'jdjdjfj@uduusd.com', 1, 1),
 (7, 11, '2021-06-11 10:52:03', 'jonah ngarama1', '747488545', '254716330451', 'Ngong1\nKobo Flat', 'ngaramajonah@gmail.com1', 1, 0),
-(8, 11, '2021-06-11 10:53:52', 'Paul Muriithi1', '667377382', '254724542547', 'Thome, Nyati Drive\nSportview Road, Kasarani', 'ngaramampaul@gmail.com1', 1, 0);
+(8, 11, '2021-06-11 10:53:52', 'Paul Muriithi1', '667377382', '254724542547', 'Thome, Nyati Drive\nSportview Road, Kasarani', 'ngaramampaul@gmail.com1', 1, 0),
+(9, 12, '2021-07-31 10:18:08', 'Peter Munyi', '23450987', '254711345098', 'Narok Road', 'peter@gmail.com', 2, 0),
+(10, 12, '2021-07-31 10:19:04', 'Peter Munyi', '12349876', '254711345098', 'Allshops', 'munyisamuel3@gmail.com', 2, 0),
+(11, 12, '2021-07-31 10:24:31', 'Peter Munyi', '12349870', '254711345094', 'Allshops', 'munyisamuel4@gmail.com', 2, 1),
+(12, 12, '2021-07-31 10:42:40', 'Peter Munyi', '12349876', '254711345093', 'Allshops', 'munyisamuel5@gmail.com', 2, 1),
+(13, 4, '2021-08-01 10:35:25', 'Kennedy Abundo', '2345678', '254711567098', 'Nyamira Road', 'abundo@gmail.com', 3, 1),
+(14, 16, '2021-08-08 22:34:18', 'Ann Mwangi', '2345345', '254712567098', 'Rimuru, Nairobi Highway', 'annah@gmail.com', 2, 1),
+(15, 16, '2021-08-08 22:35:17', 'James Kirimi', '327069', '254711567090', 'Meru', 'kirimi@gmail.com', 4, 1),
+(16, 13, '2021-08-09 15:11:22', 'Lucy Doe', '0987654', '254711856709', 'Thika', 'lucy34@gmail.com', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `o_customer_referee_relationships`
+--
+
+CREATE TABLE `o_customer_referee_relationships` (
+  `uid` int(5) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `o_customer_referee_relationships`
+--
+
+INSERT INTO `o_customer_referee_relationships` (`uid`, `name`, `status`) VALUES
+(1, 'Spouse (Husband, Wife)', 1),
+(2, 'Sibling (Brother, Sister)', 1),
+(3, 'Parent(Father, Mother)', 1),
+(4, 'Friend', 1);
 
 -- --------------------------------------------------------
 
@@ -696,14 +766,38 @@ INSERT INTO `o_documents` (`uid`, `code_name`, `title`, `description`, `category
 (18, '', 'Passport', 'jdjd', 1, 1, '2021-06-08 19:15:03', 'o_customers', 4, 'aaujwG5QL23hNnGedItscoKqk.jpg', 1),
 (19, '', 'Passport', 'nnn', 3, 1, '2021-06-08 23:58:37', 'o_customers', 10, 'CuX5NKPcA08DBGyOCfGwjFajV.jpeg', 1),
 (20, '', 'jjj', 'jjj', 1, 1, '2021-06-09 00:01:43', 'o_customers', 10, '5J9Z3z83fcWpX3xRq5Fl6MVzq.png', 1),
-(21, '', 'Passport', 'This is a passport', 2, 1, '2021-06-12 09:07:48', 'o_customers', 11, '9EBiOL5RMzMrRq66zYoP0YYb6.jpg', 1),
+(21, '', 'Passport', 'This is a passport', 2, 1, '2021-06-12 09:07:48', 'o_customers', 11, '9EBiOL5RMzMrRq66zYoP0YYb6.jpg', 0),
 (22, '', 'ID Number', 'hydyd', 3, 1, '2021-06-12 09:18:31', 'o_customers', 11, 'tLrMtokJHfj459knao01geFN6.jpg', 0),
 (23, '', 'TV', 'dhhddh', 1, 1, '2021-06-12 09:19:05', 'o_customers', 11, 'oM2j7ataeL9mSGxEiJgwXbvII.png', 0),
 (24, '', 'Signature', 'The Quick Brown Fox', 2, 1, '2021-06-12 18:29:52', 'o_customers', 11, '2bbtuD0JUtPFm8SlT6HKwkvMw.jpg', 0),
-(25, '', 'Passport', 'kkdkd', 2, 1, '2021-06-12 19:59:33', 'o_customers', 11, 'JRmLuZR4Y98pX6VGD2jfiUV31.jpg', 1),
-(26, '', 'TV', 'TV', 2, 1, '2021-06-12 19:59:58', 'o_customers', 11, 'o0xrsHJvPeL9UhWAvmFW9nF4u.jpg', 1),
-(27, '', 'Passport', 'The quick brown', 1, 1, '2021-06-15 02:38:00', 'o_customers', 11, 'pXiCIWJqsOZdWGMTflLjijYx6.jpg', 1),
-(28, '', 'nbgggg', 'jhgg', 1, 1, '2021-07-07 14:56:31', 'o_customers', 11, 'urMYED1HgShyoVss0oD356Ygn.jpeg', 1);
+(25, '', 'Passport', 'kkdkd', 2, 1, '2021-06-12 19:59:33', 'o_customers', 11, 'JRmLuZR4Y98pX6VGD2jfiUV31.jpg', 0),
+(26, '', 'TV', 'TV', 2, 1, '2021-06-12 19:59:58', 'o_customers', 11, 'o0xrsHJvPeL9UhWAvmFW9nF4u.jpg', 0),
+(27, '', 'Passport', 'The quick brown', 1, 1, '2021-06-15 02:38:00', 'o_customers', 11, 'pXiCIWJqsOZdWGMTflLjijYx6.jpg', 0),
+(28, '', 'nbgggg', 'jhgg', 1, 1, '2021-07-07 14:56:31', 'o_customers', 11, 'urMYED1HgShyoVss0oD356Ygn.jpeg', 0),
+(29, '', 'National ID', 'Front Side', 2, 1, '2021-07-31 12:39:35', 'o_customers', 12, 'dXqKOkjaHEKRZTHh1EgAw4P6R.jpg', 0),
+(30, '', 'National ID', 'Front View', 2, 1, '2021-07-31 12:49:47', 'o_customers', 12, 'HrgwenpNkCal2gmBvEfnEuv3K.jpg', 0),
+(31, '', 'National ID', 'Front View', 2, 1, '2021-07-31 14:09:11', 'o_customers', 12, 'jPQheSMOtvvbVS1MFdgjEqbUB.jpg', 0),
+(32, '', 'Passport', 'Passport Photo size', 1, 1, '2021-07-31 14:11:40', 'o_customers', 12, 'fx97fyf83YxEcqEcMzCZBNDQZ.jpg', 0),
+(33, '', 'National ID', 'wergh', 1, 1, '2021-07-31 14:18:57', 'o_customers', 12, 'VjIISHPyNy6ADelYcJM5lcVJF.jpg', 0),
+(34, '', 'Photo', '', 1, 1, '2021-07-31 14:20:40', 'o_customers', 12, 'MoqlfgGI3ouR6GCNh4w1XatnF.jpg', 0),
+(35, '', 'Photo', 'sdfghjk', 1, 1, '2021-07-31 14:46:54', 'o_customers', 12, '3NKFh3poOcLpcx5Nol499ifKo.jpg', 0),
+(36, '', 'Passport', 'dfghjk', 3, 1, '2021-07-31 14:47:30', 'o_customers', 12, 'IdeJpSN321fDEsCwxXmrTcaMJ.jpg', 0),
+(37, '', 'Passport', 'Photo Jpeg', 1, 1, '2021-07-31 14:54:48', 'o_customers', 12, 'JAxJXAy8gXM5dnTwatd7Rh0E8.jpg', 0),
+(38, '', 'National ID', 'Front View', 2, 1, '2021-07-31 15:22:51', 'o_customers', 12, 'hvuVuUxvxFt0bglvNkyLAgtxL.jpg', 1),
+(39, '', 'National ID', 'Back View', 3, 1, '2021-07-31 15:23:50', 'o_customers', 12, '6AsNej2XUk7XwhxzQgVkVrXGS.jpg', 1),
+(40, '', 'Test', 'photo', 1, 1, '2021-08-07 16:18:38', 'o_customers', 12, '8P6ru56ny65v0GEVAnB6kKTaH.jpg', 1),
+(41, '', 'Photo', 'id', 3, 1, '2021-08-07 16:19:46', 'o_customers', 12, 'aXtOi99O2WjJNiEL98JDUcKdB.jpg', 1),
+(42, '', 'photo ', '', 1, 51, '2021-08-16 20:55:16', 'o_customers', 17, 'sgJRwiVuF5oDXPs6w7x32g706.jpg', 0),
+(43, '', 'photo ', '', 1, 51, '2021-08-16 20:57:04', 'o_customers', 17, 'tpCW2d9cu0gZujqrs8uqcEJ2M.jpg', 0),
+(44, '', 'photo ', '', 1, 51, '2021-08-16 21:03:08', 'o_customers', 17, 'ip6ocHtURVAdNmBd0IgLdBMiZ.png', 1),
+(45, '', 'Passport', '', 1, 51, '2021-08-16 21:11:04', 'o_customers', 17, 'Xyhm91FNlV0ej7yEjg1z9UQae.png', 1),
+(46, '', 'Passport', '', 1, 51, '2021-08-16 21:11:30', 'o_customers', 17, 'FQcxRtEi7NvBXZwA8LzmHGg4M.jpg', 1),
+(47, '', 'photo ', '', 1, 51, '2021-08-16 21:34:05', 'o_customers', 16, 'jENfgTyHGPMEpPfQPcY5SziMH.png', 1),
+(48, '', 'photo ', '', 1, 51, '2021-08-16 21:34:49', 'o_customers', 15, 'oKIPQSRem9SUBGwdEoF8gZKUY.png', 1),
+(49, '', 'photo ', '', 1, 51, '2021-08-16 21:35:42', 'o_customers', 14, 'hi9sgO9D2p4OsPDJWkemNhwZU.png', 1),
+(50, '', 'photo ', '', 1, 51, '2021-08-16 21:36:40', 'o_customers', 13, 'eFyLOIR0tODTP6TwPRAhtBNzP.jpg', 1),
+(51, '', 'photo ', '', 1, 51, '2021-08-16 21:38:14', 'o_customers', 11, 'Qu5mPyDOUX3pazcAB7qLpdl9P.jpg', 1),
+(52, '', 'photo ', 'passport', 1, 51, '2021-08-17 21:11:40', 'o_customers', 18, 'XHZLPt29RKQgLL2ebEYOI5xj1.png', 1);
 
 -- --------------------------------------------------------
 
@@ -755,7 +849,7 @@ INSERT INTO `o_events` (`uid`, `tbl`, `fld`, `event_details`, `event_date`, `eve
 (27, 'o_loans', 10, 'Loan moved to the next stage[Final Stage (Disburse)] by [Jonah Ngarama(ngaramajonah@gmail.com)] on [2021-06-23 01:27:36] with comment [<i></i>]', '2021-06-23 01:27:36', 1, 1),
 (28, 'o_loans', 10, 'Loan moved to disbursement by [Jonah Ngarama(ngaramajonah@gmail.com)] on [2021-06-23 01:27:49] with comment [<i></i>]', '2021-06-23 01:27:49', 1, 1),
 (29, 'o_customers', 10, 'Customer updated at [2021-07-11 21:06:43] by [Jonah Ngarama{1}root]', '2021-07-11 21:06:43', 1, 1),
-(30, 'o_customers', 15852, 'Customer created at [2021-07-12 11:11:28] by [Samuel Munyi{51}root]', '2021-07-12 11:11:28', 51, 1),
+(30, 'o_customers', 12, 'Customer created at [2021-07-12 11:11:28] by [Samuel Munyi{51}root]', '2021-07-12 11:11:28', 51, 1),
 (31, 'o_loans', 11, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-12 11:25:40] with comment [<i></i>]', '2021-07-12 11:25:40', 51, 1),
 (32, 'o_loans', 11, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-12 11:25:49] with comment [<i></i>]', '2021-07-12 11:25:49', 51, 1),
 (33, 'o_loans', 11, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-07-12 11:25:56] with comment [<i></i>]', '2021-07-12 11:25:56', 51, 1),
@@ -781,7 +875,124 @@ INSERT INTO `o_events` (`uid`, `tbl`, `fld`, `event_details`, `event_date`, `eve
 (53, 'o_customers', 13, 'Customer updated at [2021-07-21 21:35:16] by [Samuel Munyi{51}root]', '2021-07-21 21:35:16', 51, 1),
 (54, 'o_customers', 13, 'Customer updated at [2021-07-21 21:35:16] by [Samuel Munyi{51}root]', '2021-07-21 21:35:16', 51, 1),
 (55, 'o_customers', 15, 'Customer updated at [2021-07-23 09:07:26] by [Samuel Munyi{51}root]', '2021-07-23 09:07:26', 51, 1),
-(56, 'o_customers', 21136, 'Customer created at [2021-07-26 12:39:58] by [Samuel Munyi{51}root]', '2021-07-26 12:39:58', 51, 1);
+(56, 'o_customers', 16, 'Customer created at [2021-07-26 12:39:58] by [Samuel Munyi{51}root]', '2021-07-26 12:39:58', 51, 1),
+(57, 'o_customers', 12, 'Customer updated at [2021-08-02 16:19:11] by [Samuel Munyi{51}root]', '2021-08-02 16:19:11', 51, 1),
+(58, 'o_customers', 13, 'Customer updated at [2021-08-04 15:42:40] by [Samuel Munyi{51}root]', '2021-08-04 15:42:40', 51, 1),
+(59, 'o_customers', 4, 'Customer updated at [2021-08-06 16:51:15] by [Samuel Munyi{51}root]', '2021-08-06 16:51:15', 51, 1),
+(60, 'o_customers', 9, 'Customer updated at [2021-08-07 15:58:00] by [Samuel Munyi{51}root]', '2021-08-07 15:58:00', 51, 1),
+(61, 'o_customers', 9, 'Customer updated at [2021-08-07 15:58:36] by [Samuel Munyi{51}root]', '2021-08-07 15:58:36', 51, 1),
+(62, 'o_customers', 9, 'Customer updated at [2021-08-07 15:59:15] by [Samuel Munyi{51}root]', '2021-08-07 15:59:15', 51, 1),
+(63, 'o_customers', 9, 'Customer updated at [2021-08-07 16:00:00] by [Samuel Munyi{51}root]', '2021-08-07 16:00:00', 51, 1),
+(64, 'o_customers', 9, 'Customer updated at [2021-08-07 16:00:56] by [Samuel Munyi{51}root]', '2021-08-07 16:00:56', 51, 1),
+(65, 'o_customers', 9, 'Customer updated at [2021-08-07 16:01:30] by [Samuel Munyi{51}root]', '2021-08-07 16:01:30', 51, 1),
+(66, 'o_customers', 9, 'Customer updated at [2021-08-07 16:02:23] by [Samuel Munyi{51}root]', '2021-08-07 16:02:23', 51, 1),
+(67, 'o_loans', 19, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-07 16:03:53] with comment [<i></i>]', '2021-08-07 16:03:53', 51, 1),
+(68, 'o_loans', 19, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-07 16:03:57] with comment [<i></i>]', '2021-08-07 16:03:57', 51, 1),
+(69, 'o_loans', 19, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-07 16:04:00] with comment [<i></i>]', '2021-08-07 16:04:00', 51, 1),
+(70, 'o_loans', 19, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-07 16:04:10] with comment [<i></i>]', '2021-08-07 16:04:10', 51, 1),
+(71, 'o_customers', 13, 'Customer updated at [2021-08-08 16:15:45] by [Samuel Munyi{51}root]', '2021-08-08 16:15:45', 51, 1),
+(72, 'o_loans', 18, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:43:38] with comment [<i></i>]', '2021-08-08 16:43:38', 51, 1),
+(73, 'o_loans', 18, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:43:38] with comment [<i></i>]', '2021-08-08 16:43:38', 51, 1),
+(74, 'o_loans', 18, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:43:40] with comment [<i></i>]', '2021-08-08 16:43:40', 51, 1),
+(75, 'o_loans', 18, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:44:00] with comment [<i></i>]', '2021-08-08 16:44:00', 51, 1),
+(76, 'o_loans', 17, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:44:22] with comment [<i></i>]', '2021-08-08 16:44:22', 51, 1),
+(77, 'o_loans', 17, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:44:30] with comment [<i></i>]', '2021-08-08 16:44:30', 51, 1),
+(78, 'o_loans', 17, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:44:35] with comment [<i></i>]', '2021-08-08 16:44:35', 51, 1),
+(79, 'o_loans', 17, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:44:43] with comment [<i></i>]', '2021-08-08 16:44:43', 51, 1),
+(80, 'o_loans', 16, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:45:57] with comment [<i></i>]', '2021-08-08 16:45:57', 51, 1),
+(81, 'o_loans', 16, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:46:00] with comment [<i></i>]', '2021-08-08 16:46:00', 51, 1),
+(82, 'o_loans', 16, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:46:01] with comment [<i></i>]', '2021-08-08 16:46:01', 51, 1),
+(83, 'o_loans', 16, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:46:20] with comment [<i></i>]', '2021-08-08 16:46:20', 51, 1),
+(84, 'o_loans', 15, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:46:40] with comment [<i></i>]', '2021-08-08 16:46:40', 51, 1),
+(85, 'o_loans', 15, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:46:47] with comment [<i></i>]', '2021-08-08 16:46:47', 51, 1),
+(86, 'o_loans', 15, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:46:54] with comment [<i></i>]', '2021-08-08 16:46:54', 51, 1),
+(87, 'o_loans', 15, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-08 16:47:01] with comment [<i></i>]', '2021-08-08 16:47:01', 51, 1),
+(88, 'o_loans', 19, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 10:28:35] with comment [<i></i>]', '2021-08-09 10:28:35', 51, 1),
+(89, 'o_loans', 18, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 10:28:57] with comment [<i></i>]', '2021-08-09 10:28:57', 51, 1),
+(90, 'o_loans', 20, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 10:31:55] with comment [<i></i>]', '2021-08-09 10:31:55', 51, 1),
+(91, 'o_loans', 20, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 10:32:07] with comment [<i></i>]', '2021-08-09 10:32:07', 51, 1),
+(92, 'o_loans', 20, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 10:32:15] with comment [<i></i>]', '2021-08-09 10:32:15', 51, 1),
+(93, 'o_loans', 20, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 11:00:42] with comment [<i></i>]', '2021-08-09 11:00:42', 51, 1),
+(94, 'o_loans', 19, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 14:35:24] with comment [<i></i>]', '2021-08-09 14:35:24', 51, 1),
+(95, 'o_loans', 19, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 14:41:29] with comment [<i></i>]', '2021-08-09 14:41:29', 51, 1),
+(96, 'o_loans', 19, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-09 14:49:55] with comment [<i></i>]', '2021-08-09 14:49:55', 51, 1),
+(97, 'o_customers', 16, 'Customer updated at [2021-08-09 16:44:33] by [Samuel Munyi{51}root]', '2021-08-09 16:44:33', 51, 1),
+(98, 'o_customers', 16, 'Customer updated at [2021-08-09 16:45:02] by [Samuel Munyi{51}root]', '2021-08-09 16:45:02', 51, 1),
+(99, 'o_customers', 16, 'Customer updated at [2021-08-09 17:31:03] by [Samuel Munyi{51}root]', '2021-08-09 17:31:03', 51, 1),
+(100, 'o_customers', 17, 'Customer created at [2021-08-09 18:07:46] by [Samuel Munyi{51}root]', '2021-08-09 18:07:46', 51, 1),
+(101, 'o_customers', 17, 'Customer updated at [2021-08-09 18:12:24] by [Samuel Munyi{51}root]', '2021-08-09 18:12:24', 51, 1),
+(102, 'o_customers', 17, 'Customer updated at [2021-08-09 18:14:59] by [Samuel Munyi{51}root]', '2021-08-09 18:14:59', 51, 1),
+(103, 'o_customers', 17, 'Customer updated at [2021-08-09 18:14:59] by [Samuel Munyi{51}root]', '2021-08-09 18:14:59', 51, 1),
+(104, 'o_customers', 17, 'Customer updated at [2021-08-10 08:18:53] by [Samuel Munyi{51}root]', '2021-08-10 08:18:53', 51, 1),
+(105, 'o_customers', 17, 'Customer updated at [2021-08-10 08:20:54] by [Samuel Munyi{51}root]', '2021-08-10 08:20:54', 51, 1),
+(106, 'o_loans', 21, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-10 08:21:18] with comment [<i></i>]', '2021-08-10 08:21:18', 51, 1),
+(107, 'o_customers', 17, 'Customer updated at [2021-08-10 08:21:53] by [Samuel Munyi{51}root]', '2021-08-10 08:21:53', 51, 1),
+(108, 'o_campaign_messages', 8, 'Campaign message updated at [2021-08-11 22:08:30] by [{}root]', '2021-08-11 22:08:30', 0, 1),
+(109, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:10:57] by [{}root]', '2021-08-11 22:10:57', 0, 1),
+(110, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:11:39] by [{}root]', '2021-08-11 22:11:39', 0, 1),
+(111, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:13:48] by [{}root]', '2021-08-11 22:13:48', 0, 1),
+(112, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:13:58] by [{}root]', '2021-08-11 22:13:58', 0, 1),
+(113, 'o_campaign_messages', 6, 'Campaign message updated at [2021-08-11 22:33:06] by [{}root]', '2021-08-11 22:33:06', 0, 1),
+(114, 'o_campaign_messages', 9, 'Campaign message updated at [2021-08-11 22:44:26] by [{}root]', '2021-08-11 22:44:26', 0, 1),
+(115, 'o_campaign_messages', 9, 'Campaign message updated at [2021-08-11 22:44:41] by [{}root]', '2021-08-11 22:44:41', 0, 1),
+(116, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-12 16:03:15] by [{}root]', '2021-08-12 16:03:15', 0, 1),
+(117, 'o_customers', 15, 'Customer updated at [2021-08-12 21:23:54] by [Samuel Munyi{51}root]', '2021-08-12 21:23:54', 51, 1),
+(118, 'o_customers', 15, 'Customer updated at [2021-08-12 21:26:50] by [Samuel Munyi{51}root]', '2021-08-12 21:26:50', 51, 1),
+(119, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-13 08:46:14] by [Samuel Munyi{51}root]', '2021-08-13 08:46:14', 51, 1),
+(120, 'o_campaign_messages', 12, 'Campaign message updated at [2021-08-13 09:45:48] by [Samuel Munyi{51}root]', '2021-08-13 09:45:48', 51, 1),
+(121, 'platform_settings', 1, '', '2021-08-13 23:16:08', 51, 1),
+(122, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:26:22] by [Samuel Munyi{51}root]', '2021-08-13 23:26:22', 51, 1),
+(123, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:27:04] by [Samuel Munyi{51}root]', '2021-08-13 23:27:04', 51, 1),
+(124, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:27:45] by [Samuel Munyi{51}root]', '2021-08-13 23:27:45', 51, 1),
+(125, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:30:07] by [Samuel Munyi{51}root]', '2021-08-13 23:30:07', 51, 1),
+(126, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:46:33] by [Samuel Munyi{51}root]', '2021-08-13 23:46:33', 51, 1),
+(127, 'platform_settings', 1, 'Settings updated at [2021-08-13 23:49:42] by [Samuel Munyi{51}root]', '2021-08-13 23:49:42', 51, 1),
+(128, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:21:09] by [Samuel Munyi{51}root]', '2021-08-14 08:21:09', 51, 1),
+(129, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:35:30] by [Samuel Munyi{51}root]', '2021-08-14 08:35:30', 51, 1),
+(130, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:48:57] by [Samuel Munyi{51}root]', '2021-08-14 08:48:57', 51, 1),
+(131, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:50:59] by [Samuel Munyi{51}root]', '2021-08-14 08:50:59', 51, 1),
+(132, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:56:50] by [Samuel Munyi{51}root]', '2021-08-14 08:56:50', 51, 1),
+(133, 'platform_settings', 1, 'Settings updated at [2021-08-14 08:59:31] by [Samuel Munyi{51}root]', '2021-08-14 08:59:31', 51, 1),
+(134, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:10:14] by [Samuel Munyi{51}root]', '2021-08-14 09:10:14', 51, 1),
+(135, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:11:55] by [Samuel Munyi{51}root]', '2021-08-14 09:11:55', 51, 1),
+(136, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:12:15] by [Samuel Munyi{51}root]', '2021-08-14 09:12:15', 51, 1),
+(137, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:21:55] by [Samuel Munyi{51}root]', '2021-08-14 09:21:55', 51, 1),
+(138, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:23:20] by [Samuel Munyi{51}root]', '2021-08-14 09:23:20', 51, 1),
+(139, 'platform_settings', 1, 'Settings updated at [2021-08-14 09:32:02] by [Samuel Munyi{51}root]', '2021-08-14 09:32:02', 51, 1),
+(140, 'platform_settings', 1, 'Settings updated at [2021-08-14 15:05:17] by [Samuel Munyi{51}root]', '2021-08-14 15:05:17', 51, 1),
+(141, 'platform_settings', 1, 'Settings updated at [2021-08-14 15:05:36] by [Samuel Munyi{51}root]', '2021-08-14 15:05:36', 51, 1),
+(142, 'o_campaign_messages', 9, 'Campaign message updated at [2021-08-14 15:25:45] by [Samuel Munyi{51}root]', '2021-08-14 15:25:45', 51, 1),
+(143, 'platform_settings', 1, 'Settings updated at [2021-08-15 10:50:33] by [Samuel Munyi{51}root]', '2021-08-15 10:50:33', 51, 1),
+(144, 'platform_settings', 1, 'Settings updated at [2021-08-15 12:06:10] by [Samuel Munyi{51}root]', '2021-08-15 12:06:10', 51, 1),
+(145, 'platform_settings', 1, 'Settings updated at [2021-08-15 18:05:07] by [Samuel Munyi{51}root]', '2021-08-15 18:05:07', 51, 1),
+(146, 'platform_settings', 1, 'Settings updated at [2021-08-16 17:06:23] by [Samuel Munyi{51}root]', '2021-08-16 17:06:23', 51, 1),
+(147, 'platform_settings', 1, 'Settings updated at [2021-08-16 17:06:23] by [Samuel Munyi{51}root]', '2021-08-16 17:06:23', 51, 1),
+(148, 'platform_settings', 1, 'Settings updated at [2021-08-16 17:07:26] by [Samuel Munyi{51}root]', '2021-08-16 17:07:26', 51, 1),
+(149, 'platform_settings', 1, 'Settings updated at [2021-08-16 19:39:42] by [Samuel Munyi{51}root]', '2021-08-16 19:39:42', 51, 1),
+(150, 'platform_settings', 1, 'Settings updated at [2021-08-16 19:43:54] by [Samuel Munyi{51}root]', '2021-08-16 19:43:54', 51, 1),
+(151, 'platform_settings', 1, 'Settings updated at [2021-08-16 21:15:00] by [Samuel Munyi{51}root]', '2021-08-16 21:15:00', 51, 1),
+(152, 'platform_settings', 1, 'Settings updated at [2021-08-16 21:15:50] by [Samuel Munyi{51}root]', '2021-08-16 21:15:50', 51, 1),
+(153, 'o_customers', 14, 'Customer updated at [2021-08-16 21:35:20] by [Samuel Munyi{51}root]', '2021-08-16 21:35:20', 51, 1),
+(154, 'platform_settings', 1, 'Settings updated at [2021-08-16 21:40:17] by [Samuel Munyi{51}root]', '2021-08-16 21:40:17', 51, 1),
+(155, 'platform_settings', 1, 'Settings updated at [2021-08-16 21:41:40] by [Samuel Munyi{51}root]', '2021-08-16 21:41:40', 51, 1),
+(156, 'platform_settings', 1, 'Settings updated at [2021-08-16 21:43:38] by [Samuel Munyi{51}root]', '2021-08-16 21:43:38', 51, 1),
+(157, 'o_customers', 14, 'Customer updated at [2021-08-17 08:43:04] by [Samuel Munyi{51}root]', '2021-08-17 08:43:04', 51, 1),
+(158, 'o_loans', 22, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 11:03:56] with comment [<i></i>]', '2021-08-17 11:03:56', 51, 1),
+(159, 'o_customers', 17, 'Customer updated at [2021-08-17 11:04:45] by [Samuel Munyi{51}root]', '2021-08-17 11:04:45', 51, 1),
+(160, 'o_loans', 23, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 13:36:16] with comment [<i></i>]', '2021-08-17 13:36:16', 51, 1),
+(161, 'o_loans', 24, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 13:39:07] with comment [<i></i>]', '2021-08-17 13:39:07', 51, 1),
+(162, 'o_loans', 25, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 13:40:15] with comment [<i></i>]', '2021-08-17 13:40:15', 51, 1),
+(163, 'o_loans', 25, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 13:40:18] with comment [<i></i>]', '2021-08-17 13:40:18', 51, 1),
+(164, 'o_loans', 25, 'Loan moved to the next stage[Final Stage (Disburse)] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 13:40:22] with comment [<i></i>]', '2021-08-17 13:40:22', 51, 1),
+(165, 'o_loans', 25, 'Loan moved to disbursement by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 13:40:28] with comment [<i></i>]', '2021-08-17 13:40:28', 51, 1),
+(166, 'o_customers', 18, 'Customer created at [2021-08-17 21:10:17] by [Samuel Munyi{51}root]', '2021-08-17 21:10:17', 51, 1),
+(167, 'o_customers', 18, 'Customer updated at [2021-08-17 21:12:13] by [Samuel Munyi{51}root]', '2021-08-17 21:12:13', 51, 1),
+(168, 'o_loans', 26, 'Loan moved to the next stage[Approval Level1] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 21:25:34] with comment [<i></i>]', '2021-08-17 21:25:34', 51, 1),
+(169, 'o_loans', 26, 'Loan moved to the next stage[Approval Level2] by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-17 21:25:34] with comment [<i></i>]', '2021-08-17 21:25:34', 51, 1),
+(170, 'o_loans', 9, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 15:41:51] with comment [<i></i>]', '2021-08-18 15:41:51', 51, 1),
+(171, 'o_loans', 26, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 15:45:46] with comment [<i></i>]', '2021-08-18 15:45:46', 51, 1),
+(172, 'o_loans', 26, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 16:19:52] with comment [<i></i>]', '2021-08-18 16:19:52', 51, 1),
+(173, 'o_loans', 26, 'Loan status changed to 6 (Rejected) by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 16:29:48] with comment [<i></i>]', '2021-08-18 16:29:48', 51, 1);
 
 -- --------------------------------------------------------
 
@@ -830,26 +1041,160 @@ CREATE TABLE `o_guarantors` (
 CREATE TABLE `o_incoming_payments` (
   `uid` int(20) NOT NULL,
   `customer_id` int(10) NOT NULL,
+  `branch_id` int(10) NOT NULL DEFAULT 0,
   `payment_method` int(5) NOT NULL,
   `mobile_number` varchar(20) NOT NULL,
   `amount` double(50,2) NOT NULL,
   `transaction_code` varchar(50) NOT NULL,
   `loan_id` int(20) NOT NULL,
-  `payment_date` datetime NOT NULL,
-  `recorded_date` datetime NOT NULL,
+  `loan_balance` double(8,2) NOT NULL DEFAULT 0.00,
+  `payment_date` date NOT NULL,
+  `recorded_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_by` int(10) NOT NULL,
   `record_method` varchar(20) NOT NULL COMMENT 'API, MANUAL',
-  `comments` varchar(250) NOT NULL,
-  `status` int(1) NOT NULL
+  `comments` varchar(100) NOT NULL DEFAULT 'Repayment',
+  `status` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `o_incoming_payments`
 --
 
-INSERT INTO `o_incoming_payments` (`uid`, `customer_id`, `payment_method`, `mobile_number`, `amount`, `transaction_code`, `loan_id`, `payment_date`, `recorded_date`, `record_method`, `comments`, `status`) VALUES
-(1, 0, 2, '254716330450', 4600.00, 'QWERSTSSU', 9, '2021-06-22 23:14:00', '0000-00-00 00:00:00', 'MANUAL', '', 1),
-(2, 3, 2, '0716330451', 600.09, '765678765uu', 10, '2021-06-21 00:00:00', '0000-00-00 00:00:00', 'MANUAL', 'the motor', 1),
-(3, 3, 1, '0716330450', 600.00, '76655444', 10, '2021-06-23 00:00:00', '0000-00-00 00:00:00', 'MANUAL', 'Wjys', 1);
+INSERT INTO `o_incoming_payments` (`uid`, `customer_id`, `branch_id`, `payment_method`, `mobile_number`, `amount`, `transaction_code`, `loan_id`, `loan_balance`, `payment_date`, `recorded_date`, `added_by`, `record_method`, `comments`, `status`) VALUES
+(1, 0, 0, 2, '254716330450', 4600.00, 'QWERSTSSU', 9, 0.00, '2021-06-22', '0000-00-00 00:00:00', 0, 'MANUAL', '', 0),
+(2, 3, 1, 2, '0716330451', 600.09, '765678765uu', 10, 0.00, '2021-06-21', '0000-00-00 00:00:00', 0, 'MANUAL', 'the motor', 1),
+(3, 3, 1, 1, '0716330450', 600.00, '76655444', 10, 0.00, '2021-06-23', '0000-00-00 00:00:00', 0, 'MANUAL', 'Wjys', 1),
+(4, 12, 2, 2, '0112553167', 30000.00, 'PH172ORFO5', 11, 0.00, '2021-08-01', '0000-00-00 00:00:00', 0, 'MANUAL', 'Partial Payment From Sam', 1),
+(5, 12, 2, 3, '112553167', 5000.00, 'ISO20022', 11, 0.00, '2021-08-02', '0000-00-00 00:00:00', 0, 'MANUAL', 'bank payment', 1),
+(6, 12, 2, 4, '0112553167', 2000.00, 'N/A', 11, 0.00, '2021-08-02', '0000-00-00 00:00:00', 0, 'MANUAL', 'cash payment ', 1),
+(7, 1, 1, 3, '254716330450', 2500.00, 'ISO20021', 9, 0.00, '2021-08-01', '0000-00-00 00:00:00', 0, 'MANUAL', 'Bank Payment', 0),
+(8, 1, 1, 4, '254716330450', 2000.00, 'N/A', 9, 0.00, '2021-08-02', '0000-00-00 00:00:00', 0, 'MANUAL', 'Cash Payment', 0),
+(9, 12, 2, 4, '254112553167', 1500.00, 'N/A', 11, 0.00, '2021-08-02', '0000-00-00 00:00:00', 0, 'MANUAL', 'Cash Payment', 1),
+(10, 12, 2, 2, '0112553167', 500.00, 'RTUUGFGBVF', 11, 0.00, '2021-08-02', '0000-00-00 00:00:00', 0, 'MANUAL', 'Mobile Payment', 1),
+(11, 12, 2, 4, '254112553167', 200.00, 'N/A', 11, 0.00, '2021-08-02', '2021-08-02 10:09:34', 0, 'MANUAL', 'Cash Payment', 1),
+(12, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, 0.00, '2021-08-01', '2021-08-02 10:11:01', 0, 'MANUAL', 'Cash Payment', 1),
+(13, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, 0.00, '2021-08-02', '2021-08-02 10:12:01', 0, 'MANUAL', 'Cash Payment ', 1),
+(14, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, 0.00, '2021-08-02', '2021-08-02 10:14:55', 0, 'MANUAL', 'Cash Payment', 1),
+(15, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, 0.00, '2021-08-02', '2021-08-02 10:15:42', 0, 'MANUAL', 'Cash Pay', 1),
+(16, 12, 2, 4, '254112553167', 100.00, 'N/A', 11, 0.00, '2021-08-02', '2021-08-02 10:17:50', 0, 'MANUAL', 'Cash', 1),
+(17, 1, 1, 4, '254716330450', 200.00, 'N/A', 9, 0.00, '2021-08-02', '2021-08-02 10:18:38', 0, 'MANUAL', 'Cash Payment', 0),
+(18, 1, 1, 2, '254716330450', 100.00, 'FFGHJKKNB', 9, 0.00, '2021-08-02', '2021-08-02 10:19:25', 0, 'MANUAL', 'Mpesa Pay', 0),
+(19, 1, 1, 4, '254716330450', 100.00, 'N/A', 9, 0.00, '2021-08-02', '2021-08-02 10:20:25', 0, 'MANUAL', 'Mobile Pay', 0),
+(20, 1, 1, 2, '254716330450', 250.00, 'JGFUJHBNN', 9, 0.00, '2021-08-02', '2021-08-02 15:50:00', 0, 'MANUAL', 'M-pesa Payment', 0),
+(21, 12, 2, 3, '0112553167', 100.00, 'ISO20020', 11, 0.00, '2021-08-03', '2021-08-03 09:07:37', 0, 'MANUAL', 'Bank Payment', 1),
+(22, 11, 1, 2, '0112553167', 500.00, 'JHGFYUIJN', 16, 0.00, '2021-08-03', '2021-08-03 12:34:26', 0, 'MANUAL', 'Partial Pay Via MPESA', 1),
+(23, 11, 1, 2, '0112553167', 500.00, 'FGHJKJHBV', 16, 0.00, '2021-08-03', '2021-08-03 18:08:08', 0, 'MANUAL', 'Partial Pay', 1),
+(24, 12, 2, 2, '0112553167', 200.00, 'NBVCFGH', 11, 0.00, '2021-08-04', '2021-08-04 15:21:56', 0, 'MANUAL', 'Loan Payment Completed', 1),
+(25, 12, 2, 2, '0112553167', 2000.00, 'VBJKJHGF', 11, 0.00, '2021-08-04', '2021-08-04 15:23:29', 0, 'MANUAL', 'Loan Payment In Exceeding Borrowed Amount', 1),
+(26, 12, 2, 1, '712553167', 50.00, '23456789', 11, 0.00, '2021-08-04', '2021-08-06 15:13:28', 0, 'MANUAL', 'Repayment', 1),
+(27, 11, 1, 1, '705609184', 500.00, '76543210', 16, 0.00, '2021-08-04', '2021-08-06 15:13:28', 0, 'MANUAL', 'Repayment', 1),
+(28, 13, 2, 1, '112553789', 300.00, '34509876', 18, 0.00, '2021-08-04', '2021-08-06 15:13:28', 0, 'MANUAL', 'Repayment', 1),
+(29, 12, 2, 3, '712553167', 50.00, 'N/A', 11, 0.00, '2006-08-21', '2021-08-06 16:05:12', 0, 'MANUAL', 'Repayment', 1),
+(30, 11, 1, 2, '705609184', 500.00, 'HFGHNBVH', 16, 0.00, '2006-08-21', '2021-08-06 16:05:12', 0, 'MANUAL', 'Repayment', 1),
+(31, 13, 2, 1, '112553789', 300.00, 'VBNMJGFH', 18, 0.00, '2006-08-21', '2021-08-06 16:05:13', 0, 'MANUAL', 'Repayment', 1),
+(32, 12, 2, 3, '712553167', 50.00, 'N/A', 11, 0.00, '2021-08-06', '2021-08-06 16:15:34', 0, 'MANUAL', 'Repayment', 1),
+(33, 11, 1, 2, '705609184', 500.00, 'HFGHNBVH', 16, 0.00, '2021-08-06', '2021-08-06 16:15:34', 0, 'MANUAL', 'Repayment', 1),
+(34, 13, 2, 1, '112553789', 300.00, 'VBNMJGFH', 18, 0.00, '2021-08-06', '2021-08-06 16:15:34', 0, 'MANUAL', 'Repayment', 1),
+(35, 12, 2, 3, '712553167', 50.00, 'N/A', 11, 0.00, '2021-08-06', '2021-08-06 16:23:10', 0, 'MANUAL', 'Repayment', 1),
+(36, 11, 1, 2, '705609184', 500.00, 'HFGHNBVH', 16, 0.00, '2021-08-06', '2021-08-06 16:23:11', 0, 'MANUAL', 'Repayment', 1),
+(37, 13, 2, 1, '112553789', 300.00, 'VBNMJGFH', 18, 0.00, '2021-08-06', '2021-08-06 16:23:11', 0, 'MANUAL', 'Repayment', 1),
+(38, 4, 2, 3, '719553167', 700.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 16:28:27', 0, 'MANUAL', 'Repayment', 1),
+(39, 11, 1, 2, '705609184', 500.00, 'HFGHNBVH', 16, 0.00, '2021-08-06', '2021-08-06 16:28:27', 0, 'MANUAL', 'Repayment', 1),
+(40, 13, 2, 1, '112553789', 300.00, 'VBNMJGFH', 18, 0.00, '2021-08-06', '2021-08-06 16:28:27', 0, 'MANUAL', 'Repayment', 1),
+(41, 4, 2, 3, '719553167', 700.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 16:31:35', 0, 'MANUAL', 'Repayment', 1),
+(42, 11, 1, 2, '705609184', 500.00, 'HFGHNBVH', 16, 0.00, '2021-08-06', '2021-08-06 16:31:35', 0, 'MANUAL', 'Repayment', 1),
+(43, 13, 2, 1, '112553789', 300.00, 'VBNMJGFH', 18, 0.00, '2021-08-06', '2021-08-06 16:31:35', 0, 'MANUAL', 'Repayment', 1),
+(44, 4, 2, 3, '719553167', 700.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 16:34:16', 0, 'MANUAL', 'Repayment', 1),
+(45, 11, 1, 2, '705609184', 500.00, 'HFGHNBVH', 16, 0.00, '2021-08-06', '2021-08-06 16:34:16', 0, 'MANUAL', 'Repayment', 1),
+(46, 13, 2, 1, '112553789', 300.00, 'VBNMJGFH', 18, 0.00, '2021-08-06', '2021-08-06 16:34:16', 0, 'MANUAL', 'Repayment', 1),
+(47, 4, 2, 2, '112553167', 200.00, 'ERTYUIOPO', 15, 0.00, '2021-08-06', '2021-08-06 16:38:11', 0, 'MANUAL', 'Repayment', 1),
+(48, 1, 1, 3, '254716330450', 100.00, 'RTYUIIUYTE', 9, 150.00, '2021-08-06', '2021-08-06 16:41:56', 0, 'MANUAL', 'Repayment', 0),
+(49, 4, 2, 3, '254112553167', 100.00, 'FGHJHGFD', 15, 0.00, '2021-08-06', '2021-08-06 16:44:05', 0, 'MANUAL', 'Repayment', 1),
+(50, 4, 2, 3, '254716330450', 100.00, 'GHJKKJHGF', 15, 0.00, '2021-08-06', '2021-08-06 16:44:54', 0, 'MANUAL', 'Repayment', 1),
+(51, 4, 2, 3, '254716330450', 100.00, 'GHJKKJHG', 15, 0.00, '2021-08-06', '2021-08-06 16:46:01', 0, 'MANUAL', 'Repayment', 1),
+(52, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 16:47:24', 0, 'MANUAL', 'Repayment', 1),
+(53, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 16:48:06', 0, 'MANUAL', 'Repayment', 1),
+(54, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 16:48:48', 0, 'MANUAL', 'Repayment', 1),
+(55, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 16:51:46', 0, 'MANUAL', 'Repayment', 1),
+(56, 10, 1, 3, '719553167', 100.00, 'N/A', 17, 0.00, '2021-08-06', '2021-08-06 16:57:24', 0, 'MANUAL', 'Repayment', 1),
+(57, 10, 1, 3, '719553167', 100.00, 'N/A', 17, 0.00, '2021-08-06', '2021-08-06 16:59:21', 0, 'MANUAL', 'Repayment', 1),
+(58, 11, 1, 3, '254716330450', 100.00, 'FGHJ', 16, 0.00, '2021-08-06', '2021-08-06 17:09:19', 0, 'MANUAL', 'Repayment', 1),
+(59, 11, 1, 3, '0112553167', 100.00, 'RTNBV', 16, 0.00, '2021-08-06', '2021-08-06 17:10:16', 0, 'MANUAL', 'Repayment', 1),
+(60, 11, 1, 3, '719553167', 100.00, 'N/A', 16, 0.00, '2021-08-06', '2021-08-06 17:12:11', 0, 'MANUAL', 'Repayment', 1),
+(61, 11, 1, 3, '719553167', 100.00, 'N/A', 16, 0.00, '2021-08-06', '2021-08-06 17:19:57', 0, 'MANUAL', 'Repayment', 1),
+(62, 11, 1, 3, '719553167', 100.00, 'N/A', 16, 0.00, '2021-08-06', '2021-08-06 17:21:34', 0, 'MANUAL', 'Repayment', 1),
+(68, 11, 1, 3, '719553167', 100.00, 'N/A', 16, 0.00, '2021-08-06', '2021-08-06 17:23:51', 0, 'MANUAL', 'Repayment', 1),
+(69, 11, 1, 3, '719553167', 100.00, 'N/A', 16, 0.00, '2021-08-06', '2021-08-06 17:32:12', 0, 'MANUAL', 'Repayment', 1),
+(70, 11, 1, 3, '719553167', 100.00, 'N/A', 16, 0.00, '2021-08-06', '2021-08-06 17:32:35', 0, 'MANUAL', 'Repayment', 1),
+(71, 11, 1, 3, '719553167', 100.00, 'N/A', 16, 0.00, '2021-08-06', '2021-08-06 17:35:43', 0, 'MANUAL', 'Repayment', 1),
+(72, 11, 1, 3, '719553167', 100.00, 'N/A', 16, 0.00, '2021-08-06', '2021-08-06 17:36:02', 0, 'MANUAL', 'Repayment', 1),
+(73, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 17:38:07', 0, 'MANUAL', 'Repayment', 1),
+(74, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 17:38:59', 0, 'MANUAL', 'Repayment', 1),
+(75, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 17:45:19', 0, 'MANUAL', 'Repayment', 1),
+(76, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-06', '2021-08-06 17:45:19', 0, 'MANUAL', 'Repayment', 1),
+(77, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 17:46:37', 0, 'MANUAL', 'Repayment', 1),
+(78, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-06', '2021-08-06 17:46:37', 0, 'MANUAL', 'Repayment', 1),
+(79, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 17:47:14', 0, 'MANUAL', 'Repayment', 1),
+(80, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-06', '2021-08-06 17:47:14', 0, 'MANUAL', 'Repayment', 1),
+(81, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 17:48:47', 0, 'MANUAL', 'Repayment', 1),
+(82, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-06', '2021-08-06 17:48:48', 0, 'MANUAL', 'Repayment', 1),
+(83, 4, 2, 3, '719553167', 100.00, 'N/A', 15, 0.00, '2021-08-06', '2021-08-06 17:49:10', 0, 'MANUAL', 'Repayment', 1),
+(84, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-06', '2021-08-06 17:49:10', 0, 'MANUAL', 'Repayment', 1),
+(85, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-06', '2021-08-06 17:50:06', 0, 'MANUAL', 'Repayment', 1),
+(86, 10, 1, 3, '719553167', 100.00, 'N/A', 17, 0.00, '2021-08-06', '2021-08-06 17:52:41', 0, 'MANUAL', 'Repayment', 1),
+(87, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-06', '2021-08-06 17:53:43', 0, 'MANUAL', 'Repayment', 1),
+(88, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-06', '2021-08-06 17:54:08', 0, 'MANUAL', 'Repayment', 1),
+(89, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-07', '2021-08-07 09:17:37', 0, 'MANUAL', 'Repayment', 1),
+(90, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOIU', 17, 0.00, '2021-08-07', '2021-08-07 09:18:07', 0, 'MANUAL', 'Repayment', 1),
+(91, 10, 1, 2, '705609185', 150.00, 'MPERTYUIOI', 17, -950.00, '2021-08-07', '2021-08-07 10:49:04', 0, 'MANUAL', 'Repayment', 1),
+(92, 3, 1, 2, '254112553167', 200.00, 'ERIUYTDXCV', 10, 0.00, '2021-08-07', '2021-08-07 12:34:59', 0, 'MANUAL', 'Partial Repayment', 1),
+(93, 3, 1, 2, '254112553167', 200.00, 'RTYUIUYFD', 10, 0.00, '2021-08-07', '2021-08-07 12:45:05', 0, 'MANUAL', 'Partial Repayment', 1),
+(94, 3, 1, 3, '254112553167', 100.00, 'ERYUIOPOIH', 10, 2099.91, '2021-08-07', '2021-08-07 12:48:59', 0, 'MANUAL', 'Repayment', 1),
+(95, 3, 1, 2, '254112553167', 200.00, 'ERYUIYUU', 10, 1999.91, '2021-08-07', '2021-08-07 13:28:39', 0, 'MANUAL', 'Repayment', 1),
+(96, 3, 1, 3, '0112553167', 100.00, 'ERFGHJKLNB', 10, 1799.91, '2021-08-07', '2021-08-07 13:33:44', 0, 'MANUAL', 'Repayment', 1),
+(97, 3, 1, 3, '719553167', 100.00, 'N/A', 10, 0.00, '2021-08-07', '2021-08-07 14:00:38', 0, 'MANUAL', 'Repayment', 1),
+(98, 3, 1, 3, '719553167', 100.00, 'N/A', 10, 0.00, '2021-08-07', '2021-08-07 14:18:26', 0, 'MANUAL', 'Repayment', 1),
+(99, 3, 1, 3, '719553167', 100.00, 'N/A', 10, 0.00, '2021-08-07', '2021-08-07 14:38:25', 0, 'MANUAL', 'Repayment', 1),
+(100, 3, 1, 1, '254716330450', 100.00, 'ertyuiuyt', 10, 0.00, '2021-08-07', '2021-08-07 14:40:59', 0, 'MANUAL', 'repay', 1),
+(101, 3, 1, 1, '254112553167', 100.00, 'dfghjhgfd', 10, 0.00, '2021-08-07', '2021-08-07 14:42:47', 0, 'MANUAL', 'repay', 1),
+(102, 3, 1, 1, '254112553167', 100.00, 'erffds', 10, 0.00, '2021-08-07', '2021-08-07 14:53:57', 0, 'MANUAL', 'repay', 1),
+(103, 3, 1, 3, '719553167', 100.00, 'N/A', 10, 0.00, '2021-08-07', '2021-08-07 15:09:13', 0, 'MANUAL', 'Repayment', 1),
+(104, 3, 1, 4, '254716330450', 0.00, 'N/A', 10, 0.00, '2021-08-07', '2021-08-07 15:10:10', 0, 'MANUAL', 'repay', 1),
+(105, 3, 1, 4, '0112553167', 50.00, 'N/A', 10, 0.00, '2021-08-07', '2021-08-07 15:16:35', 0, 'MANUAL', 'pay', 1),
+(106, 3, 1, 4, '254112553167', 100.00, 'N/A', 10, 0.00, '2021-08-07', '2021-08-07 15:20:23', 0, 'MANUAL', 'repay', 1),
+(107, 3, 1, 1, '254716330450', 100.00, 'dfghjkl', 10, 107.00, '2021-08-07', '2021-08-07 15:25:24', 0, 'MANUAL', 'repay', 1),
+(108, 3, 1, 1, '254716330450', 50.00, 'sdfghj', 10, 0.00, '2021-08-07', '2021-08-07 15:27:10', 0, 'MANUAL', 'repay', 1),
+(109, 3, 1, 4, '254716330450', 100.00, 'N/A', 10, 0.00, '2021-08-07', '2021-08-07 15:29:24', 0, 'MANUAL', 'repay', 1),
+(110, 3, 1, 1, '254716330450', 100.00, 'dfghjk', 10, 0.00, '2021-08-07', '2021-08-07 15:31:06', 0, 'MANUAL', 'repay', 1),
+(111, 3, 1, 2, '254112553167', 100.00, '23456234', 10, 0.00, '2021-08-07', '2021-08-07 15:32:53', 0, 'MANUAL', 'repay', 1),
+(112, 3, 1, 2, '254716330450', 100.00, '2345678', 10, 299.91, '2021-08-07', '2021-08-07 15:33:58', 0, 'MANUAL', 'repay', 1),
+(113, 3, 1, 3, '719553167', 100.00, 'TTYUIOIHBN', 10, 199.91, '2021-08-07', '2021-08-07 15:36:51', 0, 'MANUAL', 'Repayment', 1),
+(114, 9, 1, 3, '719553167', 100.00, 'Null', 19, 2900.00, '2021-08-07', '2021-08-07 16:04:56', 0, 'MANUAL', 'Repayment', 0),
+(115, 9, 1, 4, '719553167', 700.00, 'N/A', 19, 2200.00, '2021-08-07', '2021-08-07 16:05:25', 0, 'MANUAL', 'Repayment', 0),
+(116, 9, 1, 1, '254716330450', 1100.00, '9876543', 19, 1200.00, '2021-08-08', '2021-08-08 15:12:25', 0, 'MANUAL', 'Repayment', 0),
+(117, 9, 1, 3, '719553167', 700.00, 'N/A', 19, 400.00, '2021-08-08', '2021-08-08 15:15:25', 0, 'MANUAL', 'Repayment', 0),
+(118, 9, 1, 3, '719553167', 100.00, 'RTYUIIUY', 19, 300.00, '2021-08-08', '2021-08-08 15:30:21', 0, 'MANUAL', 'Repayment', 0),
+(119, 9, 1, 3, '719553167', 100.00, 'RTYUIUYTRE', 19, 200.00, '2021-08-08', '2021-08-08 15:43:05', 0, 'MANUAL', 'Repayment', 0),
+(120, 9, 1, 3, '719553167', 100.00, 'RTYUIUYT', 19, 100.00, '2021-08-08', '2021-08-08 15:50:26', 0, 'MANUAL', 'Repayment', 0),
+(121, 9, 1, 4, '719553167', 50.00, 'N/A', 19, 50.00, '2021-08-08', '2021-08-08 16:00:15', 0, 'MANUAL', 'Repayment', 0),
+(122, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, 0.00, '2021-08-08', '2021-08-08 16:03:27', 0, 'MANUAL', 'Repayment', 0),
+(123, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, -50.00, '2021-08-08', '2021-08-08 16:11:58', 0, 'MANUAL', 'Repayment', 0),
+(124, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, -100.00, '2021-08-08', '2021-08-08 16:11:59', 0, 'MANUAL', 'Repayment', 0),
+(125, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, -150.00, '2021-08-08', '2021-08-08 16:12:01', 0, 'MANUAL', 'Repayment', 0),
+(126, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, -200.00, '2021-08-08', '2021-08-08 16:12:02', 0, 'MANUAL', 'Repayment', 0),
+(127, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, -250.00, '2021-08-08', '2021-08-08 16:12:03', 0, 'MANUAL', 'Repayment', 0),
+(128, 9, 1, 4, '2541125531167', 50.00, 'N/A', 19, -300.00, '2021-08-08', '2021-08-08 16:13:29', 0, 'MANUAL', 'Repayment', 0),
+(129, 13, 2, 4, '2541125531167', 50.00, 'N/A', 20, 21530.00, '2021-08-09', '2021-08-09 21:30:55', 0, 'MANUAL', 'Repayment', 1),
+(130, 13, 2, 4, '2541125531167', 1500.00, 'N/A', 20, 20030.00, '2021-08-09', '2021-08-09 21:32:00', 0, 'MANUAL', 'Repayment', 1),
+(131, 13, 2, 1, '254716330450', 10000.00, '4567890', 20, 10030.00, '2021-08-12', '2021-08-12 14:28:11', 51, 'MANUAL', 'Bank Partial Repayment', 1),
+(132, 13, 2, 4, '2541125531167', 500.00, 'N/A', 20, 9530.00, '2021-08-12', '2021-08-12 14:30:09', 0, 'MANUAL', 'Repayment', 1),
+(133, 13, 2, 2, '2541125531167', 600.00, 'ERTYUIOP', 20, 8930.00, '2021-08-12', '2021-08-12 14:34:17', 0, 'MANUAL', 'Repayment', 1),
+(134, 13, 2, 1, '2541125531167', 1600.00, '34567876', 20, 7330.00, '2021-08-12', '2021-08-12 14:39:54', 0, 'CSV Upload', 'Repayment', 1),
+(135, 13, 2, 4, '2541125531167', 600.00, 'N/A', 20, 6730.00, '2021-08-12', '2021-08-12 14:43:31', 0, 'CSV Upload', 'Repayment', 1),
+(136, 13, 2, 4, '2541125531167', 500.00, 'N/A', 20, 6230.00, '2021-08-12', '2021-08-12 14:47:07', 51, 'MANUAL', 'Repayment', 1),
+(137, 17, 2, 1, '0112987456', 1200.00, '987543', 25, 19800.00, '2021-08-17', '2021-08-17 13:41:51', 51, 'MANUAL', 'first partial repayment', 1),
+(138, 17, 2, 4, '1125531167', 2000.00, 'N/A', 25, 17800.00, '2021-08-17', '2021-08-17 13:45:09', 51, 'CSV Upload', 'Repayment', 1),
+(139, 17, 2, 1, '0112987456', 1300.00, '876543', 25, 16500.00, '2021-08-18', '2021-08-18 15:13:54', 51, 'MANUAL', 'partial repayment', 1);
 
 -- --------------------------------------------------------
 
@@ -883,7 +1228,22 @@ INSERT INTO `o_key_values` (`uid`, `tbl`, `record`, `key_`, `value_`, `added_by`
 (8, 'o_customers', 11, 'Alternate Address1', '434', 1, '2021-06-13 18:20:07', 1),
 (9, 'o_customers', 11, 'TYe', '33434', 1, '2021-06-13 18:37:14', 1),
 (10, 'o_customers', 11, '8ru', '32', 1, '2021-06-13 18:37:23', 1),
-(11, 'o_customers', 11, 'Huduma Number', '22333444', 1, '2021-06-21 15:14:48', 1);
+(11, 'o_customers', 11, 'Huduma Number', '22333444', 1, '2021-06-21 15:14:48', 1),
+(12, 'o_customers', 12, 'KRA PIN', '234', 51, '2021-07-31 11:16:09', 0),
+(13, 'o_customers', 12, 'KRA ', '1234', 0, '2021-07-31 11:32:31', 0),
+(14, 'o_customers', 12, 'KRA PIN2', '234r', 0, '2021-07-31 12:12:53', 0),
+(15, 'o_customers', 12, 'Huduma Number', '345678', 0, '2021-07-31 12:14:22', 0),
+(16, 'o_customers', 12, 'Peter Munyi', 'wertg', 0, '2021-07-31 12:16:42', 0),
+(17, 'o_customers', 12, 'Huduma Number', 'ertyu', 0, '2021-07-31 12:18:35', 0),
+(18, 'o_customers', 12, 'Huduma Number', '234567', 0, '2021-07-31 12:18:50', 1),
+(19, 'o_customers', 12, 'KRA PIN', '23456789', 0, '2021-07-31 12:19:03', 1),
+(20, 'o_customers', 12, 'KRA', '345678', 0, '2021-08-02 10:40:40', 0),
+(21, 'o_customers', 12, 'KRA2', '45678', 51, '2021-08-02 10:40:57', 1),
+(22, 'o_customers', 12, 'KRA2', '234567', 0, '2021-08-02 10:43:35', 0),
+(23, 'o_customers', 12, 'KRA3', '234567', 0, '2021-08-02 10:43:57', 0),
+(24, 'o_customers', 16, 'KRA3', '234560', 0, '2021-08-08 22:35:55', 0),
+(25, 'o_customers', 16, 'KRA', '43223', 51, '2021-08-08 22:36:20', 1),
+(26, 'o_customers', 16, 'KRA2', '3456', 0, '2021-08-08 22:36:57', 0);
 
 -- --------------------------------------------------------
 
@@ -899,6 +1259,7 @@ CREATE TABLE `o_loans` (
   `disbursed_amount` double(50,2) NOT NULL,
   `total_repayable_amount` double(50,2) NOT NULL,
   `total_repaid` double(50,2) NOT NULL,
+  `loan_balance` double(50,2) NOT NULL,
   `period` int(10) NOT NULL,
   `period_units` varchar(30) NOT NULL,
   `payment_frequency` varchar(30) NOT NULL,
@@ -927,21 +1288,33 @@ CREATE TABLE `o_loans` (
 -- Dumping data for table `o_loans`
 --
 
-INSERT INTO `o_loans` (`uid`, `customer_id`, `product_id`, `loan_amount`, `disbursed_amount`, `total_repayable_amount`, `total_repaid`, `period`, `period_units`, `payment_frequency`, `payment_breakdown`, `total_addons`, `total_deductions`, `total_instalments`, `total_instalments_paid`, `current_instalment`, `given_date`, `next_due_date`, `final_due_date`, `added_by`, `current_agent`, `current_branch`, `added_date`, `loan_stage`, `loan_flag`, `transaction_code`, `transaction_date`, `application_mode`, `status`) VALUES
-(1, 1, 2, 1000.00, 900.00, 0.00, 0.00, 5, 'MONTHS', 'MONTHLY', '20,20,20,30,10', 100.00, 100.00, 0, 0, 0, '2021-05-27', '2021-06-27', '2021-10-23', 0, 0, 1, '2021-05-27 01:32:25', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(2, 3, 1, 10000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 0, 0, 1, '2021-05-28', '2021-06-04', '2021-07-12', 0, 0, 1, '0000-00-00 00:00:00', 2, 0, '', '2021-05-28 11:59:32', 'MANUAL', 0),
-(3, 1, 1, 10000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-05-28', '2021-06-04', '2021-07-12', 0, 0, 1, '2021-05-28 12:28:32', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(4, 3, 2, 1000.00, 0.00, 0.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-05-28', '2021-06-27', '2021-06-27', 0, 0, 0, '2021-05-28 16:55:11', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(5, 1, 2, 3000.00, 0.00, 0.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-05-28', '2021-06-27', '2021-06-27', 0, 0, 0, '2021-05-28 17:02:17', 2, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(6, 3, 1, 19000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-05-29', '2021-06-05', '2021-07-13', 0, 0, 0, '2021-05-29 16:54:41', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(7, 11, 1, 10000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-21', '2021-06-28', '2021-08-05', 0, 0, 0, '2021-06-21 07:08:00', 0, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(8, 1, 1, 10000.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', 0, 0, 0, '2021-06-22 00:44:18', 0, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(9, 1, 1, 10000.00, 10000.00, 10000.00, 4600.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', 0, 0, 0, '2021-06-22 01:03:05', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
-(10, 3, 2, 3000.00, 2154.00, 3700.00, 1200.09, 5, '30', '15', '', 700.00, 846.00, 1, 0, 1, '2021-06-22', '2021-07-22', '2021-07-22', 0, 0, 0, '2021-06-22 12:41:51', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
-(11, 12, 1, 40000.00, 40000.00, 40000.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-12', '2021-07-19', '2021-08-26', 0, 0, 0, '2021-07-12 11:25:13', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
-(12, 4, 2, 2000.00, 2000.00, 2000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', 0, 0, 0, '2021-07-13 10:29:57', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(13, 4, 1, 10000.00, 10000.00, 10000.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-13', '2021-07-20', '2021-08-27', 0, 0, 0, '2021-07-13 10:33:24', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(14, 4, 2, 1000.00, 1000.00, 1000.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', 0, 0, 0, '2021-07-13 10:37:33', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0);
+INSERT INTO `o_loans` (`uid`, `customer_id`, `product_id`, `loan_amount`, `disbursed_amount`, `total_repayable_amount`, `total_repaid`, `loan_balance`, `period`, `period_units`, `payment_frequency`, `payment_breakdown`, `total_addons`, `total_deductions`, `total_instalments`, `total_instalments_paid`, `current_instalment`, `given_date`, `next_due_date`, `final_due_date`, `added_by`, `current_agent`, `current_branch`, `added_date`, `loan_stage`, `loan_flag`, `transaction_code`, `transaction_date`, `application_mode`, `status`) VALUES
+(1, 1, 2, 1000.00, 900.00, 0.00, 0.00, 0.00, 5, 'MONTHS', 'MONTHLY', '20,20,20,30,10', 100.00, 100.00, 0, 0, 0, '2021-05-27', '2021-06-27', '2021-10-23', 0, 0, 1, '2021-05-27 01:32:25', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(2, 3, 1, 10000.00, 0.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 0, 0, 1, '2021-05-28', '2021-06-04', '2021-07-12', 0, 0, 1, '0000-00-00 00:00:00', 2, 0, '', '2021-05-28 11:59:32', 'MANUAL', 0),
+(3, 1, 1, 10000.00, 0.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-05-28', '2021-06-04', '2021-07-12', 0, 0, 1, '2021-05-28 12:28:32', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(4, 3, 2, 1000.00, 0.00, 0.00, 0.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-05-28', '2021-06-27', '2021-06-27', 0, 0, 1, '2021-05-28 16:55:11', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(5, 1, 2, 3000.00, 0.00, 0.00, 0.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-05-28', '2021-06-27', '2021-06-27', 0, 0, 1, '2021-05-28 17:02:17', 2, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(6, 3, 1, 19000.00, 0.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-05-29', '2021-06-05', '2021-07-13', 0, 0, 1, '2021-05-29 16:54:41', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(7, 11, 1, 10000.00, 0.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-21', '2021-06-28', '2021-08-05', 0, 0, 0, '2021-06-21 07:08:00', 0, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(8, 1, 1, 10000.00, 0.00, 0.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', 0, 0, 1, '2021-06-22 00:44:18', 0, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(9, 1, 1, 10000.00, 10000.00, 10000.00, 9850.00, 150.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-06-22', '2021-06-29', '2021-08-06', 1, 0, 1, '2021-06-22 01:03:05', 5, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(10, 3, 2, 3000.00, 2154.00, 3700.00, 3500.09, 199.91, 5, '30', '15', '', 700.00, 846.00, 1, 0, 1, '2021-06-22', '2021-07-22', '2021-07-22', 0, 0, 1, '2021-06-22 12:41:51', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 7),
+(11, 12, 1, 40000.00, 40000.00, 40000.00, 42200.00, -2200.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-12', '2021-07-19', '2021-08-26', 0, 0, 2, '2021-07-12 11:25:13', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(12, 4, 2, 2000.00, 2000.00, 2000.00, 0.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', 0, 0, 0, '2021-07-13 10:29:57', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(13, 4, 1, 10000.00, 10000.00, 10000.00, 0.00, 0.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-07-13', '2021-07-20', '2021-08-27', 0, 0, 0, '2021-07-13 10:33:24', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(14, 4, 2, 1000.00, 1000.00, 1000.00, 0.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-07-13', '2021-08-12', '2021-08-12', 0, 0, 0, '2021-07-13 10:37:33', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(15, 4, 2, 3000.00, 3000.00, 3000.00, 3700.00, -700.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 0, 0, 1, '2021-08-03 12:20:19', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(16, 11, 2, 2500.00, 2500.00, 2500.00, 5500.00, -3000.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 0, 0, 1, '2021-08-03 12:26:41', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(17, 10, 2, 1000.00, 1000.00, 1000.00, 1950.00, -950.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-03', '2021-09-02', '2021-09-02', 0, 0, 1, '2021-08-03 12:32:30', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(18, 13, 2, 1500.00, 1500.00, 1500.00, 2100.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-04', '2021-09-03', '2021-09-03', 0, 0, 2, '2021-08-04 15:43:50', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(19, 9, 2, 3000.00, 3000.00, 3000.00, 3300.00, 3000.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-07', '2021-09-06', '2021-09-06', 0, 0, 1, '2021-08-07 16:03:45', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(20, 13, 1, 17000.00, 17000.00, 21580.00, 15350.00, 6230.00, 45, '1', '7', '', 4580.00, 0.00, 6, 0, 1, '2021-08-09', '2021-08-16', '2021-09-23', 0, 0, 2, '2021-08-09 10:31:27', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 7),
+(21, 17, 2, 3000.00, 3000.00, 3000.00, 0.00, 0.00, 1, '30', '0', '', 0.00, 0.00, 1, 0, 1, '2021-08-10', '2021-09-09', '2021-09-09', 51, 0, 2, '2021-08-10 08:20:00', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(22, 17, 2, 3000.00, 2500.00, 4220.00, 0.00, 0.00, 1, '30', '0', '', 1220.00, 500.00, 1, 0, 1, '2021-08-10', '2021-09-09', '2021-09-09', 51, 0, 2, '2021-08-10 08:22:26', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(23, 17, 1, 20000.00, 20000.00, 20000.00, 0.00, 20000.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 11:05:30', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(24, 17, 1, 20000.00, 20000.00, 20000.00, 0.00, 20000.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 13:36:33', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
+(25, 17, 1, 21000.00, 21000.00, 21000.00, 4500.00, 16500.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 13:39:40', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(26, 18, 1, 10000.00, 10000.00, 10400.00, 0.00, 10400.00, 45, '1', '7', '', 400.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 21:25:26', 3, 0, '', '0000-00-00 00:00:00', 'MANUAL', 6);
 
 -- --------------------------------------------------------
 
@@ -1000,7 +1373,19 @@ INSERT INTO `o_loan_addons` (`uid`, `loan_id`, `addon_id`, `addon_amount`, `adde
 (34, 10, 1, 430.00, 1, '2021-06-22 18:06:38', 0),
 (35, 10, 3, 0.00, 1, '2021-06-22 18:07:17', 1),
 (36, 10, 1, 0.00, 1, '2021-06-22 23:29:36', 1),
-(37, 9, 1, 0.00, 1, '2021-06-22 23:47:58', 1);
+(37, 9, 1, 0.00, 1, '2021-06-22 23:47:58', 1),
+(38, 20, 3, 680.00, 51, '2021-08-09 11:06:25', 0),
+(39, 20, 1, 3400.00, 51, '2021-08-09 11:06:27', 0),
+(40, 20, 2, 500.00, 51, '2021-08-09 11:06:28', 0),
+(41, 20, 3, 680.00, 51, '2021-08-09 11:17:55', 0),
+(42, 20, 1, 3400.00, 51, '2021-08-09 11:17:56', 0),
+(43, 20, 3, 680.00, 51, '2021-08-09 11:18:53', 1),
+(44, 20, 1, 3400.00, 51, '2021-08-09 11:18:54', 1),
+(45, 20, 2, 500.00, 51, '2021-08-09 11:18:56', 1),
+(46, 22, 1, 600.00, 51, '2021-08-16 12:04:53', 1),
+(47, 22, 2, 500.00, 51, '2021-08-16 12:04:55', 1),
+(48, 22, 3, 120.00, 51, '2021-08-16 12:04:56', 1),
+(49, 26, 3, 400.00, 51, '2021-08-17 22:02:24', 1);
 
 -- --------------------------------------------------------
 
@@ -1034,7 +1419,22 @@ INSERT INTO `o_loan_deductions` (`uid`, `loan_id`, `deduction_id`, `deduction_am
 (9, 10, 3, 0.00, 1, '2021-06-22 02:08:23', 0),
 (10, 10, 4, 747.00, 1, '2021-06-22 02:08:25', 1),
 (11, 10, 3, 99.00, 1, '2021-06-22 02:42:45', 1),
-(12, 9, 4, 0.00, 1, '2021-06-22 02:43:32', 1);
+(12, 9, 4, 0.00, 1, '2021-06-22 02:43:32', 1),
+(13, 20, 3, 850.00, 51, '2021-08-09 11:05:08', 0),
+(14, 20, 4, 3400.00, 51, '2021-08-09 11:05:14', 0),
+(15, 20, 3, 850.00, 51, '2021-08-09 11:07:22', 0),
+(16, 20, 4, 3400.00, 51, '2021-08-09 11:07:24', 0),
+(17, 20, 3, 850.00, 51, '2021-08-09 11:13:47', 0),
+(18, 20, 4, 3400.00, 51, '2021-08-09 11:17:07', 0),
+(19, 20, 3, 850.00, 51, '2021-08-09 11:17:14', 0),
+(20, 20, 4, 3400.00, 51, '2021-08-09 11:17:15', 0),
+(21, 20, 3, 850.00, 51, '2021-08-09 11:17:50', 0),
+(22, 20, 3, 850.00, 51, '2021-08-09 11:21:30', 0),
+(23, 20, 4, 3400.00, 51, '2021-08-09 11:21:31', 0),
+(24, 20, 3, 850.00, 51, '2021-08-09 16:26:16', 0),
+(25, 22, 1, 3000.00, 51, '2021-08-16 12:05:46', 0),
+(26, 22, 2, 500.00, 51, '2021-08-16 12:05:48', 0),
+(27, 22, 2, 500.00, 51, '2021-08-16 12:06:29', 1);
 
 -- --------------------------------------------------------
 
@@ -1126,6 +1526,21 @@ INSERT INTO `o_loan_statuses` (`uid`, `name`, `active_loan`, `description`, `col
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `o_log_updates`
+--
+
+CREATE TABLE `o_log_updates` (
+  `uid` int(20) NOT NULL,
+  `table_` varchar(50) NOT NULL,
+  `query_` text NOT NULL,
+  `record_date` datetime NOT NULL,
+  `update_by` int(10) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `o_next_steps`
 --
 
@@ -1197,7 +1612,9 @@ INSERT INTO `o_passes` (`uid`, `user`, `pass`, `pass_reset_token`, `reset_status
 (2, 2, 'FsC11R{R0nzweiAv#LV2)98P@zWbM>m!', NULL, 0),
 (3, 0, 'DFU5+O1HunX~t}g_|.89BD%4u@qsLylz', NULL, 0),
 (4, 22, 'VwQ@L1uA{o{hZ.S+LxIC}O{kL1[1WxFo', NULL, 0),
-(5, 51, 'wn@ivDGX%2>0U6!tRPh0o2(u{hUujE<S', NULL, 0);
+(5, 51, 'wn@ivDGX%2>0U6!tRPh0o2(u{hUujE<S', NULL, 0),
+(6, 52, 'B1X6sZ-{h0DEEKPA(dwB({n-jhpzCX^E', NULL, 0),
+(7, 53, 'D_d))HNWPH+Unp7V{>c(TK>9Z_o7U|#@', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1217,8 +1634,11 @@ CREATE TABLE `o_payment_methods` (
 --
 
 INSERT INTO `o_payment_methods` (`uid`, `name`, `account_details`, `status`) VALUES
-(1, 'Mobile Money', '', 1),
-(2, 'Safaricom M-Pesa', 'PayBill: 54772 <br/>\r\nAccount No: 74389 <br/>', 1);
+(1, 'Bank', '', 1),
+(2, 'Safaricom M-Pesa', 'PayBill: 54772 <br/>\r\nAccount No: 74389 <br/>', 1),
+(3, 'Mobile Payment', '', 1),
+(4, 'Cash', '', 1),
+(5, 'Other', '', 1);
 
 -- --------------------------------------------------------
 
@@ -1351,26 +1771,6 @@ INSERT INTO `o_product_stages` (`uid`, `stage_id`, `stage_order`, `is_final_stag
 -- --------------------------------------------------------
 
 --
--- Table structure for table `o_referee_relationships`
---
-
-CREATE TABLE `o_referee_relationships` (
-  `uid` int(5) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `o_referee_relationships`
---
-
-INSERT INTO `o_referee_relationships` (`uid`, `name`, `status`) VALUES
-(1, 'Spouse (Husband, Wif', 1),
-(2, 'Sibling (Brother, Sister)', 1);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `o_reports`
 --
 
@@ -1390,7 +1790,8 @@ CREATE TABLE `o_reports` (
 --
 
 INSERT INTO `o_reports` (`uid`, `title`, `description`, `row_query`, `added_by`, `added_date`, `viewable_by`, `status`) VALUES
-(1, 'Customer Acquisition', 'Customer Acquisition', 'SELECT uid, full_name,primary_mobile,email_address,	physical_address,	town,	passport_photo FROM o_customers WHERE uid > 0 order by uid asc limit 0,4', 1, '2021-06-18 18:23:30', '0', 1);
+(1, 'Customer Acquisition', 'Customer Acquisition', 'SELECT uid, full_name,primary_mobile,email_address,	physical_address,	town,	passport_photo FROM o_customers WHERE uid > 0 order by uid asc limit 0,5', 1, '2021-06-18 18:23:30', '0', 1),
+(3, 'Payments Acqusation', 'Payments Acquisition', 'SELECT uid, customer_id, branch_id, amount, payment_date, loan_balance FROM o_incoming_payments WHERE status > 0 AND uid > 0 order by uid desc LIMIT 0,4;  ', 51, '2021-08-08 12:00:26', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -1400,16 +1801,17 @@ INSERT INTO `o_reports` (`uid`, `title`, `description`, `row_query`, `added_by`,
 
 CREATE TABLE `o_staff_statuses` (
   `uid` int(11) NOT NULL,
-  `name` varchar(45) NOT NULL
+  `name` varchar(45) NOT NULL,
+  `color` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `o_staff_statuses`
 --
 
-INSERT INTO `o_staff_statuses` (`uid`, `name`) VALUES
-(1, 'Active'),
-(2, 'Former');
+INSERT INTO `o_staff_statuses` (`uid`, `name`, `color`) VALUES
+(1, 'Active', 'bg-green'),
+(2, 'Former', 'bg-red');
 
 -- --------------------------------------------------------
 
@@ -1555,7 +1957,69 @@ INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`
 (117, 51, 'o4zLU0JcIs32sOAgUquSealdY0Z44sfmkTvgRZAZIONIuERTH5KATNEsWeHtO9ig', '2021-07-26 17:41:18', '2021-07-26 19:27:50', '', '', '', '', 0, 2),
 (118, 51, 'cumwlsq02HXrol58Gx0aC8T3M7Z1V3VlcisfzVNR65miNlzufh9aTzkTQVLv2FWA', '2021-07-26 19:27:50', '2021-07-26 19:30:05', '', '', '', '', 0, 2),
 (119, 51, '4wYcWtCcO9CQlYpiWJkINT4c7VuevmDy1Sw7og16P8M40B4CRkmcrD6PpXfrldGY', '2021-07-26 19:30:05', '2021-07-26 21:13:57', '', '', '', '', 0, 2),
-(120, 51, 'zi7cjjxE3C9TgftsDw72iPN0LwPiBAcBtRHnsLaXeaGA7tcMarNeJbp1C4bRsYFb', '2021-07-26 21:13:57', '2021-08-25 00:00:00', '', '', '', '', 0, 1);
+(120, 51, 'zi7cjjxE3C9TgftsDw72iPN0LwPiBAcBtRHnsLaXeaGA7tcMarNeJbp1C4bRsYFb', '2021-07-26 21:13:57', '2021-07-31 00:07:26', '', '', '', '', 0, 2),
+(121, 51, 'G9QM2fMU2u7Ngq0OVeJvjuf0kcGS4HvJuvwxqqvqAT2jgU6YmbqeCntMq6igpYvR', '2021-07-31 00:07:26', '2021-07-31 00:07:49', '', '', '', '', 0, 2),
+(122, 51, 'BOxTqBroHqbPM6f7qGTtqCb2quA9XMlGiyE5hhWJ4s2iG4TxEqqaby37w7juYlI7', '2021-07-31 00:07:49', '2021-07-31 00:12:46', '', '', '', '', 0, 2),
+(123, 51, 'Z9XivYIVvrU4IrRilJbzasiGtieCtnBgghVQeReqAqNqdqurLLXEIlfn7zuMRgG0', '2021-07-31 00:12:46', '2021-07-31 09:30:07', '', '', '', '', 0, 2),
+(124, 51, 'PUyz1j0hIFWSRnwd2hR4Br3opoi0GOwyLuDzXPEOCcwPLhQkmgfo5pQJmFjamjKF', '2021-07-31 09:30:07', '2021-07-31 10:31:15', '', '', '', '', 0, 2),
+(125, 51, 'Rxb5lAEyldy6ZxpNmYTAE3oMNKoIVOXamoj9lJSzJyXSkYG4fTyaqYFVHXBFUcdl', '2021-07-31 10:31:15', '2021-07-31 10:37:05', '', '', '', '', 0, 2),
+(126, 51, 'DldeDKIQ901xZKWxNwuY8mxPcCCHUAnmRm3HVLKktAr5EDouIbqkT4sd3wRz4nfs', '2021-07-31 10:37:05', '2021-07-31 14:49:28', '', '', '', '', 0, 2),
+(127, 51, 'W72bollPp6yXL0liIKID0gONeDvefWSe0vHvclA59WZDsx0ByonZMXviInp2kNsK', '2021-07-31 14:49:28', '2021-07-31 14:50:22', '', '', '', '', 0, 2),
+(128, 51, '8AAlNyuK28Xbb7bAvDf3hsYk3FbsTkx3jPawYcRStFX58Enru79EVVsuDV2f1wba', '2021-07-31 14:50:22', '2021-07-31 14:50:22', '', '', '', '', 0, 2),
+(129, 51, 'pwIfglBNHKkos30dKor08GOO8hhhDIDgfLhyoCueGTBrY7m0es5rU2ZaLkksxziF', '2021-07-31 14:50:22', '2021-07-31 14:51:24', '', '', '', '', 0, 2),
+(130, 51, 'NDWlrSbnwJ1Zo9YrY9pD12EYrnTImMB6OvDcGGm6Ib87i8PaWSZ1VehpkHEdfuiY', '2021-07-31 14:51:24', '2021-07-31 14:56:41', '', '', '', '', 0, 2),
+(131, 51, 'jme7K6lSitqAU5CLvCHSsMcrS9dfXDOPlts1ftRJK6HxdO8q6WduyjKuHYAIpOF0', '2021-07-31 14:56:41', '2021-07-31 15:38:12', '', '', '', '', 0, 2),
+(132, 51, 'MNpOKM5KWCilwaub86FKVqqkWNvGOSz91hKU25bA222abWAMkRWpyJ31WXCvhXtY', '2021-07-31 15:38:12', '2021-07-31 21:31:54', '', '', '', '', 0, 2),
+(133, 51, 'J9lRqHOWkC2BYSMEbgCpiMumaJNSvyFXPjQTytXfM4lUuXGEB3nsSE9GxOIOW5TW', '2021-07-31 21:31:54', '2021-07-31 22:48:52', '', '', '', '', 0, 2),
+(134, 51, 'WV64ZOv1tCXdV5VwNlDUWx7EksSI124OFT0L9yfoGjjeleCgrU1y0YnSzAMqACWd', '2021-07-31 22:48:52', '2021-08-02 09:17:44', '', '', '', '', 0, 2),
+(135, 51, 'rEFfYD3vq3xH24l7tE3TACYYMBIkjLwi73w2JxXJhDwBzmEFaTSAdkgRi5WjI8J8', '2021-08-02 09:17:44', '2021-08-02 09:19:13', '', '', '', '', 0, 2),
+(136, 51, '19IsjFt6iVJKiJl8E2GEIxFWoKvTtRFmSllFH2bYePDj3eQQkOApEbxwtKqTFKmx', '2021-08-02 09:19:13', '2021-08-02 09:23:26', '', '', '', '', 0, 2),
+(137, 51, 'ueRDYAjGxn8mowvQWT8Yxs6s4wfBxqZKTzzanUZ5nKucKSFm8JJJyBiUufG4770Q', '2021-08-02 09:23:26', '2021-08-02 09:24:17', '', '', '', '', 0, 2),
+(138, 51, 'v4xLr17gdP9RpgwNPhV511r1FUpErzS3kf0aLEYzvWqOflzqy7FCgv2qqQmajNU3', '2021-08-02 09:24:17', '2021-08-02 09:33:46', '', '', '', '', 0, 2),
+(139, 51, 'rJzEfWgW8EC0RgeckFSgCUgiVk09b0flgcQGp3NHoHsLW64m4pheH7PJeFny5u3W', '2021-08-02 09:33:46', '2021-08-02 09:36:04', '', '', '', '', 0, 2),
+(140, 51, 'Hs1Ro5mU4tlquABf6sMH6FsrhwdNH7PussVBbPusLZHf8bBoIdxfdh8Xj3jX69ss', '2021-08-02 09:36:04', '2021-08-02 14:17:54', '', '', '', '', 0, 2),
+(141, 51, 'wRZW4xQV7ANKX7LfafgSDdoTnY0kTCCF9b6nBGYhlHh3yydr0HjRrLR5sRCW5oc7', '2021-08-02 14:17:54', '2021-08-04 13:41:21', '', '', '', '', 0, 2),
+(142, 51, 'fmahE8uFEPZyA5DOEcekFbW8E3GHP7o4s6nzuzCamVoWiRfxB5dwBEYoU3LnbQUs', '2021-08-04 13:41:21', '2021-08-04 14:19:49', '', '', '', '', 0, 2),
+(143, 51, 'mOZ9ArUwuALD1gZ1IxgdMHnQfJ33vGijab6I4Y1huJTOwjZcJgitiVEy09YEGn7s', '2021-08-04 14:19:49', '2021-08-04 17:16:10', '', '', '', '', 0, 2),
+(144, 51, '7yCmRLh3XC5QqmmLarOrUl7k0t7WkS9weyViCdiOFsa9qWtFmRJZSWThwPVbtCMZ', '2021-08-04 17:16:10', '2021-08-06 09:40:23', '', '', '', '', 0, 2),
+(145, 51, 'H1ePsLOHr16RoVShypXoCm6Uvehe0LwOXtOrGQJyro74j2vtXvSZSWBQrVaH4ISZ', '2021-08-06 09:40:23', '2021-08-06 21:11:12', '', '', '', '', 0, 2),
+(146, 51, 'pT7bLzt2vIZcTpAJ61L3fBn2zsTZfdR5Nhwa6e0KO635gedcxtrjXWKJhrJvsLd8', '2021-08-06 21:11:12', '2021-08-08 14:09:50', '', '', '', '', 0, 2),
+(147, 51, 'v0ueev8D9haYxKEPQKGZtZ6rzF47TskezGJ6fmSKFr6HIIqBHQxzDKDN0EbNAeEG', '2021-08-08 14:09:50', '2021-08-08 21:56:45', '', '', '', '', 0, 2),
+(148, 51, 'ADGbX9GEbXm2ooC8kqK43eCtFAwc5oOWxaGxA6e4kTTsVcr0BXBINF3FND1tzfEo', '2021-08-08 21:56:45', '2021-08-08 21:58:59', '', '', '', '', 0, 2),
+(149, 51, 'D2K2QAIRn2LmB1xyjQqidaqSxFNtgxqUxPNSahY2VUKrX9o8VJh2klqrHwwAVF01', '2021-08-08 21:58:59', '2021-08-08 22:27:32', '', '', '', '', 0, 2),
+(150, 52, 'nZk4lWMRmrOJA2sGVWWkUfiYOJLcJISOrNxZoU9uM9YpVnMBa99r7ZR6wO6m1HEw', '2021-08-08 22:27:01', '2021-09-07 00:00:00', '', '', '', '', 0, 1),
+(151, 51, 'ZCWaMOU0hZHB81dkokERIBBDS4D2W4piblUFDXYLKljCF1haUxgzX5uVE4C0zg5y', '2021-08-08 22:27:32', '2021-08-09 17:54:41', '', '', '', '', 0, 2),
+(152, 51, 'sn91j7Ntw3WLDX65VtEM0tQcPAWSX2FfTtqlTIH8OTjqT5IsnHB9yXYOYDVk4Mef', '2021-08-09 17:54:41', '2021-08-11 09:32:56', '', '', '', '', 0, 2),
+(153, 51, '1TOw90B68kjsTG0HFTrsb4ibMBjxUrASIB2oZipvl52GIrQJ7SMT8NdeNH4halXc', '2021-08-11 09:32:56', '2021-08-11 19:31:12', '', '', '', '', 0, 2),
+(154, 51, 'kXMQcePnBi2u8Ug4Cz8kbIjpFEYn833vC4wkYipw5zEBhTo4fmEIsTqX6tuhmQhn', '2021-08-11 19:31:12', '2021-08-12 14:23:07', '', '', '', '', 0, 2),
+(155, 51, 'I4Kw4ec58rfF8VGoQWuS9V00h3Z79QTGcNEp8t5oq5DIkpkKzq9XKU5Nui4bP2PM', '2021-08-12 14:23:07', '2021-08-12 15:08:04', '', '', '', '', 0, 2),
+(156, 51, 'lPHm7dPmmQbFXyMqnq0fF7S8Bgy7Oa7UR6A8Xpkpt85WhyAPYKNQs9E3R8Eg8G8p', '2021-08-12 15:08:04', '2021-08-13 22:50:38', '', '', '', '', 0, 2),
+(157, 51, 'fdATG6byNgnUwkHvz45ql3eQbSFuBuZvudQZ26rjkiwYnzSY1TVNl5zx4G3SFZR1', '2021-08-13 22:50:38', '2021-08-13 23:05:03', '', '', '', '', 0, 2),
+(158, 51, 'lIggenz69qFtCCP7YuOEHMsfLlzveFYaivmQHI15EIWjCHU1GKCqI1v8hCG7qIHD', '2021-08-13 23:05:03', '2021-08-13 23:05:04', '', '', '', '', 0, 2),
+(159, 51, 'hzIGlFwslmIOy1LQk5yWokGKOSNaOxKc1z03t6KizP5hxyxy7QQqsX22EbonHs93', '2021-08-13 23:05:04', '2021-08-13 23:11:19', '', '', '', '', 0, 2),
+(160, 51, 'inZ1c7enZ83HeeXcTaFpKcvjTMSiWstA1KFYzH0NJn2utky6q03VdmMUkYht5Oo8', '2021-08-13 23:11:19', '2021-08-13 23:29:20', '', '', '', '', 0, 2),
+(161, 51, '9eZrsThMoGpAAJ9ovO6NycAkn8rxkHIKHUCYkIrgbsP9NVPMiOIdLOfUpQehtJXg', '2021-08-13 23:29:20', '2021-08-13 23:43:51', '', '', '', '', 0, 2),
+(162, 51, 'cNz2TX287YxU4SXW8UHjOOHbFLbRXBBg9TDWF2SGdPcFUPSP1U1jKVh2RzBppWHq', '2021-08-13 23:43:51', '2021-08-13 23:43:52', '', '', '', '', 0, 2),
+(163, 51, 'imwelYa9J6DTH33MR0kwS4A7hrmFQKagZLud6ZBwhOwWChmSu8WV8cAsEcKdTVpY', '2021-08-13 23:43:52', '2021-08-14 08:35:13', '', '', '', '', 0, 2),
+(164, 51, 'Qh7lfejGqRcDVCK4mBvKKTWjqlhWFBu9idj0exjBmTczm7JaXa11Mv3RafCRn0DH', '2021-08-14 08:35:13', '2021-08-15 17:33:46', '', '', '', '', 0, 2),
+(165, 51, 'OuT26TEYzS1FG2uLjKhU1BDsLPtceVVqxyOQpefZWuar1Jjs5X5uRZiGKBwCLa2D', '2021-08-15 17:33:46', '2021-08-15 17:57:50', '', '', '', '', 0, 2),
+(166, 51, 'fVsZwrCPdk2hU04wBsODvG44TxUMcxMmf1AuM0EK6zDJ4FAzhDoPP4eapwP9PKgo', '2021-08-15 17:57:50', '2021-08-15 18:01:11', '', '', '', '', 0, 2),
+(167, 51, 'a93o9zAGJ7oY1WziZbjpbgGIQu2prmyDXzETtXT5cXIlf3hcrw8IY42zJGvzoiMT', '2021-08-15 18:01:11', '2021-08-15 18:01:12', '', '', '', '', 0, 2),
+(168, 51, 'gYRLhCI0raXMjGvRzCFfeRKL8x52lu5isCKSycWSqJAmu0WPAusN8xYOCvDzOUVY', '2021-08-15 18:01:12', '2021-08-16 09:40:41', '', '', '', '', 0, 2),
+(169, 51, '2UTPZyBvY8z2OnzrU8HOk2lUfVMnlMM4nT7PyLlDs6Z4cgpAnNvDkN0k3UYSHw2G', '2021-08-16 09:40:41', '2021-08-16 09:41:49', '', '', '', '', 0, 2),
+(170, 51, '2fUCXP7YGv18tn4FzUIqXeLehr81qRAYon1iKGvwU7FczqgIFzvGSWe283WRXhOf', '2021-08-16 09:41:49', '2021-08-16 09:42:32', '', '', '', '', 0, 2),
+(171, 51, 'zAOaoVLybt1DfajQTznIErhDuuH949N9jI2WVw3QlUgblJOo4e21eXv4lhOLfGDp', '2021-08-16 09:42:32', '2021-08-16 17:02:06', '', '', '', '', 0, 2),
+(172, 51, 'Y4RkcFfm6mqmB0ZEXmK3GSV5g1cSOR1ozPARFvXINn5BW20Z1olH9edlHMRqiglJ', '2021-08-16 17:02:06', '2021-08-16 17:19:55', '', '', '', '', 0, 2),
+(173, 51, 'bXJL7gvLVWHZ71wBQYMOelX5NC4sYJfJMBmVj6c994ln60JJrZMaJUOYf9ylJsgu', '2021-08-16 17:19:55', '2021-08-16 19:40:29', '', '', '', '', 0, 2),
+(174, 51, 'fWr1KjYfX0oyuSefuRr06mvWeuARY07TpRrMLJ8Ytx8tzuTIJDIorSLSVstX91zU', '2021-08-16 19:40:29', '2021-08-16 21:40:57', '', '', '', '', 0, 2),
+(175, 51, 'zcnwZxYP87mbPMTjLbRuE1niATWRic9XbE4dn69xafoUKZijlg99XLQXOoQeiKOn', '2021-08-16 21:40:57', '2021-08-16 21:43:03', '', '', '', '', 0, 2),
+(176, 51, 'uuXrqTMt2BdLps3J3fbnOOxqOifzM0G5C1C75oz7469ofUxA0cE3lwx2762CqNi7', '2021-08-16 21:43:03', '2021-08-17 09:51:21', '', '', '', '', 0, 2),
+(177, 51, 'OwxGA22uG2CEiwFAISwl3iCTdOFCwENukJIZgvMT8rw7EfCvsCtu7Bh0qlcCZe63', '2021-08-17 09:51:21', '2021-08-17 16:48:18', '', '', '', '', 0, 2),
+(178, 51, 'zzbghOxxItZpmoFvloJgibIzMePgXcbMXqaWBqngbpesRTDqRaDc6YzpB5Nv88VW', '2021-08-17 16:48:18', '2021-08-18 09:45:33', '', '', '', '', 0, 2),
+(179, 51, '510ALtOjUlAluSuTo1X3IGHbORPJcAVBcNhjW3FUEnI9Qxs9URmu6c9vCfimQ0U5', '2021-08-18 09:45:33', '2021-08-18 09:56:01', '', '', '', '', 0, 2),
+(180, 51, 'mADUk1hSpLfvMDQ11X03TxFmD5bssHP42hUijkF4vrB768h9q3Rl9Fkwlj53JzSy', '2021-08-18 09:56:01', '2021-08-18 09:56:38', '', '', '', '', 0, 2),
+(181, 51, 'N0dAfOOc0bfPOvKqBELXG0IA1aZqtIv6LsoXCkY44p7kXHIVustoEVAI9ZxJ0Gwf', '2021-08-18 09:56:38', '2021-08-18 22:26:03', '', '', '', '', 0, 2),
+(182, 51, 'n6wNHGuIe2fLCKfAgqfuCmvzrbBTNsRDwwU5g6a3EJ8usqM9sm0XvcEjmmDg5z03', '2021-08-18 22:26:03', '2021-09-17 00:00:00', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1614,8 +2078,10 @@ INSERT INTO `o_users` (`uid`, `name`, `email`, `phone`, `national_id`, `join_dat
 (20, 'Nzirani Mwende', 'nziranimwende@gmail.com', '254716330457', '6787787', '2021-05-12 14:31:02', '538606721eb54c4f8a92124994a02bb612bcb546020be380f247f07867aa7847', 3, 2, 1),
 (21, 'jonah ngarama', 'ngaramajonah@gmail.com11', '254789330450', '567654', '2021-06-20 00:18:05', 'bb0f5872ac86548d90be04688c3d99de19550e7abc98c1b7d316f2e1fd82b90e', 2, 2, 1),
 (22, 'jonah ngarama', 'ngaramajonah@gmail.com7', '254716330870', '123456737', '2021-06-20 00:21:47', '8da143a5de9523eb95bba84949c4539a17b649045d74ed2f75c1bc9807a5188d', 1, 2, 1),
-(50, 'Samuel Munyi', 'samunyi90@gmail.com', '254112553167', '3209876543', '2021-03-20 04:45:58', '190e94b55e3678bb4d643e76968000eda840142ab79e3638c41aed8a44b54795', 1, 2, 1),
-(51, 'Samuel Munyi', 'munyisamuel3@gmail.com', '254112553177', '32909210', '2021-07-12 10:51:40', 'a2bbc0d689af1e9f149912fe17cf1f2e85a8f3aa24a7e1cef398676188e909ca', 3, 1, 1);
+(50, 'Samuel Munyi', 'samunyi90@gmail.com', '254112553167', '3209876543', '2021-03-20 04:45:58', '190e94b55e3678bb4d643e76968000eda840142ab79e3638c41aed8a44b54795', 1, 2, 2),
+(51, 'Samuel Munyi', 'munyisamuel3@gmail.com', '254112553177', '32909210', '2021-07-12 10:51:40', 'a2bbc0d689af1e9f149912fe17cf1f2e85a8f3aa24a7e1cef398676188e909ca', 1, 1, 1),
+(52, 'Kelvin Kilonzo', 'kilonzo@gmail.com', '254711567098', '327069', '2021-08-08 21:51:50', '6fadfcde0d900ce80339f2c0afe6da57f15b425321c300232c05e7f512fbee4c', 3, 2, 1),
+(53, 'Sam Munyi', 'munyi@gmail.com', '254709123095', '2345671', '2021-08-12 21:18:13', '32e3c496ab8b290946c6cccc6a6e49d4d99ae777e289856922ebe481174f1638', 3, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1658,7 +2124,7 @@ CREATE TABLE `platform_settings` (
 --
 
 INSERT INTO `platform_settings` (`uid`, `name`, `logo`, `icon`, `link`) VALUES
-(1, 'SBS', 'sbs.png', 'sbs.ico', 'localhost/onepay');
+(1, 'SBS ', 'hebOMpZuVnMA6Ee4aj7T6HFGX.png', 'sbs.ico', 'localhost/onepay');
 
 --
 -- Indexes for dumped tables
@@ -1765,6 +2231,13 @@ ALTER TABLE `o_customer_referees`
   ADD PRIMARY KEY (`uid`);
 
 --
+-- Indexes for table `o_customer_referee_relationships`
+--
+ALTER TABLE `o_customer_referee_relationships`
+  ADD PRIMARY KEY (`uid`),
+  ADD UNIQUE KEY `name` (`name`);
+
+--
 -- Indexes for table `o_customer_statuses`
 --
 ALTER TABLE `o_customer_statuses`
@@ -1862,6 +2335,12 @@ ALTER TABLE `o_loan_statuses`
   ADD UNIQUE KEY `name` (`name`);
 
 --
+-- Indexes for table `o_log_updates`
+--
+ALTER TABLE `o_log_updates`
+  ADD PRIMARY KEY (`uid`);
+
+--
 -- Indexes for table `o_next_steps`
 --
 ALTER TABLE `o_next_steps`
@@ -1917,13 +2396,6 @@ ALTER TABLE `o_product_deductions`
 --
 ALTER TABLE `o_product_stages`
   ADD PRIMARY KEY (`uid`);
-
---
--- Indexes for table `o_referee_relationships`
---
-ALTER TABLE `o_referee_relationships`
-  ADD PRIMARY KEY (`uid`),
-  ADD UNIQUE KEY `name` (`name`);
 
 --
 -- Indexes for table `o_reports`
@@ -1997,19 +2469,19 @@ ALTER TABLE `o_branches`
 -- AUTO_INCREMENT for table `o_campaigns`
 --
 ALTER TABLE `o_campaigns`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `o_campaign_messages`
 --
 ALTER TABLE `o_campaign_messages`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `o_collateral`
 --
 ALTER TABLE `o_collateral`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `o_collateral_statuses`
@@ -2027,7 +2499,7 @@ ALTER TABLE `o_contact_types`
 -- AUTO_INCREMENT for table `o_conversation_methods`
 --
 ALTER TABLE `o_conversation_methods`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `o_conversation_outcome`
@@ -2039,19 +2511,19 @@ ALTER TABLE `o_conversation_outcome`
 -- AUTO_INCREMENT for table `o_customers`
 --
 ALTER TABLE `o_customers`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `o_customer_contacts`
 --
 ALTER TABLE `o_customer_contacts`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `o_customer_conversations`
 --
 ALTER TABLE `o_customer_conversations`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `o_customer_document_categories`
@@ -2063,7 +2535,13 @@ ALTER TABLE `o_customer_document_categories`
 -- AUTO_INCREMENT for table `o_customer_referees`
 --
 ALTER TABLE `o_customer_referees`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `o_customer_referee_relationships`
+--
+ALTER TABLE `o_customer_referee_relationships`
+  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `o_customer_statuses`
@@ -2087,13 +2565,13 @@ ALTER TABLE `o_disburse_methods`
 -- AUTO_INCREMENT for table `o_documents`
 --
 ALTER TABLE `o_documents`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `o_events`
 --
 ALTER TABLE `o_events`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT for table `o_flags`
@@ -2111,31 +2589,31 @@ ALTER TABLE `o_guarantors`
 -- AUTO_INCREMENT for table `o_incoming_payments`
 --
 ALTER TABLE `o_incoming_payments`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT for table `o_key_values`
 --
 ALTER TABLE `o_key_values`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `o_loans`
 --
 ALTER TABLE `o_loans`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `o_loan_addons`
 --
 ALTER TABLE `o_loan_addons`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `o_loan_deductions`
 --
 ALTER TABLE `o_loan_deductions`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `o_loan_products`
@@ -2156,6 +2634,12 @@ ALTER TABLE `o_loan_statuses`
   MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT for table `o_log_updates`
+--
+ALTER TABLE `o_log_updates`
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `o_next_steps`
 --
 ALTER TABLE `o_next_steps`
@@ -2171,13 +2655,13 @@ ALTER TABLE `o_notifications`
 -- AUTO_INCREMENT for table `o_passes`
 --
 ALTER TABLE `o_passes`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `o_payment_methods`
 --
 ALTER TABLE `o_payment_methods`
-  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `o_payment_schedule`
@@ -2210,16 +2694,10 @@ ALTER TABLE `o_product_stages`
   MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `o_referee_relationships`
---
-ALTER TABLE `o_referee_relationships`
-  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `o_reports`
 --
 ALTER TABLE `o_reports`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `o_staff_statuses`
@@ -2231,7 +2709,7 @@ ALTER TABLE `o_staff_statuses`
 -- AUTO_INCREMENT for table `o_tokens`
 --
 ALTER TABLE `o_tokens`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT for table `o_towns`
@@ -2243,7 +2721,7 @@ ALTER TABLE `o_towns`
 -- AUTO_INCREMENT for table `o_users`
 --
 ALTER TABLE `o_users`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `o_user_groups`

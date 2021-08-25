@@ -23,8 +23,24 @@ $offset_2 = $offset_ + $rpp_;
 $limit2 = $offset_+$rpp_;
 $rows = "";
 
+
+//----Search Filters
+$branch_array = array();
+$branch_ = fetchtable2("o_branches", "name LIKE \"%$search_%\"", "uid", "asc", "uid");
+$branch_count = mysqli_num_rows($branch_);
+if($branch_count > 0){
+    while($branch_list = mysqli_fetch_array($branch_)){
+        $branch_id = $branch_list['uid'];
+        array_push($branch_array, $branch_id);
+    }
+    $cust_branch_list = implode(", ", $branch_array);
+    $orcustbranch = " OR `branch` IN ($cust_branch_list)";
+}
+
+//-----End Search Filters
+
 if((input_available($search_)) == 1){
-    $andsearch = " AND (full_name LIKE '%$search_%' OR branch LIKE '%$search_%' )";
+    $andsearch = " AND (uid LIKE \"%$search_%\" OR full_name LIKE \"%$search_%\" OR primary_mobile LIKE \"%$search_%\" OR branch LIKE \"%$search_%\" $orcustbranch )";
 }
 else{
     $andsearch = "";
@@ -39,6 +55,7 @@ $dob_curdate = substr($date, 5);
 
 $days_passed_ = datediff($cust_added_date, $date);
 */
+
 
 $loaned_cust_arr = array();
 

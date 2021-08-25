@@ -29,11 +29,11 @@ $past_date_camp = new array();
                                 <div class="row">
                                     <div class="col-md-10">
                                         <h3 class="box-title font-16">
-                                            <a class="btn font-16 btn-md bg-navy text-bold" href="#" onclick="all_campaigns('sort_1')"><i class="fa fa-clone"></i> All Campaigns</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href="#"onclick="past_campaigns('sort_2')"><i class="fa fa-arrow-left"></i> Past</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href="#" onclick='running_campaigns("default_sort")'><i class="fa fa-arrow-down"></i>Current</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href="#" onclick="future_campaigns('sort_3')"><i class="fa fa-arrow-right"></i> Upcoming</a>
-                                            <a class="btn font-16 btn-md btn-default text-black text-bold" href="#"
+                                            <a class="btn font-16 btn-md bg-navy btn-default text-bold" href="#" onclick="all_campaigns('sort_1')"><i class="fa fa-clone"></i> All Campaigns</a>
+                                            <a class="btn font-16 btn-md btn-default text-bold" href="#"onclick="past_campaigns('sort_2')"><i class="fa fa-arrow-left"></i> Past</a>
+                                            <a class="btn font-16 btn-md  btn-default text-bold" href="#" onclick='running_campaigns("default_sort")'><i class="fa fa-arrow-down"></i>Current</a>
+                                            <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="future_campaigns('sort_3')"><i class="fa fa-arrow-right"></i> Upcoming</a>
+                                            <a class="btn font-16 btn-md btn-default text-bold" href="#"
                                             onclick="repetitive_campaigns('sort_4')"><i class="fa fa-recycle"></i> Repetitive</a>
                                         </h3>
                                     </div>

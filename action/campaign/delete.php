@@ -6,7 +6,6 @@ include_once ("../../configs/conn.inc");
 $userd = session_details();
 if($userd == null){
     die(errormes("Your session is invalid. Please re-login"));
-    exit();
 }
 
 $campaign_id = $_POST['campaign_id'];
@@ -14,11 +13,9 @@ $campaign_id = $_POST['campaign_id'];
 if($campaign_id > 0){
 
     //check if campaign is past and already run
-    $camp = checkrowexists("o_campaigns", "uid = $campaign_id AND running_date < $date AND already_run = \"yes\" AND repetitive = \"No\"");
-    if($camp){
-    }else{
-        die(errormes("Campaign already run cannot be deleted"));
-        exit();
+    $exists = checkrowexists("o_campaigns", "uid = $campaign_id AND status = 1 AND running_date < \"$date\" AND repetitive = 2 AND running_status IN (2, 3)"); 
+    if($exists == 1){
+        die(errormes("Campaign running or already run cannot be deleted"));
     }
 
     $update = updatedb('o_campaigns', "status=0", "uid= $campaign_id");
@@ -26,17 +23,11 @@ if($campaign_id > 0){
     {
         echo sucmes('Success deleting campaign');
         $proceed = 1;
-
-    }
-    else
-    {
+    }else{
         die(errormes('Unable to delete campaign'));
-        die();
     }
-}
-else{
+}else{
     die(errormes("Campaign ID invalid"));
-    exit();
 }
 
 ?>

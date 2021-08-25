@@ -19,9 +19,37 @@
                     <div class="row">
                         <div class="col-md-10">
                             <h3 class="box-title font-16">
-                                <a class="btn font-16 btn-md bg-navy text-bold" href=""><i class="fa fa-clone"></i> All Staff</a>
-                                <a class="btn font-16 btn-md btn-default text-bold" href="#"onclick="orderby('uid', 'desc')"><i class="fa fa-arrow-up"></i> Newest</a>
-                                <a class="btn font-16 btn-md btn-default text-bold" href="#" onclick="orderby('uid', 'asc')"><i class="fa fa-arrow-down"></i> Oldest</a>
+                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="group_" onchange="staff_filters()">
+                                            <option value="0">All Users</option>
+                                            <?php
+
+                                            $recs = fetchtable('o_user_groups',"uid>0", "uid", "asc", "100", "uid ,name");
+                                            while($r = mysqli_fetch_array($recs))
+                                            {
+                                                $uid = $r['uid'];
+                                                $name = $r['name'];
+                                                echo "<option value=\"$uid\">$name</option>";
+                                            }
+                                            ?>
+                                </select>
+
+                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="staff_order" onchange="staff_filters()">
+                                    <option value="desc">Newest First</option>
+                                    <option value="asc">Oldest First</option>
+                                </select>
+
+                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_branch" onchange="staff_filters()">
+                                    <option value="0">All Branches</option>
+                                    <?php
+                                    $o_branches_ = fetchtable('o_branches',"status > 0", "name", "asc", "0,100", "uid ,name ");
+                                    while($w = mysqli_fetch_array($o_branches_))
+                                    {
+                                        $uid = $w['uid'];
+                                        $name = $w['name'];
+                                        echo "<option value='$uid'>$name</option>";
+                                    }
+                                    ?>
+                                </select>
                             </h3>
                         </div>
                         <div class="col-md-2">
@@ -78,5 +106,5 @@
 </section>
 
 <?php
-echo "<div style='display: none;'>".paging_values_hidden('uid > -1',0,10,'uid','desc','','staff_list', 1)."</div>"
+echo "<div style='display: none;'>".paging_values_hidden('uid > 0',0,10,'uid','desc','','staff_list')."</div>"
 ?>

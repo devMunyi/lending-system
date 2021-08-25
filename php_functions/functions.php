@@ -28,7 +28,7 @@ function session_details(){
         }
         else{
             $token_user = fetchrow('o_tokens',"token='$token'","userid");
-            $userd = fetchonerow('o_users',"uid='$token_user'","uid, name, email, phone");
+            $userd = fetchonerow('o_users',"uid='$token_user'","*");
 
         }
 
@@ -67,8 +67,7 @@ function passencrypt($pass)
 }
 
 
-function profile($sid)
-{
+function profile($sid){
     $rid = decurl($sid);
     $d = fetchonerow('s_staff',"uid='$rid'");
     $fname = $d['first_name'];
@@ -77,16 +76,17 @@ function profile($sid)
     return $fname.' '.$lname ;
 
 }
-function username($sid)
-{
 
+
+function username($sid){
     $rid = decurl($sid);
     $d = fetchonerow('s_staff',"uid='$rid'","user_name");
     $username = $d['user_name'];
 
-
     return $username;
 }
+
+
 function generateRandomString($length) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -96,6 +96,8 @@ function generateRandomString($length) {
     }
     return $randomString;
 }
+
+
 function crazystring($length)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#%^*()_+-~{}[];:|.<>';
@@ -186,6 +188,20 @@ function fetchtable($table, $category,$orderby,$dir,$limit,$fds='*')      ////##
     return $result;
 
 }
+
+
+function fetchtable2($table, $category,$orderby,$dir,$fds='*')  
+////####################################Fetch whole table without a LIMIT
+{
+    global $con;
+    $query="SELECT $fds FROM ".$table." WHERE ".$category." ORDER BY ".$orderby.' '.$dir; 
+    //echo "<tr><td>".$query."</td></tr>";
+    $result=mysqli_query($con, $query);   //var_dump($query);
+
+    return $result;
+
+}
+
 function fetchtableGroup($table, $category,$orderby,$dir,$groupby,$limit)      ////####################################Fetch whole table
 {
     global $con;
@@ -555,8 +571,7 @@ function upload_file($fname,$tmpName,$upload_dir)
         return $nfileName;
     }
 }
-function makeThumbnails($updir, $img,$w,$h,$fname)
-{
+function makeThumbnails($updir, $img,$w,$h,$fname){
     $thumbnail_width = $w;
     $thumbnail_height = $h;
     $thumb_beforeword = "thumb";
@@ -577,6 +592,7 @@ function makeThumbnails($updir, $img,$w,$h,$fname)
         $imgt = "ImageGIF";
         $imgcreatefrom = "ImageCreateFromGIF";
     }
+    
     if ($arr_image_details[2] == 2) {
         $imgt = "ImageJPEG";
         $imgcreatefrom = "ImageCreateFromJPEG";
@@ -585,8 +601,19 @@ function makeThumbnails($updir, $img,$w,$h,$fname)
         $imgt = "ImagePNG";
         $imgcreatefrom = "ImageCreateFromPNG";
     }
-    if ($imgt) {
-        $old_image = $imgcreatefrom("$updir"."$img");
+
+    if ($imgt == "ImageJPEG") {
+        $old_image = imagecreatefromjpeg("$updir"."$img");
+    }
+
+    if($imgt == "ImagePNG"){
+        $old_image = imagecreatefrompng("$updir"."$img");
+    }
+
+    if($imgt == "ImageGIF"){
+        $old_image = imagecreatefromgif("$updir"."$img");
+    }
+
         $new_image = imagecreatetruecolor($thumbnail_width, $thumbnail_height);
 
         imagealphablending($new_image,false);
@@ -595,16 +622,21 @@ function makeThumbnails($updir, $img,$w,$h,$fname)
         $transparency=imagecolorallocatealpha($new_image,255,255,255,127);
         imagefilledrectangle($new_image,0,0,$w,$h,$transparency);
 
-        imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width, $original_height);
+        imagecopyresized($new_image, $old_image, $dest_x, $dest_y, 0, 0, $new_width, $new_height, $original_width,
+         $original_height);
         $imgt($new_image, "$updir"."$fname" . ".$ext");
-    }
 }
+
 
 function fileext_fetch($filename)
 {
     $ext=pathinfo($filename, PATHINFO_EXTENSION);
     return $ext;
 }
+
+
+
+
 /////TOtal loans for a given month
 function month_loans($m)
 {
@@ -738,6 +770,8 @@ function repay_schedule($loan_id){
     }
 
 }
+
+
 function recalculate_loan($loan_id){
     $l = fetchonerow("o_loans","uid='".$loan_id."'","*");
     /////////------------deductions
@@ -755,7 +789,8 @@ function recalculate_loan($loan_id){
 
 }
 
-///TOtal collection for a given month
+
+///Total collection for a given month
 function month_collections($m)
 {
     $totall = totaltable('s_incoming_payments',"month(date_received) = $m AND status in (1,2)","amount");
@@ -876,6 +911,7 @@ function updatedb($tb, $fds, $where)
     else
     {
         return 1;
+        logupdate($tb, $insertq);
     }
 
 }
@@ -1339,7 +1375,7 @@ class loan_details
     function last_repayment_date()
     {
         $loanid = $this -> loanid;
-        $last_d = fetchmax('s_incoming_payments',"loan_id='$loanid'","date_received","date_received");
+        $last_d = fetchmax('o_incoming_payments',"loan_id='$loanid'","date_received","date_received");
         $last_payment_date = $last_d['date_received'];
         return $last_payment_date;
     }
@@ -1383,6 +1419,7 @@ function paging($url,$orderby,$dir,$offset,$rpp,$fds,$search,$box,$remaining,$wh
 
 
 function paging_values_hidden($where, $offset, $rpp, $orderby, $dir, $search, $func, $page_no = 1){
+    $vals.= "<input type='text' title='where' id='_where_' value='$where'>";
     $vals.= "<input type='text' title='offset' id='_offset_' value='$offset'>";
     $vals.= "<input type='text' title='rpp' id='_rpp_' value='$rpp'>";
     $vals.= "<input type='text' title='page_no' id='_page_no_' value='$page_no'>";
@@ -1458,9 +1495,7 @@ function payment_schedule($loanid)
 
 
 ///__________Function to check customer balance
-function customer_balance($cid)
-{
-
+function customer_balance($cid){
     $last_loan = fetchmaxid('s_loans',"customer_id='$cid' AND status in (2,5,6)","uid");
     $lid = $last_loan['uid'];
     if($lid > 0)
@@ -1480,8 +1515,7 @@ function customer_balance($cid)
 
 
 
-function sms_service($cat, $vals, $phone, $product,$shortcode, $nu=0)
-{
+function sms_service($cat, $vals, $phone, $product,$shortcode, $nu=0){
     global $fulldate;
     $cust = fetchonerow('s_users_primary',"primary_phone='$phone'");
     $first_name = $cust['first_name'];
@@ -1719,11 +1753,13 @@ function total_instalments($period, $period_units, $payment_frequency){
     }
   return $total_instalments;
 }
+
 function final_due_date($given_date, $period, $period_units){
     $total_days = $period * $period_units;
     $final_day = dateadd($given_date,0,0, $total_days);
     return $final_day;
 }
+
 function next_due_date($given_date, $period, $period_units, $payment_frequency){
     $total_days = $period * $period_units;
 
@@ -1735,6 +1771,7 @@ function next_due_date($given_date, $period, $period_units, $payment_frequency){
     }
     return $next_due;
 }
+
 function total_repaid($loan_id){
     $total_pay = totaltable('o_incoming_payments',"loan_id='$loan_id' AND status=1","amount");
     return $total_pay;
@@ -1746,11 +1783,15 @@ function loan_balance($loan_id){
    $repayable_amount = $loan['total_repayable_amount'];
 
    $balance = $repayable_amount - $repaid;
-
+   updatedb("o_loans", "loan_balance=$balance", "uid=$loan_id AND status > 0");
    return $balance;
 }
 
 /// //////////////=============End of loan calculations
-
+function logupdate($table, $query){
+    
+    //////Save the log in the o_logs_update table 
+    $fds = array('','','','');
+}
 
 ?>

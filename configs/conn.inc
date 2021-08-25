@@ -1,12 +1,15 @@
 <?php
 error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED & ~E_WARNING);
 date_default_timezone_set("Africa/Nairobi");
-$hostname = 'localhost';        // Your MySQL hostname. Usualy named as 'localhost', so you're NOT necessary to change this even this script has already online on the internet.
+$hostname = 'localhost'; // Your MySQL hostname. Usualy named as 'localhost', so you're NOT necessary to change this even this script has already online on the internet.
+/*$dbname   = 'main_db'; // Your database name.
+$username = 'kaguius';             // Your database username.
+$password = 'U6xZfLn9A7SwcP9%';
+*/
+
 $dbname   = 'onepay_db'; // Your database name.
 $username = 'root';             // Your database username.
 $password = '';
-
-
 
 // Your databas 'r.].
 //\.

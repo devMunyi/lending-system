@@ -2,7 +2,7 @@
     <?php 
     $campaign = $_GET["campaign"];
     $campaign_id = decurl($campaign);
-    $campaign_ = fetchonerow("o_campaigns", "uid = '$campaign_id'");
+    $campaign_ = fetchonerow("o_campaigns", "uid = $campaign_id");
     $camp_id_ = $campaign_["uid"];
     $camp_id = encurl($camp_id_);
     $camp_name = $campaign_["name"];
@@ -18,7 +18,7 @@
     ?>
                 <h1>
                     <?php echo arrow_back('broadcasts','Broadcasts'); ?>
-                    BroadCast Details
+                    Campaign Details
                     <small><?php echo $camp_name; ?></small>
                 </h1>
                 <ol class="breadcrumb">
@@ -155,29 +155,49 @@
 
                                 <div class="tab-pane" id="tab_3">
                                     <div class="box-body">
-                                        <div style="margin-top: 20px;" class="row">
+                                        <div class="row">
                                             <div class="col-sm-2">
-                                                <span style="align-content: center;" class="info-box-icon"><i class="fa fa-pencil"></i></span>
+                                                <span style="align-content: center;" class="info-box-icon"><i class="fa fa-envelope"></i></span>
                                             </div>
-                                            <div class = "col-sm-10">
-                                            <form class="form-horizontal" onsubmit="return false"; method="post">
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-3">Message</label>
-                                                    <div class="col-sm-7">
-                                                        <textarea class="form-control" id="message"></textarea>
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="col-sm-3"></div>
-                                                <div class="col-sm-7">
-                                                <div class="box-footer">
-                                                    <br/>
-                                                    <button type="submit" class="btn btn-lg btn-default btn-flat">Cancel</button>
-                                                    <button type="submit" class="btn btn-primary btn-lg btn-flat pull-right" onclick="save_message();">Save</button>
-                                                </div>
-                                    </div>
-                                            </form>
-                                        </div>
+                                            <div class = "col-md-7">
+                                                <table class="table-bordered font-14 table table-hover">
+                                                    <?php
+                                                    $messages = fetchtable('o_campaign_messages',"status=1 AND campaign_id=$campaign_id", "uid", "desc", "0,10", "*");
+                                                    $messages_total = countotal('o_campaign_messages',"status=1 AND campaign_id=$campaign_id");
+                                                    if($messages_total > 0){
+                                                        while($m = mysqli_fetch_array($messages)){
+                                                        $uid = $m['uid'];
+                                                        $message = $m['message'];
+                                                        echo "<tr><td class=\"text-bold\">Message</td><td>$message</td></tr>";
+                                                        }
+                                                    }else{
+                                                        echo "<tr><td colspan='8'><i>No Message Found</i></td></tr>";
+                                                    }
+                                                   
+                                                    ?>
+                                                </table>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <table class="table">
+                                                        <?php
+                                                        if($messages_total > 0){
+                                                            ?>
+                                                            <tr><td><a href="broadcasts?campaign-add-edit=<?php echo encurl($campaign_id); ?>&message" class="btn btn-warning btn-block  btn-md"><i class="fa  fa-pencil"></i>Edit/Delete Message</a></td></tr>
+                                                            <?php
+                                                        }else{
+                                                            ?>
+                                                            <tr><td><a href="broadcasts?campaign-add-edit=<?php echo encurl($campaign_id); ?>&message" class="btn btn-success btn-block  btn-md"><i class="fa  fa-plus"></i>Add/Edit Message</a></td></tr>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                        
+                                                    
+                                                    <tr style="display: none;"><td><button class="btn btn-primary btn-block btn-md"><i class="fa  fa-pencil"></i> Edit Contact</button></td></tr>
+                                                    <tr style="display: none;"><td><button class="btn btn-danger btn-block btn-md"><i class="fa  fa-times"></i> Remove Contact</button></td></tr>
+                                                </table>
+                                            </div>
+
                                         </div>
                                         
                                     </div>

@@ -9,25 +9,23 @@
                     <div class="col-md-10">
                         <?php
                         if(isset($_GET['approvals'])) {
-
+                            $need_approval = "need approval";
                             ?>
                             <h3 class="box-title">
 
-                                <a class="btn font-16 text-black font-bold" href=""><i class="fa fa-check-square-o"></i>REQUIRES YOUR APPROVAL <label class="label label-danger">5</label></a>
-
-
-
+                                <a class="btn font-16 text-black font-bold" href=""><i class="fa fa-check-square-o"></i>REQUIRES YOUR APPROVAL <label id="approvals" class="label label-primary">0</label></a> 
                             </h3>
                             <?php
                         }
                         else {
+                            $need_approval = "";
                             ?>
                             <h3 class="box-title">
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="loan_order" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="loan_order" onchange="loan_filters()">
                                     <option value="desc">Newest First</option>
                                     <option value="asc">Oldest First</option>
                                 </select>
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_product" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="sel_product" onchange="loan_filters()">
                                     <option value="0">All Products</option>
                                     <?php
                                     $o_loan_products_ = fetchtable('o_loan_products',"status=1", "name", "asc", "0,100", "uid ,name ");
@@ -41,7 +39,7 @@
                                     ?>
 
                                 </select>
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_branch" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="sel_branch" onchange="loan_filters()">
                                     <option value="0">All Branches</option>
                                     <?php
                                     $o_branches_ = fetchtable('o_branches',"status!=0", "name", "asc", "0,100", "uid ,name ");
@@ -53,7 +51,7 @@
                                     }
                                     ?>
                                 </select>
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_stage" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="sel_stage" onchange="loan_filters()">
                                     <option value="0">All Stages</option>
                                     <?php
                                     $o_loan_stages_ = fetchtable('o_loan_stages',"status=1", "uid", "desc", "0,100", "uid ,name ");
@@ -66,7 +64,7 @@
 
                                     ?>
                                 </select>
-                                <select class="btn font-16 btn-md btn-default text-bold top-select" id="sel_status" onchange="loan_filters()">
+                                <select class="btn font-16 btn-default btn-md btn-default text-bold top-select" id="sel_status" onchange="loan_filters()">
                                     <option>All Statuses</option>
                                     <?php
                                     $o_loan_statuses_ = fetchtable('o_loan_statuses',"status=1", "name", "desc", "0,100", "uid ,name ");
@@ -102,8 +100,8 @@
                         <th>Deductions</th>
                         <th>Repaid</th>
                         <th>Balance</th>
-                        <th>Given</th>
-                        <th>Due</th>
+                        <th>Given Date</th>
+                        <th>Due Date</th>
                         <th>Stage</th>
                         <th>Status</th>
                         <th>Flag</th>
@@ -125,8 +123,8 @@
                         <th>Deductions</th>
                         <th>Repaid</th>
                         <th>Balance</th>
-                        <th>Given</th>
-                        <th>Due</th>
+                        <th>Given Date</th>
+                        <th>Due Date</th>
                         <th>Stage</th>
                         <th>Status</th>
                         <th>Flag</th>
@@ -142,5 +140,6 @@
     <!-- /.col -->
 </div>
 <?php
+echo "<input type='hidden' id = '_approvals_' value = \"$need_approval\">";
 echo "<div style='display: none;'>".paging_values_hidden('status > -1',0,10,'uid','desc','','loan_list')."</div>"
 ?>

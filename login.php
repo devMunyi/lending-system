@@ -1,10 +1,6 @@
 <?php
 include_once ("php_functions/functions.php");
 include_once ("configs/conn.inc");
-include_once ("php_functions/functions.php");
-include_once ("configs/conn.inc");
-
-$company = company_settings();
 
 $company = company_settings();
 ?>
@@ -20,15 +16,13 @@ $company = company_settings();
     ?>
 </head>
 <body class="hold-transition login-page">
-
 <div class="login-box">
     <div class="login-logo">
-        <img src="dist/img/<?php echo $company['logo'] ?>"  alt="<?php  echo $company['name']?>" style="font-weight: bold;" height="100px">
+        <img src="dist/img/braavos.png"  alt="BRAAVOS" style="font-weight: bold; height: 120px;">
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Login to your account</p>
-
         <form onsubmit="return false;" method="post">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" id="inp_email" placeholder="Email or Phone">

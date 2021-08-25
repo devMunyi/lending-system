@@ -2,6 +2,7 @@
 $loan_id = $_GET['loan'];
 recalculate_loan(decurl($loan_id));
 $l = fetchonerow("o_loans","uid='".decurl($loan_id)."'","*");
+$customer_ = encurl($l['customer_id']);
 $total_repaid = total_repaid(decurl($loan_id));
 $balance = loan_balance(decurl($loan_id));
 $product_ = fetchonerow("o_loan_products","uid='".$l['product_id']."'","name, disburse_method");
@@ -59,7 +60,7 @@ else{
                     <li class="nav-item nav-100"><a href="#tab_3" onclick="loan_deductions('<?php echo $loan_id; ?>')" data-toggle="tab" aria-expanded="false"><i class="fa fa-minus-circle"></i> Deductions</a></li>
                     <li class="nav-item nav-100"><a href="#tab_7" data-toggle="tab" aria-expanded="false"><i class="fa fa-calendar"></i> Pay Schedule</a></li>
                     <li class="nav-item nav-100"><a href="#tab_8" onclick="loan_collateral_list('<?php echo $loan_id; ?>')" data-toggle="tab" aria-expanded="false"><i class="fa fa-car"></i> Collateral</a></li>
-                    <li class="nav-item nav-100"><a href="#tab_4" data-toggle="tab" aria-expanded="false"><i class="fa fa-arrow-circle-o-down"></i> Repayments</a></li>
+                    <li class="nav-item nav-100"><a href="#tab_4" onclick="loan_repayment_list('<?php echo $loan_id; ?>')" data-toggle="tab" aria-expanded="false"><i class="fa fa-arrow-circle-o-down"></i> Repayments</a></li>
                     <li style="display: none;" class="nav-item nav-100"><a href="#tab_5" data-toggle="tab" aria-expanded="false"><i class="fa fa-exchange"></i> Engagements</a></li>
                     <li class="nav-item nav-100"><a href="#tab_6" data-toggle="tab" aria-expanded="false"><i class="fa fa-clock-o"></i> Events</a></li>
 
@@ -78,13 +79,13 @@ else{
                                     <tr><td class="text-bold">Customer</td><td><span class="font-16"><?php echo $customer['full_name'];  ?></span>
                                             <br/><span class="font-italic"><?php echo $customer['national_id'];  ?></span>
                                             <span class="font-italic text-muted"></span> <a href="customers?customer=<?php echo $l['customer_id'] ?>"><i class="fa fa-external-link"></i></a></td></tr>
-                                    <tr><td class="text-bold">Amount</td><td><h3><?php echo money($l['loan_amount']);  ?></h3></td></tr>
+                                    <tr><td class="text-bold">Amount</td><td><h4 class="text-bold"><?php echo money($l['loan_amount']);  ?></h4></td></tr>
                                     <tr><td class="text-bold">AddOns</td><td><?php echo money(loan_addons(decurl($loan_id))); ?></td></tr>
                                     <tr><td class="text-bold">Deductions</td><td><?php echo money(loan_deductions(decurl($loan_id))); ?></td></tr>
                                     <tr><td class="text-bold">Disbursed Amount</td><td><?php echo money($l['disbursed_amount']); ?></td></tr>
                                     <tr><td class="text-bold">Repayable Amount</td><td><?php echo money($l['total_repayable_amount']); ?></td></tr>
                                     <tr><td class="text-bold">Repaid</td><td><?php echo money($total_repaid); ?></td></tr>
-                                    <tr><td class="text-bold">Balance</td><td><h3 class="text-red"><?php echo money($balance); ?></h3> </td></tr>
+                                    <tr><td class="text-bold">Balance</td><td><h4 class="text-red text-bold"><?php echo money($balance); ?></h4> </td></tr>
                                     <tr><td class="text-bold">Product</td><td><?php echo $product_name; ?></td></tr>
                                     <tr><td class="text-bold">Given Date</td><td><?php echo $l['given_date']; ?></td></tr>
                                     <tr><td class="text-bold">Due Date</td><td><?php echo $l['final_due_date']; ?></td></tr>
@@ -191,21 +192,12 @@ else{
                             <div class="col-md-2">
                                 <span class="info-box-icon"><i class="fa fa-arrow-circle-o-down"></i></span>
                             </div>
-                            <div class="col-md-7">
-                                <table class="table-bordered font-14 table table-hover">
-                                    <thead><tr><th>ID</th><th>Transcode</th><th>Amount</th><th>Date</th><th>Payer Details</th><th>Payer Method</th><th>Status</th><th>Action</th></tr></thead>
-                                    <tbody>
-                                    <tr><td>1</td><td>RTGFFEEERTGF</td><td>40,000.00</td><td>5/6/2001</td><td>Jonah Ngarama <br/> 0716456789</td><td>Mpesa</td><td> <span class="text-success"><i class="fa fa-check"></i> Added </span></td><td> <a><i class="fa  fa-eye"></i> </a></td> </tr>
-                                    <tr><td>1</td><td>RTGFFEEERTGF</td><td>40,000.00</td><td>5/6/2001</td><td>Jonah Ngarama <br/> 0716456789</td><td>Cash</td><td><span class="text-success"><i class="fa fa-check"></i> Added </span></td><td> <a><i class="fa  fa-eye"></i> </a></td> </tr>
-
-                                    </tbody>
-
-
-                                </table>
+                            <div class="col-md-7" id="repayments_">
+                                Loading repayments ...
                             </div>
                             <div class="col-md-3">
                                 <table class="table">
-                                    <tr><td><button class="btn btn-success btn-block btn-md"><i class="fa fa-plus"></i> Record Payment</button></td></tr>
+                                    <tr><td><a href="incoming-payments?add-edit" class="btn btn-primary btn-block btn-md"><i class="fa fa-plus"></i> Record Payment</a></td></tr>
                                 </table>
                             </div>
                         </div>
@@ -280,7 +272,7 @@ else{
                             </div>
                             <div class="col-md-7">
                                 <table class="table-bordered font-14 table table-hover">
-                                    <thead><tr><th>Date</th><th>Amount</th><th>Status</th</tr></thead>
+                                    <thead><tr><th>Date</th><th>Amount</th><th>Status</th></tr></thead>
                                     <tbody>
                                     <?php
 
@@ -312,7 +304,8 @@ else{
                             </div>
                             <div class="col-md-3">
                                 <table class="table">
-                                    <tr><td><button class="btn btn-default"><i class="fa  fa-edit"></i> Edit Schedule</button></td></tr>
+                                    <tr><td><a href="customers?customer-add-edit=<?php echo $customer_; ?>&collateral" class="btn btn-primary"><i class="fa  fa-edit"></i> Add/
+                                    Edit Collateral</a></td></tr>
                                 </table>
                             </div>
                         </div>

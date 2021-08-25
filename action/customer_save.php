@@ -108,14 +108,14 @@ else{
 
 
 $fds = array('full_name','primary_mobile','email_address','physical_address','town','national_id','gender','dob','added_by','added_date','branch','primary_product','loan_limit','status');
-$vals = array("$full_name","$primary_mobile",$email_address,"$physical_address","$town","$national_id","$gender","$dob","$added_by","$added_date","$branch","$primary_product","$loan_limit","$status");
+$vals = array("$full_name","$primary_mobile","$email_address","$physical_address","$town","$national_id","$gender","$dob","$added_by","$added_date","$branch","$primary_product","$loan_limit","$status");
 $create = addtodb('o_customers',$fds,$vals);
 if($create == 1)
 {
     echo sucmes('Customer Saved Successfully');
     $customer_id = encurl(fetchrow('o_customers',"primary_mobile='$primary_mobile'","uid"));
     $proceed = 1;
-    store_event('o_customers', $customer_id,"$events");
+    store_event('o_customers', decurl($customer_id),"$events");
 }
 else
 {
