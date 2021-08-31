@@ -116,7 +116,7 @@ $company = company_settings();
                 </div>
             </section>
             <?php
-            echo "<div style='display: none ;'>".paging_values_hidden2('uid > 0',0,10,'uid','desc','', 'falling_due_list', 'all')."</div>";
+            echo "<div style='display: none ;'>".paging_values_hidden2('uid > 0',0,10,'uid','desc','', 'falling_due_list', 'today')."</div>";
             ?>
         <!-- /.content -->
     </div>

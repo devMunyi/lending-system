@@ -36,7 +36,7 @@ $allowed_formats_array = explode(",", $allowed_formats);
 
 if($file_size > 100){
     if((file_type($file_name, $allowed_formats_array)) == 0){
-        die(errormes("The format is not allowed. Only $allowed_formats "));
+        die(errormes("This file format is not allowed. Only $allowed_formats "));
         exit();
     }
 
@@ -47,14 +47,14 @@ else{
 }
 
 $upload = upload_file($file_name,$file_tmp,$upload_location);
-if($upload == '0')
+if($upload === 0)
 {
-    die(errormes("Error uploading file, please retry"));
+    echo errormes("Error uploading file, please retry");
     exit();
 }
 $file_name_only = pathinfo($upload, PATHINFO_FILENAME);
 if($make_thumbnail == 1) {
-    makeThumbnails($upload_location, $upload, 100, 100, "thumb_" . $file_name_only);
+    makeThumbnails($upload_location, $upload, 100, 100, "thumb_".$file_name_only);
 }
 
 //echo errormes(makeThumbnails($upload_location, "7UpkJa8zGa.jpg",50,50,"ddd.jpg"));

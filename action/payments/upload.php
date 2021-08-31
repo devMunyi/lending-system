@@ -17,7 +17,7 @@ $allowed_formats_array = explode(",", $allowed_formats);
 
 if($file_size > 10){
     if((file_type($file_name, $allowed_formats_array)) == 0){
-        die(errormes("The format is not allowed. Only $allowed_formats files"));
+        die(errormes("This file format is not allowed. Only $allowed_formats files"));
     }
 }else{
     die(errormes("File not attached or has invalid size"));
@@ -26,6 +26,12 @@ if($file_size > 10){
 
 $handle = fopen($file_tmp, "r");
 $i = 0;
+
+$upload = upload_file($file_name, $file_tmp, $upload_location);
+if($upload === 0){
+	echo errormes("Error uploading file, please retry");
+	exit();
+}
 
 //while(($data = fgetcsv($handle)) !== FALSE){
 while(!feof($handle)){
@@ -40,7 +46,7 @@ while(!feof($handle)){
 			$transaction_code = trim(mysqli_real_escape_string($con, $data[3]));
 			$mobile_number = trim(mysqli_real_escape_string($con, $data[4]));
 			$status = 1;
-			$record_method = "CSV Upload";
+			$record_method = "MANNUAL";
 
 			if(!empty($loan_code) && !empty($amount) && !empty($payment_method) && !empty($transaction_code) && !empty($mobile_number)){
 				if($loan_code > 0) {
@@ -117,18 +123,11 @@ while(!feof($handle)){
 
 if($create == 1){
 	echo sucmes('File Uploaded Successfully');
+	$proceed = 1;
 }else{
 	die(errormes('Unable Upload File'));
 }
 
-
-$upload = upload_file($file_name,$file_tmp,$upload_location);
-if($upload == '0')
-{
-    die(errormes("Error uploading file, please retry"));
-}else{
-	$proceed = 1;
-}
 
 ?>
 <script>

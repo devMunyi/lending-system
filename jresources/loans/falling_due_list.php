@@ -47,38 +47,38 @@ if ((input_available($search_)) == 1) {
 //-----------------------------Reused Query including filters
 if($sort_option == "today"){
     //falling due today
-    $o_loans_ = fetchtable('o_loans', "$where_ AND  status IN (3, 4) AND  DATEDIFF(next_due_date, \"$date\") = 0 $andsearch", "$orderby", "$dir", "$limit", "*");
+    $o_loans_ = fetchtable('o_loans', "$where_ AND  status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") = 0 OR DATEDIFF(next_due_date, \"$date\") = 0) $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
-    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND  DATEDIFF(next_due_date, \"$date\") = 0 $andsearch", );
+    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") = 0 OR DATEDIFF(next_due_date, \"$date\") = 0) $andsearch");
 }elseif($sort_option == "tomorrow"){
     //falling due tomorrow
-    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") = 1 $andsearch", "$orderby", "$dir", "$limit", "*");
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") = 1 OR DATEDIFF(next_due_date, \"$date\") = 1) $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
-    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") = 1 $andsearch");
+    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") = 1 OR DATEDIFF(next_due_date, \"$date\") = 1) $andsearch");
     ///==========Paging Option
 }elseif($sort_option == "2days"){
     //falling in 2 days
-    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") <= 2 AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") <= 2 OR DATEDIFF(next_due_date, \"$date\") <= 2) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
-    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") <= 2 AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
+    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") <= 2 OR DATEDIFF(next_due_date, \"$date\") <= 2) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
     ///==========Paging Option
 }elseif($sort_option == "3days"){
     //falling in 3 days
-    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") <= 3 AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") <= 3 OR DATEDIFF(next_due_date, \"$date\") <= 3) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
-    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4)  AND DATEDIFF(next_due_date, \"$date\") <= 3 AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
+    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4)  AND (DATEDIFF(final_due_date, \"$date\") <= 3 OR DATEDIFF(next_due_date, \"$date\") <= 3) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
     ///==========Paging Option
 }elseif($sort_option == "7days"){
     //falling in 7 days
-    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") <= 7 AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") <= 7 OR DATEDIFF(next_due_date, \"$date\") <= 7) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
-    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") <= 7 AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
+    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") <= 7 OR DATEDIFF(next_due_date, \"$date\") <= 7) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
     ///==========Paging Option
 }elseif($sort_option == "14days"){
     //falling in 14 days
-    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") <= 14 AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") <= 14 OR DATEDIFF(next_due_date, \"$date\") <= 14) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
-    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") <= 14 AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
+    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") <= 14 OR DATEDIFF(next_due_date, \"$date\") <= 14) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
     ///==========Paging Option
 }elseif($sort_option == "uncommited"){
     //uncommitted
@@ -86,9 +86,9 @@ if($sort_option == "today"){
     ///----------Paging Option
     $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") < 0 OR DATEDIFF(next_due_date, \"$date\") < 0) AND loan_balance > 0 AND total_repaid = 0.00 AND DATEDIFF($date, given_date) >= 7 $andsearch");
 }else{
-    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch", "$orderby", "$dir", "$limit", "*");
+    $o_loans_ = fetchtable('o_loans', "$where_ AND status IN (3, 4) AND (DATEDIFF(Final_due_date, \"$date\") >= 0 OR DATEDIFF(Final_due_date, \"$date\") >= 0) $andsearch", "$orderby", "$dir", "$limit", "*");
     ///----------Paging Option
-    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND DATEDIFF(next_due_date, \"$date\") >= 0 $andsearch");
+    $alltotal = countotal("o_loans", "$where_ AND status IN (3, 4) AND (DATEDIFF(final_due_date, \"$date\") >= 0 OR DATEDIFF(Final_due_date, \"$date\") >= 0) $andsearch");
     ///==========Paging Option
 }
 

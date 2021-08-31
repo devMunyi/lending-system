@@ -6,7 +6,7 @@
     <div class="pull-right hidden-xs">
         <b>Version</b> 2.4.18
     </div>
-    <strong>Copyright &copy; <?php echo date("Y") ?> <a target="_blank" href="https://www.onepay.co.ke">One Pay</a>.</strong> All rights
+    <strong>Copyright &copy; <?php echo date("Y") ?> <a target="_blank" href="https://www.onepay.co.ke">Super Lender</a>.</strong> All rights
     reserved. <a onclick="modal_view('/jresources/confirm_example','')">Open Modal</a>
 </footer>
 

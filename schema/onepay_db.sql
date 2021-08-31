@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2021 at 08:24 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Aug 31, 2021 at 10:16 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -102,11 +103,11 @@ CREATE TABLE `o_campaigns` (
   `name` varchar(50) NOT NULL,
   `description` varchar(250) NOT NULL,
   `running_date` date NOT NULL,
-  `running_status` int(5) NOT NULL DEFAULT 1,
+  `running_status` int(5) NOT NULL DEFAULT '1',
   `frequency` int(5) NOT NULL,
   `repetitive` int(5) NOT NULL,
   `target_customers` int(5) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `added_by` int(5) NOT NULL,
   `status` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -199,9 +200,9 @@ CREATE TABLE `o_campaign_messages` (
   `uid` int(10) NOT NULL,
   `campaign_id` int(10) NOT NULL,
   `message` varchar(250) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `added_by` int(5) NOT NULL,
-  `status` int(5) NOT NULL DEFAULT 1
+  `status` int(5) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -254,7 +255,7 @@ CREATE TABLE `o_campaign_statuses` (
   `code` int(3) NOT NULL,
   `name` varchar(30) NOT NULL,
   `color` varchar(10) DEFAULT NULL,
-  `status` int(1) NOT NULL DEFAULT 1
+  `status` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -430,10 +431,10 @@ CREATE TABLE `o_customers` (
   `gender` varchar(5) NOT NULL COMMENT 'M, F',
   `dob` date NOT NULL,
   `added_by` int(10) NOT NULL,
-  `added_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `added_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `branch` int(5) NOT NULL COMMENT 'From o_branches',
   `primary_product` int(5) NOT NULL COMMENT 'From o_products',
-  `loan_limit` double(100,2) NOT NULL DEFAULT 0.00,
+  `loan_limit` double(100,2) NOT NULL DEFAULT '0.00',
   `events` mediumtext NOT NULL,
   `status` int(5) NOT NULL COMMENT 'From o_customer_statuses'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -658,7 +659,7 @@ CREATE TABLE `o_customer_statuses` (
   `code` int(3) NOT NULL,
   `name` varchar(30) NOT NULL,
   `color` varchar(10) DEFAULT NULL,
-  `status` int(1) NOT NULL DEFAULT 1
+  `status` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='Store the statuses of customers';
 
 --
@@ -783,10 +784,10 @@ INSERT INTO `o_documents` (`uid`, `code_name`, `title`, `description`, `category
 (35, '', 'Photo', 'sdfghjk', 1, 1, '2021-07-31 14:46:54', 'o_customers', 12, '3NKFh3poOcLpcx5Nol499ifKo.jpg', 0),
 (36, '', 'Passport', 'dfghjk', 3, 1, '2021-07-31 14:47:30', 'o_customers', 12, 'IdeJpSN321fDEsCwxXmrTcaMJ.jpg', 0),
 (37, '', 'Passport', 'Photo Jpeg', 1, 1, '2021-07-31 14:54:48', 'o_customers', 12, 'JAxJXAy8gXM5dnTwatd7Rh0E8.jpg', 0),
-(38, '', 'National ID', 'Front View', 2, 1, '2021-07-31 15:22:51', 'o_customers', 12, 'hvuVuUxvxFt0bglvNkyLAgtxL.jpg', 1),
-(39, '', 'National ID', 'Back View', 3, 1, '2021-07-31 15:23:50', 'o_customers', 12, '6AsNej2XUk7XwhxzQgVkVrXGS.jpg', 1),
-(40, '', 'Test', 'photo', 1, 1, '2021-08-07 16:18:38', 'o_customers', 12, '8P6ru56ny65v0GEVAnB6kKTaH.jpg', 1),
-(41, '', 'Photo', 'id', 3, 1, '2021-08-07 16:19:46', 'o_customers', 12, 'aXtOi99O2WjJNiEL98JDUcKdB.jpg', 1),
+(38, '', 'National ID', 'Front View', 2, 1, '2021-07-31 15:22:51', 'o_customers', 12, 'hvuVuUxvxFt0bglvNkyLAgtxL.jpg', 0),
+(39, '', 'National ID', 'Back View', 3, 1, '2021-07-31 15:23:50', 'o_customers', 12, '6AsNej2XUk7XwhxzQgVkVrXGS.jpg', 0),
+(40, '', 'Test', 'photo', 1, 1, '2021-08-07 16:18:38', 'o_customers', 12, '8P6ru56ny65v0GEVAnB6kKTaH.jpg', 0),
+(41, '', 'Photo', 'id', 3, 1, '2021-08-07 16:19:46', 'o_customers', 12, 'aXtOi99O2WjJNiEL98JDUcKdB.jpg', 0),
 (42, '', 'photo ', '', 1, 51, '2021-08-16 20:55:16', 'o_customers', 17, 'sgJRwiVuF5oDXPs6w7x32g706.jpg', 0),
 (43, '', 'photo ', '', 1, 51, '2021-08-16 20:57:04', 'o_customers', 17, 'tpCW2d9cu0gZujqrs8uqcEJ2M.jpg', 0),
 (44, '', 'photo ', '', 1, 51, '2021-08-16 21:03:08', 'o_customers', 17, 'ip6ocHtURVAdNmBd0IgLdBMiZ.png', 1),
@@ -797,7 +798,10 @@ INSERT INTO `o_documents` (`uid`, `code_name`, `title`, `description`, `category
 (49, '', 'photo ', '', 1, 51, '2021-08-16 21:35:42', 'o_customers', 14, 'hi9sgO9D2p4OsPDJWkemNhwZU.png', 1),
 (50, '', 'photo ', '', 1, 51, '2021-08-16 21:36:40', 'o_customers', 13, 'eFyLOIR0tODTP6TwPRAhtBNzP.jpg', 1),
 (51, '', 'photo ', '', 1, 51, '2021-08-16 21:38:14', 'o_customers', 11, 'Qu5mPyDOUX3pazcAB7qLpdl9P.jpg', 1),
-(52, '', 'photo ', 'passport', 1, 51, '2021-08-17 21:11:40', 'o_customers', 18, 'XHZLPt29RKQgLL2ebEYOI5xj1.png', 1);
+(52, '', 'photo ', 'passport', 1, 51, '2021-08-17 21:11:40', 'o_customers', 18, 'XHZLPt29RKQgLL2ebEYOI5xj1.png', 0),
+(53, '', 'photo ', '', 1, 51, '2021-08-30 10:45:00', 'o_customers', 12, 'HE1JMEnPWRzmjYxnLlzhalwt0.jpg', 1),
+(54, '', 'photo ', '', 1, 51, '2021-08-31 10:57:35', 'o_customers', 18, 'bMC2MHakuHIqlTbdNzvnYSrv4.png', 0),
+(55, '', 'photo ', '', 1, 51, '2021-08-31 11:07:14', 'o_customers', 18, 'ZvVMMtuUt2BjdzCOMFv92TNVl.png', 1);
 
 -- --------------------------------------------------------
 
@@ -992,7 +996,9 @@ INSERT INTO `o_events` (`uid`, `tbl`, `fld`, `event_details`, `event_date`, `eve
 (170, 'o_loans', 9, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 15:41:51] with comment [<i></i>]', '2021-08-18 15:41:51', 51, 1),
 (171, 'o_loans', 26, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 15:45:46] with comment [<i></i>]', '2021-08-18 15:45:46', 51, 1),
 (172, 'o_loans', 26, 'Loan status changed to  () by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 16:19:52] with comment [<i></i>]', '2021-08-18 16:19:52', 51, 1),
-(173, 'o_loans', 26, 'Loan status changed to 6 (Rejected) by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 16:29:48] with comment [<i></i>]', '2021-08-18 16:29:48', 51, 1);
+(173, 'o_loans', 26, 'Loan status changed to 6 (Rejected) by [Samuel Munyi(munyisamuel3@gmail.com)] on [2021-08-18 16:29:48] with comment [<i></i>]', '2021-08-18 16:29:48', 51, 1),
+(174, 'platform_settings', 1, 'Settings updated at [2021-08-24 17:31:17] by [Samuel Munyi{51}root]', '2021-08-24 17:31:17', 51, 1),
+(175, 'platform_settings', 1, 'Settings updated at [2021-08-24 17:31:35] by [Samuel Munyi{51}root]', '2021-08-24 17:31:35', 51, 1);
 
 -- --------------------------------------------------------
 
@@ -1041,19 +1047,19 @@ CREATE TABLE `o_guarantors` (
 CREATE TABLE `o_incoming_payments` (
   `uid` int(20) NOT NULL,
   `customer_id` int(10) NOT NULL,
-  `branch_id` int(10) NOT NULL DEFAULT 0,
+  `branch_id` int(10) NOT NULL DEFAULT '0',
   `payment_method` int(5) NOT NULL,
   `mobile_number` varchar(20) NOT NULL,
   `amount` double(50,2) NOT NULL,
   `transaction_code` varchar(50) NOT NULL,
   `loan_id` int(20) NOT NULL,
-  `loan_balance` double(8,2) NOT NULL DEFAULT 0.00,
+  `loan_balance` double(8,2) NOT NULL DEFAULT '0.00',
   `payment_date` date NOT NULL,
-  `recorded_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `recorded_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `added_by` int(10) NOT NULL,
   `record_method` varchar(20) NOT NULL COMMENT 'API, MANUAL',
   `comments` varchar(100) NOT NULL DEFAULT 'Repayment',
-  `status` int(5) NOT NULL DEFAULT 1
+  `status` int(5) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1313,7 +1319,7 @@ INSERT INTO `o_loans` (`uid`, `customer_id`, `product_id`, `loan_amount`, `disbu
 (22, 17, 2, 3000.00, 2500.00, 4220.00, 0.00, 0.00, 1, '30', '0', '', 1220.00, 500.00, 1, 0, 1, '2021-08-10', '2021-09-09', '2021-09-09', 51, 0, 2, '2021-08-10 08:22:26', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (23, 17, 1, 20000.00, 20000.00, 20000.00, 0.00, 20000.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 11:05:30', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
 (24, 17, 1, 20000.00, 20000.00, 20000.00, 0.00, 20000.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 13:36:33', 1, 0, '', '0000-00-00 00:00:00', 'MANUAL', 0),
-(25, 17, 1, 21000.00, 21000.00, 21000.00, 4500.00, 16500.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 13:39:40', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 2),
+(25, 17, 1, 21000.00, 21000.00, 21000.00, 4500.00, 16500.00, 45, '1', '7', '', 0.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 13:39:40', 4, 0, '', '0000-00-00 00:00:00', 'MANUAL', 3),
 (26, 18, 1, 10000.00, 10000.00, 10400.00, 0.00, 10400.00, 45, '1', '7', '', 400.00, 0.00, 6, 0, 1, '2021-08-17', '2021-08-24', '2021-10-01', 51, 0, 2, '2021-08-17 21:25:26', 3, 0, '', '0000-00-00 00:00:00', 'MANUAL', 6);
 
 -- --------------------------------------------------------
@@ -1600,7 +1606,7 @@ CREATE TABLE `o_passes` (
   `user` int(20) NOT NULL,
   `pass` varchar(200) NOT NULL,
   `pass_reset_token` varchar(255) DEFAULT NULL,
-  `reset_status` int(2) NOT NULL DEFAULT 0
+  `reset_status` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1669,11 +1675,11 @@ CREATE TABLE `o_permissions` (
   `user_id` int(10) NOT NULL,
   `tbl` varchar(50) NOT NULL,
   `rec` int(10) NOT NULL,
-  `general_` int(1) NOT NULL DEFAULT 0,
-  `create_` int(1) NOT NULL DEFAULT 0,
-  `read_` int(1) NOT NULL DEFAULT 0,
-  `update_` int(1) NOT NULL DEFAULT 0,
-  `delete_` int(1) NOT NULL DEFAULT 0
+  `general_` int(1) NOT NULL DEFAULT '0',
+  `create_` int(1) NOT NULL DEFAULT '0',
+  `read_` int(1) NOT NULL DEFAULT '0',
+  `update_` int(1) NOT NULL DEFAULT '0',
+  `delete_` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1823,13 +1829,13 @@ CREATE TABLE `o_tokens` (
   `uid` int(20) NOT NULL,
   `userid` int(20) NOT NULL,
   `token` varchar(245) NOT NULL,
-  `creation_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `creation_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `expiry_date` datetime NOT NULL,
   `device_id` varchar(245) DEFAULT NULL,
   `browsername` varchar(250) DEFAULT NULL,
   `IPAddress` varchar(45) DEFAULT NULL,
   `OS` varchar(55) DEFAULT NULL,
-  `usages` int(10) DEFAULT 0,
+  `usages` int(10) DEFAULT '0',
   `status` int(1) NOT NULL COMMENT '1-valid, 2-expired'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1838,6 +1844,7 @@ CREATE TABLE `o_tokens` (
 --
 
 INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`, `device_id`, `browsername`, `IPAddress`, `OS`, `usages`, `status`) VALUES
+(0, 51, 'CZrcTneGnLcxRShoeVG0pHKl7o0zjWCcHFMZNlJMzFIJGoclHNKrJhfL9vrofKtR', '2021-08-24 17:29:14', '2021-08-28 08:44:40', '', '', '', '', 0, 2),
 (1, 1, 'AkEMJAl3gnFzWy9OJ5EHClYRwr6C8OL9GABrfHpV8PrA7iEEfmisD8iK2djKLvtp', '2021-03-20 04:45:58', '2021-07-10 17:10:39', '', '', '', '', 0, 2),
 (2, 2, 'ywtkcZK7NzUnbzSVqb3TzbqaaakR80WjBVIlWZcFoMEfTiDuzXOOE2u9Qbetj00n', '2021-04-06 10:55:52', '2021-05-06 00:00:00', '', '', '', '', 0, 1),
 (3, 2, 'XnezncaRJAcZvcDUibxdYhalJ68CpgfQwGxiZbXmMTesYGicTCugi3FmOWjBbkSE', '2021-04-06 11:06:18', '2021-05-06 00:00:00', '', '', '', '', 0, 1),
@@ -2019,7 +2026,10 @@ INSERT INTO `o_tokens` (`uid`, `userid`, `token`, `creation_date`, `expiry_date`
 (179, 51, '510ALtOjUlAluSuTo1X3IGHbORPJcAVBcNhjW3FUEnI9Qxs9URmu6c9vCfimQ0U5', '2021-08-18 09:45:33', '2021-08-18 09:56:01', '', '', '', '', 0, 2),
 (180, 51, 'mADUk1hSpLfvMDQ11X03TxFmD5bssHP42hUijkF4vrB768h9q3Rl9Fkwlj53JzSy', '2021-08-18 09:56:01', '2021-08-18 09:56:38', '', '', '', '', 0, 2),
 (181, 51, 'N0dAfOOc0bfPOvKqBELXG0IA1aZqtIv6LsoXCkY44p7kXHIVustoEVAI9ZxJ0Gwf', '2021-08-18 09:56:38', '2021-08-18 22:26:03', '', '', '', '', 0, 2),
-(182, 51, 'n6wNHGuIe2fLCKfAgqfuCmvzrbBTNsRDwwU5g6a3EJ8usqM9sm0XvcEjmmDg5z03', '2021-08-18 22:26:03', '2021-09-17 00:00:00', '', '', '', '', 0, 1);
+(182, 51, 'n6wNHGuIe2fLCKfAgqfuCmvzrbBTNsRDwwU5g6a3EJ8usqM9sm0XvcEjmmDg5z03', '2021-08-18 22:26:03', '2021-08-24 17:29:14', '', '', '', '', 0, 2),
+(183, 51, '6xceyeFB4Na0Q4IZA8x5vXx2piCz7ZJBrxrbV5HMv7649SzvmdAEFH9J2LBOTo3Q', '2021-08-28 08:44:40', '2021-08-28 11:34:10', '', '', '', '', 0, 2),
+(184, 51, 'JdBuBCoixiqlaGNegEIaj4Z3UIJula34UkQt87ATExIz9JCHrtrWtX8n2OuEj6k1', '2021-08-28 11:34:10', '2021-08-30 10:42:21', '', '', '', '', 0, 2),
+(185, 51, 'LKlCktEreKLE2dUAV4KPu7mAha7G8I2j16yaKxhFQjdqAW9ntWlDLST2HCQ5H0aR', '2021-08-30 10:42:21', '2021-09-29 00:00:00', '', '', '', '', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -2124,7 +2134,7 @@ CREATE TABLE `platform_settings` (
 --
 
 INSERT INTO `platform_settings` (`uid`, `name`, `logo`, `icon`, `link`) VALUES
-(1, 'SBS ', 'hebOMpZuVnMA6Ee4aj7T6HFGX.png', 'sbs.ico', 'localhost/onepay');
+(1, 'SBS   ', 'LOGveR5ZOWnphqGzcECn8ljk5.png', 'sbs.ico', 'localhost/onepay');
 
 --
 -- Indexes for dumped tables
@@ -2565,13 +2575,13 @@ ALTER TABLE `o_disburse_methods`
 -- AUTO_INCREMENT for table `o_documents`
 --
 ALTER TABLE `o_documents`
-  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `uid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `o_events`
 --
 ALTER TABLE `o_events`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT for table `o_flags`
@@ -2709,7 +2719,7 @@ ALTER TABLE `o_staff_statuses`
 -- AUTO_INCREMENT for table `o_tokens`
 --
 ALTER TABLE `o_tokens`
-  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
+  MODIFY `uid` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `o_towns`
